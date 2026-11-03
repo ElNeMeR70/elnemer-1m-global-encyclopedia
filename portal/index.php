@@ -1798,6 +1798,8 @@ $json_ld = [
 
             </button>
 
+            <a class="top-btn top-btn-gold" href="/guinness" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #000; font-weight: 800; border: 1px solid #ffd700;">⚖️ بوابة تحكيم جينيس</a>
+            <a class="top-btn" href="/guinness_dossier.pdf" target="_blank">📥 ملف التحكيم (PDF)</a>
             <a class="top-btn" href="#adjudicator-console">🔬 منصة التحكيم ISO</a>
 
             <a class="top-btn" href="/sitemap_index.xml" target="_blank">🗺️ XML Sitemap (1M)</a>

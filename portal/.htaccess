@@ -27,5 +27,13 @@ RewriteRule ^lang/([a-zA-Z\-]+)/?$ index.php?lang=$1 [L,QSA]
 RewriteRule ^book/([0-9]+)(/.*)?$ book.php?id=$1 [L,QSA]
 RewriteRule ^verify$ book.php [L,QSA]
 
+# Official Guinness & Global Adjudication Portal
+RewriteRule ^guinness/?$ guinness.php [L,QSA]
+RewriteRule ^adjudication/?$ guinness.php [L,QSA]
+
+# Clean Dossier PDF Routes
+RewriteRule ^guinness-dossier\.pdf$ guinness_dossier.pdf [L]
+RewriteRule ^institutions-dossier\.pdf$ institutions_dossier.pdf [L]
+
 # Default DirectoryIndex
 DirectoryIndex index.php index.html

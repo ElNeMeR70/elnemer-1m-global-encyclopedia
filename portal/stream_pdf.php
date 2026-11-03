@@ -7,16 +7,15 @@
 // ============================================================================
 error_reporting(0);
 ini_set('memory_limit', '256M');
-if (is_file(__DIR__ . '/config.local.php')) { require __DIR__ . '/config.local.php'; }
 require_once __DIR__ . '/taxonomy_data.php';
 require_once __DIR__ . '/barcode_helper.php';
 
 // Cloudflare R2 Credentials & Public Endpoint
-define('CF_R2_ACCOUNT_ID', getenv('CF_R2_ACCOUNT_ID') ?: '');
+define('CF_R2_ACCOUNT_ID', '260084535a158c3657d034902ec411f6');
 define('CF_R2_BUCKET', 'digital-solutions-media');
 define('CF_R2_PUBLIC_URL', 'https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev');
-define('CF_R2_ACCESS_KEY', getenv('CF_R2_ACCESS_KEY') ?: '');
-define('CF_R2_SECRET_KEY', getenv('CF_R2_SECRET_KEY') ?: '');
+define('CF_R2_ACCESS_KEY', '431610b27c14aaea6d3ae433eb9fcad8');
+define('CF_R2_SECRET_KEY', 'a6cfa0a715af6e5462f15300aca56386932cbf8487898117c843a8eb5d2a9af0');
 
 $gid = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['book']) ? intval($_GET['book']) : 1);
 $gid = max(1, min(1000000, $gid));

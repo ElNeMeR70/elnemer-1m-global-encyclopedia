@@ -1,3 +1,35 @@
 User-agent: *
 Allow: /
+Disallow: /api_auto_submit.php
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Scholar
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
 Sitemap: https://million.elnemer-ai.com/sitemap_index.xml

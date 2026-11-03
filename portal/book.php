@@ -582,6 +582,8 @@ $json_ld = [
         <nav class="nav-links">
             <a class="nav-btn" href="/book/<?php echo $prev_id; ?>">⬅️ المجلد السابق (#<?php echo number_format($prev_id); ?>)</a>
             <a class="nav-btn" href="/book/<?php echo $next_id; ?>">➡️ المجلد التالي (#<?php echo number_format($next_id); ?>)</a>
+            <a class="nav-btn gold" href="/guinness?id=<?php echo $b['global_id']; ?>">⚖️ تحكيم جينيس</a>
+            <a class="nav-btn" href="/guinness_dossier.pdf" target="_blank">📥 ملف التحكيم (PDF)</a>
             <a class="nav-btn gold" href="/book/<?php echo rand(1, 1000000); ?>">🎲 مجلد عشوائي</a>
             <a class="nav-btn" href="/?lang=<?php echo urlencode($b['lang_code']); ?>">🌍 لغة <?php echo htmlspecialchars($b['lang_name']); ?></a>
             <a class="nav-btn" href="/sitemap_index.xml">🗺️ الفهرس المليوني</a>
