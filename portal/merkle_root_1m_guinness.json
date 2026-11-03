@@ -1,0 +1,18 @@
+{
+  "project_title": "ElNemer 1-Million-Book Global Multilingual Scientific Encyclopedia (78 Languages)",
+  "principal_investigator": "Eng. Mahmoud Bek ElNemer (المهندس محمود النمر)",
+  "ai_partner": "Google Gemini 4 Architecture",
+  "google_play_collection_id": "L27WN83",
+  "google_sftp_account": "feeds-6t8928@partnerupload.google.com:19321",
+  "total_unique_books": 1000000,
+  "paid_books_count": 900000,
+  "paid_price_range_usd": "$2.00 - $20.00 USD",
+  "free_books_count": 100000,
+  "free_price_usd": "$0.00 USD (Open Access)",
+  "total_languages": 78,
+  "total_mega_sectors": 10,
+  "total_sub_disciplines": 100,
+  "total_batches": 1000,
+  "master_1m_merkle_root_sha256": "72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9",
+  "generated_at_utc": "2026-11-01T01:10:00Z"
+}

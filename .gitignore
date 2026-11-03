@@ -1,0 +1,4 @@
+portal/config.local.php
+*.zip
+*.sqlite
+.env

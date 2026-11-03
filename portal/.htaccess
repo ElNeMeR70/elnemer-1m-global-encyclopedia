@@ -1,0 +1,31 @@
+RewriteEngine On
+RewriteBase /
+
+# Cloudflare Edge Cache & CORS Headers for Static, Sitemap & PDF Streams
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/(pdf|stream_pdf\.php|book/|sitemaps/)#"
+    Header set CDN-Cache-Control "public, max-age=31536000, immutable"
+    Header set Cloudflare-CDN-Cache-Control "public, max-age=31536000, immutable"
+</IfModule>
+
+# Certificate of Authenticity Generator Route: /certificate/12345
+RewriteRule ^certificate/([0-9]+)(/.*)?$ certificate.php?id=$1 [L,QSA]
+
+# Instant 200-Page PDF Streamer Routes: /pdf/12345 or /pdf/12345/filename.pdf
+RewriteRule ^pdf/([0-9]+)(/.*)?$ stream_pdf.php?id=$1 [L,QSA]
+
+# Sitemap Index, 78-Language Sitemap & 20 Book Shards
+RewriteRule ^sitemap_index\.xml$ sitemap.php [L,QSA]
+RewriteRule ^sitemaps/sitemap_languages_78\.xml$ sitemap.php?type=langs [L,QSA]
+RewriteRule ^sitemaps/sitemap_books_([0-9]+)\.xml$ sitemap.php?shard=$1 [L,QSA]
+
+# Clean 78-Language Portal Routes: /lang/ar, /lang/en, /lang/zh-CN, etc.
+RewriteRule ^lang/([a-zA-Z\-]+)/?$ index.php?lang=$1 [L,QSA]
+
+# Clean SEO Book Landing Pages: /book/12345 or /book/12345/any-slug
+RewriteRule ^book/([0-9]+)(/.*)?$ book.php?id=$1 [L,QSA]
+RewriteRule ^verify$ book.php [L,QSA]
+
+# Default DirectoryIndex
+DirectoryIndex index.php index.html
