@@ -100,6 +100,8 @@ $json_ld = [
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($b['lang_code']); ?>" dir="rtl" data-theme="royal-dark">
 <head>
+  <meta name="google-site-verification" content="U6ysk2Ie2LsEIPZ3UlsIS3gmpl_jwAjOyfu0lWKKBF8" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مجلد #<?php echo number_format($b['global_id']); ?> | <?php echo htmlspecialchars($b['title']); ?> | ISBN <?php echo $b['isbn13']; ?> | موسوعة النمر المليونية</title>

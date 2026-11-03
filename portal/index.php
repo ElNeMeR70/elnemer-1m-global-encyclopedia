@@ -330,6 +330,8 @@ $json_ld = [
 <html lang="<?php echo htmlspecialchars($cur_lang); ?>" dir="<?php echo $dir; ?>" data-theme="imperial-dark">
 
 <head>
+  <meta name="google-site-verification" content="U6ysk2Ie2LsEIPZ3UlsIS3gmpl_jwAjOyfu0lWKKBF8" />
+
 
     <meta charset="UTF-8">
 
