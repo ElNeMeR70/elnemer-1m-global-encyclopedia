@@ -1857,6 +1857,32 @@ $json_ld = [
 
 
         
+    
+    <!-- GLOBAL ENCYCLOPEDIA INSTANT SEARCH ENGINE -->
+    <div class="global-search-wrapper" style="margin:25px auto 35px auto;max-width:920px;position:relative;">
+        <div style="background:rgba(18,24,38,0.92);border:2px solid #D4AF37;border-radius:18px;padding:8px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 35px rgba(0,0,0,0.6);backdrop-filter:blur(12px);">
+            <span style="font-size:1.6rem;color:#D4AF37;">🔍</span>
+            <input type="text" id="globalEncyclopediaSearch" placeholder="ابحث في المليون مجلد (بالكلمة المفتاحية: ذكاء اصطناعي، كم، كيمياء، فضاء، أو رقم ISBN أو رقم المجلد 1 - 1000000)..." 
+                   style="flex:1;background:transparent;border:none;color:#FFF;font-size:1.05rem;font-weight:700;font-family:'Tajawal',sans-serif;outline:none;" 
+                   oninput="onLiveEncyclopediaSearch(this.value)">
+            <button class="top-btn top-btn-gold" onclick="onLiveEncyclopediaSearch(document.getElementById('globalEncyclopediaSearch').value)" style="padding:10px 24px;font-size:1rem;">بحث لحظي</button>
+        </div>
+        <!-- Quick Topic Tags -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;justify-content:center;">
+            <span style="font-size:0.8rem;color:#94A3B8;font-weight:800;align-self:center;">🔥 الأكثر بحثاً:</span>
+            <button class="adj-pill" onclick="searchTopicTag('الذكاء الاصطناعي')">🤖 الذكاء الاصطناعي (AI)</button>
+            <button class="adj-pill" onclick="searchTopicTag('الحوسبة الكمومية')">⚛️ الحوسبة الكمومية (Quantum)</button>
+            <button class="adj-pill" onclick="searchTopicTag('الأمن السيبراني')">🛡️ الأمن السيبراني (Cyber)</button>
+            <button class="adj-pill" onclick="searchTopicTag('الهندسة الوراثية')">🧬 الهندسة الوراثية والجينوم</button>
+            <button class="adj-pill" onclick="searchTopicTag('هندسة الفضاء')">🚀 هندسة الفضاء والفلك</button>
+            <button class="adj-pill" onclick="searchTopicTag('الاقتصاد الرقمي')">💰 الاقتصاد الرقمي وبلوكتشين</button>
+        </div>
+        <!-- Live Results Dropdown Container -->
+        <div id="liveSearchResultsContainer" style="display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,13,22,0.98);border:2px solid #D4AF37;border-radius:16px;margin-top:10px;padding:16px;max-height:480px;overflow-y:auto;z-index:9999;box-shadow:0 20px 50px rgba(0,0,0,0.85);text-align:right;">
+            <div id="liveSearchResultsContent"></div>
+        </div>
+    </div>
+
     <!-- GUINNESS WORLD RECORD LIVE GENERATION & CLOUDFLARE INGESTION RADAR -->
     <div style="background:linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,41,59,0.94));border:2px solid #F59E0B;border-radius:20px;padding:24px;margin-bottom:30px;box-shadow:0 12px 35px rgba(0,0,0,0.65);">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;border-bottom:1px dashed rgba(245,158,11,0.45);padding-bottom:14px;">
