@@ -5,19 +5,13 @@ Disallow: /api_auto_submit.php
 User-agent: Googlebot
 Allow: /
 
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Mediapartners-Google
-Allow: /
-
 User-agent: Google-Scholar
 Allow: /
 
 User-agent: bingbot
+Allow: /
+
+User-agent: msnbot
 Allow: /
 
 User-agent: Slurp
@@ -32,4 +26,9 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# Sitemaps (1,000,000 Volumes & 78 Languages)
 Sitemap: https://million.elnemer-ai.com/sitemap_index.xml
+Sitemap: https://million.elnemer-ai.com/sitemap.xml
+
+# IndexNow Key for Bing & Microsoft Copilot & Yandex Instant Indexing
+# Key: 72806865ca4d56a0b03ad7e925ba6e7c
