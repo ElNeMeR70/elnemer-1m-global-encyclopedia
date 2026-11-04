@@ -417,7 +417,7 @@ $json_ld = [
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -1744,7 +1744,161 @@ $json_ld = [
 
         }
 
-    </style>
+    
+        /* ==========================================================================
+           ULTRA-LUXURY SOVEREIGN IMPERIAL MASTERPIECE STYLING
+           Eng. Mahmoud Bek ElNemer · Guinness World Record 1M Encyclopedia
+           ========================================================================== */
+        @keyframes goldGlowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 10px 40px rgba(0,0,0,0.8); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.65), 0 15px 50px rgba(0,0,0,0.9); }
+        }
+        @keyframes crestFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(1deg); }
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFFDF0 0%, #FDE68A 35%, #D4AF37 70%, #996515 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Cinzel', 'Tajawal', serif;
+        }
+
+        .hero-banner {
+            background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.18) 0%, transparent 70%),
+                        radial-gradient(ellipse at 15% 50%, rgba(37, 99, 235, 0.14) 0%, transparent 60%),
+                        linear-gradient(145deg, #0c101c 0%, #07090f 50%, #030408 100%) !important;
+            border: 2px solid rgba(212, 175, 55, 0.45) !important;
+            border-radius: 28px !important;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+            padding: 45px 35px !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #F59E0B, #FFF, #F59E0B, transparent);
+        }
+
+        .author-vip-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(15, 22, 38, 0.92);
+            border: 1.5px solid rgba(212, 175, 55, 0.5);
+            border-radius: 999px;
+            padding: 10px 26px;
+            margin: 18px 0 25px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+        }
+
+        .author-vip-crest {
+            font-size: 28px;
+            animation: crestFloat 4s ease-in-out infinite;
+        }
+
+        .author-vip-name {
+            font-size: 1.12rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            letter-spacing: 0.3px;
+        }
+
+        .author-vip-sub {
+            font-size: 0.84rem;
+            color: #FDE68A;
+            font-weight: 700;
+        }
+
+        .hero-stats-bento {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            margin: 30px 0 15px 0;
+        }
+
+        .stat-bento-card {
+            background: rgba(14, 20, 34, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 20px;
+            padding: 22px 20px;
+            text-align: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .stat-bento-card:hover {
+            transform: translateY(-5px);
+            border-color: #D4AF37;
+            box-shadow: 0 18px 45px rgba(212, 175, 55, 0.25);
+        }
+
+        .stat-bento-num {
+            font-family: 'Cinzel', 'Cairo', serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #FFF9E6 0%, #F5D77F 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-bento-label {
+            color: #E2E8F0;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .stat-bento-desc {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .section-card {
+            background: rgba(13, 18, 30, 0.85) !important;
+            border: 1px solid rgba(212, 175, 55, 0.25) !important;
+            border-radius: 24px !important;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6) !important;
+            backdrop-filter: blur(14px) !important;
+        }
+
+        .topbar {
+            background: rgba(7, 9, 15, 0.94) !important;
+            border-bottom: 2px solid #D4AF37 !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(20px) !important;
+        }
+
+        .adj-pill {
+            background: rgba(18, 26, 44, 0.8) !important;
+            border: 1px solid rgba(212, 175, 55, 0.35) !important;
+            color: #F8FAFC !important;
+            font-weight: 700 !important;
+            padding: 8px 18px !important;
+            border-radius: 999px !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .adj-pill:hover, .adj-pill.active {
+            background: linear-gradient(135deg, #D4AF37, #AA771C) !important;
+            color: #000000 !important;
+            font-weight: 900 !important;
+            border-color: #FFD700 !important;
+            transform: translateY(-2px) scale(1.03) !important;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
+        }
+
+</style>
 
 </head>
 
@@ -1836,7 +1990,45 @@ $json_ld = [
 
 
 
-        <h1 class="hero-title"><?php echo htmlspecialchars($page_title); ?></h1>
+        <h1 class="hero-title gold-gradient-text">👑 <?php echo htmlspecialchars($page_title); ?></h1>
+
+        <div style="text-align:center;">
+            <div class="author-vip-card">
+                <div class="author-vip-crest">👑</div>
+                <div style="text-align:right;">
+                    <div class="author-vip-name">المؤلف والمهندس المعماري: المهندس محمود بك النمر</div>
+                    <div class="author-vip-sub">Google Accredited AI &amp; Systems Engineer · Founder &amp; CEO of Nemer Academic Publishing House</div>
+                </div>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.25);color:#34D399;font-size:0.82rem;font-weight:800;padding:6px 16px;border-radius:999px;border:1px solid #10B981;">
+                    <span style="width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 10px #10B981;"></span>
+                    اعتماد دولي وتشفيري موثق
+                </span>
+            </div>
+        </div>
+
+        <!-- 4 BENTO METRIC PILLARS -->
+        <div class="hero-stats-bento">
+            <div class="stat-bento-card">
+                <div class="stat-bento-num">1,000,000</div>
+                <div class="stat-bento-label">مجلد علمي موثق ومفهرس</div>
+                <div class="stat-bento-desc">900 ألف تجاري + 100 ألف مفتوح مجاناً</div>
+            </div>
+            <div class="stat-bento-card">
+                <div class="stat-bento-num">78</div>
+                <div class="stat-bento-label">لغة عالمية شاملة</div>
+                <div class="stat-bento-desc">تغطي 99.4% من سكان العالم القارئين</div>
+            </div>
+            <div class="stat-bento-card">
+                <div class="stat-bento-num">200M</div>
+                <div class="stat-bento-label">صفحة أكاديمية محكمة</div>
+                <div class="stat-bento-desc">200 صفحة لكل مجلد مع باركود EAN-13</div>
+            </div>
+            <div class="stat-bento-card">
+                <div class="stat-bento-num">100</div>
+                <div class="stat-bento-label">تخصص دولي معتمد (BISAC)</div>
+                <div class="stat-bento-desc">عبر 10 قطاعات علمية وتكنولوجية كبرى</div>
+            </div>
+        </div>
 
         <p class="hero-subtitle"><?php echo htmlspecialchars($page_desc); ?></p>
 
