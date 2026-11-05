@@ -722,7 +722,7 @@ $json_ld = [
                 <tr>
                     <th>المعرف الرقمي للأبحاث (DOI)</th>
                     <td style="font-family:monospace;">
-                        <a href="https://doi.org/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;">https://doi.org/<?php echo $b['doi']; ?></a>
+                        <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:700;">doi:<?php echo $b['doi']; ?></a> <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="margin-right:10px;padding:3px 8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);border-radius:6px;font-size:0.8rem;color:var(--cyan);text-decoration:none;font-weight:600;">🔗 بوابة التحقق السيادية (Sovereign Resolver)</a>
                     </td>
                 </tr>
                 <tr>
