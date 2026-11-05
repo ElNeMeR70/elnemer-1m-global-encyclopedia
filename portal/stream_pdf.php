@@ -233,7 +233,7 @@ function build_200page_pdf_bytes($b) {
     $p1 .= pdf_rect(56, 235, 500, 205, 0.04, 0.07, 0.14, true, $sec_rgb[0], $sec_rgb[1], $sec_rgb[2], 1.2);
     $p1 .= pdf_text(76, 415, "CRYPTOGRAPHIC & BIBLIOMETRIC SPECIFICATION MATRIX", "F2", 9.5, $pri_rgb[0], $pri_rgb[1], $pri_rgb[2]);
     $p1 .= pdf_text(76, 392, "* International Standard Book Number (ISBN-13): " . $isbn . " (Batch #" . sprintf("%04d", $b['batch_number']) . ")", "F2", 9.0, 1.0, 1.0, 1.0);
-    $p1 .= pdf_text(76, 372, "* Digital Object Identifier (DOI): https://doi.org/" . $doi, "F1", 9.0, 0.85, 0.92, 1.0);
+    $p1 .= pdf_text(76, 372, "* Digital Object Identifier (DOI): https://million.elnemer-ai.com/doi/" . $doi, "F1", 9.0, 0.85, 0.92, 1.0);
     $p1 .= pdf_text(76, 352, "* Language Edition: " . $lang_en . " (ISO-639: " . $b['lang_code'] . " | Script: " . $b['script'] . ")", "F1", 9.0, 0.85, 0.92, 1.0);
     $p1 .= pdf_text(76, 332, "* Structural Extent: 200 Unique Pages (10 Chapters, 177 Sections, 22 Exam Qs, 45 Refs)", "F1", 9.0, 0.85, 0.92, 1.0);
     $p1 .= pdf_text(76, 312, "* Commercial Classification: " . $price_str, "F1", 9.0, 0.99, 0.90, 0.54);
@@ -290,7 +290,7 @@ function build_200page_pdf_bytes($b) {
         ["Principal Author", "Eng. Mahmoud Bek ElNemer (" . pdf_clean_ascii($b['author']) . ") - Google Accredited Architect"],
         ["Publisher Imprint", "Nemer Academic Publishing House & Nemer Digital Solutions (Cairo / Global)"],
         ["ISBN-13 / EAN-13", $isbn . " (Verified Check-Digit Modulo-10)"],
-        ["Digital Object Identifier", "https://doi.org/" . $doi],
+        ["Digital Object Identifier", "https://million.elnemer-ai.com/doi/" . $doi],
         ["BISAC Subject Code", $b['bisac'] . " - " . $sector . " / " . $domain],
         ["Language Edition", $lang_en . " [ISO Code: " . $b['lang_code'] . " | Script System: " . $b['script'] . "]"],
         ["Physical & Digital Extent", "200 Pages (Letter 8.5 x 11 in | 10 Chapters | 177 Sections | 22 Exam Qs)"],
@@ -605,7 +605,7 @@ function build_200page_pdf_bytes($b) {
     $p200 .= pdf_text(64, 465, "* Official Executive Email: info@elnemer-ai.com", "F2", 9.2, 1.0, 1.0, 1.0);
     $p200 .= pdf_text(64, 445, "* Global Corporate Portal: https://elnemer-ai.com", "F2", 9.2, 0.35, 0.82, 0.99);
     $p200 .= pdf_text(64, 425, "* 1M Encyclopedia Observatory: https://million.elnemer-ai.com/book/" . $gid, "F2", 9.2, 0.35, 0.82, 0.99);
-    $p200 .= pdf_text(64, 405, "* Volume ISBN-13: " . $isbn . "  |  DOI: https://doi.org/" . $doi, "F1", 8.8, 0.85, 0.92, 1.0);
+    $p200 .= pdf_text(64, 405, "* Volume ISBN-13: " . $isbn . "  |  DOI: https://million.elnemer-ai.com/doi/" . $doi, "F1", 8.8, 0.85, 0.92, 1.0);
     $p200 .= pdf_text(64, 385, "* SHA-256 Cryptographic Seal: " . $sha, "F1", 7.8, 0.65, 0.95, 0.85);
     $p200 .= render_ean13_pdf_operators($isbn, 64, 262, 190, 50);
     $p200 .= pdf_text(64, 360, "END OF VOLUME #" . sprintf("%07d", $gid) . " (PAGE 200 OF 200) - VERIFIED COMPLETE", "F2", 9.5, 0.99, 0.90, 0.54);
