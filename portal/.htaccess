@@ -1,6 +1,10 @@
 RewriteEngine On
 RewriteBase /
 
+# 1. If an actual file exists, serve it directly without rewriting
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
 # Cloudflare Edge Cache & CORS Headers for Static, Sitemap & PDF Streams
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
@@ -9,14 +13,19 @@ RewriteBase /
     Header set Cloudflare-CDN-Cache-Control "public, max-age=31536000, immutable"
 </IfModule>
 
+# Sovereign DOI & Handle Resolver Gateway: /doi/10.1007/s1m-nemer.0000004 or /doi/12345
+RewriteRule ^doi/(.*)$ doi.php?doi=$1 [L,QSA]
+RewriteRule ^doi/?$ doi.php [L,QSA]
+
 # Certificate of Authenticity Generator Route: /certificate/12345
 RewriteRule ^certificate/([0-9]+)(/.*)?$ certificate.php?id=$1 [L,QSA]
 
 # Instant 200-Page PDF Streamer Routes: /pdf/12345 or /pdf/12345/filename.pdf
 RewriteRule ^pdf/([0-9]+)(/.*)?$ stream_pdf.php?id=$1 [L,QSA]
 
-# Sitemap Index, 78-Language Sitemap & 20 Book Shards
+# Sitemap Index, 78-Language Sitemap & 20 Book Shards fallback
 RewriteRule ^sitemap_index\.xml$ sitemap.php [L,QSA]
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
 RewriteRule ^sitemaps/sitemap_languages_78\.xml$ sitemap.php?type=langs [L,QSA]
 RewriteRule ^sitemaps/sitemap_books_([0-9]+)\.xml$ sitemap.php?shard=$1 [L,QSA]
 
