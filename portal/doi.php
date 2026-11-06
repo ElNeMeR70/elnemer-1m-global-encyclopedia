@@ -279,6 +279,12 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
         <a href="/certificate.php?id=<?php echo $book_id; ?>" class="btn" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.2);" target="_blank">
           📜 شهادة التوثيق التشفيرية المعتمدة
         </a>
+        <a href="/audit/<?php echo $book_id; ?>" class="btn" style="background:rgba(16,185,129,0.16);color:#34D399;border:1px solid #10B981;">
+          🔐 مختبر التدقيق التشفيري (Merkle Audit)
+        </a>
+        <a href="/cite/<?php echo $book_id; ?>" class="btn" style="background:rgba(212,175,55,0.14);color:#fde68a;border:1px solid rgba(212,175,55,0.4);">
+          🎓 الاقتباس الأكاديمي (BibTeX / RIS / MARC21)
+        </a>
       </div>
     </div>
   </main>
