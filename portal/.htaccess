@@ -17,6 +17,19 @@ RewriteRule ^ - [L]
 RewriteRule ^doi/(.*)$ doi.php?doi=$1 [L,QSA]
 RewriteRule ^doi/?$ doi.php [L,QSA]
 
+# OAI-PMH 2.0 Global Library Harvesting Repository: /oai
+RewriteRule ^oai/?$ oai.php [L,QSA]
+
+# Academic Citation & Library of Congress MARC21 Export: /cite/12345
+RewriteRule ^cite/([0-9]+)(/.*)?$ cite.php?id=$1 [L,QSA]
+RewriteRule ^cite/?$ cite.php [L,QSA]
+
+# Live Cryptographic Merkle Proof & Forensic Audit Lab: /audit/12345 or /api/verify/12345
+RewriteRule ^audit/([0-9]+)(/.*)?$ audit.php?id=$1 [L,QSA]
+RewriteRule ^audit/?$ audit.php [L,QSA]
+RewriteRule ^api/verify/([0-9]+)(/.*)?$ audit.php?id=$1&format=json [L,QSA]
+RewriteRule ^api/verify/?$ audit.php?format=json [L,QSA]
+
 # Certificate of Authenticity Generator Route: /certificate/12345
 RewriteRule ^certificate/([0-9]+)(/.*)?$ certificate.php?id=$1 [L,QSA]
 
