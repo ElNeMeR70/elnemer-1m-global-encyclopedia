@@ -722,7 +722,7 @@ $json_ld = [
                 <tr>
                     <th>المعرف الرقمي للأبحاث (DOI)</th>
                     <td style="font-family:monospace;">
-                        <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:700;">doi:<?php echo $b['doi']; ?></a> <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="margin-right:10px;padding:3px 8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);border-radius:6px;font-size:0.8rem;color:var(--cyan);text-decoration:none;font-weight:600;">🔗 بوابة التحقق السيادية (Sovereign Resolver)</a>
+                        <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:700;">doi:<?php echo $b['doi']; ?></a> <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="margin-right:10px;padding:3px 8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);border-radius:6px;font-size:0.8rem;color:var(--cyan);text-decoration:none;font-weight:600;">🔗 بوابة التحقق السيادية (Sovereign Resolver)</a> <a href="/audit/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:6px;font-size:0.8rem;color:#34D399;text-decoration:none;font-weight:700;">🔐 مختبر التدقيق التشفيري</a> <a href="/cite/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);border-radius:6px;font-size:0.8rem;color:#FBBF24;text-decoration:none;font-weight:700;">🎓 BibTeX / RIS / MARC21</a>
                     </td>
                 </tr>
                 <tr>
