@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:web:million.elnemer-ai.com",
+  "alsoKnownAs": [
+    "https://million.elnemer-ai.com",
+    "https://elnemer-ai.com",
+    "https://github.com/ElNeMeR70",
+    "https://github.com/ElNeMeR70/elnemer-1m-global-encyclopedia"
+  ],
+  "controller": "did:web:elnemer-ai.com",
+  "principalAuthor": {
+    "name": "Eng. Mahmoud Bek ElNemer",
+    "arabicName": "المهندس محمود بك النمر",
+    "title": "Google Accredited Systems & AI Engineer · Founder & CEO of Nemer Digital Solutions & Nemer Academic Publishing House",
+    "email": "info@elnemer-ai.com",
+    "phone": "+201507559911"
+  },
+  "encyclopediaSpecification": {
+    "officialTitle": "ElNemer 1-Million-Volume Global Multilingual Scientific Encyclopedia",
+    "totalVolumes": 1000000,
+    "pagesPerVolume": 200,
+    "totalAcademicPages": 200000000,
+    "languagesSupported": 78,
+    "bisacDisciplines": 100,
+    "isbn13Range": "978-977-000001-5 to 978-977-000000-8",
+    "masterMerkleRootSha256": "72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9"
+  },
+  "service": [
+    {
+      "id": "did:web:million.elnemer-ai.com#oai-pmh",
+      "type": "OAIPMHRepository",
+      "serviceEndpoint": "https://million.elnemer-ai.com/oai"
+    },
+    {
+      "id": "did:web:million.elnemer-ai.com#doi-resolver",
+      "type": "SovereignDOIResolver",
+      "serviceEndpoint": "https://million.elnemer-ai.com/doi/"
+    },
+    {
+      "id": "did:web:million.elnemer-ai.com#merkle-audit",
+      "type": "CryptographicMerkleAuditService",
+      "serviceEndpoint": "https://million.elnemer-ai.com/audit"
+    },
+    {
+      "id": "did:web:million.elnemer-ai.com#guinness-adjudication",
+      "type": "GuinnessWorldRecordsAdjudicationPortal",
+      "serviceEndpoint": "https://million.elnemer-ai.com/guinness"
+    }
+  ]
+}
