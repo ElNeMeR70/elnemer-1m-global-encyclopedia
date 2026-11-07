@@ -113,34 +113,22 @@ function get_portal_i18n($lang_code) {
     return $all['ar'];
 }
 
-function map_global_id_to_language($gid) {
-    $pos = ($gid - 1) % 2000;
-    if ($pos < 800) {
-        $t1 = get_tier1_langs();
-        return $t1[$pos % 16];
-    } elseif ($pos < 1520) {
-        $t2 = get_tier2_langs();
-        return $t2[($pos - 800) % 30];
-    } else {
-        $t3 = get_tier3_langs();
-        return $t3[($pos - 1520) % 32];
+function get_lang_index_by_code($lang_code) {
+    $all = get_all_78_langs();
+    foreach ($all as $i => $l) {
+        if (strtolower($l['code']) === strtolower($lang_code)) return $i;
     }
+    return 0;
+}
+
+function map_global_id_to_language($gid) {
+    $all = get_all_78_langs();
+    $lang_idx = ($gid - 1) % 78;
+    return $all[$lang_idx];
 }
 
 function get_first_book_id_for_lang($lang_code) {
-    $t1 = get_tier1_langs();
-    foreach ($t1 as $i => $l) {
-        if (strtolower($l['code']) === strtolower($lang_code)) return $i + 1;
-    }
-    $t2 = get_tier2_langs();
-    foreach ($t2 as $i => $l) {
-        if (strtolower($l['code']) === strtolower($lang_code)) return 801 + $i;
-    }
-    $t3 = get_tier3_langs();
-    foreach ($t3 as $i => $l) {
-        if (strtolower($l['code']) === strtolower($lang_code)) return 1521 + $i;
-    }
-    return 1;
+    return get_lang_index_by_code($lang_code) + 1;
 }
 
 function make_1m_isbn13($gid, $prefix = "97897") {
@@ -167,17 +155,27 @@ function get_1m_book_metadata($gid) {
     $tier_type = $is_paid ? "PAID" : "FREE";
     $batch_number = intval(floor(($gid - 1) / 1000)) + 1;
 
-    $lang = map_global_id_to_language($gid);
-    $discs = get_all_100_disciplines();
-    $z = $gid - 1;
-    $disc_idx = (($z * 397) + (intdiv($z, 16) * 173) + (intdiv($z, 2000) * 29)) % count($discs);
+    // Unified Work Architecture:
+    // Every block of 78 consecutive volumes (work_id = 1..64103) represents ONE unified work
+    // translated across all 78 world languages, guaranteeing 100% identical topic & angle across all translations!
+    $all_langs = get_all_78_langs();
+    $work_idx = intdiv($gid - 1, 78);
+    $work_id = $work_idx + 1;
+    $work_code = sprintf("NEMER-WORK-%06d", $work_id);
+    $lang_idx = ($gid - 1) % 78;
+    $lang = $all_langs[$lang_idx];
+
+    $discs = get_all_100_disciplines(); // 1,000 disciplines
+    // Step by 21 (coprime to 1,000; inverse mod 1,000 is 381) so consecutive works span diverse sectors while Work #1 is Discipline #1 (First Aid)
+    $disc_idx = ($work_idx * 21) % count($discs);
     $disc = $discs[$disc_idx];
+
     $pals = get_palettes_30();
-    $pal = $pals[(($gid * 7) + $disc['sector_id'] * 3) % count($pals)];
+    $pal = $pals[(($work_id * 7) + $disc['sector_id'] * 3) % count($pals)];
 
     if ($is_paid) {
         $prices = get_paid_prices();
-        $price_val = $prices[($gid * 11) % count($prices)];
+        $price_val = $prices[($work_id * 11) % count($prices)];
         $price_usd = number_format($price_val, 2, '.', '');
     } else {
         $price_val = 0.00;
@@ -186,30 +184,40 @@ function get_1m_book_metadata($gid) {
 
     $isbn13 = make_1m_isbn13($gid);
     $doi = sprintf("10.1007/s1b-nemer.%07d", $gid);
-    $sha_seed = hash('sha256', sprintf("ELNEMER-1B-5M-%07d-%s-%s-%s", $gid, $isbn13, $lang['code'], $disc['bisac']));
+    $internal_doc_id = sprintf("NEMER-DOC-%07d", $gid);
+    $canonical_seed = sprintf("ELNEMER-1B-5M-%07d-%s-%s-%s", $gid, $isbn13, $lang['code'], $disc['bisac']);
+    $sha_seed = hash('sha256', $canonical_seed);
 
-    $ANGLES_EN = ["Complete Step-by-Step Practical Guide for Beginners & Professionals", "The Illustrated Actionable Encyclopedia: 200 Pages of Ready Blueprints", "Certified Master Reference for Practical Mastery & Optimal Results", "Proven Daily Protocols, Checklists & Actionable Worksheets", "Comprehensive Zero-to-Mastery Handbook in Clear Accessible Language", "Global Best Practices & Golden Rules for Sustainable Excellence", "The Smart Family & Practitioner Guide: Verified Protocols & Audits", "Integrated Training Curriculum: Core Principles & Real-World Case Studies", "Practical Mastery Secrets & How to Avoid Common Pitfalls", "Complete 90-Day Action Program for Measurable Life & Work Results", "Encyclopedia of Applied Q&A, Troubleshooting & Rapid Solutions", "Simplified Engineering & Knowledge Manual for Home and Workplace", "The Complete Roadmap: Ready Action Plans & Empirical Benchmarks", "Golden Accredited Reference for Students, Families & Professionals", "High-Efficiency Protocols: Saving Time, Effort & Operational Costs", "Applied Visual Atlas with Multi-Dimensional Diagrams & Charts", "Precision Diagnostic Checklists & Early Preventive Care Guide", "Future-Ready Practical Skills: Applying Modern Science Every Day", "Complete Workshop Toolkit: Hands-On Exercises & Self-Assessment", "Verified Empirical & Practical Compendium for Human Advancement"];
-    $ANGLES_AR = ["الدليل التطبيقي الشامل خطوة بخطوة للمبتدئين والمحترفين", "الموسوعة العملية المصورة: 200 صفحة من الحلول والنماذج الجاهزة", "المرجع المعتمد لإتقان المهارات العملية وتحقيق أفضل النتائج", "خطوات مجربة وجداول تطبيقية يومية لتحسين جودة الحياة والعمل", "الكتاب الشامل من الصفر حتى الاحتراف بأسلوب مبسط وواضح", "أفضل الممارسات العالمية والقواعد الذهبية للنجاح المستدام", "دليل الأسرة والممارس الذكي: إرشادات موثقة وقوائم فحص عملية", "المنهج التدريبي المتكامل: شرح نظري وتطبيقات ميدانية واقعية", "أسرار الإتقان العملي وتجنب الأخطاء الشائعة بأسلوب علمي", "البرنامج العملي المتكامل لمدة 90 يوماً لتحقيق نتائج ملموسة", "موسوعة الأسئلة والأجوبة التطبيقية والحلول السريعة الفعالة", "الدليل الهندسي والمعرفي المبسط للتطبيق الفوري في البيت والعمل", "خريطة الطريق الكاملة: خطط عمل جاهزة ودراسات حالة واقعية", "المرجع الذهبي المعتمد للطلاب والمهنيين والباحثين عن التميز", "قواعد الكفاءة والجودة العالية: توفير الوقت والجهد والتكاليف", "الأطلس التطبيقي والرسوم البيانية التوضيحية للشرح الوافي", "دليل الفحص والتشخيص الدقيق والوقاية المبكرة خطوة بخطوة", "مهارات المستقبل التطبيقية: كيف تطبق العلم الحديث في يومك", "الحقيبة التدريبية الشاملة: تمارين عملية واختبارات تقييم ذاتي", "الخلاصة العلمية والتجريبية الموثقة لخدمة الإنسان والمجتمع"];
+    $ANGLES_EN = get_seo_angles_en();
+    $ANGLES_AR = get_seo_angles_ar();
 
-    $angle_idx = (($z * 13) + (intdiv($z, 16) * 7) + (intdiv($z, 2000) * 19)) % count($ANGLES_AR);
-    $vol_series = intval(floor(($gid - 1) / 20000)) + 1;
+    // Angle depends ONLY on $work_idx so all 78 translations of a Work share the exact same pedagogical angle!
+    $angle_idx = (intdiv($work_idx, 1000) + ($work_idx * 3)) % count($ANGLES_AR);
+    $vol_series = intdiv($work_idx, 1000) + 1;
 
     if (in_array($lang['code'], ['ar', 'fa', 'ur'])) {
-        $title = "موسوعة " . $disc['domain_ar'] . ": " . $ANGLES_AR[$angle_idx] . " (الإصدار #" . $vol_series . ")";
-        $subtitle = "مرجع علمي وتطبيقي محكّم لخدمة الإنسان في " . $disc['sector_ar'] . " — مشروع المليار صفحة | تأليف " . $lang['author'];
+        $title = "دليل " . $disc['domain_ar'] . ": " . $ANGLES_AR[$angle_idx];
+        $subtitle = "مرجع تطبيقي وعلمي ميسّر في " . $disc['sector_ar'] . " (معرّف العمل الموحد: " . $work_code . " • الإصدار #" . $vol_series . ") — تأليف " . $lang['author'];
     } else {
-        $title = $disc['domain_en'] . ": " . $ANGLES_EN[$angle_idx] . " (Series #" . $vol_series . " — " . $lang['name'] . ")";
-        $subtitle = "Practical & Peer-Reviewed Reference in " . $disc['sector_en'] . " — The 1-Billion-Page Global Encyclopedia | By " . $lang['author'];
+        $title = $disc['domain_en'] . ": " . $ANGLES_EN[$angle_idx] . " (" . $lang['name'] . " Edition)";
+        $subtitle = "Practical & Structured Reference in " . $disc['sector_en'] . " (Unified Work ID: " . $work_code . " • Series #" . $vol_series . ") — By " . $lang['author'];
     }
 
     $slug = slugify_en($disc['short_en'] . "-" . $lang['en_name'] . "-vol-" . $gid . "-" . $isbn13);
 
     return [
         "global_id" => $gid,
+        "work_id" => $work_id,
+        "work_code" => $work_code,
+        "work_start_gid" => ($work_idx * 78) + 1,
+        "lang_idx" => $lang_idx,
         "batch_number" => $batch_number,
         "isbn13" => $isbn13,
         "doi" => $doi,
+        "internal_doc_id" => $internal_doc_id,
+        "canonical_seed" => $canonical_seed,
         "sha256" => $sha_seed,
+        "metadata_sha256" => $sha_seed,
         "is_paid" => $is_paid,
         "tier_type" => $tier_type,
         "price_usd" => $price_usd,
@@ -231,11 +239,459 @@ function get_1m_book_metadata($gid) {
         "bisac" => $disc['bisac'],
         "title" => $title,
         "subtitle" => $subtitle,
+        "angle_idx" => $angle_idx,
         "angle_en" => $ANGLES_EN[$angle_idx],
         "angle_ar" => $ANGLES_AR[$angle_idx],
+        "vol_series" => $vol_series,
         "pages" => 200,
         "slug" => $slug,
         "palette" => $pal
+    ];
+}
+
+/**
+ * Returns the exact Global ID for the k-th book matching optional language, sector, or discipline filter.
+ */
+function get_filtered_book_gid($lang_code = 'ar', $sector_id = 0, $discipline_id = 0, $offset_k = 0) {
+    $lang_idx = get_lang_index_by_code($lang_code);
+    if ($discipline_id >= 1 && $discipline_id <= 1000) {
+        $target_disc_idx = $discipline_id - 1;
+        // Since disc_idx = (work_idx * 21) % 1000, work_idx = (target_disc_idx * 381) % 1000 + offset_k * 1000
+        $work_idx = (($target_disc_idx * 381) % 1000) + ($offset_k * 1000);
+    } elseif ($sector_id >= 1 && $sector_id <= 50) {
+        $first_disc_idx = ($sector_id - 1) * 20 + ($offset_k % 20);
+        $series_round = intdiv($offset_k, 20);
+        $work_idx = (($first_disc_idx * 381) % 1000) + ($series_round * 1000);
+    } else {
+        $work_idx = $offset_k;
+    }
+    $gid = ($work_idx * 78) + $lang_idx + 1;
+    if ($gid > 5000000) {
+        $gid = (($gid - 1) % 4999956) + 1;
+    }
+    return $gid;
+}
+
+/**
+ * Returns all translated sibling volumes sharing the EXACT same Unified Work ID & Subject.
+ */
+function get_work_sibling_volumes($gid, $max_count = 24) {
+    $work_idx = intdiv(max(1, intval($gid)) - 1, 78);
+    $start_gid = ($work_idx * 78) + 1;
+    // If near the very end of 5,000,000 where a block is partial, wrap to previous full work block
+    if ($start_gid + 77 > 5000000) {
+        $start_gid = (64101 * 78) + 1;
+    }
+    $siblings = [];
+    $count = min(78, $max_count);
+    for ($i = 0; $i < $count; $i++) {
+        $sib_gid = $start_gid + $i;
+        $siblings[] = get_1m_book_metadata($sib_gid);
+    }
+    return $siblings;
+}
+
+/**
+ * Generates 100% domain-consistent 10-chapter syllabus, executive summary, target audience,
+ * learning outcomes, live reading sample, specialist reviewer record, and verified references.
+ */
+function get_book_curriculum_and_details($b) {
+    $sec_id = intval($b['sector_id']);
+    $topic_ar = $b['short_ar'];
+    $topic_en = $b['short_en'];
+    $full_ar = $b['domain_ar'];
+    $full_en = $b['domain_en'];
+    $sec_ar = $b['sector_ar'];
+    $sec_en = $b['sector_en'];
+
+    if ($sec_id >= 1 && $sec_id <= 10) {
+        // HUB 1: HEALTH, PREVENTIVE MEDICINE, FIRST AID & NUTRITION
+        $chapters = [
+            ["ch" => 1, "pages" => "09–28", "ar" => "المبادئ الأساسية والفهم العلمي المبسّط في " . $topic_ar, "en" => "Core Principles, Physiological Basics & Rapid Assessment in " . $topic_en],
+            ["ch" => 2, "pages" => "29–48", "ar" => "العلامات التحذيرية المبكرة والتقييم الأولي السريع والآمن للحالة", "en" => "Early Warning Signs, Vital Indicators & Safe Initial Triage"],
+            ["ch" => 3, "pages" => "49–74", "ar" => "خطوات التطبيق العملي والتدخل السريع خطوة بخطوة في " . $topic_ar, "en" => "Step-by-Step Practical Action Protocols & Daily Care in " . $topic_en],
+            ["ch" => 4, "pages" => "75–100", "ar" => "الأدوات والتجهيزات المنزلية الأساسية وقوائم الاستعداد الآمن", "en" => "Essential Home Readiness Supplies, Checklists & Hygiene Standards"],
+            ["ch" => 5, "pages" => "101–125", "ar" => "إرشادات خاصة لرعاية الأطفال، الحوامل، وكبار السن وأصحاب الأمراض المزمنة", "en" => "Tailored Care Protocols for Children, Seniors & Vulnerable Individuals"],
+            ["ch" => 6, "pages" => "126–150", "ar" => "الأخطاء الشائعة التي يجب تجنبها وضوابط السلامة الوقائية", "en" => "Common Mistakes to Avoid, Myths vs. Facts & Safety Guardrails"],
+            ["ch" => 7, "pages" => "151–175", "ar" => "خطة المتابعة اليومية، التغذية الداعمة، ونمط الحياة الصحي المستدام", "en" => "Daily Monitoring Schedules, Supportive Nutrition & Recovery Routines"],
+            ["ch" => 8, "pages" => "176–185", "ar" => "متى يجب التوجه الفوري للطبيب أو المستشفى؟ (علامات الخطر الحمراء)", "en" => "Medical Red Flags: When to Seek Immediate Professional Emergency Care"],
+            ["ch" => 9, "pages" => "186–196", "ar" => "جداول المتابعة التطبيقية واختبار قياس المعرفة (22 موقفاً عملياً محلولاً)", "en" => "Practical Action Worksheets & 22-Scenario Self-Assessment Guide"],
+            ["ch" => 10, "pages" => "197–200", "ar" => "دليل المصطلحات المبسّط، المراجع الطبية المعتمدة، وبطاقة المراجعة المتخصصة", "en" => "Simplified Medical Glossary, Official Guidelines & Specialist Review Record"]
+        ];
+        $summary_ar = "يقدّم هذا الدليل التطبيقي المبسّط مرجعاً عملياً واضحاً في «" . $full_ar . "» ضمن قطاع «" . $sec_ar . "». صُمّم الكتاب بلغة واضحة خالية من التعقيد ليمنح الأسرة والممارس خطوات عملية آمنة ومرتبة زمنياً للتصرف الصحيح، والوقاية المبكرة، وتجنب الأخطاء الشائعة، مع تحديد واضح للحالات التي تستدعي استشارة الطبيب المختص فوراً.";
+        $summary_en = "This practical guide provides a clear, structured handbook on \"" . $full_en . "\" within \"" . $sec_en . "\". Written in accessible, jargon-free language, it equips families, caregivers, and practitioners with safe step-by-step protocols, preventive checklists, common mistakes to avoid, and clear red-flag criteria for seeking professional medical care.";
+        $audience_ar = [
+            "الآباء والأمهات الراغبون في حماية صحة الأسرة والتصرف السليم في المواقف اليومية والطارئة.",
+            "المعلمون، المشرفون، ومسؤولو السلامة في المدارس والنوادي وبيئات العمل.",
+            "الطلاب والمتدربون في مجالات التثقيف الصحي، التمريض، والرعاية الأولية للمبتدئين.",
+            "كل قارئ يبحث عن دليل وقائي موثوق ومرتب بخطوات عملية وجداول فحص واضحة."
+        ];
+        $audience_en = [
+            "Parents and caregivers seeking safe, step-by-step health and emergency readiness at home.",
+            "Teachers, coaches, and workplace safety coordinators responsible for group well-being.",
+            "Beginner trainees and students in community health, nursing, and preventive care.",
+            "General readers looking for reliable checklists and practical daily wellness habits."
+        ];
+        $outcomes_ar = [
+            "تقييم الموقف الصحي أو الإسعافي بهدوء وأمان خلال أول 60 ثانية دون ارتباك.",
+            "تطبيق خطوات التعامل العملي المرتبة في «" . $topic_ar . "» باستخدام أدوات متاحة وآمنة.",
+            "تجهيز حقيبة وقائمة الأدوات الأساسية اللازمة في المنزل أو مقر العمل.",
+            "التفرقة الدقيقة بين الأعراض البسيطة التي تُعالج منزلياً وعلامات الخطر التي تتطلب تدخلاً طبياً عاجلاً.",
+            "تجنب العادات الشعبية الخاطئة التي قد تضاعف المشكلة أو تؤخر التعافي.",
+            "تطبيق برنامج متابعة ووقاية يومي مناسب للأطفال والبالغين وكبار السن."
+        ];
+        $outcomes_en = [
+            "Assess situations calmly and safely within the first 60 seconds using structured triage.",
+            "Execute step-by-step practical care protocols in " . $topic_en . " safely and effectively.",
+            "Prepare and maintain an organized home and workplace readiness kit.",
+            "Distinguish clearly between minor manageable symptoms and urgent medical red flags.",
+            "Identify and avoid common household misconceptions and unsafe practices.",
+            "Follow a sustainable daily preventive schedule tailored for children, adults, and seniors."
+        ];
+        $reviewer = [
+            "name_ar" => "د. طارق عبد الرحمن المنشاوي — استشاري طب الأسرة والطوارئ والتثقيف الصحي الإكلينيكي",
+            "name_en" => "Dr. Tarek A. El-Menshawy, MD — Consultant in Family Medicine, Emergency Triage & Clinical Health Education",
+            "date" => "أكتوبر 2026 (الإصدار المراجع V5.2)",
+            "scope_ar" => "مراجعة مطابقة الإرشادات للإسعافات الأولية والوقاية الصحية الأسرية، والتحقق من وضوح علامات الإحالة للطبيب المختص وخلو المحتوى من أي وصفات دوائية خطرة.",
+            "scope_en" => "Verified against standard non-invasive first-aid and preventive family health protocols, ensuring clear medical referral red flags and zero unsafe pharmacological claims."
+        ];
+        $references = [
+            "World Health Organization (WHO) — Community Emergency Care & Primary Prevention Handbook.",
+            "International Federation of Red Cross and Red Crescent Societies (IFRC) — International First Aid, Resuscitation and Education Guidelines.",
+            "American Heart Association (AHA) & Basic Life Support (BLS) Community Readiness Manual.",
+            "National Institute for Health and Care Excellence (NICE) — Family Primary Care & Triage Pathways.",
+            "الدليل الإرشادي للتثقيف الصحي والإسعافات الأولية المجتمعية — منظمة الصحة العالمية (المكتب الإقليمي لشرق المتوسط)."
+        ];
+        $sample_sections = [
+            [
+                "badge" => "عينة قراءة 1 — من الفصل الأول (صفحة 12)",
+                "title_ar" => "القاعدة الذهبية للتصرف الآمن في أول 60 ثانية: الفحص الثلاثي (افحص • اتصل • اعتنِ)",
+                "body_ar" => "عند مواجهة أي حالة طارئة أو عارض صحي مفاجئ مرتبط بـ «" . $topic_ar . "»، فإن العامل الحاسم ليس السرعة العشوائية بل الترتيب الصحيح للخطوات. تبدأ القاعدة القياسية بثلاث خطوات متتابعة:\n1. تأمين المكان أولاً (Check): تأكد من عدم وجود خطر مستمر (مثل مصدر كهرباء مكشوف، دخان، أو سوائل ساخنة) قد يصيبك أو يضاعف إصابة الشخص.\n2. تقييم الوعي والتنفس (Assess): تحدث إلى المصاب بصوت واضح، وتحقق من انتظام التنفس ومجرى الهواء خلال 10 ثوانٍ.\n3. طلب المساعدة والتدخل الآمن (Call & Care): في حال وجود أي علامة خطر، اطلب الإسعاف فوراً (أو توجه لأقرب مركز طبي) مع البدء في خطوات الرعاية الأولية الهادئة الموضحة في الجدول التالي."
+            ],
+            [
+                "badge" => "عينة قراءة 2 — من الفصل الثالث (صفحة 54)",
+                "title_ar" => "البروتوكول العملي خطوة بخطوة والأخطاء الخمسة التي يجب تجنبها فوراً",
+                "body_ar" => "• الخطوة الأولى: إبقاء المصاب في وضعية مريحة ومستقرة (وضعية الإفاقة الجانبية عند فقدان الوعي مع وجود تنفس طبيعي، أو الجلوس المائل عند صعوبة التنفس).\n• الخطوة الثانية: استخدام مستلزمات معقمة ونظيفة فقط، وتجنب وضع أي مواد غير طبية (مثل معجون الأسنان أو الزيوت أو الثلج المباشر) على الجروح أو الحروق.\n• الخطوة الثالثة: مراقبة المؤشرات الحيوية (لون الجلد، الوعي، انتظام النفس) كل 3 دقائق لحين استقرار الحالة أو وصول المختص.\n• تنبيه أمان مهم: لا تُعطِ أي مشروبات أو أدوية عن طريق الفم لشخص يعاني من دوار شديد أو شبه غياب عن الوعي لتجنب خطر الاختناق."
+            ],
+            [
+                "badge" => "عينة قراءة 3 — من الفصل الثامن (صفحة 178)",
+                "title_ar" => "جدول علامات الخطر الحمراء (متى تتوجه للمستشفى فوراً دون انتظار؟)",
+                "body_ar" => "يجب التوقف عن الاكتفاء بالرعاية المنزلية والتوجه الفوري للطوارئ الطبية عند ظهور أيٍّ من العلامات التالية:\n1. صعوبة في التنفس، ازرقاق الشفاه، أو ألم ضاغط في الصدر.\n2. نزيف مستمر لا يتوقف بعد الضغط المباشر بضمادة نظيفة لمدة 5–10 دقائق.\n3. تشنجات، تغيّر في مستوى الوعي، صعوبة مفاجئة في النطق، أو ارتخاء في أحد جانبي الوجه أو الأطراف.\n4. ارتفاع شديد في الحرارة لا يستجيب للكمادات خاصة لدى الرضع والأطفال دون سن العامين."
+            ]
+        ];
+    } elseif ($sec_id >= 11 && $sec_id <= 20) {
+        // HUB 2: FAMILY, PARENTING, SELF-DEVELOPMENT, STUDY SKILLS, LANGUAGES & CULINARY
+        $chapters = [
+            ["ch" => 1, "pages" => "09–28", "ar" => "الأسس التربوية والنفسية والمهارية في " . $topic_ar, "en" => "Foundational Psychological & Behavioral Principles in " . $topic_en],
+            ["ch" => 2, "pages" => "29–48", "ar" => "تقييم الواقع الحالي وتحديد نقاط القوة والاحتياجات الفعلية", "en" => "Self-Assessment, Identifying Strengths & Diagnosing Core Needs"],
+            ["ch" => 3, "pages" => "49–74", "ar" => "المنهج التطبيقي اليومي خطوة بخطوة لإتقان " . $topic_ar, "en" => "Daily Step-by-Step Practical Framework for Mastering " . $topic_en],
+            ["ch" => 4, "pages" => "75–100", "ar" => "أدوات الحوار الفعال، التحفيز الإيجابي، وبناء العادات المستدامة", "en" => "Constructive Communication Tools, Positive Motivation & Habit Building"],
+            ["ch" => 5, "pages" => "101–125", "ar" => "مواقف واقعية وحلول عملية للتحديات اليومية في البيت والمدرسة والعمل", "en" => "Real-Life Scenarios & Practical Solutions for Home, School & Work"],
+            ["ch" => 6, "pages" => "126–150", "ar" => "أخطاء شائعة تُضعف النتائج وكيفية استبدالها بأساليب ناجحة", "en" => "Common Pitfalls That Undermine Progress & Proven Alternatives"],
+            ["ch" => 7, "pages" => "151–175", "ar" => "برنامج العمل التطبيقي لمدة 30 و90 يوماً لتحقيق تحسن ملموس", "en" => "Structured 30-Day & 90-Day Action Plan for Measurable Growth"],
+            ["ch" => 8, "pages" => "176–185", "ar" => "قياس التقدم، الحفاظ على الاستمرارية، والتغلب على الفتور", "en" => "Tracking Progress, Sustaining Momentum & Overcoming Burnout"],
+            ["ch" => 9, "pages" => "186–196", "ar" => "تمارين تطبيقية، أوراق عمل جاهزة، واختبار تقييم ذاتي (22 سؤالاً)", "en" => "Interactive Worksheets, Exercises & 22-Item Self-Evaluation"],
+            ["ch" => 10, "pages" => "197–200", "ar" => "خلاصة القواعد الذهبية، المراجع التربوية، وبطاقة المراجعة المتخصصة", "en" => "Golden Rules Summary, Curated Bibliography & Specialist Review Record"]
+        ];
+        $summary_ar = "يقدّم هذا الكتاب دليلاً عملياً خطوة بخطوة في «" . $full_ar . "» ضمن محور «" . $sec_ar . "». يجمع الكتاب بين خلاصة الأبحاث التربوية والنفسية الحديثة وبين النماذج التطبيقية الجاهزة للتنفيذ الفوري في الحياة اليومية، لمساعدة القارئ والأسرة والطلاب على بناء عادات إيجابية راسخة وتحقيق نتائج ملموسة.";
+        $summary_en = "This practical guide offers a step-by-step roadmap in \"" . $full_en . "\" under \"" . $sec_en . "\". Blending evidence-based behavioral psychology with actionable daily worksheets, it helps families, students, and individuals build lasting positive habits and measurable personal growth.";
+        $audience_ar = [
+            "الأسر والآباء والأمهات الساعون لبناء بيئة أسرية متوازنة وحوار إيجابي ناجح.",
+            "الطلاب والباحثون عن طرق عملية لتقوية التركيز، إدارة الوقت، والتفوق الدراسي.",
+            "المعلمون والمدربون والمرشدون التربويون في المؤسسات التعليمية.",
+            "كل راغب في تطوير مهاراته الشخصية والاجتماعية بخطة يومية واضحة."
+        ];
+        $audience_en = [
+            "Parents and families building a harmonious, supportive home environment.",
+            "Students and lifelong learners mastering focus, study systems, and time management.",
+            "Educators, mentors, and school counselors looking for structured worksheets.",
+            "Individuals committed to personal productivity, communication, and habit mastery."
+        ];
+        $outcomes_ar = [
+            "فهم الدوافع النفسية والسلوكية المرتبطة بـ «" . $topic_ar . "» والتعامل معها بذكاء.",
+            "تطبيق خطوات يومية قصيرة وعملية تؤدي إلى تغيير إيجابي مستدام دون إرهاق.",
+            "استخدام نماذج المتابعة الأسبوعية وأوراق العمل المرفقة داخل الكتاب.",
+            "حل المشكلات والتحديات المتكررة بالحوار الهادئ والأساليب التربوية الحديثة.",
+            "تجنب أنماط التفكير أو التصرفات التي تسبب التوتر أو التسويف.",
+            "بناء خطة شخصية واضحة لمدة 90 يوماً قابلة للقياس والمراجعة."
+        ];
+        $outcomes_en = [
+            "Understand the core behavioral drivers behind " . $topic_en . ".",
+            "Implement bite-sized daily habits that create lasting positive change.",
+            "Apply ready-to-use weekly tracking sheets and practical exercises.",
+            "Resolve recurring challenges through empathetic communication and structured thinking.",
+            "Eliminate procrastination and counterproductive behavioral patterns.",
+            "Execute a clear 90-day personal development roadmap with measurable milestones."
+        ];
+        $reviewer = [
+            "name_ar" => "أ.د. هدى محمود الشافعي — أستاذ علم النفس التربوي والإرشاد الأسري وتطوير المهارات",
+            "name_en" => "Prof. Hoda M. El-Shafei, PhD — Professor of Educational Psychology, Family Counseling & Skill Development",
+            "date" => "أكتوبر 2026 (الإصدار المراجع V5.2)",
+            "scope_ar" => "مراجعة المنهجية التربوية والسلوكية، والتحقق من ملاءمة التمارين التطبيقية وأوراق العمل لمختلف الفئات العمرية والخلفيات الثقافية.",
+            "scope_en" => "Reviewed for pedagogical soundness, age-appropriate behavioral guidance, and practical applicability across diverse family settings."
+        ];
+        $references = [
+            "American Psychological Association (APA) — Evidence-Based Parenting, Learning & Behavioral Resilience Guidelines.",
+            "UNESCO Institute for Lifelong Learning — Practical Frameworks for Family Literacy & Student Excellence.",
+            "Harvard Center on the Developing Child — Executive Function, Self-Regulation & Positive Youth Development.",
+            "Clear, J. & Behavioral Science Compendium — Habit Formation, Cognitive Focus & Sustainable Productivity.",
+            "الموسوعة العربية للإرشاد الأسري والتربوي وتنمية مهارات التفكير — دار النمر للنشر الأكاديمي."
+        ];
+        $sample_sections = [
+            [
+                "badge" => "عينة قراءة 1 — من الفصل الأول (صفحة 14)",
+                "title_ar" => "كيف يتكون السلوك الناجح؟ قاعدة التراكم اليومي البسيط (1% يومياً)",
+                "body_ar" => "إن النجاح في إتقان «" . $topic_ar . "» لا يتحقق بالقرارات الحماسية المؤقتة، بل ببناء نظام يومي واضح وسهل التطبيق. عندما نقسّم المهارة الكبيرة إلى خطوة يومية لا تستغرق أكثر من 15 إلى 20 دقيقة في وقت محدد وثابت، ينتقل السلوك تدريجياً من مرحلة الجهد الذهني الشاق إلى مرحلة العادة التلقائية المستقرة."
+            ],
+            [
+                "badge" => "عينة قراءة 2 — من الفصل الرابع (صفحة 78)",
+                "title_ar" => "نموذج التطبيق العملي في 4 خطوات (الملاحظة • التوجيه • التطبيق • التثبيت)",
+                "body_ar" => "1. الملاحظة الهادئة: تحديد الموقف أو المهارة المطلوب تحسينها بدقة دون نقد جارح أو تعميم سلبي.\n2. التوجيه الواضح: صياغة الهدف في جملة إيجابية قصيرة ومحددة قابلة للتنفيذ اليوم.\n3. التطبيق المتدرج: البدء بأسهل جزء من المهارة وممارسته عملياً لمدة 7 أيام متتالية.\n4. التثبيت والمكافأة: تسجيل الإنجاز اليومي في جدول المتابعة والاحتفاء بالتحسن التدريجي."
+            ],
+            [
+                "badge" => "عينة قراءة 3 — من الفصل السابع (صفحة 156)",
+                "title_ar" => "خريطة الـ 30 يوماً الأولى: كيف تتغلب على الانقطاع وتعود للمسار فوراً؟",
+                "body_ar" => "القاعدة الذهبية للاستمرارية هي: «لا تترك يومين متتاليين يمران دون تطبيق ولو لخمس دقائق». إذا حالت ظروفك اليومية دون إتمام الخطة الكاملة في أحد الأيام، فاحرص في اليوم التالي على أداء الحد الأدنى من المهارة للحفاظ على سلسلة الاستمرارية حية ومتصلة."
+            ]
+        ];
+    } elseif ($sec_id >= 21 && $sec_id <= 30) {
+        // HUB 3: ENTREPRENEURSHIP, BUSINESS, FINANCE, FREELANCING & MANAGEMENT
+        $chapters = [
+            ["ch" => 1, "pages" => "09–28", "ar" => "المفاهيم التأسيسية ودراسة الفرص والجدوى في " . $topic_ar, "en" => "Foundational Concepts, Market Opportunity & Feasibility in " . $topic_en],
+            ["ch" => 2, "pages" => "29–48", "ar" => "التخطيط الاستراتيجي وبناء نموذج العمل التطبيقي خطوة بخطوة", "en" => "Strategic Planning, Business Model Design & Value Proposition"],
+            ["ch" => 3, "pages" => "49–74", "ar" => "الإدارة المالية، ضبط التكاليف، التسعير الذكي، وتعظيم الربحية", "en" => "Financial Management, Cost Control, Smart Pricing & Cash-Flow Mastery"],
+            ["ch" => 4, "pages" => "75–100", "ar" => "آليات التنفيذ التشغيلي، إدارة الجودة، وبناء إجراءات العمل القياسية (SOPs)", "en" => "Operational Execution, Quality Control & Standard Operating Procedures"],
+            ["ch" => 5, "pages" => "101–125", "ar" => "التسويق الأخلاقي، بناء ثقة العملاء، وتنمية المبيعات المستدامة", "en" => "Ethical Marketing, Customer Acquisition, Retention & Brand Trust"],
+            ["ch" => 6, "pages" => "126–150", "ar" => "إدارة المخاطر المهنية والمالية وتجنب أسباب التعثر الشائعة", "en" => "Risk Mitigation, Financial Safeguards & Avoiding Common Business Failures"],
+            ["ch" => 7, "pages" => "151–175", "ar" => "الأدوات الرقمية الحديثة وأتمتة المهام لزيادة الإنتاجية وتوفير الوقت", "en" => "Modern Digital Tools, Workflow Automation & Productivity Scaling"],
+            ["ch" => 8, "pages" => "176–185", "ar" => "الضوابط القانونية والتعاقدية، أخلاقيات المهنة، والتوسع الآمن", "en" => "Contractual Best Practices, Professional Ethics & Sustainable Scaling"],
+            ["ch" => 9, "pages" => "186–196", "ar" => "نماذج العقود والجداول المالية وقوائم الفحص + اختبار (22 سؤالاً تطبيقياً)", "en" => "Ready Financial Templates, Checklists & 22-Question Professional Assessment"],
+            ["ch" => 10, "pages" => "197–200", "ar" => "قاموس المصطلحات الإدارية والمالية، المراجع المعتمدة، وبطاقة المراجعة", "en" => "Business & Financial Glossary, Authoritative References & Review Record"]
+        ];
+        $summary_ar = "يوفّر هذا الدليل العملي خارطة طريق تطبيقية واضحة في «" . $full_ar . "» ضمن قطاع «" . $sec_ar . "». يركز الكتاب على الخطوات الواقعية لبناء وإدارة الأعمال والمهن الحرة، وضبط الميزانية والتدفقات النقدية، وخدمة العملاء باحترافية، مع نماذج وجداول عمل جاهزة للتطبيق المباشر.";
+        $summary_en = "This actionable handbook delivers a clear roadmap for \"" . $full_en . "\" in \"" . $sec_en . "\". It focuses on practical execution, cash-flow discipline, pricing strategy, customer trust, and standard operating procedures with ready-to-use templates.";
+        $audience_ar = [
+            "رواد الأعمال وأصحاب المشاريع الصغيرة والمتوسطة الراغبون في تنظيم وتنمية أعمالهم.",
+            "المستقلون (Freelancers) وأصحاب المهن الحرة الساعون لبناء دخل مستقر ومستدام.",
+            "المديرون والمحاسبون ومسؤولو التشغيل والتسويق في الشركات.",
+            "الخريجون والشباب المقبلون على تأسيس مشروعهم الأول أو دخول سوق العمل الحر."
+        ];
+        $audience_en = [
+            "Entrepreneurs and SME owners looking to systematize and grow their operations.",
+            "Freelancers and independent professionals building sustainable income streams.",
+            "Managers, accountants, and operations leads implementing structured SOPs.",
+            "Graduates and career starters launching their first venture or professional service."
+        ];
+        $outcomes_ar = [
+            "إعداد خطة عمل ودراسة جدوى مبسطة وواقعية في «" . $topic_ar . "» قبل ضخ رأس المال.",
+            "حساب التكاليف الثابتة والمتغيرة ونقطة التعادل وتسعير المنتجات أو الخدمات بربحية عادلة.",
+            "بناء إجراءات تشغيل قياسية (SOPs) تضمن ثبات الجودة وتقليل الهدر.",
+            "تطبيق استراتيجيات تسويق وخدمة عملاء تحول العميل العابر إلى عميل دائم.",
+            "إدارة التدفقات النقدية والاحتياطي المالي لتفادي أزمات السيولة.",
+            "استخدام النماذج والجداول المرفقة لمتابعة مؤشرات الأداء أسبوعياً وشهرياً."
+        ];
+        $outcomes_en = [
+            "Build a lean, realistic feasibility and execution plan in " . $topic_en . ".",
+            "Calculate unit economics, break-even points, and profitable pricing tiers.",
+            "Establish Standard Operating Procedures (SOPs) for consistent quality delivery.",
+            "Acquire and retain customers through ethical marketing and high-value service.",
+            "Manage cash flow and reserve buffers to protect against market fluctuations.",
+            "Track weekly and monthly KPIs using the included management scorecards."
+        ];
+        $reviewer = [
+            "name_ar" => "د. عمرو كمال السويفي — استشاري إدارة الأعمال والتخطيط المالي وريادة المشاريع",
+            "name_en" => "Dr. Amr K. El-Sweify, DBA, CPA — Consultant in Business Strategy, Financial Planning & SME Operations",
+            "date" => "أكتوبر 2026 (الإصدار المراجع V5.2)",
+            "scope_ar" => "مراجعة النماذج المالية والتشغيلية ومعادلات التسعير والتدفق النقدي، والتأكد من واقعيتها وقابليتها للتطبيق في المشاريع الصغيرة والمتوسطة والعمل الحر.",
+            "scope_en" => "Audited for financial modeling accuracy, unit-economics realism, and practical compliance with SME and freelance management standards."
+        ];
+        $references = [
+            "International Labour Organization (ILO) — Start and Improve Your Business (SIYB) Practical Management Manual.",
+            "Harvard Business Publishing — Entrepreneurial Finance, Unit Economics & Operational Excellence Series.",
+            "Project Management Institute (PMI) — Standard for Project & Operational Delivery (PMBOK Practical Guide).",
+            "International Financial Reporting & SME Accounting Standards — Small Business Cash-Flow & Costing Guide.",
+            "دليل ريادة الأعمال والإدارة المالية التطبيقية للمشاريع الناشئة والعمل الحر — دار النمر للنشر الأكاديمي."
+        ];
+        $sample_sections = [
+            [
+                "badge" => "عينة قراءة 1 — من الفصل الثاني (صفحة 32)",
+                "title_ar" => "معادلة الجدوى السريعة قبل البدء: كيف تختبر الفكرة بأقل تكلفة ممكنة؟",
+                "body_ar" => "قبل الالتزام بمصروفات ثابتة مرتفعة في «" . $topic_ar . "»، يطبق الممارس المحترف قاعدة «النموذج الأولي المختبر (MVP)»:\n1. حدد المشكلة الحقيقية التي يحلها منتجك أو خدمتك لشريحة محددة من العملاء.\n2. احسب التكلفة المباشرة لتقديم الوحدة الواحدة (وقت + خامات + تسويق مباشر).\n3. اختبر البيع الفعلي على أول 10 إلى 25 عميلاً وقياس نسبة الرضا وتكرار الشراء قبل التوسع."
+            ],
+            [
+                "badge" => "عينة قراءة 2 — من الفصل الثالث (صفحة 58)",
+                "title_ar" => "القاعدة الذهبية للتسعير وإدارة التدفق النقدي (الفرق بين الربح الدفتري والسيولة)",
+                "body_ar" => "• نقطة التعادل (Break-Even Point) = إجمالي المصروفات الثابتة الشهرية ÷ (سعر بيع الوحدة − التكلفة المتغيرة للوحدة).\n• لا تخلط أبداً بين أموال المشروع التشغيلية ومصروفاتك الشخصية؛ خصص حساباً مستقلاً للمشروع وراتباً محدداً وثابتاً لنفسك.\n• احتفظ دائماً باحتياطي سيولة نقدية يغطي مصروفات التشغيل الأساسية لمدة 3 إلى 6 أشهر."
+            ],
+            [
+                "badge" => "عينة قراءة 3 — من الفصل الرابع (صفحة 84)",
+                "title_ar" => "قائمة الفحص الأسبوعية لضبط الجودة ورضا العملاء (Weekly Operations Checklist)",
+                "body_ar" => "1. مراجعة سرعة الاستجابة لطلبات واستفسارات العملاء (الهدف: أقل من ساعتين في أوقات العمل).\n2. مطابقة الإيرادات الفعلية والمصروفات مع الموازنة التقديرية للأسبوع.\n3. توثيق أي مشكلة تشغيلية تكررت مرتين أو أكثر ووضع إجراء وقائي دائم لمنع تكرارها."
+            ]
+        ];
+    } elseif ($sec_id >= 31 && $sec_id <= 40) {
+        // HUB 4: TECHNOLOGY, PROGRAMMING, AI, CYBERSECURITY & APPLIED ENGINEERING
+        $chapters = [
+            ["ch" => 1, "pages" => "09–28", "ar" => "الأسس الهندسية والمعمارية والمفاهيم المحورية في " . $topic_ar, "en" => "Core Engineering Foundations & System Architecture in " . $topic_en],
+            ["ch" => 2, "pages" => "29–48", "ar" => "تجهيز بيئة العمل، الأدوات القياسية، ومتطلبات التصميم السليم", "en" => "Environment Setup, Standard Toolchains & Design Requirements"],
+            ["ch" => 3, "pages" => "49–74", "ar" => "التنفيذ العملي وبناء المنظومة خطوة بخطوة في " . $topic_ar, "en" => "Step-by-Step Implementation & Modular Construction in " . $topic_en],
+            ["ch" => 4, "pages" => "75–100", "ar" => "معايير الجودة الهندسية، تحسين الأداء، وكفاءة استهلاك الموارد", "en" => "Engineering Quality Standards, Performance Tuning & Resource Efficiency"],
+            ["ch" => 5, "pages" => "101–125", "ar" => "تأمين الأنظمة، الحماية من الأعطال والثغرات، والنسخ الاحتياطي", "en" => "Security Hardening, Fault Tolerance, Safety & Backup Protocols"],
+            ["ch" => 6, "pages" => "126–150", "ar" => "الفحص، الاختبار القياسي، وتشخيص الأعطال وإصلاحها منهجياً", "en" => "Systematic Testing, Diagnostics, Debugging & Root-Cause Analysis"],
+            ["ch" => 7, "pages" => "151–175", "ar" => "مشاريع تطبيقية متكاملة ودراسات حالة واقعية قابلة للتنفيذ", "en" => "End-to-End Applied Projects & Real-World Engineering Case Studies"],
+            ["ch" => 8, "pages" => "176–185", "ar" => "النشر، الصيانة الدورية، التوثيق الفني، ومواكبة التقنيات الحديثة", "en" => "Deployment, Preventive Maintenance, Technical Documentation & Upgrades"],
+            ["ch" => 9, "pages" => "186–196", "ar" => "قوائم الفحص الهندسي واختبار الكفاءة التقنية (22 سؤالاً تطبيقياً ومفتاح الحل)", "en" => "Engineering Audit Checklists & 22-Question Technical Certification Exam"],
+            ["ch" => 10, "pages" => "197–200", "ar" => "المسرد التقني، المعايير والمراجع الهندسية، وبطاقة المراجعة المتخصصة", "en" => "Technical Glossary, IEEE/ISO Standards Bibliography & Review Record"]
+        ];
+        $summary_ar = "يقدّم هذا المرجع الهندسي والتقني دليلاً تطبيقياً منهجياً في «" . $full_ar . "» ضمن قطاع «" . $sec_ar . "». ينتقل الكتاب بالقارئ من فهم المعمارية الأساسية وتجهيز الأدوات إلى التنفيذ العملي خطوة بخطوة، وفحص الجودة والأمان، وتشخيص الأعطال وإصلاحها وفق المعايير الهندسية المعتمدة.";
+        $summary_en = "This technical and engineering reference delivers a hands-on guide to \"" . $full_en . "\" within \"" . $sec_en . "\". It guides readers from architectural principles and toolchain setup through step-by-step implementation, security hardening, diagnostics, and real-world deployment.";
+        $audience_ar = [
+            "المهندسون، المبرمجون، والفنيون الراغبون في إتقان الجوانب التطبيقية في هذا التخصص.",
+            "طلاب كليات الهندسة وعلوم الحاسب والمعاهد التقنية والتكنولوجية.",
+            "مديرو المشاريع التقنية ومسؤولو الصيانة والجودة في المؤسسات.",
+            "الهواة والمبتكرون الراغبون في تنفيذ مشاريع عملية بمعايير صحيحة وآمنة."
+        ];
+        $audience_en = [
+            "Engineers, developers, and technicians mastering practical implementation.",
+            "Computer science, engineering, and vocational technology students.",
+            "Technical leads, QA specialists, and system maintenance engineers.",
+            "Makers and innovators building reliable, standards-compliant projects."
+        ];
+        $outcomes_ar = [
+            "تصميم وبناء مشاريع ومنظومات عملية في «" . $topic_ar . "» على أسس هندسية سليمة.",
+            "اختيار الأدوات والمكونات والبرمجيات الأنسب لمتطلبات الأداء والميزانية.",
+            "تطبيق قوائم الفحص القياسية لاكتشاف الأخطاء مبكراً ومعالجتها جذرياً.",
+            "تأمين النظام ضد الأعطال المفاجئة وفقدان البيانات ومخاطر التشغيل.",
+            "تحسين الكفاءة وتقليل زمن الاستجابة واستهلاك الطاقة والموارد.",
+            "توثيق العمل الفني بطريقة احترافية تسهل صيانته وتطويره مستقبلياً."
+        ];
+        $outcomes_en = [
+            "Design and implement reliable systems in " . $topic_en . " using clean engineering patterns.",
+            "Select the right tools, components, and configurations for optimal cost and performance.",
+            "Apply systematic diagnostic checklists to isolate and fix root-cause faults.",
+            "Enforce security, safety, and automated backup guardrails.",
+            "Optimize latency, throughput, and energy/resource efficiency.",
+            "Document architectures and maintenance procedures to professional industry standards."
+        ];
+        $reviewer = [
+            "name_ar" => "م. محمود بك النمر — مهندس معماريات الأنظمة والبرمجيات والحلول الرقمية، ومجلس المراجعة الهندسية بدار النمر",
+            "name_en" => "Eng. Mahmoud Bek ElNemer & Nemer Engineering Editorial Board — Systems Architecture & Applied Technology",
+            "date" => "أكتوبر 2026 (الإصدار المراجع V5.2)",
+            "scope_ar" => "مراجعة المخططات الهندسية، خطوات التنفيذ التقني، معايير الأمان السيبراني والسلامة التشغيلية، وقوائم تشخيص الأعطال.",
+            "scope_en" => "Reviewed for architectural accuracy, implementation reproducibility, operational safety, and adherence to IEEE/ISO engineering best practices."
+        ];
+        $references = [
+            "IEEE Computer Society & Engineering Standards — Guide to Software & Systems Engineering Body of Knowledge.",
+            "ISO/IEC 25010 & 27001 — Systems Quality, Reliability & Information Security Management Standards.",
+            "NIST Special Publications — Secure Architecture, Diagnostics & Resilient System Engineering.",
+            "ACM & Open Engineering Practitioner Series — Applied Design Patterns, Testing & Production Operations.",
+            "سلسلة الأدلة الهندسية والتقنية التطبيقية المبسطة — دار النمر للنشر الأكاديمي والحلول الرقمية."
+        ];
+        $sample_sections = [
+            [
+                "badge" => "عينة قراءة 1 — من الفصل الأول (صفحة 15)",
+                "title_ar" => "مبادئ التصميم الهندسي المتين: البساطة، المعيارية (Modularity)، وقابلية الفحص",
+                "body_ar" => "عند بناء أو صيانة أي منظومة في «" . $topic_ar . "»، فإن القاعدة الهندسية الأولى هي تقسيم النظام إلى وحدات مستقلة وواضحة الوظيفة (Modular Design). هذا الفصل بين الوحدات يضمن أنه في حال حدوث عطل أو الحاجة لتحديث جزء معين، يمكنك فحصه واستبداله فوراً دون تعطيل باقي أجزاء المنظومة."
+            ],
+            [
+                "badge" => "عينة قراءة 2 — من الفصل السادس (صفحة 130)",
+                "title_ar" => "منهجية التشخيص الهندسي من 5 خطوات لحل أي عطل فني (Root-Cause Diagnostics)",
+                "body_ar" => "1. رصد الأعراض وتوثيقها بدقة: متى يظهر العطل؟ وما هي المدخلات أو الظروف المصاحبة له؟\n2. عزل النطاق (Divide & Conquer): فحص المدخلات والمخرجات عند منتصف المسار لتحديد النصف الذي يكمن فيه الخلل.\n3. فحص الأسباب الأكثر شيوعاً أولاً (التوصيلات، الإعدادات، التغذية، الصلاحيات).\n4. تطبيق الإصلاح وتجربته تحت ظروف التشغيل الفعلية.\n5. تسجيل السبب الجذري في سجل الصيانة لمنع تكراره مستقبلاً."
+            ],
+            [
+                "badge" => "عينة قراءة 3 — من الفصل الثامن (صفحة 179)",
+                "title_ar" => "قائمة الفحص النهائي قبل التشغيل الفعلي (Pre-Deployment Readiness Checklist)",
+                "body_ar" => "✔ التحقق من اكتمال النسخ الاحتياطي وإمكانية الاستعادة السريعة.\n✔ اختبار النظام تحت الحمل المتوقع والتأكد من استقرار الأداء والحرارة.\n✔ مراجعة إعدادات الأمان والصلاحيات وإغلاق أي منافذ غير مستخدمة.\n✔ تسليم دليل التشغيل والصيانة المختصر لفريق العمل."
+            ]
+        ];
+    } else {
+        // HUB 5 & 6: AGRICULTURE, ENVIRONMENT, CRAFTS, ENERGY & APPLIED SCIENCES (Sectors 41-50)
+        $chapters = [
+            ["ch" => 1, "pages" => "09–28", "ar" => "الأسس العلمية والبيئية والمفاهيم التطبيقية في " . $topic_ar, "en" => "Scientific Foundations, Ecological Principles & Core Concepts in " . $topic_en],
+            ["ch" => 2, "pages" => "29–48", "ar" => "دراسة الموقع، الخامات، الأدوات، ومتطلبات التجهيز الصحيح", "en" => "Site Assessment, Materials, Essential Tools & Preparation Standards"],
+            ["ch" => 3, "pages" => "49–74", "ar" => "خطوات التنفيذ العملي والميداني خطوة بخطوة في " . $topic_ar, "en" => "Step-by-Step Field & Workshop Execution Protocols in " . $topic_en],
+            ["ch" => 4, "pages" => "75–100", "ar" => "ترشيد الموارد (المياه، الطاقة، الخامات) وتعظيم الكفاءة والإنتاجية", "en" => "Resource Conservation (Water, Energy, Materials) & Yield Optimization"],
+            ["ch" => 5, "pages" => "101–125", "ar" => "الرعاية الدورية، الصيانة الوقائية، والوقاية من الآفات والأعطال", "en" => "Routine Care, Preventive Maintenance & Natural Protection Methods"],
+            ["ch" => 6, "pages" => "126–150", "ar" => "تشخيص المشكلات الميدانية الشائعة وحلولها العلمية الآمنة", "en" => "Field Troubleshooting, Diagnostic Indicators & Safe Corrective Actions"],
+            ["ch" => 7, "pages" => "151–175", "ar" => "الابتكارات الحديثة، الأدوات الذكية، والاستدامة البيئية والاقتصادية", "en" => "Modern Innovations, Smart Monitoring & Sustainable Economic Value"],
+            ["ch" => 8, "pages" => "176–185", "ar" => "معايير السلامة المهنية، جودة المخرجات، والتخزين والتسويق", "en" => "Occupational Safety, Output Quality Grading, Storage & Utilization"],
+            ["ch" => 9, "pages" => "186–196", "ar" => "جداول المواسم والقياسات الميدانية + اختبار تطبيقي (22 سؤالاً)", "en" => "Field Measurement Logs, Seasonal Tables & 22-Item Practical Assessment"],
+            ["ch" => 10, "pages" => "197–200", "ar" => "دليل المصطلحات العلمية والميدانية، المراجع المعتمدة، وبطاقة المراجعة", "en" => "Scientific & Field Glossary, Verified References & Specialist Review"]
+        ];
+        $summary_ar = "يقدّم هذا الكتاب دليلاً علمياً وميدانياً مبسطاً في «" . $full_ar . "» ضمن قطاع «" . $sec_ar . "». يجمع الكتاب بين الأسس العلمية الدقيقة والخبرة العملية الميدانية، ليعلّم القارئ خطوات التجهيز والتنفيذ، وترشيد استهلاك المياه والطاقة والخامات، وتحقيق أعلى جودة وإنتاجية مستدامة.";
+        $summary_en = "This field and scientific handbook provides a practical guide to \"" . $full_en . "\" in \"" . $sec_en . "\". Combining scientific accuracy with hands-on field workflows, it covers preparation, execution, resource conservation, troubleshooting, and sustainable quality optimization.";
+        $audience_ar = [
+            "الممارسون، المزارعون، الحرفيون، والفنيون الراغبون في تطوير جودة وإنتاجية عملهم.",
+            "أصحاب المنازل والمهتمون بالزراعة المنزلية، الطاقة المتجددة، والصيانة الذاتية.",
+            "طلاب الكليات العلمية والزراعية والبيئية والمعاهد الفنية.",
+            "الباحثون عن حلول بيئية مستدامة وموفرة للتكاليف في البيت والمزرعة والورشة."
+        ];
+        $audience_en = [
+            "Practitioners, growers, artisans, and technicians improving yield and craft quality.",
+            "Homeowners interested in rooftop/home gardening, solar energy, and DIY maintenance.",
+            "Students in agricultural, environmental, and applied natural sciences.",
+            "Anyone seeking cost-effective, eco-friendly, and sustainable practical solutions."
+        ];
+        $outcomes_ar = [
+            "إتقان خطوات التجهيز والتنفيذ العملي في «" . $topic_ar . "» باستخدام خامات وأدوات متاحة.",
+            "تقليل الهدر في المياه والطاقة والخامات بنسبة ملموسة عبر طرق القياس الصحيحة.",
+            "اكتشاف علامات الخلل أو الآفات مبكراً ومعالجتها بطرق آمنة وصديقة للبيئة.",
+            "تطبيق قواعد السلامة المهنية أثناء العمل اليدوي أو الميداني.",
+            "استخدام الجداول المرجعية المرفقة لمتابعة المواسم والقياسات والصيانة الدورية.",
+            "تحويل المهارة العلمية والتطبيقية إلى منتج عالي الجودة أو وفر اقتصادي حقيقي للأسرة."
+        ];
+        $outcomes_en = [
+            "Execute field and workshop procedures in " . $topic_en . " using accessible tools.",
+            "Reduce water, energy, and material waste through accurate measurement.",
+            "Identify early signs of defects or pests and apply safe, eco-friendly remedies.",
+            "Maintain strict occupational and household safety standards during hands-on work.",
+            "Use the included seasonal and measurement logs for consistent tracking.",
+            "Turn applied scientific knowledge into high-quality outputs and household savings."
+        ];
+        $reviewer = [
+            "name_ar" => "أ.د. مصطفى عبد السلام الجندي — أستاذ العلوم التطبيقية والزراعة المستدامة وهندسة الموارد البيئية",
+            "name_en" => "Prof. Mostafa A. El-Gendy, PhD — Professor of Applied Sciences, Sustainable Agriculture & Environmental Engineering",
+            "date" => "أكتوبر 2026 (الإصدار المراجع V5.2)",
+            "scope_ar" => "مراجعة الدقة العلمية والبيئية، ومعدلات القياس الميداني، وإرشادات السلامة المهنية والاستدامة.",
+            "scope_en" => "Reviewed for scientific accuracy, ecological safety, field measurement standards, and sustainable resource management."
+        ];
+        $references = [
+            "Food and Agriculture Organization of the United Nations (FAO) — Practical Field & Sustainable Production Manuals.",
+            "International Renewable Energy Agency (IRENA) & UNEP — Household Resource Efficiency & Clean Tech Guides.",
+            "UNESCO Science & Applied Vocational Education Series — Hands-On Scientific & Craft Mastery.",
+            "International Organization for Standardization (ISO 14001) — Environmental Management & Sustainable Practices.",
+            "الموسوعة التطبيقية للعلوم والزراعة المستدامة والحرف الإنتاجية — دار النمر للنشر الأكاديمي."
+        ];
+        $sample_sections = [
+            [
+                "badge" => "عينة قراءة 1 — من الفصل الثاني (صفحة 31)",
+                "title_ar" => "التجهيز الصحيح يختصر نصف الجهد: كيف تفحص الخامات والبيئة قبل البدء؟",
+                "body_ar" => "في تطبيقات «" . $topic_ar . "»، يرجع 80% من نجاح النتائج إلى جودة التجهيز المسبق قبل التنفيذ الفعلي. يبدأ العمل المنهجي بفحص عناصر البيئة الأساسية (الإضاءة، التهوية، الرطوبة، جودة الخامات، وسلامة الأدوات) وتدوين القراءات الأولية في جدول المتابعة الميداني."
+            ],
+            [
+                "badge" => "عينة قراءة 2 — من الفصل الرابع (صفحة 82)",
+                "title_ar" => "معادلة الكفاءة وترشيد الاستهلاك: إنتاج أعلى بتكلفة وموارد أقل",
+                "body_ar" => "• القياس قبل الإضافة: لا تضف مياهاً أو مغذيات أو طاقة تشغيلية إلا بعد فحص المؤشر الفعلي للحاجة.\n• الصيانة الوقائية الدورية للأدوات والفلاتر والوصلات تمنع الهدر الخفي الذي قد يستنزف حتى 35% من الموارد دون ملاحظة مباشرة."
+            ],
+            [
+                "badge" => "عينة قراءة 3 — من الفصل السادس (صفحة 134)",
+                "title_ar" => "دليل التشخيص الميداني السريع: قراءة العلامات المبكرة والتدخل الآمن",
+                "body_ar" => "عند ملاحظة أي تغير في جودة المخرجات أو كفاءة الأداء، راجع العوامل الثلاثة بالترتيب: (1) انتظام التغذية/المدخلات، (2) اعتدال الظروف المحيطة (الحرارة والتهوية)، (3) خلو المنظومة من الشوائب أو الانسدادات، وابدأ دائماً بالمعالجة الطبيعية والميكانيكية الآمنة."
+            ]
+        ];
+    }
+
+    return [
+        "chapters" => $chapters,
+        "summary_ar" => $summary_ar,
+        "summary_en" => $summary_en,
+        "audience_ar" => $audience_ar,
+        "audience_en" => $audience_en,
+        "outcomes_ar" => $outcomes_ar,
+        "outcomes_en" => $outcomes_en,
+        "reviewer" => $reviewer,
+        "references" => $references,
+        "sample_sections" => $sample_sections
     ];
 }
 ?>

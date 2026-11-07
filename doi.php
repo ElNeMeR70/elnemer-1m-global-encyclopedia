@@ -256,7 +256,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
         </div>
         <div class="meta-row">
           <span class="meta-label">بصمة التشفير الرياضية (SHA-256):</span>
-          <span class="meta-val" style="font-family:'Fira Code';font-size:0.8rem;color:#34D399;word-break:break-all;direction:ltr;"><?php echo $b['sha256']; ?></span>
+          <span class="meta-val" style="font-family:'Fira Code';font-size:0.8rem;color:#047857;font-weight:800;word-break:break-all;direction:ltr;"><?php echo $b['sha256']; ?></span>
         </div>
         <div class="meta-row">
           <span class="meta-label">جذر شجرة ميركل العام (Merkle Root):</span>
@@ -274,7 +274,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
         <a href="/certificate.php?id=<?php echo $book_id; ?>" class="btn" style="background:rgba(255,255,255,0.08);color:#1E3A8A;border:1px solid rgba(255,255,255,0.2);" target="_blank">
           📜 شهادة التوثيق التشفيرية المعتمدة
         </a>
-        <a href="/audit/<?php echo $book_id; ?>" class="btn" style="background:rgba(16,185,129,0.16);color:#34D399;border:1px solid #10B981;">
+        <a href="/audit/<?php echo $book_id; ?>" class="btn" style="background:rgba(16,185,129,0.16);color:#047857;font-weight:800;border:1px solid #10B981;">
           🔐 مختبر التدقيق التشفيري (Merkle Audit)
         </a>
         <a href="/cite/<?php echo $book_id; ?>" class="btn" style="background:rgba(212,175,55,0.14);color:#0284C7;border:1px solid rgba(212,175,55,0.4);">

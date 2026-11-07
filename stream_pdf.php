@@ -177,17 +177,19 @@ function build_200page_pdf_bytes($b) {
     $lang_code = strtoupper($b['lang_code']);
     $price_str = $b['is_paid'] ? ('$' . $b['price_usd'] . ' USD (Commercial Edition)') : '$0.00 USD (Open Access Scientific Endowment)';
 
+    $cur_details = get_book_curriculum_and_details($b);
+    $c_list = $cur_details['chapters'];
     $chapters = [
-        [1, "Foundational Epistemology & Historical Paradigms", 9, 28],
-        [2, "Critical Literature Review & State-of-the-Art Analysis", 29, 48],
-        [3, "Mathematical Formulations & Tensor Calculus", 49, 74],
-        [4, "Algorithmic Architecture & High-Performance Computing", 75, 100],
-        [5, "Empirical Laboratory Benchmarks & Simulation Methodology", 101, 125],
-        [6, "Quantitative Results, Statistical Analysis & Sensitivity Testing", 126, 150],
-        [7, "Scalable Industrial Blueprints & Case Studies", 151, 175],
-        [8, "Ethical Governance, Safety Thresholds & Future Horizons", 176, 185],
-        [9, "Post-Graduate Certification Exam, Analytical Problems & Key", 186, 196],
-        [10, "Exhaustive Bibliographic References & Author Dossier", 197, 200]
+        [1, $c_list[0]['en'], 9, 28],
+        [2, $c_list[1]['en'], 29, 48],
+        [3, $c_list[2]['en'], 49, 74],
+        [4, $c_list[3]['en'], 75, 100],
+        [5, $c_list[4]['en'], 101, 125],
+        [6, $c_list[5]['en'], 126, 150],
+        [7, $c_list[6]['en'], 151, 175],
+        [8, $c_list[7]['en'], 176, 185],
+        [9, $c_list[8]['en'], 186, 196],
+        [10, $c_list[9]['en'], 197, 200]
     ];
 
     $pages_streams = [];
@@ -225,7 +227,7 @@ function build_200page_pdf_bytes($b) {
     // Title Box
     $p1 .= pdf_rect(56, 465, 500, 195, 0.06, 0.09, 0.18, true, $pri_rgb[0], $pri_rgb[1], $pri_rgb[2], 1.8);
     $p1 .= pdf_text(76, 632, "SECTOR #" . $b['sector_id'] . ": " . strtoupper($sector), "F2", 9.5, $acc_rgb[0], $acc_rgb[1], $acc_rgb[2]);
-    $p1 .= pdf_text(76, 602, "ADVANCED RESEARCH IN:", "F2", 12.0, 0.95, 0.97, 1.0);
+    $p1 .= pdf_text(76, 602, "APPLIED & STRUCTURED REFERENCE GUIDE (" . $lang_code . " EDITION | WORK " . $b['work_code'] . "):", "F2", 10.5, 0.95, 0.97, 1.0);
     $y_t = pdf_wrap_text($p1, 76, 576, strtoupper($domain), 48, "F2", 15.0, 20.0, 1.0, 1.0, 1.0);
     $y_sub = pdf_wrap_text($p1, 76, $y_t - 6, $b['angle_en'] . " - 200-Page Peer-Reviewed Reference Monograph in " . $lang_en, 68, "F1", 10.2, 14.5, 0.80, 0.88, 0.98);
 
@@ -267,9 +269,9 @@ function build_200page_pdf_bytes($b) {
     $p2 .= render_ean13_pdf_operators($isbn, 380, 118, 170, 46);
     $p2 .= pdf_text(58, 492, "KEY SCIENTIFIC CONTRIBUTIONS OF THIS 200-PAGE VOLUME:", "F2", 9.8, 0.06, 0.09, 0.16);
     $contribs = [
-        "1. Axiomatic & Tensor Foundations (Chapters 01-03, Pages 009-074): Formalizes high-dimensional state manifolds, Sobolev regularity conditions, and Lyapunov stability bounds for " . $domain . ".",
-        "2. Algorithmic & Distributed Execution Kernels (Chapters 04-05, Pages 075-125): Introduces lock-free ring synchronization, cache-tiled vector operators, and multigrid preconditioners.",
-        "3. Empirical Verification & Sensitivity Auditing (Chapters 06-08, Pages 126-185): Audits 177 non-repeating configurations across 6 hardware topologies with Wilcoxon non-parametric bounds.",
+        "1. Core Principles & Rapid Assessment (Chapters 01-03, Pages 009-074): Establishes foundational principles, early indicators, and step-by-step practical protocols for " . $domain . ".",
+        "2. Readiness Tools & Tailored Care Protocols (Chapters 04-05, Pages 075-125): Details essential equipment checklists, hygiene/quality standards, and specialized practical procedures.",
+        "3. Safety Guardrails, Follow-Up & Red-Flag Criteria (Chapters 06-08, Pages 126-185): Covers common mistakes to avoid, daily monitoring schedules, and professional referral thresholds.",
         "4. Post-Graduate Board Examination (Chapter 09, Pages 186-196): Provides 22 standardized multiple-choice certification items with verified answer keys [A]/[B]/[C]/[D] and rationales.",
         "5. Cryptographic Provenance & Nemer Sovereign Edge Archiving (Chapter 10, Pages 197-200): Permanently indexed under ISBN-13 " . $isbn . ", DOI " . $doi . ", and SHA-256 " . substr($sha, 0, 36) . "..."
     ];
@@ -732,6 +734,20 @@ function upload_pdf_to_sovereign_edge($r2_key, $pdf_bytes) {
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
     return ($code >= 200 && $code < 300);
+}
+
+
+function get_pdf_binary_audit_meta($b) {
+    $bytes = build_200page_pdf_bytes($b);
+    return [
+        'pdf_bytes_sha256' => hash('sha256', $bytes),
+        'pdf_size_bytes' => strlen($bytes),
+        'pdf_size_kb' => round(strlen($bytes) / 1024, 1)
+    ];
+}
+
+if (defined('NEMER_PDF_LIB_ONLY') && NEMER_PDF_LIB_ONLY === true) {
+    return;
 }
 
 $pdf_bytes = build_200page_pdf_bytes($b);

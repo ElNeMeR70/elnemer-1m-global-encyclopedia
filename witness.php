@@ -174,7 +174,7 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
     <div class="card">
       <div class="seal-header">
         <div>
-          <div style="display:inline-block;background:rgba(16,185,129,0.18);border:1px solid #10b981;color:#34d399;padding:5px 14px;border-radius:999px;font-size:0.82rem;font-weight:800;margin-bottom:12px;">
+          <div style="display:inline-block;background:rgba(16,185,129,0.18);border:1px solid #10b981;color:#047857;font-weight:800;padding:5px 14px;border-radius:999px;font-size:0.82rem;font-weight:800;margin-bottom:12px;">
             ● VERIFIED CRYPTOGRAPHIC &amp; BIBLIOGRAPHIC EVIDENCE DOSSIER · DOCUMENT ID: GWR-NEMER-2026-1M
           </div>
           <h1>محضر التحكيم الدولي وسجل البراهين الجنائية القاطعة</h1>
@@ -192,7 +192,7 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
           OFFICIAL BRIEF FOR GUINNESS WORLD RECORDS™ ADJUDICATORS &amp; GLOBAL RECORDS MANAGEMENT TEAM (LONDON, UK)
         </div>
         <p style="color:#334155;font-size:0.93rem;line-height:1.65;">
-          This Sovereign Verification Ledger provides direct, machine-verifiable, cryptographic and bibliographic proof of the <b>ElNemer Global Multilingual Scientific Encyclopedia</b>, authored and architected solely by <b>Eng. Mahmoud Bek ElNemer</b> (Google Accredited Systems &amp; AI Engineer; Founder &amp; CEO of Nemer Digital Solutions &amp; Nemer Academic Publishing House). Every single volume holds a unique <b>GS1/ISBN-13</b> identifier, scannable <b>EAN-13 Vector Barcode</b>, persistent <b>DOI handle</b>, <b>Library of Congress MARC21 XML</b> record via <b>OAI-PMH 2.0</b>, and a 20-level <b>SHA-256 Binary Merkle Tree Inclusion Proof</b> anchored to Master Root <code style="color:#34d399;"><?php echo $master_root; ?></code>.
+          This Sovereign Verification Ledger provides direct, machine-verifiable, cryptographic and bibliographic proof of the <b>ElNemer Global Multilingual Scientific Encyclopedia</b>, authored and architected solely by <b>Eng. Mahmoud Bek ElNemer</b> (Google Accredited Systems &amp; AI Engineer; Founder &amp; CEO of Nemer Digital Solutions &amp; Nemer Academic Publishing House). Every single volume holds a unique <b>GS1/ISBN-13</b> identifier, scannable <b>EAN-13 Vector Barcode</b>, persistent <b>DOI handle</b>, <b>Library of Congress MARC21 XML</b> record via <b>OAI-PMH 2.0</b>, and a 20-level <b>SHA-256 Binary Merkle Tree Inclusion Proof</b> anchored to Master Root <code style="color:#047857;font-weight:800;"><?php echo $master_root; ?></code>.
         </p>
       </div>
 
@@ -218,7 +218,7 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
             </tr>
             <tr>
               <td><b>02</b></td>
-              <td><b>البصمة التشفيرية وشجرة ميركل</b><br/><span style="color:#334155;font-size:0.82rem;">SHA-256 &amp; 20-Level Merkle Inclusion</span></td>
+              <td><b>البصمة التشفيرية وشجرة ميركل</b><br/><span style="color:#334155;font-size:0.82rem;">SHA-256 &amp; 23-Level Merkle Inclusion</span></td>
               <td>جذر ميركل موحد يربط المجلدات ببصمات SHA-256 قابلة للفحص داخل متصفح المحكّم</td>
               <td class="mono">FIPS 180-4 SHA-256 + WebCrypto</td>
               <td><a href="/audit/4" target="_blank" class="pill pill-gold">🔐 فتح مختبر التدقيق الحي</a></td>
@@ -297,7 +297,7 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
               </td>
               <td><?php echo htmlspecialchars($sb['lang_name']); ?> (<code><?php echo $sb['lang_code']; ?></code>)</td>
               <td style="text-align:center;"><?php echo render_ean13_svg($sb['isbn13'], 175, 62); ?></td>
-              <td class="mono" style="color:#34d399;"><?php echo substr($sb['sha256'], 0, 18); ?>...</td>
+              <td class="mono" style="color:#047857;font-weight:800;"><?php echo substr($sb['sha256'], 0, 18); ?>...</td>
               <td>
                 <div style="display:flex;gap:6px;flex-wrap:wrap;">
                   <a href="/book/<?php echo $sid; ?>" target="_blank" class="pill">📖 المجلد</a>

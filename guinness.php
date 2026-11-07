@@ -474,14 +474,14 @@ $active_meta = get_1m_book_metadata($inspect_id);
     <!-- Official London GWR Adjudication Command Strip -->
     <section style="background:linear-gradient(135deg,#1E3A8A 0%,#1D4ED8 55%,#0F766E 100%);border:2px solid #38BDF8;border-radius:22px;padding:28px 32px;margin-bottom:45px;box-shadow:0 15px 50px rgba(0,0,0,0.75);direction:ltr;text-align:left;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
-        <span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#34d399;padding:5px 14px;border-radius:999px;font-weight:800;font-size:0.82rem;font-family:'Fira Code',monospace;">
+        <span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#047857;font-weight:800;padding:5px 14px;border-radius:999px;font-weight:800;font-size:0.82rem;font-family:'Fira Code',monospace;">
           ● DIRECT PROTOCOL ACCESS FOR GUINNESS WORLD RECORDS™ ADJUDICATORS (LONDON / GLOBAL RMT)
         </span>
         <span style="color:#0284C7;font-family:'Fira Code',monospace;font-size:0.82rem;">Master Root: 72806865ca4d56a0...c896d9</span>
       </div>
       <h2 style="color:#1E3A8A;font-family:'Cinzel',serif;font-size:21px;margin-bottom:10px;">Official Machine-Verifiable Evidence Suite — Instant Forensic &amp; Bibliographic Audit</h2>
       <p style="color:#334155;font-size:0.95rem;margin-bottom:18px;line-height:1.65;">
-        Adjudicators and independent witnesses may verify the encyclopedia's <b>Sole Authorship (Eng. Mahmoud Bek ElNemer)</b>, <b>GS1/ISBN-13 Optical Barcodes</b>, <b>20-Level SHA-256 Merkle Inclusion Paths</b>, <b>Library of Congress MARC21 XML Records (OAI-PMH 2.0)</b>, and <b>20-Shard Sitemap Registry</b> in real time using the live tools below:
+        Adjudicators and independent witnesses may verify the encyclopedia's <b>Sole Authorship (Eng. Mahmoud Bek ElNemer)</b>, <b>GS1/ISBN-13 Optical Barcodes</b>, <b>23-Level SHA-256 Merkle Inclusion Paths</b>, <b>Library of Congress MARC21 XML Records (OAI-PMH 2.0)</b>, and <b>20-Shard Sitemap Registry</b> in real time using the live tools below:
       </p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
         <a href="/witness" class="btn-act btn-act-gold" style="font-size:14px;padding:11px 18px;">📜 Open Official Evidence &amp; Sitemap Ledger (/witness)</a>
@@ -608,7 +608,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
             <td>
               <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
                 <?php echo render_ean13_svg($active_meta['isbn13'], 220, 74); ?>
-                <span style="color:#34d399;font-size:0.85rem;font-weight:700;">✅ باركود فيكتور أصلي (95 وحدة ضوئية) قابل للمسح الفوري بكاميرا الهاتف أو قارئ الباركود</span>
+                <span style="color:#047857;font-weight:800;font-size:0.85rem;font-weight:700;">✅ باركود فيكتور أصلي (95 وحدة ضوئية) قابل للمسح الفوري بكاميرا الهاتف أو قارئ الباركود</span>
               </div>
             </td>
           </tr>
@@ -640,8 +640,8 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <a href="/certificate.php?id=<?php echo $active_meta['global_id']; ?>" class="btn-act btn-act-green" target="_blank">
           📜 شهادة التوثيق التشفيرية (Certificate PDF)
         </a>
-        <a href="/audit/<?php echo $active_meta['global_id']; ?>" class="btn-act" style="background:rgba(16,185,129,0.18);color:#34d399;border:1px solid #10b981;" target="_blank">
-          🔐 مختبر التدقيق الجنائي وشجرة ميركل (20-Level Proof)
+        <a href="/audit/<?php echo $active_meta['global_id']; ?>" class="btn-act" style="background:rgba(16,185,129,0.18);color:#047857;font-weight:800;border:1px solid #10b981;" target="_blank">
+          🔐 مختبر التدقيق الجنائي وشجرة ميركل (23-Level Proof)
         </a>
         <a href="/cite/<?php echo $active_meta['global_id']; ?>" class="btn-act" style="background:rgba(212,175,55,0.16);color:#0284C7;border:1px solid rgba(212,175,55,0.45);" target="_blank">
           🎓 الاقتباس الأكاديمي (BibTeX / RIS / MARC21)
@@ -718,7 +718,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <div class="dossier-icon">🔬</div>
         <h3 class="dossier-title">مختبر التدقيق الجنائي والتشفيري الحي (WebCrypto Audit Lab)</h3>
         <p class="dossier-desc">
-          محاكي تفاعلي يعيد حساب بصمة SHA-256 داخل متصفح المحكّم عبر شريحة التشفير، مع إثبات معادلة GS1 Modulo-10 ومسار شجرة ميركل من 20 مستوى.
+          محاكي تفاعلي يعيد حساب بصمة SHA-256 داخل متصفح المحكّم عبر شريحة التشفير، مع إثبات معادلة GS1 Modulo-10 ومسار شجرة ميركل من 23 مستوى.
         </p>
         <a href="/audit/4" target="_blank" class="btn-act btn-act-green">
           🔐 فتح مختبر التدقيق الحي (/audit)
