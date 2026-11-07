@@ -21,7 +21,7 @@ $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "million.elnemer-
 $base_url = $proto . "://" . $host;
 $canonical_url = $base_url . "/book/" . $b['global_id'] . "/" . $b['slug'];
 $pdf_stream_url = $base_url . "/pdf/" . $b['global_id'] . "/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
-$sovereign_mirror_url = "https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev/elnemer-1m-encyclopedia/books/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
+$sovereign_mirror_url = $base_url . "/pdf/" . $b['global_id'] . "/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
 
 $prev_id = ($gid > 1) ? ($gid - 1) : 5000000;
 $next_id = ($gid < 5000000) ? ($gid + 1) : 1;
@@ -426,12 +426,12 @@ $json_ld = [
             box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
         }
         .btn-blue:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5); }
-        .btn-r2 {
+        .btn-sovereign {
             background: rgba(0, 240, 255, 0.12);
             border: 1px solid var(--cyan);
             color: var(--cyan);
         }
-        .btn-r2:hover { background: rgba(0, 240, 255, 0.25); color: #FFFFFF; transform: translateY(-2px); }
+        .btn-sovereign:hover { background: rgba(0, 240, 255, 0.25); color: #FFFFFF; transform: translateY(-2px); }
         .btn-wa {
             background: linear-gradient(135deg, #15803D, #166534);
             color: #FFFFFF;
@@ -689,7 +689,7 @@ $json_ld = [
                 <a class="btn-action btn-blue" href="<?php echo $pdf_stream_url; ?>?mode=inline" target="_blank">
                     📖 قراءة ومعاينة الـ 200 صفحة أونلاين
                 </a>
-                <a class="btn-action btn-r2" href="<?php echo htmlspecialchars($sovereign_mirror_url); ?>" target="_blank">
+                <a class="btn-action btn-sovereign" href="<?php echo htmlspecialchars($sovereign_mirror_url); ?>" target="_blank">
                     ☁️ مزامنة السحابة السيادية لدار النمر (Sovereign Edge)
                 </a>
                 <a class="btn-action btn-wa" href="https://wa.me/201507559911?text=<?php echo urlencode('مرحباً مهندس محمود النمر، أرغب في الاستفسار عن المجلد رقم #' . $b['global_id'] . ' (ISBN: ' . $b['isbn13'] . ') في موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)'); ?>" target="_blank" rel="noopener">
