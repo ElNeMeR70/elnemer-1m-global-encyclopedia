@@ -1,5 +1,5 @@
 <?php
 // Copy to portal/config.local.php (git-ignored). Never commit real credentials.
-putenv('CF_R2_ACCOUNT_ID=your_account_id');
-putenv('CF_R2_ACCESS_KEY=your_access_key_id');
-putenv('CF_R2_SECRET_KEY=your_secret_access_key');
+putenv('NEMER_EDGE_ACCOUNT_ID=your_sovereign_edge_account_id');
+putenv('NEMER_EDGE_ACCESS_KEY=your_sovereign_edge_access_key');
+putenv('NEMER_EDGE_SECRET_KEY=your_sovereign_edge_secret_key');

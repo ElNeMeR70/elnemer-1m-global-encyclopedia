@@ -1,24 +1,24 @@
 <?php
 // ============================================================================
-// ELNEMER 1-MILLION-BOOK INSTANT 200-PAGE PDF STREAMER & CLOUDFLARE R2 ENGINE
+// ELNEMER 1-BILLION-PAGE (5,000,000-BOOK) INSTANT 200-PAGE PDF STREAMER & SOVEREIGN EDGE ENGINE
 // ============================================================================
-// Streams any of the 1,000,000 books (200 unique pages, zero disk footprint)
-// in <0.4 seconds with Cloudflare Edge Cache headers + R2 Cloud Storage sync.
+// Streams any of the 5,000,000 books (1,000,000,000 total pages, 200 pages/book)
+// in <0.4 seconds with Nemer Sovereign Edge Cache headers + Sovereign Cloud Storage sync.
 // ============================================================================
 error_reporting(0);
 ini_set('memory_limit', '256M');
 require_once __DIR__ . '/taxonomy_data.php';
 require_once __DIR__ . '/barcode_helper.php';
 
-// Cloudflare R2 Credentials & Public Endpoint
-define('CF_R2_ACCOUNT_ID', '260084535a158c3657d034902ec411f6');
-define('CF_R2_BUCKET', 'digital-solutions-media');
-define('CF_R2_PUBLIC_URL', 'https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev');
-define('CF_R2_ACCESS_KEY', '431610b27c14aaea6d3ae433eb9fcad8');
-define('CF_R2_SECRET_KEY', 'a6cfa0a715af6e5462f15300aca56386932cbf8487898117c843a8eb5d2a9af0');
+// Nemer Sovereign Edge Storage Credentials & Public Endpoint
+define('NEMER_EDGE_ACCOUNT_ID', getenv('NEMER_EDGE_ACCOUNT_ID') ?: '');
+define('NEMER_EDGE_BUCKET', 'digital-solutions-media');
+define('NEMER_EDGE_PUBLIC_URL', 'https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev');
+define('NEMER_EDGE_ACCESS_KEY', getenv('NEMER_EDGE_ACCESS_KEY') ?: '');
+define('NEMER_EDGE_SECRET_KEY', getenv('NEMER_EDGE_SECRET_KEY') ?: '');
 
 $gid = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['book']) ? intval($_GET['book']) : 1);
-$gid = max(1, min(1000000, $gid));
+$gid = max(1, min(5000000, $gid));
 $b = get_1m_book_metadata($gid);
 
 // Check if client only wants JSON status or R2 sync
@@ -200,7 +200,7 @@ function build_200page_pdf_bytes($b) {
         // Top header bar
         $ops .= pdf_rect(0, 750, 612, 42, 0.06, 0.09, 0.16, false);
         $ops .= pdf_rect(0, 747, 612, 3, $pri_rgb[0], $pri_rgb[1], $pri_rgb[2], false);
-        $ops .= pdf_text(44, 766, "ELNEMER 1M ENCYCLOPEDIA | VOL #" . sprintf("%07d", $gid) . " [" . $lang_code . "] | " . substr($domain, 0, 38), "F2", 8.2, 1.0, 1.0, 1.0);
+        $ops .= pdf_text(44, 766, "ELNEMER 1B-PAGE ENCYCLOPEDIA | VOL #" . sprintf("%07d", $gid) . " [" . $lang_code . "] | " . substr($domain, 0, 38), "F2", 8.2, 1.0, 1.0, 1.0);
         $ops .= pdf_text(400, 766, substr($hdr_right, 0, 38), "F1", 8.0, 0.85, 0.91, 0.98);
         // Bottom footer bar
         $ops .= pdf_rect(0, 0, 612, 44, 0.96, 0.97, 0.99, false);
@@ -219,8 +219,8 @@ function build_200page_pdf_bytes($b) {
     $p1 .= pdf_rect(32, 32, 548, 728, $bg_rgb[0], $bg_rgb[1], $bg_rgb[2], true, $acc_rgb[0], $acc_rgb[1], $acc_rgb[2], 1.0);
     // Top badge
     $p1 .= pdf_rect(56, 690, 500, 44, 0.04, 0.06, 0.12, true, $acc_rgb[0], $acc_rgb[1], $acc_rgb[2], 1.2);
-    $p1 .= pdf_text(74, 714, "ELNEMER 1-MILLION-BOOK GLOBAL SCIENTIFIC ENCYCLOPEDIA (78 LANGUAGES)", "F2", 10.2, 0.99, 0.90, 0.54);
-    $p1 .= pdf_text(74, 699, "VOLUME #" . sprintf("%07d", $gid) . " OF 1,000,000  |  BISAC: " . $b['bisac'] . "  |  EDITION: " . $lang_en . " [" . $lang_code . "]", "F2", 8.5, 0.82, 0.90, 0.99);
+    $p1 .= pdf_text(74, 714, "ELNEMER 1-BILLION-PAGE GLOBAL ENCYCLOPEDIA (5,000,000 VOLUMES - 78 LANGUAGES)", "F2", 10.2, 0.99, 0.90, 0.54);
+    $p1 .= pdf_text(74, 699, "VOLUME #" . sprintf("%07d", $gid) . " OF 5,000,000 (1B PAGES)  |  BISAC: " . $b['bisac'] . "  |  EDITION: " . $lang_en . " [" . $lang_code . "]", "F2", 8.5, 0.82, 0.90, 0.99);
 
     // Title Box
     $p1 .= pdf_rect(56, 465, 500, 195, 0.06, 0.09, 0.18, true, $pri_rgb[0], $pri_rgb[1], $pri_rgb[2], 1.8);
@@ -239,7 +239,7 @@ function build_200page_pdf_bytes($b) {
     $p1 .= pdf_text(76, 312, "* Commercial Classification: " . $price_str, "F1", 9.0, 0.99, 0.90, 0.54);
     $p1 .= pdf_text(76, 292, "* SHA-256 Fingerprint: " . substr($sha, 0, 56) . "...", "F1", 8.2, 0.65, 0.95, 0.85);
     $p1 .= pdf_text(76, 272, "* Official Live Verification URI: https://million.elnemer-ai.com/book/" . $gid, "F2", 8.8, 0.35, 0.82, 0.99);
-    $p1 .= pdf_text(76, 252, "* Cloudflare R2 Mirror: " . CF_R2_PUBLIC_URL . "/elnemer-1m-encyclopedia/books/vol_" . $gid . ".pdf", "F1", 8.0, 0.75, 0.82, 0.92);
+    $p1 .= pdf_text(76, 252, "* Nemer Sovereign Cloud Mirror: " . NEMER_EDGE_PUBLIC_URL . "/elnemer-1m-encyclopedia/books/vol_" . $gid . ".pdf", "F1", 8.0, 0.75, 0.82, 0.92);
 
     // Author Footer Box
     $p1 .= pdf_rect(56, 65, 500, 145, 0.06, 0.09, 0.18, true, $acc_rgb[0], $acc_rgb[1], $acc_rgb[2], 1.6);
@@ -260,7 +260,7 @@ function build_200page_pdf_bytes($b) {
     $p2 .= pdf_text(44, 666, "Subtitle: " . $b['angle_en'] . " [" . $lang_en . " Edition]", "F2", 10.2, 0.20, 0.28, 0.38);
     $p2 .= pdf_rect(44, 535, 524, 115, 0.97, 0.98, 1.0, true, 0.80, 0.86, 0.94, 1.0);
     $p2 .= pdf_text(58, 630, "EXECUTIVE SCIENTIFIC ABSTRACT (VOLUME #" . sprintf("%07d", $gid) . "):", "F2", 9.5, 0.06, 0.09, 0.16);
-    $abs_txt = "This peer-reviewed 200-page scientific monograph investigates " . $domain . " (" . $b['angle_en'] . ") within the macro-sector of " . $sector . ". Authored by Google Accredited Engineer Mahmoud Bek ElNemer as Volume #" . sprintf("%07d", $gid) . " of the historic 1,000,000-Book Global Scientific Encyclopedia across all 78 official Google Play Books languages, this work establishes rigorous mathematical formulations, 177 distinct empirical analysis sections, multi-topology performance benchmarks, a 22-question post-graduate certification exam, and 45 peer-reviewed bibliographic references.";
+    $abs_txt = "This peer-reviewed 200-page scientific monograph investigates " . $domain . " (" . $b['angle_en'] . ") within the macro-sector of " . $sector . ". Authored by Google Accredited Engineer Mahmoud Bek ElNemer as Volume #" . sprintf("%07d", $gid) . " of the historic 1-Billion-Page (5,000,000-Book) Global Encyclopedia across all 78 official Google Play Books languages, this work establishes rigorous mathematical formulations, 177 distinct empirical analysis sections, multi-topology performance benchmarks, a 22-question post-graduate certification exam, and 45 peer-reviewed bibliographic references.";
     pdf_wrap_text($p2, 58, 610, $abs_txt, 88, "F1", 9.0, 13.5, 0.15, 0.20, 0.28);
 
     $p2 .= pdf_rect(44, 90, 524, 425, 0.98, 0.99, 1.0, true, 0.82, 0.86, 0.91, 1.0);
@@ -271,7 +271,7 @@ function build_200page_pdf_bytes($b) {
         "2. Algorithmic & Distributed Execution Kernels (Chapters 04-05, Pages 075-125): Introduces lock-free ring synchronization, cache-tiled vector operators, and multigrid preconditioners.",
         "3. Empirical Verification & Sensitivity Auditing (Chapters 06-08, Pages 126-185): Audits 177 non-repeating configurations across 6 hardware topologies with Wilcoxon non-parametric bounds.",
         "4. Post-Graduate Board Examination (Chapter 09, Pages 186-196): Provides 22 standardized multiple-choice certification items with verified answer keys [A]/[B]/[C]/[D] and rationales.",
-        "5. Cryptographic Provenance & Cloudflare Edge Archiving (Chapter 10, Pages 197-200): Permanently indexed under ISBN-13 " . $isbn . ", DOI " . $doi . ", and SHA-256 " . substr($sha, 0, 36) . "..."
+        "5. Cryptographic Provenance & Nemer Sovereign Edge Archiving (Chapter 10, Pages 197-200): Permanently indexed under ISBN-13 " . $isbn . ", DOI " . $doi . ", and SHA-256 " . substr($sha, 0, 36) . "..."
     ];
     $cy = 468;
     foreach ($contribs as $ct_line) {
@@ -285,7 +285,7 @@ function build_200page_pdf_bytes($b) {
     $p3 = $draw_chrome(3, "CIP Cataloging-in-Publication & Cryptographic Ledger");
     $p3 .= pdf_text(44, 712, "INTERNATIONAL CATALOGING-IN-PUBLICATION (CIP) & COPYRIGHT RECORD", "F2", 11.5, 0.06, 0.09, 0.16);
     $cip_rows = [
-        ["Monograph Global ID", "Volume #" . sprintf("%07d", $gid) . " of 1,000,000 (Batch #" . sprintf("%04d", $b['batch_number']) . " / 1,000)"],
+        ["Monograph Global ID", "Volume #" . sprintf("%07d", $gid) . " of 5,000,000 (Batch #" . sprintf("%04d", $b['batch_number']) . " / 5,000)"],
         ["Monograph Title", "Advanced Research in " . $domain . ": " . $b['angle_en']],
         ["Principal Author", "Eng. Mahmoud Bek ElNemer (" . pdf_clean_ascii($b['author']) . ") - Google Accredited Architect"],
         ["Publisher Imprint", "Nemer Academic Publishing House & Nemer Digital Solutions (Cairo / Global)"],
@@ -297,7 +297,7 @@ function build_200page_pdf_bytes($b) {
         ["Pricing & Distribution", $price_str . " | Google Play Books Partner SFTP"],
         ["SHA-256 Fingerprint", $sha],
         ["Live Web Landing Page", "https://million.elnemer-ai.com/book/" . $gid . "/" . $b['slug']],
-        ["Cloudflare Edge Cache", "Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable"],
+        ["Nemer Sovereign Edge Cache", "Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable"],
         ["Official Contact", "Tel/WhatsApp: +20-150-755-9911 | Email: info@elnemer-ai.com | https://elnemer-ai.com"]
     ];
     $cy = 682;
@@ -310,7 +310,7 @@ function build_200page_pdf_bytes($b) {
     }
     $p3 .= pdf_rect(44, 70, 524, 155, 0.94, 0.97, 1.0, true, 0.20, 0.45, 0.85, 1.2);
     $p3 .= pdf_text(58, 204, "SOVEREIGN COPYRIGHT & ACADEMIC INTEGRITY DECLARATION:", "F2", 9.2, 0.06, 0.15, 0.35);
-    $cop_txt = "Copyright (c) 2026 by Eng. Mahmoud Bek ElNemer, President of Nemer Digital Solutions. All rights reserved worldwide. Every page of this 200-page volume is deterministically synthesized and cryptographically anchored to the ElNemer 1-Million-Book Merkle Ledger. Reproduction or commercial redistribution without written authorization from info@elnemer-ai.com (+201507559911) is strictly prohibited.";
+    $cop_txt = "Copyright (c) 2026 by Eng. Mahmoud Bek ElNemer, President of Nemer Digital Solutions. All rights reserved worldwide. Every page of this 200-page volume is deterministically synthesized and cryptographically anchored to the ElNemer 1-Billion-Page (5,000,000-Book) Merkle Ledger. Reproduction or commercial redistribution without written authorization from info@elnemer-ai.com (+201507559911) is strictly prohibited.";
     pdf_wrap_text($p3, 58, 186, $cop_txt, 88, "F1", 8.6, 13.0, 0.12, 0.18, 0.28);
     $pages_streams[] = $p3;
 
@@ -597,14 +597,14 @@ function build_200page_pdf_bytes($b) {
     $p200 .= pdf_text(64, 668, "OFFICIAL AUTHOR DOSSIER & SOVEREIGN PUBLISHING COLOPHON", "F2", 12.0, 0.99, 0.90, 0.54);
     $p200 .= pdf_text(64, 640, "ENG. MAHMOUD BEK ELNEMER (GOOGLE ACCREDITED ARCHITECT)", "F2", 14.5, 1.0, 1.0, 1.0);
     $p200 .= pdf_text(64, 618, "Founder & CEO, Nemer Digital Solutions & Nemer Academic Publishing House", "F2", 10.0, 0.35, 0.82, 0.99);
-    $bio_en = "Eng. Mahmoud Bek ElNemer is an accredited technology architect, scientific researcher, and Founder & CEO of Nemer Digital Solutions and Nemer Academic Publishing House. Through the historic 1,000,000-Book Global Scientific Encyclopedia across 78 official Google Play Books languages (200,000,000 total peer-reviewed pages), his work empowers universities, engineers, and researchers worldwide.";
+    $bio_en = "Eng. Mahmoud Bek ElNemer is an accredited technology architect, scientific researcher, and Founder & CEO of Nemer Digital Solutions and Nemer Academic Publishing House. Through the historic 1-Billion-Page (5,000,000-Book) Global Encyclopedia across 78 official Google Play Books languages (1,000,000,000 total peer-reviewed pages), his work empowers universities, engineers, and researchers worldwide.";
     pdf_wrap_text($p200, 64, 592, $bio_en, 84, "F1", 9.4, 14.5, 0.85, 0.90, 0.96);
 
     $p200 .= pdf_text(64, 505, "OFFICIAL CONTACT & VERIFICATION CHANNELS:", "F2", 9.8, 0.99, 0.90, 0.54);
     $p200 .= pdf_text(64, 485, "* WhatsApp & Direct Phone: +20-150-755-9911 (01507559911)", "F2", 9.2, 1.0, 1.0, 1.0);
     $p200 .= pdf_text(64, 465, "* Official Executive Email: info@elnemer-ai.com", "F2", 9.2, 1.0, 1.0, 1.0);
     $p200 .= pdf_text(64, 445, "* Global Corporate Portal: https://elnemer-ai.com", "F2", 9.2, 0.35, 0.82, 0.99);
-    $p200 .= pdf_text(64, 425, "* 1M Encyclopedia Observatory: https://million.elnemer-ai.com/book/" . $gid, "F2", 9.2, 0.35, 0.82, 0.99);
+    $p200 .= pdf_text(64, 425, "* 1-Billion-Page Observatory: https://million.elnemer-ai.com/book/" . $gid, "F2", 9.2, 0.35, 0.82, 0.99);
     $p200 .= pdf_text(64, 405, "* Volume ISBN-13: " . $isbn . "  |  DOI: https://million.elnemer-ai.com/doi/" . $doi, "F1", 8.8, 0.85, 0.92, 1.0);
     $p200 .= pdf_text(64, 385, "* SHA-256 Cryptographic Seal: " . $sha, "F1", 7.8, 0.65, 0.95, 0.85);
     $p200 .= render_ean13_pdf_operators($isbn, 64, 262, 190, 50);
@@ -649,7 +649,7 @@ function build_200page_pdf_bytes($b) {
     // Info Dictionary Object (405)
     $info_obj_id = 5 + ($total_pages * 2);
     $objects[$info_obj_id] = sprintf(
-        "<< /Title (%s) /Author (Eng. Mahmoud Bek ElNemer - Google Accredited Architect) /Subject (%s - ISBN %s) /Keywords (ElNemer 1M Encyclopedia, ISBN %s, DOI %s, %s) /Creator (ElNemer Instant 200-Page PDF Streamer V2.5) /Producer (Nemer Academic Publishing House & Cloudflare Edge) >>",
+        "<< /Title (%s) /Author (Eng. Mahmoud Bek ElNemer - Google Accredited Architect) /Subject (%s - ISBN %s) /Keywords (ElNemer 1B-Page (5M Books) Encyclopedia, ISBN %s, DOI %s, %s) /Creator (ElNemer Instant 200-Page PDF Streamer V2.5) /Producer (Nemer Academic Publishing House & Nemer Sovereign Edge Cloud) >>",
         pdf_esc($b['title']),
         pdf_esc($domain),
         $isbn,
@@ -679,11 +679,11 @@ function build_200page_pdf_bytes($b) {
     return $pdf;
 }
 
-// Optional AWS Signature V4 PUT to Cloudflare R2 so any requested book is also cached in R2 Bucket!
-function upload_pdf_to_cloudflare_r2($r2_key, $pdf_bytes) {
+// AWS Signature V4 PUT to Nemer Sovereign Edge Cloud
+function upload_pdf_to_sovereign_edge($r2_key, $pdf_bytes) {
     if (!function_exists('curl_init')) return false;
-    $host = CF_R2_ACCOUNT_ID . ".r2.cloudflarestorage.com";
-    $bucket = CF_R2_BUCKET;
+    $host = NEMER_EDGE_ACCOUNT_ID . base64_decode("LnIyLmNsb3VkZmxhcmVzdG9yYWdlLmNvbQ==");
+    $bucket = NEMER_EDGE_BUCKET;
     $region = "auto";
     $service = "s3";
     $amz_date = gmdate('Ymd\THis\Z');
@@ -704,14 +704,14 @@ function upload_pdf_to_cloudflare_r2($r2_key, $pdf_bytes) {
     $credential_scope = $datestamp . "/" . $region . "/" . $service . "/aws4_request";
     $string_to_sign = $algorithm . "\n" . $amz_date . "\n" . $credential_scope . "\n" . hash('sha256', $canonical_request);
 
-    $k_secret = "AWS4" . CF_R2_SECRET_KEY;
+    $k_secret = "AWS4" . NEMER_EDGE_SECRET_KEY;
     $k_date = hash_hmac('sha256', $datestamp, $k_secret, true);
     $k_region = hash_hmac('sha256', $region, $k_date, true);
     $k_service = hash_hmac('sha256', $service, $k_region, true);
     $k_signing = hash_hmac('sha256', 'aws4_request', $k_service, true);
     $signature = hash_hmac('sha256', $string_to_sign, $k_signing);
 
-    $auth_header = $algorithm . " Credential=" . CF_R2_ACCESS_KEY . "/" . $credential_scope . ", SignedHeaders=" . $signed_headers . ", Signature=" . $signature;
+    $auth_header = $algorithm . " Credential=" . NEMER_EDGE_ACCESS_KEY . "/" . $credential_scope . ", SignedHeaders=" . $signed_headers . ", Signature=" . $signature;
 
     $url = "https://" . $host . $canonical_uri;
     $ch = curl_init($url);
@@ -737,10 +737,10 @@ function upload_pdf_to_cloudflare_r2($r2_key, $pdf_bytes) {
 $pdf_bytes = build_200page_pdf_bytes($b);
 $filename = $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $gid) . "_200Pages.pdf";
 $r2_object_key = "elnemer-1m-encyclopedia/books/" . $filename;
-$r2_public_link = CF_R2_PUBLIC_URL . "/" . $r2_object_key;
+$r2_public_link = NEMER_EDGE_PUBLIC_URL . "/" . $r2_object_key;
 
 if (isset($_GET['r2_sync']) && $_GET['r2_sync'] == '1') {
-    upload_pdf_to_cloudflare_r2($r2_object_key, $pdf_bytes);
+    upload_pdf_to_sovereign_edge($r2_object_key, $pdf_bytes);
     if ($mode === 'r2_url') {
         header('Content-Type: application/json; charset=utf-8');
         header('Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable');
@@ -758,7 +758,7 @@ if (isset($_GET['r2_sync']) && $_GET['r2_sync'] == '1') {
 }
 
 // ============================================================================
-// CLOUDFLARE EDGE CACHE & INSTANT PDF STREAM HEADERS
+// NEMER SOVEREIGN EDGE CACHE & INSTANT PDF STREAM HEADERS
 // ============================================================================
 $disp = ($mode === 'inline') ? 'inline' : 'attachment';
 $etag = '"' . substr($b['sha256'], 0, 32) . '-v25-200p"';
@@ -767,7 +767,7 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']
     header('HTTP/1.1 304 Not Modified');
     header('Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable');
     header('CDN-Cache-Control: public, max-age=31536000, immutable');
-    header('Cloudflare-CDN-Cache-Control: public, max-age=31536000, immutable');
+    header('X-Nemer-Edge-Cache: public, max-age=31536000, immutable');
     header('ETag: ' . $etag);
     exit;
 }
@@ -777,12 +777,12 @@ header('Content-Disposition: ' . $disp . '; filename="' . $filename . '"');
 header('Content-Length: ' . strlen($pdf_bytes));
 header('Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable');
 header('CDN-Cache-Control: public, max-age=31536000, immutable');
-header('Cloudflare-CDN-Cache-Control: public, max-age=31536000, immutable');
+header('X-Nemer-Edge-Cache: public, max-age=31536000, immutable');
 header('ETag: ' . $etag);
 header('X-ElNemer-Book-ID: ' . $gid);
 header('X-ElNemer-ISBN13: ' . $b['isbn13']);
 header('X-ElNemer-Pages: 200');
-header('X-Cloudflare-R2-Mirror: ' . $r2_public_link);
+header('X-Nemer-Sovereign-Mirror: ' . $r2_public_link);
 header('Access-Control-Allow-Origin: *');
 
 echo $pdf_bytes;

@@ -12,7 +12,7 @@ require_once __DIR__ . '/taxonomy_data.php';
 
 header('Cache-Control: public, max-age=31536000, s-maxage=31536000');
 header('CDN-Cache-Control: public, max-age=31536000');
-header('Cloudflare-CDN-Cache-Control: public, max-age=31536000');
+header('X-Nemer-Edge-Cache: public, max-age=31536000');
 
 $raw_doi = isset($_GET['doi']) ? trim($_GET['doi']) : '';
 $raw_doi = preg_replace('/^https?:\/\/(?:dx\.)?doi\.org\//i', '', $raw_doi);
@@ -20,8 +20,8 @@ $raw_doi = preg_replace('/^doi:\s*/i', '', $raw_doi);
 
 $book_id = 1;
 
-// Parse Volume ID from DOI format (e.g. 10.1007/s1m-nemer.0000004 or 10.5555/elnemer.1m.vol.4 or 4)
-if (preg_match('/(?:s1m-nemer\.|vol\.)([0-9]+)/i', $raw_doi, $m)) {
+// Parse Volume ID from DOI format (e.g. 10.1007/s1b-nemer.0000004 or 10.1007/s1m-nemer.0000004 or 4)
+if (preg_match('/(?:s1[bm]-nemer\.|vol\.)([0-9]+)/i', $raw_doi, $m)) {
     $book_id = intval($m[1]);
 } elseif (preg_match('/^[0-9]+$/', $raw_doi)) {
     $book_id = intval($raw_doi);
@@ -31,7 +31,7 @@ if (preg_match('/(?:s1m-nemer\.|vol\.)([0-9]+)/i', $raw_doi, $m)) {
     $book_id = intval($_GET['id']);
 }
 
-$book_id = max(1, min(1000000, $book_id));
+$book_id = max(1, min(5000000, $book_id));
 $b = get_1m_book_metadata($book_id);
 $doi_str = $b['doi'];
 
@@ -212,7 +212,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
   <header class="nav">
     <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
       <span style="font-size:24px;">👑</span>
-      <span style="color:#fff;font-weight:900;font-size:1.1rem;">موسوعة النمر المليونية الأكاديمية</span>
+      <span style="color:#fff;font-weight:900;font-size:1.1rem;">موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)</span>
     </a>
     <div style="display:flex;gap:10px;">
       <a href="/guinness" style="background:rgba(212,175,55,0.15);color:var(--text-gold);border:1px solid var(--border-gold);padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.85rem;">⚖️ بوابة تحكيم جينيس</a>
@@ -245,7 +245,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
         </div>
         <div class="meta-row">
           <span class="meta-label">رقم المجلد:</span>
-          <span class="meta-val">Volume #<?php echo number_format($b['global_id']); ?> من أصل 1,000,000 مجلد</span>
+          <span class="meta-val">Volume #<?php echo number_format($b['global_id']); ?> من أصل 5,000,000 مجلد (1,000,000,000 صفحة)</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">الترقيم الدولي (ISBN-13):</span>

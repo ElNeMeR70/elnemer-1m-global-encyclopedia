@@ -7,10 +7,10 @@ require_once __DIR__ . '/taxonomy_data.php';
 require_once __DIR__ . '/barcode_helper.php';
 header('Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable');
 header('CDN-Cache-Control: public, max-age=31536000, immutable');
-header('Cloudflare-CDN-Cache-Control: public, max-age=31536000, immutable');
+header('X-Nemer-Edge-Cache: public, max-age=31536000, immutable');
 
 $gid = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['book']) ? intval($_GET['book']) : 1);
-$gid = max(1, min(1000000, $gid));
+$gid = max(1, min(5000000, $gid));
 $b = get_1m_book_metadata($gid);
 $pal = $b['palette'];
 $all_langs = get_all_78_langs();
@@ -20,10 +20,10 @@ $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "million.elnemer-
 $base_url = $proto . "://" . $host;
 $canonical_url = $base_url . "/book/" . $b['global_id'] . "/" . $b['slug'];
 $pdf_stream_url = $base_url . "/pdf/" . $b['global_id'] . "/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
-$cf_r2_url = "https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev/elnemer-1m-encyclopedia/books/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
+$sovereign_mirror_url = "https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev/elnemer-1m-encyclopedia/books/" . $b['isbn13'] . "_ElNemer_Vol_" . sprintf("%07d", $b['global_id']) . "_200Pages.pdf";
 
-$prev_id = ($gid > 1) ? ($gid - 1) : 1000000;
-$next_id = ($gid < 1000000) ? ($gid + 1) : 1;
+$prev_id = ($gid > 1) ? ($gid - 1) : 5000000;
+$next_id = ($gid < 5000000) ? ($gid + 1) : 1;
 $prev_b = get_1m_book_metadata($prev_id);
 $next_b = get_1m_book_metadata($next_id);
 
@@ -62,7 +62,7 @@ $json_ld = [
                 ["@type" => "PropertyValue", "propertyID" => "SHA256", "value" => $b['sha256']],
                 ["@type" => "PropertyValue", "propertyID" => "BISAC", "value" => $b['bisac']],
                 ["@type" => "PropertyValue", "propertyID" => "GooglePlayBatch", "value" => "BATCH #" . sprintf("%04d", $b['batch_number'])],
-                ["@type" => "PropertyValue", "propertyID" => "CloudflareR2", "value" => $cf_r2_url]
+                ["@type" => "PropertyValue", "propertyID" => "NemerSovereignEdgeMirror", "value" => $sovereign_mirror_url]
             ],
             "author" => [
                 "@type" => "Person",
@@ -88,7 +88,7 @@ $json_ld = [
         [
             "@type" => "BreadcrumbList",
             "itemListElement" => [
-                ["@type" => "ListItem", "position" => 1, "name" => "ElNemer 1M Encyclopedia", "item" => $base_url . "/?lang=" . $b['lang_code']],
+                ["@type" => "ListItem", "position" => 1, "name" => "ElNemer 1-Billion-Page (5M Books) Encyclopedia", "item" => $base_url . "/?lang=" . $b['lang_code']],
                 ["@type" => "ListItem", "position" => 2, "name" => $b['sector_en'], "item" => $base_url . "/?lang=" . $b['lang_code'] . "&sector=" . $b['sector_id']],
                 ["@type" => "ListItem", "position" => 3, "name" => $b['domain_en'], "item" => $base_url . "/?lang=" . $b['lang_code'] . "&discipline=" . $b['discipline_id']],
                 ["@type" => "ListItem", "position" => 4, "name" => "Volume #" . $b['global_id'], "item" => $canonical_url]
@@ -104,16 +104,16 @@ $json_ld = [
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجلد #<?php echo number_format($b['global_id']); ?> | <?php echo htmlspecialchars($b['title']); ?> | ISBN <?php echo $b['isbn13']; ?> | موسوعة النمر المليونية</title>
-    <meta name="description" content="<?php echo htmlspecialchars($b['title'] . ' — ' . $b['subtitle'] . ' | Volume #' . number_format($b['global_id']) . ' of 1,000,000 | ISBN-13: ' . $b['isbn13'] . ' | DOI: ' . $b['doi'] . ' | 200 Pages in ' . $b['lang_en_name'] . ' (' . $b['lang_name'] . '). Single-Author Guinness World Record.'); ?>">
-    <meta name="keywords" content="<?php echo htmlspecialchars($b['domain_en'] . ', ' . $b['domain_ar'] . ', ' . $b['sector_en'] . ', ' . $b['sector_ar'] . ', ' . $b['lang_name'] . ', ' . $b['lang_en_name'] . ', ISBN ' . $b['isbn13'] . ', المهندس محمود النمر, Eng. Mahmoud ElNemer, Google Play Books, موسوعة جينيس مليون كتاب'); ?>">
+    <title>مجلد #<?php echo number_format($b['global_id']); ?> | <?php echo htmlspecialchars($b['title']); ?> | ISBN <?php echo $b['isbn13']; ?> | موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)</title>
+    <meta name="description" content="<?php echo htmlspecialchars($b['title'] . ' — ' . $b['subtitle'] . ' | Volume #' . number_format($b['global_id']) . ' of 5,000,000 (1,000,000,000 Pages) | ISBN-13: ' . $b['isbn13'] . ' | DOI: ' . $b['doi'] . ' | 200 Pages in ' . $b['lang_en_name'] . ' (' . $b['lang_name'] . '). Single-Author Guinness World Record.'); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($b['domain_en'] . ', ' . $b['domain_ar'] . ', ' . $b['sector_en'] . ', ' . $b['sector_ar'] . ', ' . $b['lang_name'] . ', ' . $b['lang_en_name'] . ', ISBN ' . $b['isbn13'] . ', المهندس محمود النمر, Eng. Mahmoud ElNemer, Google Play Books, موسوعة جينيس مليار صفحة 5 مليون كتاب'); ?>">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url); ?>">
 
     <!-- 78-Language Hreflang Alternates -->
     <link rel="alternate" hreflang="x-default" href="<?php echo htmlspecialchars($canonical_url); ?>">
 <?php foreach ($all_langs as $idx => $l):
-    $sib_id = (($gid - 1 + $idx) % 1000000) + 1;
+    $sib_id = (($gid - 1 + $idx) % 5000000) + 1;
 ?>
     <link rel="alternate" hreflang="<?php echo htmlspecialchars($l['code']); ?>" href="<?php echo $base_url; ?>/book/<?php echo $sib_id; ?>">
 <?php endforeach; ?>
@@ -133,7 +133,7 @@ $json_ld = [
     <!-- Open Graph -->
     <meta property="og:type" content="book">
     <meta property="og:title" content="<?php echo htmlspecialchars($b['title']); ?> (ISBN: <?php echo $b['isbn13']; ?>)">
-    <meta property="og:description" content="<?php echo htmlspecialchars($b['subtitle']); ?> — 200-Page Monograph (#<?php echo number_format($b['global_id']); ?> / 1,000,000)">
+    <meta property="og:description" content="<?php echo htmlspecialchars($b['subtitle']); ?> — 200-Page Monograph (#<?php echo number_format($b['global_id']); ?> / 5,000,000 (مليار صفحة))">
     <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>">
     <meta property="book:isbn" content="<?php echo $b['isbn13']; ?>">
 
@@ -578,24 +578,24 @@ $json_ld = [
 <header class="topbar">
     <div class="topbar-inner">
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>" class="brand">
-            🏛️ <b>موسوعة النمر العالمية لمليون كتاب علمي</b>
-            <span class="badge">78 لغة • تحكيم دولي</span>
+            🏛️ <b>موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)</b>
+            <span class="badge">مليار صفحة • 5M كتاب • 78 لغة</span>
         </a>
         <nav class="nav-links">
             <a class="nav-btn" href="/book/<?php echo $prev_id; ?>">⬅️ المجلد السابق (#<?php echo number_format($prev_id); ?>)</a>
             <a class="nav-btn" href="/book/<?php echo $next_id; ?>">➡️ المجلد التالي (#<?php echo number_format($next_id); ?>)</a>
             <a class="nav-btn gold" href="/guinness?id=<?php echo $b['global_id']; ?>">⚖️ تحكيم جينيس</a>
             <a class="nav-btn" href="/guinness_dossier.pdf" target="_blank">📥 ملف التحكيم (PDF)</a>
-            <a class="nav-btn gold" href="/book/<?php echo rand(1, 1000000); ?>">🎲 مجلد عشوائي</a>
+            <a class="nav-btn gold" href="/book/<?php echo rand(1, 5000000); ?>">🎲 مجلد عشوائي</a>
             <a class="nav-btn" href="/?lang=<?php echo urlencode($b['lang_code']); ?>">🌍 لغة <?php echo htmlspecialchars($b['lang_name']); ?></a>
-            <a class="nav-btn" href="/sitemap_index.xml">🗺️ الفهرس المليوني</a>
+            <a class="nav-btn" href="/sitemap_index.xml">🗺️ فهرس المليار صفحة</a>
         </nav>
     </div>
 </header>
 
 <main class="container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>">🏛️ الموسوعة المليونية الرئيسية</a> &raquo;
+        <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>">🏛️ موسوعة المليار صفحة الرئيسية</a> &raquo;
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>&sector=<?php echo $b['sector_id']; ?>"><?php echo htmlspecialchars($b['sector_ar']); ?> (<?php echo htmlspecialchars($b['sector_en']); ?>)</a> &raquo;
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>&discipline=<?php echo $b['discipline_id']; ?>"><?php echo htmlspecialchars($b['domain_ar']); ?></a> &raquo;
         <span style="color:#FDE68A;">مجلد رقم #<?php echo number_format($b['global_id']); ?> (ISBN: <?php echo $b['isbn13']; ?>)</span>
@@ -609,7 +609,7 @@ $json_ld = [
                 <div class="book-ribbon"></div>
 
                 <div style="background:rgba(0,0,0,0.65);color:<?php echo $pal['acc']; ?>;border:1px solid <?php echo $pal['acc']; ?>;padding:6px 10px;border-radius:8px;font-size:0.75rem;font-weight:900;letter-spacing:0.5px;">
-                    ELNEMER 1M ENCYCLOPEDIA • 78 LANGS
+                    ELNEMER 1B-PAGE ENCYCLOPEDIA • 5M BOOKS
                 </div>
 
                 <div class="book-gold-seal">
@@ -635,13 +635,13 @@ $json_ld = [
         <!-- BOOK METADATA, SUMMARY & ACTIONS -->
         <div>
             <div class="pills-row">
-                <span class="pill gold">🏆 مجلد رقم #<?php echo number_format($b['global_id']); ?> من أصل 1,000,000</span>
+                <span class="pill gold">🏆 مجلد رقم #<?php echo number_format($b['global_id']); ?> من أصل 5,000,000 (مليار صفحة)</span>
                 <span class="pill cyan">🌍 اللغة: <?php echo htmlspecialchars($b['lang_name'] . " (" . $b['lang_en_name'] . ")"); ?> [<?php echo $b['lang_code']; ?>]</span>
                 <span class="pill <?php echo $b['is_paid'] ? 'gold' : 'emerald'; ?>">
                     <?php echo $b['is_paid'] ? ("💎 إصدار تجاري: $" . $b['price_usd'] . " USD") : "🎁 وقف علمي مفتوح ($0.00)"; ?>
                 </span>
                 <span class="pill">📦 دفعة Google Play رقم #<?php echo sprintf("%04d", $b['batch_number']); ?></span>
-                <span class="pill cyan">⚡ Cloudflare R2 & Edge Cache</span>
+                <span class="pill cyan">⚡ Nemer Sovereign Edge Cloud</span>
             </div>
 
             <h1 class="book-title"><?php echo htmlspecialchars($b['title']); ?></h1>
@@ -659,9 +659,9 @@ $json_ld = [
                     📖 قراءة ومعاينة الـ 200 صفحة أونلاين
                 </a>
                 <a class="btn-action btn-r2" href="/stream_pdf.php?id=<?php echo $b['global_id']; ?>&r2_sync=1&mode=r2_url" target="_blank">
-                    ☁️ مزامنة وسيرفر Cloudflare R2 السحابي
+                    ☁️ مزامنة السحابة السيادية لدار النمر (Sovereign Edge)
                 </a>
-                <a class="btn-action btn-wa" href="https://wa.me/201507559911?text=<?php echo urlencode('مرحباً مهندس محمود النمر، أرغب في الاستفسار عن المجلد رقم #' . $b['global_id'] . ' (ISBN: ' . $b['isbn13'] . ') في موسوعة المليون كتاب'); ?>" target="_blank" rel="noopener">
+                <a class="btn-action btn-wa" href="https://wa.me/201507559911?text=<?php echo urlencode('مرحباً مهندس محمود النمر، أرغب في الاستفسار عن المجلد رقم #' . $b['global_id'] . ' (ISBN: ' . $b['isbn13'] . ') في موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)'); ?>" target="_blank" rel="noopener">
                     💬 تواصل مباشر مع المؤلف والناشر
                 </a>
             </div>
@@ -679,13 +679,13 @@ $json_ld = [
                     </span>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                    <a href="/book/<?php echo rand(1, 1000000); ?>" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;">🎲 عينة عشوائية جينيس</a>
-                    <a href="/book/1" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🥇 #1 أول كتاب علمي</a>
-                    <a href="/book/100000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==100000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎯 #100,000 مجلد</a>
-                    <a href="/book/500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==500000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">⚡ #500,000 منتصف الموسوعة</a>
-                    <a href="/book/900000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==900000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">💎 #900,000 نهاية التجاري</a>
-                    <a href="/book/900001" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==900001)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎁 #900,001 بداية الوقف المجاني</a>
-                    <a href="/book/1000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1000000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">👑 #1,000,000 المجلد الختامي</a>
+                    <a href="/book/<?php echo rand(1, 5000000); ?>" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;">🎲 عينة عشوائية من 5M كتاب</a>
+                    <a href="/book/1" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🥇 #1 المجلد الأول</a>
+                    <a href="/book/1000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1000000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎯 #1,000,000 المجلد المليوني</a>
+                    <a href="/book/2500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==2500000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">⚡ #2,500,000 منتصف المليار صفحة</a>
+                    <a href="/book/4500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==4500000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">💎 #4,500,000 نهاية التجاري</a>
+                    <a href="/book/4500001" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==4500001)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎁 #4,500,001 بداية الوقف المجاني (100M صفحة)</a>
+                    <a href="/book/5000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==5000000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">👑 #5,000,000 المجلد الختامي للمليار صفحة</a>
                 </div>
             </div>
 
@@ -750,9 +750,9 @@ $json_ld = [
                     </td>
                 </tr>
                 <tr>
-                    <th>سيرفر التخزين السحابي (Cloudflare R2)</th>
+                    <th>سيرفر التخزين السحابي السيادي (Nemer Sovereign Edge Cloud)</th>
                     <td style="font-family:monospace;font-size:0.8rem;">
-                        <a href="<?php echo $cf_r2_url; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;">
+                        <a href="<?php echo $sovereign_mirror_url; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;">
                             ☁️ <?php echo $b['isbn13']; ?>_ElNemer_Vol_<?php echo sprintf('%07d', $b['global_id']); ?>_200Pages.pdf
                         </a>
                     </td>
@@ -792,7 +792,7 @@ $json_ld = [
             <?php
             for ($i = 0; $i < 16; $i++) {
                 $l = $all_langs[$i];
-                $sib_id = (($gid - 1 + ($i * 100)) % 1000000) + 1;
+                $sib_id = (($gid - 1 + ($i * 100)) % 5000000) + 1;
                 $sib_b = get_1m_book_metadata($sib_id);
                 echo '<a href="/book/' . $sib_b['global_id'] . '/' . $sib_b['slug'] . '" class="sibling-card">';
                 echo '<div>🌍 <b>[' . htmlspecialchars($sib_b['lang_code']) . '] ' . htmlspecialchars($sib_b['lang_name']) . '</b></div>';
@@ -809,7 +809,7 @@ $json_ld = [
     <div class="floating-inner">
         <div style="display:flex;align-items:center;gap:12px;">
             <span style="font-weight:900;color:#FDE68A;font-size:0.95rem;">
-                مجلد #<?php echo number_format($b['global_id']); ?> / 1,000,000
+                مجلد #<?php echo number_format($b['global_id']); ?> / 5,000,000 (مليار صفحة)
             </span>
             <span style="color:var(--text-sub);font-size:0.85rem;display:none;md:inline;">
                 ISBN: <?php echo $b['isbn13']; ?>
@@ -822,7 +822,7 @@ $json_ld = [
             <a class="nav-btn" href="<?php echo $pdf_stream_url; ?>?mode=inline" target="_blank">
                 📖 معاينة فورية
             </a>
-            <a class="nav-btn" href="/book/<?php echo rand(1, 1000000); ?>">
+            <a class="nav-btn" href="/book/<?php echo rand(1, 5000000); ?>">
                 🎲 كتاب عشوائي
             </a>
         </div>

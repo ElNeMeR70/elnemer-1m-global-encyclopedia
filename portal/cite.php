@@ -12,7 +12,7 @@
 require_once __DIR__ . '/taxonomy_data.php';
 
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 1;
-$book_id = max(1, min(1000000, $book_id));
+$book_id = max(1, min(5000000, $book_id));
 $format = isset($_GET['format']) ? strtolower(trim($_GET['format'])) : '';
 
 $b = get_1m_book_metadata($book_id);
@@ -24,7 +24,7 @@ $bibtex_str = "@book{ElNemer2026_Vol" . $pad_id . ",\n"
     . "  author    = {ElNemer, Mahmoud Bek},\n"
     . "  title     = {" . $b['title'] . "},\n"
     . "  subtitle  = {" . $b['subtitle'] . "},\n"
-    . "  series    = {ElNemer 1-Million-Volume Global Multilingual Scientific Encyclopedia},\n"
+    . "  series    = {ElNemer 1-Billion-Page (5,000,000-Volume) Global Multilingual Encyclopedia},\n"
     . "  volume    = {" . $book_id . "},\n"
     . "  publisher = {Nemer Academic Publishing House \\& Nemer Digital Solutions},\n"
     . "  address   = {Cairo / Global},\n"

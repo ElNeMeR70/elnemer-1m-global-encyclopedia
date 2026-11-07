@@ -2,7 +2,7 @@
 /**
  * ==============================================================================
  * GUINNESS WORLD RECORDS™ & GLOBAL ACADEMIC ADJUDICATION PORTAL
- * ElNemer 1-Million-Book Multilingual Scientific Encyclopedia
+ * ElNemer 1-Billion-Page (5,000,000-Book) Multilingual Global Encyclopedia
  * 
  * Sole Author & Chief Architect: Eng. Mahmoud Bek ElNemer (المهندس محمود النمر)
  * Nemer Academic Publishing House & Nemer Digital Solutions
@@ -14,10 +14,10 @@ require_once __DIR__ . '/barcode_helper.php';
 
 header('Cache-Control: public, max-age=31536000, s-maxage=31536000');
 header('CDN-Cache-Control: public, max-age=31536000');
-header('Cloudflare-CDN-Cache-Control: public, max-age=31536000');
+header('X-Nemer-Edge-Cache: public, max-age=31536000');
 
 $inspect_id = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['book']) ? intval($_GET['book']) : 1);
-$inspect_id = max(1, min(1000000, $inspect_id));
+$inspect_id = max(1, min(5000000, $inspect_id));
 $active_meta = get_1m_book_metadata($inspect_id);
 ?>
 <!DOCTYPE html>
@@ -27,8 +27,8 @@ $active_meta = get_1m_book_metadata($inspect_id);
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة التحكيم الدولي لموسوعة جينيس للأرقام القياسية | موسوعة النمر المليونية</title>
-  <meta name="description" content="البوابة الرسمية لاعتماد وتحكيم موسوعة النمر المليونية من لجان موسوعة جينيس للأرقام القياسية (Guinness World Records)، اليونسكو، ومحركات البحث الأكاديمية العالمية.">
+  <title>بوابة التحكيم الدولي لموسوعة جينيس للأرقام القياسية | موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب)</title>
+  <meta name="description" content="البوابة الرسمية لاعتماد وتحكيم موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب) من لجان موسوعة جينيس للأرقام القياسية (Guinness World Records)، اليونسكو، ومحركات البحث الأكاديمية العالمية.">
   <meta name="author" content="Eng. Mahmoud Bek ElNemer">
   
   <!-- Fonts -->
@@ -446,8 +446,8 @@ $active_meta = get_1m_book_metadata($inspect_id);
   <!-- Top Navigation -->
   <header class="nav">
     <a href="/" class="nav-brand">
-      <span class="brand-crest">ELNEMER 1M</span>
-      <span class="brand-title">موسوعة النمر المليونية الأكاديمية</span>
+      <span class="brand-crest">ELNEMER 1B PAGES</span>
+      <span class="brand-title">موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب) الأكاديمية</span>
     </a>
     <div class="nav-links">
       <a href="/" class="nav-btn nav-btn-outline">🌐 المرصد الحي (Observatory)</a>
@@ -462,7 +462,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-badge">⚖️ OFFICIAL ADJUDICATION &amp; VERIFICATION PORTAL · GUINNESS WORLD RECORDS™</div>
-      <h1>بوابة التحكيم الدولي والاعتماد القياسي<br/><span>لموسوعة النمر العلمية (مليون مجلد)</span></h1>
+      <h1>بوابة التحكيم الدولي والاعتماد القياسي<br/><span>لموسوعة النمر العالمية للمليار صفحة (5,000,000 مجلد)</span></h1>
       <p>
         تُقدَّم هذه البوابة الرسمية للجان التحكيم في <b>موسوعة جينيس للأرقام القياسية (Guinness World Records)</b>، 
         و<b>منظمة اليونسكو (UNESCO)</b>، و<b>الاتحاد الدولي للناشرين (IPA)</b>، ومحركات البحث الأكاديمية (Google Scholar)،
@@ -481,20 +481,20 @@ $active_meta = get_1m_book_metadata($inspect_id);
     <!-- Key Stats Grid -->
     <section class="stats-grid">
       <div class="stat-card">
-        <div class="stat-num">1,000,000</div>
-        <div class="stat-label">مجلد علمي موثق ومفهرس</div>
+        <div class="stat-num">5,000,000</div>
+        <div class="stat-label">مجلد وكتاب موثق لخدمة الإنسان</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">78</div>
         <div class="stat-label">لغة عالمية شاملة</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">200,000,000</div>
-        <div class="stat-label">صفحة أكاديمية بنية وبحثية</div>
+        <div class="stat-num">1,000,000,000</div>
+        <div class="stat-label">صفحة محكّمة (مليار صفحة بدون تكرار)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">100</div>
-        <div class="stat-label">تخصص أكاديمي دولي (BISAC)</div>
+        <div class="stat-num">1,000</div>
+        <div class="stat-label">تخصص نافع للإنسان عبر 50 قطاعاً</div>
       </div>
     </section>
 
@@ -509,7 +509,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <span class="crit-badge">المعيار الأول: الأصالة والتأليف الفردي</span>
         <h3 class="crit-title">Singular Authorship &amp; Attribution</h3>
         <p class="crit-desc">
-          المليون كتاب منسوبة ومؤلفة ومصممة بالكامل بجهد فكري، وبحثي، وهندسي سيادي للمهندس محمود النمر. لا توجد مشاركة من أي دار نشر أو جهة خارجية في صياغة المنظومة المعرفية، مما يجعله الرقم القياسي التاريخي الأول لمؤلف فردي عالمياً.
+          الـ 5,000,000 كتاب (مليار صفحة) منسوبة ومؤلفة ومصممة بالكامل بجهد فكري، وبحثي، وهندسي سيادي للمهندس محمود النمر. لا توجد مشاركة من أي دار نشر أو جهة خارجية في صياغة المنظومة المعرفية، مما يجعله الرقم القياسي التاريخي الأول لمؤلف فردي عالمياً.
         </p>
       </div>
 
@@ -523,9 +523,9 @@ $active_meta = get_1m_book_metadata($inspect_id);
 
       <div class="criteria-card">
         <span class="crit-badge">المعيار الثالث: العمق التخصصي وعدم التكرار</span>
-        <h3 class="crit-title">Disciplinary Depth (100 BISAC Fields)</h3>
+        <h3 class="crit-title">Human-Benefit Disciplinary Depth (50 Sectors × 1,000 Fields)</h3>
         <p class="crit-desc">
-          موزعة على 10 قطاعات كبرى و100 تخصص دولي معتمد. كل مجلد يتكون من 200 صفحة أكاديمية دقيقة تحوي فصولاً، ومراجع، ومعادلات، ومخططات، وجداول إحصائية وبصمات نصية مستقلة تمنع أي تكرار عبر الـ 200 مليون صفحة.
+          موزعة على 5 محاور إنسانية كبرى و50 قطاعاً و1,000 تخصص نافع للإنسان (خالية تماماً من السياسة أو أي ضرر). كل مجلد يتكون من 200 صفحة دقيقة تحوي فصولاً، ومراجع، ومخططات، وجداول إحصائية وبصمات نصية مستقلة تمنع أي تكرار عبر الـ 1,000,000,000 (مليار) صفحة.
         </p>
       </div>
 
@@ -549,7 +549,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <span class="crit-badge">المعيار الإضافي: التوزيع السحابي اللحظي</span>
         <h3 class="crit-title">Zero-Latency On-Demand Edge Delivery</h3>
         <p class="crit-desc">
-          بنية تحتية سحابية موزعة على شبكة Cloudflare العالمية وLiteSpeed Enterprise، تمكّن المحكمين من استدعاء أي مجلد (200 صفحة) أو شهادة توثيق فوراً وبسرعة فائقة (أقل من ثانية) في أي مكان حول العالم.
+          بنية تحتية سحابية سيادية موزعة فائقة السرعة (Nemer Sovereign Edge Cloud & LiteSpeed Enterprise)، تمكّن المحكمين من استدعاء أي مجلد (200 صفحة) أو شهادة توثيق فوراً وبسرعة فائقة (أقل من ثانية) في أي مكان حول العالم.
         </p>
       </div>
     </section>
@@ -557,21 +557,21 @@ $active_meta = get_1m_book_metadata($inspect_id);
     <!-- Adjudicator Live Verification Console -->
     <div class="sec-head">
       <h2>رادار المحكّمين التفاعلي الفوري (Instant Adjudicator Inspector)</h2>
-      <p>اختر أي مجلد من المجلد #1 حتى المجلد #1,000,000 لفحصه تشفيرياً وتوليد وثائقه فورياً</p>
+      <p>اختر أي مجلد من المجلد #1 حتى المجلد #5,000,000 (مليار صفحة) لفحصه تشفيرياً وتوليد وثائقه فورياً</p>
     </div>
 
     <section class="inspector-panel">
       <form class="quick-jump-form" method="GET" action="/guinness">
-        <input type="number" name="id" min="1" max="1000000" value="<?php echo $active_meta['global_id']; ?>" placeholder="أدخل رقم المجلد (مثال: 742918)..." required>
+        <input type="number" name="id" min="1" max="5000000" value="<?php echo $active_meta['global_id']; ?>" placeholder="أدخل رقم المجلد (مثال: 742918)..." required>
         <button type="submit" class="btn-act btn-act-gold">🔍 فحص بيانات المجلد تشفيرياً</button>
-        <a href="/guinness?id=<?php echo rand(1, 1000000); ?>" class="btn-act btn-act-blue">🎲 عينة عشوائية للمحكّم</a>
+        <a href="/guinness?id=<?php echo rand(1, 5000000); ?>" class="btn-act btn-act-blue">🎲 عينة عشوائية للمحكّم</a>
       </form>
 
       <table class="meta-table">
         <tbody>
           <tr>
             <th>رقم المجلد (Volume ID)</th>
-            <td><b>Vol. #<?php echo number_format($active_meta['global_id']); ?></b> / 1,000,000</td>
+            <td><b>Vol. #<?php echo number_format($active_meta['global_id']); ?></b> / 5,000,000 (1,000,000,000 Pages)</td>
           </tr>
           <tr>
             <th>عنوان المجلد (Title)</th>
@@ -634,7 +634,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <div class="dossier-icon">🏆</div>
         <h3 class="dossier-title">ملف تحكيم جينيس الشامل (Guinness Master Dossier)</h3>
         <p class="dossier-desc">
-          الملف الأكاديمي والتوثيقي الكامل الموجه للجنة تحكيم موسوعة جينيس، متضمناً تفاصيل البنية التحتية، إثبات الأصالة، التوزيع اللغوي لـ 78 لغة، وحسابات عدم التكرار للـ 200 مليون صفحة.
+          الملف الأكاديمي والتوثيقي الكامل الموجه للجنة تحكيم موسوعة جينيس، متضمناً تفاصيل البنية التحتية، إثبات الأصالة، التوزيع اللغوي لـ 78 لغة، وحسابات عدم التكرار للـ 1,000,000,000 (مليار) صفحة.
         </p>
         <a href="/guinness_dossier.pdf" target="_blank" class="btn-act btn-act-gold">
           📥 تحميل الملف التوثيقي (PDF · 511 KB)
@@ -656,7 +656,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <div class="dossier-icon">🔐</div>
         <h3 class="dossier-title">بيانات شجرة ميركل التشفيرية (Merkle Root JSON)</h3>
         <p class="dossier-desc">
-          الملف المصدري الرياضي الذي يحوي جذر شجرة ميركل وتفاصيل التشفير لمليون مجلد علمي، معد للتحقق الرياضي الآلي عبر خوارزميات التشفير المفتوحة.
+          الملف المصدري الرياضي الذي يحوي جذر شجرة ميركل وتفاصيل التشفير لـ 5,000,000 مجلد (مليار صفحة)، معد للتحقق الرياضي الآلي عبر خوارزميات التشفير المفتوحة.
         </p>
         <a href="/merkle_root_1m_guinness.json" target="_blank" class="btn-act btn-act-green">
           📥 تحميل ملف ميركل (JSON Proof)
@@ -669,7 +669,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
   <!-- Footer -->
   <footer>
     <p>
-      <b>موسوعة النمر المليونية الأكاديمية (The ElNemer 1-Million-Book Global Encyclopedia)</b><br/>
+      <b>موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب) الأكاديمية (The ElNemer 1-Billion-Page Global Encyclopedia — 5,000,000 Volumes)</b><br/>
       حقوق الملكية الفكرية، والتصميم الهندسي، والتأليف الأكاديمي محفوظة بالكامل © 2026 
       <b>للمهندس محمود بك النمر</b> (Eng. Mahmoud Bek ElNemer).<br/>
       دار النمر للنشر الأكاديمي · حلول النمر الرقمية · 

@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/taxonomy_data.php';
 header('Content-Type: application/xml; charset=utf-8');
+header('Cache-Control: public, max-age=31536000, s-maxage=31536000');
+header('CDN-Cache-Control: public, max-age=31536000');
 
 $proto = "https";
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "million.elnemer-ai.com";
@@ -22,6 +24,11 @@ if ($type === 'langs') {
     echo "    <changefreq>daily</changefreq>\n";
     echo "    <priority>1.0</priority>\n";
     echo "  </url>\n";
+    echo "  <url>\n";
+    echo "    <loc>{$base_url}/guinness</loc>\n";
+    echo "    <changefreq>daily</changefreq>\n";
+    echo "    <priority>1.0</priority>\n";
+    echo "  </url>\n";
     // All 78 Language Portal URLs
     foreach ($all_langs as $l) {
         $code = urlencode($l['code']);
@@ -31,7 +38,7 @@ if ($type === 'langs') {
         echo "    <priority>0.95</priority>\n";
         echo "  </url>\n";
     }
-    // All 10 Mega-Sectors
+    // All 50 Human-Benefit Mega-Sectors
     foreach ($sectors as $s) {
         echo "  <url>\n";
         echo "    <loc>{$base_url}/?sector={$s['sector_id']}</loc>\n";
@@ -39,7 +46,7 @@ if ($type === 'langs') {
         echo "    <priority>0.9</priority>\n";
         echo "  </url>\n";
     }
-    // All 100 BISAC Sub-Disciplines
+    // All 1,000 Human-Benefit Sub-Disciplines
     foreach ($discs as $d) {
         echo "  <url>\n";
         echo "    <loc>{$base_url}/?discipline={$d['discipline_id']}</loc>\n";
@@ -51,18 +58,19 @@ if ($type === 'langs') {
     exit;
 }
 
-if ($shard <= 0 || $shard > 20) {
+// 100 Shards × 10 Pages × 5,000 Books = 5,000,000 Volumes (1,000,000,000 Pages)
+if ($shard <= 0 || $shard > 100) {
     echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
     echo "  <sitemap>\n";
     echo "    <loc>{$base_url}/sitemaps/sitemap_languages_78.xml</loc>\n";
-    echo "    <lastmod>2026-11-02</lastmod>\n";
+    echo "    <lastmod>2026-11-07</lastmod>\n";
     echo "  </sitemap>\n";
-    for ($s = 1; $s <= 20; $s++) {
-        $s_pad = sprintf("%02d", $s);
+    for ($s = 1; $s <= 100; $s++) {
+        $s_pad = sprintf("%03d", $s);
         for ($pg = 1; $pg <= 10; $pg++) {
             echo "  <sitemap>\n";
             echo "    <loc>{$base_url}/sitemaps/sitemap_books_{$s_pad}.xml?page={$pg}</loc>\n";
-            echo "    <lastmod>2026-11-03</lastmod>\n";
+            echo "    <lastmod>2026-11-07</lastmod>\n";
             echo "  </sitemap>\n";
         }
     }
@@ -72,7 +80,7 @@ if ($shard <= 0 || $shard > 20) {
 
 $page = isset($_GET['page']) ? max(1, min(10, intval($_GET['page']))) : 1;
 $start_id = ($shard - 1) * 50000 + ($page - 1) * 5000 + 1;
-$end_id = min(1000000, $start_id + 4999);
+$end_id = min(5000000, $start_id + 4999);
 
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 for ($gid = $start_id; $gid <= $end_id; $gid++) {

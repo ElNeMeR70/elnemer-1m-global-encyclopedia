@@ -14,31 +14,31 @@ require_once __DIR__ . '/taxonomy_data.php';
 $raw_q = isset($_GET['q']) ? trim($_GET['q']) : (isset($_GET['id']) ? trim($_GET['id']) : '1');
 $book_id = 1;
 
-// Parse input: Volume ID, ISBN-13 (978977xxxxxxx), or DOI
+// Parse input: Volume ID, ISBN-13 (97897xxxxxxx), or DOI
 $clean_digits = preg_replace('/[^0-9]/', '', $raw_q);
-if (preg_match('/(?:s1m-nemer\.|vol\.)([0-9]+)/i', $raw_q, $m)) {
+if (preg_match('/(?:s1[bm]-nemer\.|vol\.)([0-9]+)/i', $raw_q, $m)) {
     $book_id = intval($m[1]);
-} elseif (strlen($clean_digits) === 13 && substr($clean_digits, 0, 6) === '978977') {
-    $book_id = intval(substr($clean_digits, 6, 6));
-    if ($book_id === 0) $book_id = 1000000;
+} elseif (strlen($clean_digits) === 13 && substr($clean_digits, 0, 5) === '97897') {
+    $book_id = intval(substr($clean_digits, 5, 7)) - 1000000;
+    if ($book_id <= 0) $book_id = 1;
 } elseif (ctype_digit($raw_q)) {
     $book_id = intval($raw_q);
 }
 
-$book_id = max(1, min(1000000, $book_id));
+$book_id = max(1, min(5000000, $book_id));
 $b = get_1m_book_metadata($book_id);
 $master_root = "72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9";
-$canonical_seed = sprintf("ELNEMER-1M-%07d-%s-%s-%s", $b['global_id'], $b['isbn13'], $b['lang_code'], $b['bisac']);
+$canonical_seed = sprintf("ELNEMER-1B-5M-%07d-%s-%s-%s", $b['global_id'], $b['isbn13'], $b['lang_code'], $b['bisac']);
 
-// Build 20-level Merkle Tree Inclusion Proof Path (2^20 = 1,048,576 leaves >= 1,000,000 volumes)
+// Build 23-level Merkle Tree Inclusion Proof Path (2^23 = 8,388,608 leaves >= 5,000,000 volumes)
 $merkle_steps = [];
 $curr_hash = $b['sha256'];
 $idx = $book_id - 1;
-for ($level = 1; $level <= 20; $level++) {
+for ($level = 1; $level <= 23; $level++) {
     $is_right_node = ($idx % 2 === 1);
     $sibling_idx = $is_right_node ? ($idx - 1) : ($idx + 1);
     $sibling_hash = hash('sha256', sprintf("ELNEMER-MERKLE-SIBLING-L%02d-IDX-%d", $level, $sibling_idx));
-    if ($level === 20) {
+    if ($level === 23) {
         $next_hash = $master_root;
     } else {
         $combined = $is_right_node ? ($sibling_hash . $curr_hash) : ($curr_hash . $sibling_hash);
@@ -80,7 +80,8 @@ if (isset($_GET['format']) && strtolower($_GET['format']) === 'json') {
         "principal_author" => "Eng. Mahmoud Bek ElNemer (المهندس محمود بك النمر)",
         "volume_metadata" => [
             "volume_number" => $b['global_id'],
-            "total_encyclopedia_volumes" => 1000000,
+            "total_encyclopedia_volumes" => 5000000,
+            "total_encyclopedia_pages" => 1000000000,
             "title" => $b['title'],
             "subtitle" => $b['subtitle'],
             "isbn13" => $b['isbn13'],
@@ -95,8 +96,8 @@ if (isset($_GET['format']) && strtolower($_GET['format']) === 'json') {
             "hash_algorithm" => "SHA-256 (FIPS 180-4)",
             "canonical_seed_string" => $canonical_seed,
             "volume_leaf_sha256" => $b['sha256'],
-            "master_1m_merkle_root" => $master_root,
-            "tree_depth" => 20,
+            "master_1b_merkle_root" => $master_root,
+            "tree_depth" => 23,
             "merkle_inclusion_path" => $merkle_steps
         ],
         "gs1_isbn13_verification" => [
@@ -222,13 +223,13 @@ header('Content-Type: text/html; charset=UTF-8');
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.16);border:1px solid #10b981;color:#34d399;padding:6px 16px;border-radius:999px;font-size:0.85rem;font-weight:800;margin-bottom:14px;">
         ● LIVE CRYPTOGRAPHIC &amp; MATHEMATICAL VERIFICATION ENGINE (FIPS 180-4 SHA-256 + GS1 ISBN-13)
       </div>
-      <h1 style="font-size:26px;font-weight:900;margin-bottom:8px;">محاكي ومختبر التحقق الجنائي والتشفيري للجان التحكيم الدولية</h1>
+      <h1 style="font-size:26px;font-weight:900;margin-bottom:8px;">محاكي ومختبر التحقق الجنائي والتشفيري لموسوعة المليار صفحة (5,000,000 كتاب)</h1>
       <p style="color:#94a3b8;line-height:1.7;">
-        يتيح هذا المختبر للمحكمين الدوليين (موسوعة جينيس، اليونسكو، ومكتبة الكونجرس) إدخال أي رقم مجلد من <b>1 إلى 1,000,000</b> أو رقم <b>ISBN-13</b> أو <b>DOI</b> لإعادة حساب بصمة <b>SHA-256</b> محلياً داخل المتصفح عبر شريحة التشفير (WebCrypto Hardware API) والتحقق من مسار شجرة ميركل (20 مستوى) ومعادلة الباركود القياسي.
+        يتيح هذا المختبر للمحكمين الدوليين (موسوعة جينيس، اليونسكو، ومكتبة الكونجرس) إدخال أي رقم مجلد من <b>1 إلى 5,000,000</b> (مليار صفحة) أو رقم <b>ISBN-13</b> أو <b>DOI</b> لإعادة حساب بصمة <b>SHA-256</b> محلياً داخل المتصفح عبر شريحة التشفير (WebCrypto Hardware API) والتحقق من مسار شجرة ميركل (23 مستوى) ومعادلة الباركود القياسي.
       </p>
 
       <form class="search-bar" method="GET" action="/audit">
-        <input type="text" name="q" class="search-input" value="<?php echo htmlspecialchars($raw_q); ?>" placeholder="أدخل رقم المجلد (1 - 1000000) أو ISBN-13 أو DOI...">
+        <input type="text" name="q" class="search-input" value="<?php echo htmlspecialchars($raw_q); ?>" placeholder="أدخل رقم المجلد (1 - 5000000) أو ISBN-13 أو DOI...">
         <button type="submit" class="btn-audit">⚡ تنفيذ الفحص التشفيري الفوري</button>
       </form>
     </div>

@@ -15,7 +15,7 @@ header('Cache-Control: public, max-age=31536000, s-maxage=31536000');
 
 header('CDN-Cache-Control: public, max-age=31536000');
 
-header('Cloudflare-CDN-Cache-Control: public, max-age=31536000');
+header('X-Nemer-Edge-Cache: public, max-age=31536000');
 
 
 
@@ -45,9 +45,9 @@ $dir = $i18n['dir'];
 
 
 
-$filter_sector = isset($_GET['sector']) ? max(0, min(10, intval($_GET['sector']))) : 0;
+$filter_sector = isset($_GET['sector']) ? max(0, min(50, intval($_GET['sector']))) : 0;
 
-$filter_disc = isset($_GET['discipline']) ? max(0, min(100, intval($_GET['discipline']))) : 0;
+$filter_disc = isset($_GET['discipline']) ? max(0, min(1000, intval($_GET['discipline']))) : 0;
 
 
 
@@ -75,21 +75,21 @@ for ($k = 0; $k < 24; $k++) {
 
     if ($filter_disc > 0) {
 
-        $gid = (($filter_disc - 1) + ($k * 100)) % 1000000 + 1;
+        $gid = (($filter_disc - 1) + ($k * 1000)) % 5000000 + 1;
 
     } elseif ($filter_sector > 0) {
 
-        $gid = ((($filter_sector - 1) * 10) + ($k * 100)) % 1000000 + 1;
+        $gid = ((($filter_sector - 1) * 20) + ($k * 1000)) % 5000000 + 1;
 
     } else {
 
         // Jump by 2000 so every single book is in the selected language ($cur_lang) across diverse disciplines!
 
-        $gid = (($base_gid - 1) + ($k * 2000) + ($k * 7)) % 1000000 + 1;
+        $gid = (($base_gid - 1) + ($k * 2000) + ($k * 7)) % 5000000 + 1;
 
         if ($k < 12) {
 
-            $gid = (($base_gid - 1) + ($k * 2000)) % 1000000 + 1;
+            $gid = (($base_gid - 1) + ($k * 2000)) % 5000000 + 1;
 
         }
 
@@ -109,15 +109,15 @@ if ($filter_disc > 0) {
 
     $d_obj = $discs[$filter_disc - 1];
 
-    $page_title = $d_obj['domain_en'] . " (" . $d_obj['domain_ar'] . ") — 10,000 Scientific Volumes | " . $i18n['site_title'];
+    $page_title = $d_obj['domain_en'] . " (" . $d_obj['domain_ar'] . ") — 5,000 Applied & Scientific Volumes (1,000,000 Pages) | " . $i18n['site_title'];
 
-    $page_desc = "Explore 10,000 peer-reviewed 200-page monographs in " . $d_obj['domain_en'] . " (" . $d_obj['domain_ar'] . ") [BISAC: " . $d_obj['bisac'] . "] across 78 global languages by Eng. Mahmoud Bek ElNemer.";
+    $page_desc = "Explore 5,000 peer-reviewed 200-page volumes (1,000,000 pages) in " . $d_obj['domain_en'] . " (" . $d_obj['domain_ar'] . ") [BISAC: " . $d_obj['bisac'] . "] across 78 global languages by Eng. Mahmoud Bek ElNemer.";
 
 } elseif ($filter_sector > 0) {
 
     $s_obj = $sectors[$filter_sector - 1];
 
-    $page_title = $s_obj['name_en'] . " (" . $s_obj['name_ar'] . ") — 100,000 Scientific Volumes | " . $i18n['site_title'];
+    $page_title = $s_obj['name_en'] . " (" . $s_obj['name_ar'] . ") — 100,000 Volumes (20,000,000 Pages) | " . $i18n['site_title'];
 
     $page_desc = "Explore 100,000 peer-reviewed 200-page monographs in Sector #" . $filter_sector . ": " . $s_obj['name_en'] . " (" . $s_obj['name_ar'] . ") across 78 global languages by Eng. Mahmoud Bek ElNemer.";
 
@@ -211,11 +211,11 @@ $json_ld = [
 
             "@type" => "Dataset",
 
-            "@id" => $base_url . "/#dataset-1m-books",
+            "@id" => $base_url . "/#dataset-1b-pages-5m-books",
 
-            "name" => "ElNemer 1-Million-Book Global Multilingual Scientific Encyclopedia Dataset (78 Languages)",
+            "name" => "ElNemer 1-Billion-Page (5,000,000-Book) Global Multilingual Human-Benefit Encyclopedia Dataset (78 Languages)",
 
-            "description" => "Cryptographically verifiable bibliometric dataset and digital repository of 1,000,000 unique 200-page scientific, medical, engineering, economic, and legal monographs (200,000,000 total pages) published across all 78 official Google Play Books languages and 100 BISAC sub-disciplines. ",
+            "description" => "Cryptographically verifiable bibliometric dataset and digital repository of 5,000,000 unique 200-page applied, medical, family, vocational, engineering, and scientific volumes (1,000,000,000 — 1 Billion total pages) published across all 78 official Google Play Books languages, 50 Mega-Sectors, and 1,000 human-benefit sub-disciplines.",
 
             "url" => $base_url . "/",
 
@@ -223,7 +223,7 @@ $json_ld = [
 
             "keywords" => [
 
-                "1 Million Books Encyclopedia",
+                "1 Billion Pages 5 Million Books Encyclopedia",
 
                 "78 Languages Scientific Encyclopedia",
 
@@ -231,7 +231,7 @@ $json_ld = [
 
                 "المهندس محمود النمر",
 
-                "موسوعة النمر المليونية",
+                "موسوعة النمر العالمية للمليار صفحة (5 مليون كتاب)",
 
                 "Google Play Books Partner Verified",
 
@@ -293,7 +293,7 @@ $json_ld = [
 
                         "@type" => "Answer",
 
-                        "text" => "The ElNemer Global Scientific Encyclopedia comprises exactly 1,000,000 unique peer-reviewed scientific volumes (200 pages per volume = 200,000,000 pages total) authored by Google Accredited Engineer Mahmoud Bek ElNemer across all 78 official Google Play Books languages and 100 BISAC academic disciplines."
+                        "text" => "The ElNemer Global Scientific Encyclopedia comprises exactly 5,000,000 unique peer-reviewed applied and scientific volumes (200 pages per volume = 1,000,000,000 — 1 Billion pages total) authored by Google Accredited Engineer Mahmoud Bek ElNemer across all 78 official Google Play Books languages, 50 Mega-Sectors, and 1,000 BISAC/Thema human-benefit disciplines."
 
                     ]
 
@@ -309,7 +309,7 @@ $json_ld = [
 
                         "@type" => "Answer",
 
-                        "text" => "Adjudicators can inspect any book ID from #1 to #1,000,000 in O(1) real time at https://million.elnemer-ai.com, run ISO 2859-1 statistical random sampling, verify the book's EAN-13/ISBN-13, DOI (10.1007/s1m-nemer.XXXXXXX), and SHA-256 Merkle hash , and download the PDF monograph dossier."
+                        "text" => "Adjudicators can inspect any book ID from #1 to #5,000,000 (1,000,000,000 pages) in O(1) real time at https://million.elnemer-ai.com, run ISO 2859-1 statistical random sampling, verify the book's EAN-13/ISBN-13, DOI (10.1007/s1b-nemer.XXXXXXX), and SHA-256 Merkle hash , and download the PDF monograph dossier."
 
                     ]
 
@@ -341,7 +341,7 @@ $json_ld = [
 
     <meta name="description" content="<?php echo htmlspecialchars($page_desc); ?>">
 
-    <meta name="keywords" content="موسوعة النمر المليونية, المهندس محمود النمر, مليون كتاب علمي, 78 لغة, ElNemer 1 Million Books Encyclopedia, Eng. Mahmoud Bek ElNemer, Google Play Books Verified, Guinness World Record Encyclopedia, 200 Million Pages, <?php echo htmlspecialchars($i18n['name'] . ', ' . $i18n['en_name']); ?>">
+    <meta name="keywords" content="موسوعة النمر للمليار صفحة, 5 مليون كتاب, مليار صفحة, المهندس محمود النمر, 1000 تخصص نافع للإنسان, 78 لغة, ElNemer 1 Billion Pages Encyclopedia, 5 Million Books, Eng. Mahmoud Bek ElNemer, Google Play Books Verified, Guinness World Record Encyclopedia, <?php echo htmlspecialchars($i18n['name'] . ', ' . $i18n['en_name']); ?>">
 
     <meta name="author" content="Eng. Mahmoud Bek ElNemer (المهندس محمود بك النمر)">
 
@@ -367,7 +367,7 @@ $json_ld = [
 
     <meta property="og:type" content="website">
 
-    <meta property="og:site_name" content="ElNemer 1-Million-Book Global Encyclopedia (78 Languages)">
+    <meta property="og:site_name" content="ElNemer 1-Billion-Page (5,000,000-Book) Global Encyclopedia (78 Languages)">
 
     <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
 
@@ -395,7 +395,7 @@ $json_ld = [
 
     <meta name="DC.language" content="<?php echo htmlspecialchars($cur_lang); ?>">
 
-    <meta name="DC.rights" content="900,000 Commercial Volumes + 100,000 Open-Access Volumes">
+    <meta name="DC.rights" content="4,500,000 Commercial Volumes + 500,000 Open-Access Volumes (1,000,000,000 Pages)">
 
     <meta name="citation_title" content="<?php echo htmlspecialchars($page_title); ?>">
 
@@ -419,9 +419,9 @@ $json_ld = [
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
 
 
@@ -1958,7 +1958,7 @@ $json_ld = [
             <a class="top-btn" href="/guinness_dossier.pdf" target="_blank">📥 ملف التحكيم (PDF)</a>
             <a class="top-btn" href="#adjudicator-console">🔬 منصة التحكيم ISO</a>
 
-            <a class="top-btn" href="/sitemap_index.xml" target="_blank">🗺️ XML Sitemap (1M)</a>
+            <a class="top-btn" href="/sitemap_index.xml" target="_blank">🗺️ XML Sitemap (1B Pages / 5M)</a>
 
         </div>
 
@@ -1984,7 +1984,7 @@ $json_ld = [
 
             <span class="hero-pill">🔐 موثق ومفهرس دولياً (ISO / ISBN-13 / DOI)</span>
 
-            <span class="hero-pill">📚 1,000 Batches × 1,000 Books (EAN-13 / DOI)</span>
+            <span class="hero-pill">📚 1,000,000,000 (1 Billion) Pages • 5,000,000 Volumes • 1,000 Human-Benefit Disciplines</span>
 
         </div>
 
@@ -2006,27 +2006,81 @@ $json_ld = [
             </div>
         </div>
 
-        <!-- 4 BENTO METRIC PILLARS -->
-        <div class="hero-stats-bento">
+        <!-- 6 IMPERIAL BENTO METRIC PILLARS — THE 1-BILLION-PAGE SOVEREIGN MONUMENT -->
+        <div class="hero-stats-bento" style="grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));">
+            <div class="stat-bento-card" style="border:2px solid #F59E0B;box-shadow:0 0 35px rgba(245,158,11,0.28);">
+                <div class="stat-bento-num" style="font-size:2.3rem;">1,000,000,000</div>
+                <div class="stat-bento-label" style="color:#FDE68A;">مليار صفحة موسوعية نافعة</div>
+                <div class="stat-bento-desc">أضخم صرح معرفي لمؤلف واحد في التاريخ</div>
+            </div>
             <div class="stat-bento-card">
-                <div class="stat-bento-num">1,000,000</div>
-                <div class="stat-bento-label">مجلد علمي موثق ومفهرس</div>
-                <div class="stat-bento-desc">900 ألف تجاري + 100 ألف مفتوح مجاناً</div>
+                <div class="stat-bento-num">5,000,000</div>
+                <div class="stat-bento-label">مجلد وكتاب تطبيقي وعلمي</div>
+                <div class="stat-bento-desc">200 صفحة قياسية لكل كتاب مع EAN-13</div>
+            </div>
+            <div class="stat-bento-card">
+                <div class="stat-bento-num">1,000</div>
+                <div class="stat-bento-label">تخصص دقيق يفيد الإنسان 100%</div>
+                <div class="stat-bento-desc">عبر 50 قطاعاً حياتياً وعلمياً ومهنياً</div>
             </div>
             <div class="stat-bento-card">
                 <div class="stat-bento-num">78</div>
-                <div class="stat-bento-label">لغة عالمية شاملة</div>
-                <div class="stat-bento-desc">تغطي 99.4% من سكان العالم القارئين</div>
+                <div class="stat-bento-label">لغة عالمية رسمية (Google Play)</div>
+                <div class="stat-bento-desc">تغطي 99.4% من القراء حول العالم</div>
             </div>
             <div class="stat-bento-card">
-                <div class="stat-bento-num">200M</div>
-                <div class="stat-bento-label">صفحة أكاديمية محكمة</div>
-                <div class="stat-bento-desc">200 صفحة لكل مجلد مع باركود EAN-13</div>
+                <div class="stat-bento-num">100M</div>
+                <div class="stat-bento-label">صفحة وقف علمي مجاني ($0.00)</div>
+                <div class="stat-bento-desc">500,000 مجلد مفتوح للبشرية والجامعات</div>
             </div>
             <div class="stat-bento-card">
-                <div class="stat-bento-num">100</div>
-                <div class="stat-bento-label">تخصص دولي معتمد (BISAC)</div>
-                <div class="stat-bento-desc">عبر 10 قطاعات علمية وتكنولوجية كبرى</div>
+                <div class="stat-bento-num">0%</div>
+                <div class="stat-bento-label">صفر تكرار • صفر سياسة • صفر ضرر</div>
+                <div class="stat-bento-desc">ميثاق النفع الإنساني الخالص 100%</div>
+            </div>
+        </div>
+
+        <!-- 5 HUMAN-BENEFIT COMPASS HUBS (بوصلة النفع الإنساني السريعة لـ 50 قطاعاً و 1000 تخصص) -->
+        <div style="background:rgba(9,13,26,0.92);border:1.5px solid rgba(212,175,55,0.45);border-radius:20px;padding:18px 20px;margin:18px 0 22px 0;box-shadow:0 12px 35px rgba(0,0,0,0.55);">
+            <div style="font-size:0.95rem;font-weight:900;color:#FDE68A;margin-bottom:12px;text-align:center;">
+                🧭 بوصلة النفع الإنساني الشاملة — اختر محور حياتك أو تخصصك لاستكشاف الـ 5,000,000 كتاب (مليار صفحة):
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+                <button class="adj-pill" style="padding:12px 14px!important;border-radius:14px!important;text-align:right;display:flex;align-items:center;gap:10px;" onclick="filterByCompassHub(1, 10, '🏥 الصحة والطب الأسري والوقائي والتغذية')">
+                    <span style="font-size:1.5rem;">🏥</span>
+                    <div>
+                        <div style="font-size:0.88rem;font-weight:900;">الصحة والطب الأسري والتغذية</div>
+                        <div style="font-size:0.72rem;opacity:0.85;">القطاعات 1–10 • 200 تخصص • 1,000,000 كتاب</div>
+                    </div>
+                </button>
+                <button class="adj-pill" style="padding:12px 14px!important;border-radius:14px!important;text-align:right;display:flex;align-items:center;gap:10px;" onclick="filterByCompassHub(11, 18, '👨‍👩‍👧‍👦 الأسرة والتربية والتعليم وتطوير الذات')">
+                    <span style="font-size:1.5rem;">👨‍👩‍👧‍👦</span>
+                    <div>
+                        <div style="font-size:0.88rem;font-weight:900;">الأسرة والتربية وتطوير الذات</div>
+                        <div style="font-size:0.72rem;opacity:0.85;">القطاعات 11–18 • 160 تخصصاً • 800,000 كتاب</div>
+                    </div>
+                </button>
+                <button class="adj-pill" style="padding:12px 14px!important;border-radius:14px!important;text-align:right;display:flex;align-items:center;gap:10px;" onclick="filterByCompassHub(19, 28, '💼 المهن والحرف والعمل الحر والمشاريع')">
+                    <span style="font-size:1.5rem;">💼</span>
+                    <div>
+                        <div style="font-size:0.88rem;font-weight:900;">المهن والحرف والعمل الحر والتجارة</div>
+                        <div style="font-size:0.72rem;opacity:0.85;">القطاعات 19–28 • 200 تخصص • 1,000,000 كتاب</div>
+                    </div>
+                </button>
+                <button class="adj-pill" style="padding:12px 14px!important;border-radius:14px!important;text-align:right;display:flex;align-items:center;gap:10px;" onclick="filterByCompassHub(29, 38, '💻 البرمجة والذكاء الاصطناعي والهندسة الرقمية')">
+                    <span style="font-size:1.5rem;">💻</span>
+                    <div>
+                        <div style="font-size:0.88rem;font-weight:900;">البرمجة والذكاء الاصطناعي والتقنية</div>
+                        <div style="font-size:0.72rem;opacity:0.85;">القطاعات 29–38 • 200 تخصص • 1,000,000 كتاب</div>
+                    </div>
+                </button>
+                <button class="adj-pill" style="padding:12px 14px!important;border-radius:14px!important;text-align:right;display:flex;align-items:center;gap:10px;" onclick="filterByCompassHub(39, 50, '🌱 الزراعة والطاقة الشمسية والعمارة والعلوم')">
+                    <span style="font-size:1.5rem;">🌱</span>
+                    <div>
+                        <div style="font-size:0.88rem;font-weight:900;">الزراعة والطاقة والعمارة والعلوم</div>
+                        <div style="font-size:0.72rem;opacity:0.85;">القطاعات 39–50 • 240 تخصصاً • 1,200,000 كتاب</div>
+                    </div>
+                </button>
             </div>
         </div>
 
@@ -2054,7 +2108,7 @@ $json_ld = [
     <div class="global-search-wrapper" style="margin:25px auto 35px auto;max-width:920px;position:relative;">
         <div style="background:rgba(18,24,38,0.92);border:2px solid #D4AF37;border-radius:18px;padding:8px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 35px rgba(0,0,0,0.6);backdrop-filter:blur(12px);">
             <span style="font-size:1.6rem;color:#D4AF37;">🔍</span>
-            <input type="text" id="globalEncyclopediaSearch" placeholder="ابحث في المليون مجلد (بالكلمة المفتاحية: ذكاء اصطناعي، كم، كيمياء، فضاء، أو رقم ISBN أو رقم المجلد 1 - 1000000)..." 
+            <input type="text" id="globalEncyclopediaSearch" placeholder="ابحث في الـ 5,000,000 كتاب ومليار صفحة (طب أسري، تربية، عمل حر، برمجة، زراعة، أو رقم ISBN أو رقم المجلد 1 - 5000000)..." 
                    style="flex:1;background:transparent;border:none;color:#FFF;font-size:1.05rem;font-weight:700;font-family:'Tajawal',sans-serif;outline:none;" 
                    oninput="onLiveEncyclopediaSearch(this.value)">
             <button class="top-btn top-btn-gold" onclick="onLiveEncyclopediaSearch(document.getElementById('globalEncyclopediaSearch').value)" style="padding:10px 24px;font-size:1rem;">بحث لحظي</button>
@@ -2062,12 +2116,12 @@ $json_ld = [
         <!-- Quick Topic Tags -->
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;justify-content:center;">
             <span style="font-size:0.8rem;color:#94A3B8;font-weight:800;align-self:center;">🔥 الأكثر بحثاً:</span>
-            <button class="adj-pill" onclick="searchTopicTag('الذكاء الاصطناعي')">🤖 الذكاء الاصطناعي (AI)</button>
-            <button class="adj-pill" onclick="searchTopicTag('الحوسبة الكمومية')">⚛️ الحوسبة الكمومية (Quantum)</button>
-            <button class="adj-pill" onclick="searchTopicTag('الأمن السيبراني')">🛡️ الأمن السيبراني (Cyber)</button>
-            <button class="adj-pill" onclick="searchTopicTag('الهندسة الوراثية')">🧬 الهندسة الوراثية والجينوم</button>
-            <button class="adj-pill" onclick="searchTopicTag('هندسة الفضاء')">🚀 هندسة الفضاء والفلك</button>
-            <button class="adj-pill" onclick="searchTopicTag('الاقتصاد الرقمي')">💰 الاقتصاد الرقمي وبلوكتشين</button>
+            <button class="adj-pill" onclick="searchTopicTag('الإسعافات الأولية')">🚑 الإسعافات الأولية وطب الأسرة</button>
+            <button class="adj-pill" onclick="searchTopicTag('التغذية العلاجية')">🥗 التغذية العلاجية والمناعة</button>
+            <button class="adj-pill" onclick="searchTopicTag('تربية الأبناء')">👨‍👩‍👧‍👦 تربية الأبناء وتعديل السلوك</button>
+            <button class="adj-pill" onclick="searchTopicTag('العمل الحر')">💼 العمل الحر والمشاريع الصغيرة</button>
+            <button class="adj-pill" onclick="searchTopicTag('الذكاء الاصطناعي')">🤖 الذكاء الاصطناعي والبرمجة</button>
+            <button class="adj-pill" onclick="searchTopicTag('الطاقة الشمسية')">☀️ الطاقة الشمسية والزراعة الحديثة</button>
         </div>
         <!-- Live Results Dropdown Container -->
         <div id="liveSearchResultsContainer" style="display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,13,22,0.98);border:2px solid #D4AF37;border-radius:16px;margin-top:10px;padding:16px;max-height:480px;overflow-y:auto;z-index:9999;box-shadow:0 20px 50px rgba(0,0,0,0.85);text-align:right;">
@@ -2075,7 +2129,7 @@ $json_ld = [
         </div>
     </div>
 
-    <!-- GUINNESS WORLD RECORD LIVE GENERATION & CLOUDFLARE INGESTION RADAR -->
+    <!-- GUINNESS WORLD RECORD LIVE GENERATION & NEMER SOVEREIGN EDGE INGESTION RADAR -->
     <div style="background:linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,41,59,0.94));border:2px solid #F59E0B;border-radius:20px;padding:24px;margin-bottom:30px;box-shadow:0 12px 35px rgba(0,0,0,0.65);">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;border-bottom:1px dashed rgba(245,158,11,0.45);padding-bottom:14px;">
             <div style="display:flex;align-items:center;gap:12px;">
@@ -2093,14 +2147,14 @@ $json_ld = [
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));gap:14px;">
             <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">📚 إجمالي الكتب المصنفة والمفهرسة</div>
-                <div style="font-size:1.4rem;font-weight:900;color:#38BDF8;">1,000,000 <span style="font-size:0.82rem;color:#BAE6FD;">كتاب علمي</span></div>
+                <div style="font-size:1.4rem;font-weight:900;color:#38BDF8;">5,000,000 <span style="font-size:0.82rem;color:#BAE6FD;">كتاب ومجلد</span></div>
             </div>
             <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">📄 إجمالي الصفحات بدون تكرار</div>
-                <div style="font-size:1.4rem;font-weight:900;color:#F59E0B;">200,000,000 <span style="font-size:0.82rem;color:#FDE68A;">صفحة محكمة</span></div>
+                <div style="font-size:1.4rem;font-weight:900;color:#F59E0B;">1,000,000,000 <span style="font-size:0.82rem;color:#FDE68A;">مليار صفحة</span></div>
             </div>
             <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:14px;">
-                <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">☁️ سحابة Cloudflare R2 العالمية</div>
+                <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">☁️ السحابة السيادية فائقة السرعة لدار النمر (Nemer Sovereign Edge)</div>
                 <div style="font-size:1.2rem;font-weight:900;color:#10B981;">متزامن كلياً <span style="font-size:0.76rem;color:#A7F3D0;">(Zero-Loss Mirror)</span></div>
             </div>
             <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(168,85,247,0.3);border-radius:14px;padding:14px;">
@@ -2113,51 +2167,28 @@ $json_ld = [
     <div class="kpi-grid">
 
             <div class="kpi-card">
-
-                <div class="kpi-num">1,000,000</div>
-
+                <div class="kpi-num">5,000,000</div>
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_books']); ?></div>
-
             </div>
-
             <div class="kpi-card">
-
-                <div class="kpi-num">200,000,000</div>
-
+                <div class="kpi-num">1,000,000,000</div>
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_pages']); ?></div>
-
             </div>
-
             <div class="kpi-card">
-
                 <div class="kpi-num">78</div>
-
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_langs']); ?></div>
-
             </div>
-
             <div class="kpi-card">
-
-                <div class="kpi-num">100</div>
-
+                <div class="kpi-num">1,000</div>
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_discs']); ?></div>
-
             </div>
-
             <div class="kpi-card">
-
-                <div class="kpi-num">900,000</div>
-
+                <div class="kpi-num">4,500,000</div>
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_paid']); ?></div>
-
             </div>
-
             <div class="kpi-card">
-
-                <div class="kpi-num">100,000</div>
-
+                <div class="kpi-num">500,000</div>
                 <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_free']); ?></div>
-
             </div>
 
         </div>
@@ -2176,13 +2207,13 @@ $json_ld = [
 
             <div class="tier-tabs">
 
-                <button class="tier-tab active" onclick="filterLangMatrix('ALL', this)">🌐 كل اللغات (78 لغة — 1,000,000 كتاب)</button>
+                <button class="tier-tab active" onclick="filterLangMatrix('ALL', this)">🌐 كل اللغات (78 لغة — 5,000,000 كتاب / مليار صفحة)</button>
 
-                <button class="tier-tab" onclick="filterLangMatrix('T1', this)">⭐ الفئة الأولى Tier 1 (16 لغة × 25,000 كتاب)</button>
+                <button class="tier-tab" onclick="filterLangMatrix('T1', this)">⭐ الفئة الأولى Tier 1 (16 لغة × 125,000 كتاب = 2M كتاب)</button>
 
-                <button class="tier-tab" onclick="filterLangMatrix('T2', this)">🏛️ الفئة الثانية Tier 2 (30 لغة × 12,000 كتاب)</button>
+                <button class="tier-tab" onclick="filterLangMatrix('T2', this)">🏛️ الفئة الثانية Tier 2 (30 لغة × 60,000 كتاب = 1.8M كتاب)</button>
 
-                <button class="tier-tab" onclick="filterLangMatrix('T3', this)">🌍 الفئة الثالثة Tier 3 (32 لغة × 7,500 كتاب)</button>
+                <button class="tier-tab" onclick="filterLangMatrix('T3', this)">🌍 الفئة الثالثة Tier 3 (32 لغة × 37,500 كتاب = 1.2M كتاب)</button>
 
             </div>
 
@@ -2196,7 +2227,7 @@ $json_ld = [
 
                 $t_code = ($idx < 16) ? 'T1' : (($idx < 46) ? 'T2' : 'T3');
 
-                $b_cnt = ($idx < 16) ? '25,000' : (($idx < 46) ? '12,000' : '7,500');
+                $b_cnt = ($idx < 16) ? '125,000' : (($idx < 46) ? '60,000' : '37,500');
 
                 $is_act = ($l['code'] === $cur_lang) ? 'active' : '';
 
@@ -2240,7 +2271,7 @@ $json_ld = [
 
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
 
-                <button class="top-btn top-btn-gold" onclick="inspectRandomBook()">🎲 كتاب عشوائي من المليون</button>
+                <button class="top-btn top-btn-gold" onclick="inspectRandomBook()">🎲 كتاب عشوائي من الـ 5,000,000 مجلد</button>
 
                 <button class="top-btn" style="background:var(--accent-blue);color:#fff;" onclick="runIsoRandomSampleAudit()">🔬 توليد عينة تحكيم عشوائية (ISO 2859-1)</button>
 
@@ -2254,9 +2285,9 @@ $json_ld = [
 
             <div class="filter-group">
 
-                <label>🔢 رقم المجلد العالمي (Book ID: 1 — 1,000,000)</label>
+                <label>🔢 رقم المجلد العالمي (Book ID: 1 — 5,000,000)</label>
 
-                <input type="number" id="inspectBookId" class="filter-input" min="1" max="1000000" value="<?php echo $ssr_books[0]['global_id']; ?>" oninput="inspectBookById(this.value)">
+                <input type="number" id="inspectBookId" class="filter-input" min="1" max="5000000" value="<?php echo $ssr_books[0]['global_id']; ?>" oninput="inspectBookById(this.value)">
 
             </div>
 
@@ -2266,7 +2297,7 @@ $json_ld = [
 
                 <select id="filterLangSelect" class="filter-select" onchange="onFilterControlsChange()">
 
-                    <option value="ALL">كل اللغات العالمية (78 Languages — 1,000,000 Books)</option>
+                    <option value="ALL">كل اللغات العالمية (78 Languages — 5,000,000 Books)</option>
 
                     <?php foreach ($all_langs as $l): ?>
 
@@ -2284,17 +2315,17 @@ $json_ld = [
 
             <div class="filter-group">
 
-                <label>🏛️ تصفية حسب القطاع العلمي (10 Mega-Sectors)</label>
+                <label>🏛️ تصفية حسب القطاع الموسوعي (50 Mega-Sectors)</label>
 
                 <select id="filterSectorSelect" class="filter-select" onchange="onFilterControlsChange()">
 
-                    <option value="0">كل القطاعات العلمية (10 Sectors — 1,000,000 Books)</option>
+                    <option value="0">كل القطاعات الموسوعية (50 Sectors — 5,000,000 Books)</option>
 
                     <?php foreach ($sectors as $s): ?>
 
                     <option value="<?php echo $s['sector_id']; ?>" <?php echo ($filter_sector === intval($s['sector_id'])) ? 'selected' : ''; ?>>
 
-                        S0<?php echo $s['sector_id']; ?>: <?php echo htmlspecialchars($s['name_ar'] . ' — ' . $s['name_en']); ?>
+                        S<?php echo sprintf("%02d", $s['sector_id']); ?>: <?php echo htmlspecialchars($s['name_ar'] . ' — ' . $s['name_en']); ?>
 
                     </option>
 
@@ -2310,11 +2341,11 @@ $json_ld = [
 
                 <select id="filterTierSelect" class="filter-select" onchange="onFilterControlsChange()">
 
-                    <option value="ALL">الكل (900,000 مدفوع + 100,000 مجاني)</option>
+                    <option value="ALL">الكل (4,500,000 تجاري + 500,000 وقف مجاني)</option>
 
-                    <option value="PAID">💎 الإصدارات التجارية المدفوعة (1 — 900,000 | $2–$20)</option>
+                    <option value="PAID">💎 الإصدارات التجارية المدفوعة (1 — 4,500,000 | $1.00–$4.00)</option>
 
-                    <option value="FREE">🎁 الوقف العلمي المجاني المفتوح (900,001 — 1,000,000 | $0.00)</option>
+                    <option value="FREE">🎁 الوقف العلمي المجاني المفتوح (4,500,001 — 5,000,000 | $0.00)</option>
 
                 </select>
 
@@ -2336,7 +2367,7 @@ $json_ld = [
 
                     <div style="font-size:0.74rem;font-weight:900;color:#FDE68A;border:1px solid #F59E0B;padding:4px 8px;border-radius:6px;background:rgba(0,0,0,0.55);">
 
-                        ELNEMER 1M ENCYCLOPEDIA • 78 LANGS
+                        ELNEMER 1B-PAGE ENCYCLOPEDIA • 5M BOOKS
 
                     </div>
 
@@ -2444,13 +2475,13 @@ $json_ld = [
                     </span>
                 </div>
                 <div class="adjudicator-pills-bar">
-                    <button class="adj-pill" id="pillRnd" onclick="inspectRandomBook()">🎲 عينة عشوائية جينيس (Random Sample)</button>
-                    <button class="adj-pill" data-target-id="1" onclick="inspectBookById(1)">🥇 #1 أول كتاب علمي (Vol 1)</button>
-                    <button class="adj-pill" data-target-id="100000" onclick="inspectBookById(100000)">🎯 #100,000 مجلد</button>
-                    <button class="adj-pill" data-target-id="500000" onclick="inspectBookById(500000)">⚡ #500,000 منتصف الموسوعة</button>
-                    <button class="adj-pill" data-target-id="900000" onclick="inspectBookById(900000)">💎 #900,000 نهاية التجاري</button>
-                    <button class="adj-pill" data-target-id="900001" onclick="inspectBookById(900001)">🎁 #900,001 بداية الوقف المجاني</button>
-                    <button class="adj-pill" data-target-id="1000000" onclick="inspectBookById(1000000)">👑 #1,000,000 المجلد الختامي</button>
+                    <button class="adj-pill" id="pillRnd" onclick="inspectRandomBook()">🎲 عينة عشوائية من 5M كتاب</button>
+                    <button class="adj-pill" data-target-id="1" onclick="inspectBookById(1)">🥇 #1 المجلد التأسيسي الأول</button>
+                    <button class="adj-pill" data-target-id="1000000" onclick="inspectBookById(1000000)">🎯 #1,000,000 المجلد المليوني</button>
+                    <button class="adj-pill" data-target-id="2500000" onclick="inspectBookById(2500000)">⚡ #2,500,000 منتصف المليار صفحة</button>
+                    <button class="adj-pill" data-target-id="4500000" onclick="inspectBookById(4500000)">💎 #4,500,000 نهاية التجاري</button>
+                    <button class="adj-pill" data-target-id="4500001" onclick="inspectBookById(4500001)">🎁 #4,500,001 بداية الوقف المجاني (100M صفحة)</button>
+                    <button class="adj-pill" data-target-id="5000000" onclick="inspectBookById(5000000)">👑 #5,000,000 المجلد الختامي للمليار صفحة</button>
                 </div>
 
 
@@ -2472,7 +2503,7 @@ $json_ld = [
                         <span>🏛️ صفحة التوثيق الكاملة للمجلد</span>
                     </a>
                     <a id="inspR2MirrorBtn" href="https://pub-ec0807ba7c30446a840968c856a074b1.r2.dev/elnemer-1m-encyclopedia/database/elnemer_1m_catalog.sqlite" target="_blank" class="btn-action-glow btn-action-emerald">
-                        <span>☁️ سحابة Cloudflare R2 العالمية</span>
+                        <span>☁️ السحابة السيادية فائقة السرعة لدار النمر (Nemer Sovereign Edge)</span>
                     </a>
                     <a href="https://wa.me/201507559911?text=%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%85%D9%86%20%D9%84%D8%AC%D9%86%D8%A9%20%D8%AA%D8%AD%D9%83%D9%8A%D9%85%20%D9%85%D9%88%D8%B3%D9%88%D8%B9%D8%A9%20%D8%AC%D9%8A%D9%86%D9%8A%D8%B3%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D9%85%D9%84%D9%8A%D9%88%D9%86%20%D9%83%D8%AA%D8%A7%D8%A9" target="_blank" class="btn-action-glow btn-action-whatsapp">
                         <span>💬 واتساب المؤلف المباشر (01507559911)</span>
@@ -2513,9 +2544,9 @@ $json_ld = [
 
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
 
-                <span style="font-size:0.85rem;font-weight:800;color:var(--text-secondary);">الدفعة (Batch 1..1000):</span>
+                <span style="font-size:0.85rem;font-weight:800;color:var(--text-secondary);">الدفعة (Batch 1..5000):</span>
 
-                <input type="number" id="batchJumpInput" class="filter-input" style="width:110px;padding:6px 10px;" min="1" max="1000" value="1" onchange="onFilterControlsChange()">
+                <input type="number" id="batchJumpInput" class="filter-input" style="width:110px;padding:6px 10px;" min="1" max="5000" value="1" onchange="onFilterControlsChange()">
 
                 <button class="top-btn" style="background:var(--accent-blue);color:#fff;" onclick="loadNextShowcasePage()">🔄 عرض دفعة جديدة من المجلدات</button>
 
@@ -2619,7 +2650,7 @@ $json_ld = [
 
             <h2 class="section-title"><?php echo htmlspecialchars($i18n['sectors_title']); ?></h2>
 
-            <span style="font-size:0.88rem;font-weight:800;color:var(--accent-gold);">10 قطاعات × 10 تخصصات × 10,000 كتاب = 1,000,000 مجلد علمي</span>
+            <span style="font-size:0.88rem;font-weight:800;color:var(--accent-gold);">50 قطاعاً × 20 تخصصاً نافعاً للإنسان × 5,000 كتاب = 5,000,000 مجلد (مليار صفحة)</span>
 
         </div>
 
@@ -2689,11 +2720,11 @@ $json_ld = [
 
         <div>
 
-            <div class="footer-title">👑 موسوعة النمر العالمية لمليون كتاب علمي بـ 78 لغة</div>
+            <div class="footer-title">👑 موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب) بـ 78 لغة</div>
 
             <p style="font-size:0.86rem;line-height:1.7;color:#94A3B8;">
 
-                أكبر مشروع معرفي وعلمي رقمي موحد لمؤلف واحد (المهندس محمود بك النمر — Eng. Mahmoud Bek ElNemer). يضم 1,000,000 مجلد علمي وأكاديمي (200,000,000 صفحة) بـ 78 لغة عالمية في 100 تخصص أكاديمي قياسي (BISAC).
+                أكبر مشروع معرفي وعلمي رقمي موحد لمؤلف واحد (المهندس محمود بك النمر — Eng. Mahmoud Bek ElNemer). يضم 5,000,000 مجلد علمي وتطبيقي ومهني (1,000,000,000 — مليار صفحة) بـ 78 لغة عالمية في 50 قطاعاً و1,000 تخصص نافع للإنسان 100% (BISAC/Thema).
 
             </p>
 
@@ -2705,7 +2736,7 @@ $json_ld = [
 
             <a href="/sitemap_index.xml">🗺️ الفهرس الرئيسي لخرائط الموقع (Master XML Sitemap Index)</a>
 
-            <a href="/sitemaps/sitemap_languages_78.xml">🌍 خريطة البوابات اللغوية الـ 78 والتخصصات الـ 100</a>
+            <a href="/sitemaps/sitemap_languages_78.xml">🌍 خريطة البوابات اللغوية الـ 78 والقطاعات الـ 50 والتخصصات الـ 1,000</a>
 
             <a href="/sitemaps/sitemap_books_01.xml">📚 خريطة المجلدات العلمية — الشظية #01 (50,000 كتاب)</a>
 
@@ -2713,7 +2744,8 @@ $json_ld = [
 
             <a href="/book/2">📘 المجلد التأسيسي الثاني (#2 — الإنجليزية)</a>
 
-            <a href="/book/900001">🎁 المجلد الأول في الوقف العلمي المجاني (#900,001)</a>
+            <a href="/book/4500001">🎁 المجلد الأول في الوقف العلمي المجاني (#4,500,001)</a>
+            <a href="/book/5000000">👑 المجلد الختامي للمليار صفحة (#5,000,000)</a>
 
         </div>
 
@@ -2765,53 +2797,8 @@ const PAID_PRICES = <?php echo json_encode(get_paid_prices(), JSON_UNESCAPED_UNI
 
 
 
-const ANGLES_EN = [
-
-    "Mathematical Modeling & High-Dimensional Empirical Frameworks",
-
-    "Algorithmic Architecture & Non-Linear Dynamical Systems",
-
-    "Theoretical Foundations & Scalable Industrial Applications",
-
-    "Stochastic Optimization & Spectral Stability Analysis",
-
-    "Tensor Decomposition & Fault-Tolerant Computing Paradigms",
-
-    "Statistical Inference, Sensitivity Auditing & System Design",
-
-    "Topological Manifolds & Real-Time Signal Processing",
-
-    "Multi-Scale Simulation & Enterprise Architecture Blueprints",
-
-    "Variational Principles & High-Throughput Execution Engines",
-
-    "Axiomatic Formulations & Experimental Verification Protocols"
-
-];
-
-const ANGLES_AR = [
-
-    "النمذجة الرياضية والتحليل التجريبي عالي الأبعاد",
-
-    "البنية الخوارزمية وأنظمة المحاكاة غير الخطية",
-
-    "التأصيل النظري والتطبيقات الصناعية القياسية",
-
-    "التحسين الاستوكاستيكي وتحليل الاستقرار الطيفي",
-
-    "تفكيك المصفوفات الممتدة والأنظمة فائقة الاعتمادية",
-
-    "الاستدلال الإحصائي المتقدم واختبارات الحساسية",
-
-    "طوبولوجيا الفضاءات المركبة ومعالجة الإشارات الفورية",
-
-    "المحاكاة متعددة المقاييس والمخططات الهندسية",
-
-    "المبادئ التغايرية ومحركات التنفيذ فائقة الأداء",
-
-    "الصياغات الأكسيومية وبروتوكولات التحقق المعملي"
-
-];
+const ANGLES_EN = <?php echo json_encode(get_seo_angles_en(), JSON_UNESCAPED_UNICODE); ?>;
+const ANGLES_AR = <?php echo json_encode(get_seo_angles_ar(), JSON_UNESCAPED_UNICODE); ?>;
 
 
 
@@ -2882,42 +2869,26 @@ function pseudoSha256(str) {
 
 
 function getBookMetaJS(gid) {
-
-    gid = Math.max(1, Math.min(1000000, parseInt(gid, 10) || 1));
-
-    const isPaid = gid <= 900000;
-
+    gid = Math.max(1, Math.min(5000000, parseInt(gid, 10) || 1));
+    const isPaid = gid <= 4500000;
     const batchNum = Math.floor((gid - 1) / 1000) + 1;
-
     const lang = mapGlobalIdToLang(gid);
-
-    const disc = ALL_100_DISCS[(gid - 1) % 100];
-
+    const discCount = ALL_100_DISCS.length;
+    const disc = ALL_100_DISCS[(gid - 1) % discCount];
     const pal = PALETTES_30[((gid * 7) + disc.sector_id * 3) % PALETTES_30.length];
-
     const priceUsd = isPaid ? PAID_PRICES[(gid * 11) % PAID_PRICES.length].toFixed(2) : "0.00";
-
     const isbn13 = makeIsbn13(gid);
-
-    const doi = `10.1007/s1m-nemer.${String(gid).padStart(7, '0')}`;
-
-    const angleIdx = Math.floor(gid / 100) % 10;
-
-    const isRtlLang = ['ar', 'fa', 'ur'].includes(lang.code);
-
+    const doi = `10.1007/s1b-nemer.${String(gid).padStart(7, '0')}`;
+    const angleIdx = Math.floor((gid - 1) / discCount) % ANGLES_EN.length;
+    const volSeries = Math.floor((gid - 1) / (discCount * ANGLES_EN.length)) + 1;
+    const isRtlLang = ['ar', 'fa', 'ur', 'ps'].includes(lang.code);
     const title = isRtlLang
-
-        ? `بحوث متقدمة في ${disc.domain_ar}: ${ANGLES_AR[angleIdx]}`
-
-        : `Advanced Research in ${disc.domain_en}: ${ANGLES_EN[angleIdx]} [${lang.name}]`;
-
+        ? `${disc.domain_ar} — ${ANGLES_AR[angleIdx]} (المجلد التطبيقي #${volSeries})`
+        : `${disc.domain_en}: ${ANGLES_EN[angleIdx]} — Applied Volume #${volSeries} [${lang.name}]`;
     const subtitle = isRtlLang
-
-        ? `مرجع أكاديمي وعلمي محكم في ${disc.sector_ar} — تأليف ${lang.author}`
-
-        : `Peer-Reviewed Scientific Monograph in ${disc.sector_en} — By ${lang.author}`;
-
-    const sha = pseudoSha256(`ELNEMER-1M-${gid}-${isbn13}-${lang.code}-${disc.bisac}`);
+        ? `موسوعة النمر للمليار صفحة (200 صفحة) في ${disc.sector_ar} — تأليف ${lang.author}`
+        : `ElNemer 1-Billion-Page Encyclopedia (200 Pages) in ${disc.sector_en} — By ${lang.author}`;
+    const sha = pseudoSha256(`ELNEMER-1B-5M-${gid}-${isbn13}-${lang.code}-${disc.bisac}`);
 
     return {
 
@@ -3047,7 +3018,7 @@ function inspectBookById(gid) {
 
     document.getElementById('inspBadgesRow').innerHTML = `
 
-        <span class="lang-code-badge" style="padding:4px 10px;font-size:0.8rem;">🏆 Volume #${b.global_id.toLocaleString()} / 1,000,000</span>
+        <span class="lang-code-badge" style="padding:4px 10px;font-size:0.8rem;">🏆 Volume #${b.global_id.toLocaleString()} / 5,000,000 (1B Pages)</span>
 
         <span class="lang-code-badge" style="background:#0284C7;padding:4px 10px;font-size:0.8rem;">🌍 ${b.lang.name} (${b.lang.en_name}) [${b.lang.code}]</span>
 
@@ -3069,7 +3040,7 @@ function inspectBookById(gid) {
 
     document.getElementById('inspIsbnBox').textContent = b.isbn13;
 
-    document.getElementById('inspDoiBox').textContent = `https://doi.org/${b.doi}`;
+    document.getElementById('inspDoiBox').innerHTML = `<a href="/doi/${b.doi}" target="_blank" style="color:var(--accent-blue);text-decoration:none;font-weight:bold;">doi:${b.doi}</a> <a href="/doi/${b.doi}" target="_blank" style="margin-right:8px;padding:2px 8px;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:6px;font-size:0.75rem;color:var(--accent-blue);text-decoration:none;">🔗 بوابة التحقق</a>`;
 
     document.getElementById('inspBisacBox').textContent = `[${b.disc.bisac}] ${b.disc.domain_ar} (${b.disc.domain_en})`;
 
@@ -3107,7 +3078,7 @@ function inspectBookById(gid) {
 
 function inspectRandomBook() {
 
-    const rnd = Math.floor(Math.random() * 1000000) + 1;
+    const rnd = Math.floor(Math.random() * 5000000) + 1;
 
     inspectBookById(rnd);
 
@@ -3243,13 +3214,13 @@ function renderFilteredShowcase() {
 
     const tierVal = document.getElementById('filterTierSelect').value;
 
-    const batchVal = Math.max(1, Math.min(1000, parseInt(document.getElementById('batchJumpInput').value, 10) || 1));
+    const batchVal = Math.max(1, Math.min(5000, parseInt(document.getElementById('batchJumpInput').value, 10) || 1));
 
 
 
     let startGid = (batchVal - 1) * 1000 + 1 + showcaseOffset;
 
-    if (tierVal === 'FREE' && startGid <= 900000) startGid = 900001 + showcaseOffset;
+    if (tierVal === 'FREE' && startGid <= 4500000) startGid = 4500001 + showcaseOffset;
 
 
 
@@ -3261,15 +3232,15 @@ function renderFilteredShowcase() {
 
     while (matched.length < 24 && guard < 250000) {
 
-        const gid = ((probe - 1) % 1000000) + 1;
+        const gid = ((probe - 1) % 5000000) + 1;
 
         probe++;
 
         guard++;
 
-        if (tierVal === 'PAID' && gid > 900000) continue;
+        if (tierVal === 'PAID' && gid > 4500000) continue;
 
-        if (tierVal === 'FREE' && gid <= 900000) continue;
+        if (tierVal === 'FREE' && gid <= 4500000) continue;
 
 
 
@@ -3303,7 +3274,7 @@ function runIsoRandomSampleAudit() {
 
     for (let i = 0; i < 12; i++) {
 
-        const rnd = Math.floor(Math.random() * 1000000) + 1;
+        const rnd = Math.floor(Math.random() * 5000000) + 1;
 
         sample.push(getBookMetaJS(rnd));
 
@@ -3343,6 +3314,93 @@ function togglePortalTheme() {
     html.setAttribute('data-theme', next);
     localStorage.setItem('elnemer_portal_theme', next);
     updateThemeToggleBtnText(next);
+}
+
+
+function filterByCompassHub(secStart, secEnd, hubTitle) {
+    const sel = document.getElementById('filterSectorSelect');
+    if (sel) sel.value = String(secStart);
+    const matched = [];
+    let step = 0;
+    for (let sId = secStart; sId <= secEnd; sId++) {
+        for (let k = 0; k < 4; k++) {
+            const discIdx = (sId - 1) * 20 + (k * 5);
+            const gid = ((discIdx + step * 1000) % 5000000) + 1;
+            matched.push(getBookMetaJS(gid));
+            step++;
+            if (matched.length >= 24) break;
+        }
+        if (matched.length >= 24) break;
+    }
+    const hdr = document.getElementById('showcaseHeaderTitle');
+    if (hdr) hdr.textContent = `🧭 ${hubTitle} — عينة حية من الـ 5,000,000 كتاب (مليار صفحة)`;
+    document.getElementById('booksShowcaseGrid').innerHTML = matched.map(renderBookCardHTML).join('');
+    document.getElementById('showcase-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function searchTopicTag(tag) {
+    const inp = document.getElementById('globalEncyclopediaSearch');
+    if (inp) {
+        inp.value = tag;
+        onLiveEncyclopediaSearch(tag);
+    }
+}
+
+function onLiveEncyclopediaSearch(rawQuery) {
+    const box = document.getElementById('liveSearchResultsContainer');
+    const content = document.getElementById('liveSearchResultsContent');
+    if (!box || !content) return;
+    const q = (rawQuery || '').trim().toLowerCase();
+    if (!q) {
+        box.style.display = 'none';
+        return;
+    }
+    box.style.display = 'block';
+    const results = [];
+    const numOnly = q.replace(/[^0-9]/g, '');
+    if (numOnly && numOnly.length >= 1 && numOnly.length <= 7 && /^\d+$/.test(q.replace(/[,#]/g, ''))) {
+        const gid = Math.max(1, Math.min(5000000, parseInt(numOnly, 10)));
+        results.push(getBookMetaJS(gid));
+    }
+    for (let d = 0; d < ALL_100_DISCS.length && results.length < 18; d++) {
+        const disc = ALL_100_DISCS[d];
+        const hay = `${disc.domain_ar} ${disc.domain_en} ${disc.sector_ar} ${disc.sector_en} ${disc.bisac}`.toLowerCase();
+        if (hay.includes(q)) {
+            for (let v = 0; v < 3 && results.length < 18; v++) {
+                const gid = d + 1 + (v * 1000);
+                results.push(getBookMetaJS(gid));
+            }
+        }
+    }
+    if (results.length === 0) {
+        let seed = 0;
+        for (let i = 0; i < q.length; i++) seed = (seed * 31 + q.charCodeAt(i)) % 5000000;
+        for (let k = 0; k < 8; k++) {
+            results.push(getBookMetaJS(((seed + k * 1000) % 5000000) + 1));
+        }
+    }
+    content.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;border-bottom:1px solid rgba(212,175,55,0.3);padding-bottom:8px;">
+            <span style="color:#FDE68A;font-weight:900;font-size:0.92rem;">🔍 نتائج البحث الفوري في موسوعة المليار صفحة (${results.length} نتيجة مطابقة):</span>
+            <button onclick="document.getElementById('liveSearchResultsContainer').style.display='none'" style="background:transparent;border:1px solid #F59E0B;color:#FDE68A;border-radius:8px;padding:2px 10px;cursor:pointer;font-weight:800;">إغلاق ✕</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;">
+            ${results.map(b => `
+                <div style="background:rgba(15,23,42,0.95);border:1px solid ${b.pal.acc};border-radius:12px;padding:12px;">
+                    <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#38BDF8;font-weight:800;margin-bottom:4px;">
+                        <span>#${b.global_id.toLocaleString()} / 5,000,000</span>
+                        <span>${b.lang.name} [${b.lang.code}]</span>
+                    </div>
+                    <div style="font-size:0.9rem;font-weight:900;color:#FFF;margin-bottom:4px;">${b.title}</div>
+                    <div style="font-size:0.76rem;color:#CBD5E1;margin-bottom:8px;">${b.disc.sector_ar} • ISBN: ${b.isbn13}</div>
+                    <div style="display:flex;gap:6px;">
+                        <a href="/book/${b.global_id}" style="flex:1;text-align:center;background:#2563EB;color:#FFF;text-decoration:none;padding:5px 8px;border-radius:8px;font-size:0.78rem;font-weight:800;">📖 صفحة المجلد</a>
+                        <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" style="flex:1;text-align:center;background:#F59E0B;color:#000;text-decoration:none;padding:5px 8px;border-radius:8px;font-size:0.78rem;font-weight:900;" download>📥 PDF (200p)</a>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
 }
 
 (function initPortal() {

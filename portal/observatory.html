@@ -15,7 +15,7 @@
   <meta name="citation_doi" id="meta_citation_doi" content="10.1007/s1m-nemer.0000001" />
   <meta name="citation_language" id="meta_citation_lang" content="ar" />
   <meta name="citation_pdf_url" id="meta_citation_pdf" content="https://elnemer-ai.com/million/stream/9789710000018.pdf" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <style>
     :root {
       --bg-deep: #040711;
@@ -952,7 +952,7 @@ function downloadInstantBookPDF() {
   doc.text(`Author: Eng. Mahmoud Bek ElNemer (Google Accredited Architect)`, 45, 124);
   doc.text(`Language: ${s.lang[2]} [${s.lang[0]}] | Sector: ${s.sec[2]} (${s.sec[3]})`, 45, 144);
   doc.text(`Visual Edition Theme: ${s.pal.name} (Layout #${s.layoutStyle + 1} / Emblem #${s.emblemStyle + 1})`, 45, 164);
-  doc.text(`ISBN-13: ${s.isbn} | DOI: https://doi.org/${s.doi}`, 45, 184);
+  doc.text(`ISBN-13: ${s.isbn} | DOI: https://million.elnemer-ai.com/doi/${s.doi}`, 45, 184);
   doc.text(`Distribution Price: ${s.isPaid ? '$' + s.price + ' USD (Commercial)' : '$0.00 USD (UNESCO Open-Access Charter)'}`, 45, 204);
   doc.text(`Master Merkle Root: ISO-2859-1-VERIFIED`, 45, 224);
 

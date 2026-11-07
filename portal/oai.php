@@ -152,7 +152,7 @@ if ($verb === '') {
       <div class="badge">● ACTIVE OAI-PMH v2.0 INSTITUTIONAL HARVESTING GATEWAY (ISO / LOC / WORLDCAT / OPENAIREF)</div>
       <h1>بروتوكول المبادرة المفتوحة لحصاد البيانات المرجعية (OAI-PMH 2.0)</h1>
       <p class="sub">
-        تعمل هذه البوابة السيادية كبروتوكول فهرسة آلي مباشر للمكتبات الوطنية والجامعات العالمية (مكتبة الكونجرس الأمريكية، الفهرس العالمي WorldCat، منظمة اليونسكو، مكتبة الإسكندرية، وشبكة OpenAIRE الأوروبية) لحصاد وتوثيق الـ <b>1,000,000 مجلد علمي</b> من تأليف <b>المهندس محمود بك النمر</b> بصيغ XML القياسية المعتمدة دولياً.
+        تعمل هذه البوابة السيادية كبروتوكول فهرسة آلي مباشر للمكتبات الوطنية والجامعات العالمية (مكتبة الكونجرس الأمريكية، الفهرس العالمي WorldCat، منظمة اليونسكو، مكتبة الإسكندرية، وشبكة OpenAIRE الأوروبية) لحصاد وتوثيق الـ <b>5,000,000 مجلد علمي وتطبيقي (1,000,000,000 صفحة)</b> من تأليف <b>المهندس محمود بك النمر</b> بصيغ XML القياسية المعتمدة دولياً.
       </p>
 
       <div class="endpoint-box">
@@ -341,7 +341,7 @@ if ($verb === 'Identify') {
     $prefix = isset($_GET['metadataPrefix']) ? trim($_GET['metadataPrefix']) : 'oai_dc';
     $vol_id = 1;
     if (preg_match('/([0-9]+)$/', $identifier, $m)) {
-        $vol_id = max(1, min(1000000, intval($m[1])));
+        $vol_id = max(1, min(5000000, intval($m[1])));
     }
     $b = get_1m_book_metadata($vol_id);
     echo '  <request verb="GetRecord" identifier="' . xml_esc($identifier) . '" metadataPrefix="' . xml_esc($prefix) . '">' . $base_url . '</request>' . "\n";
@@ -359,7 +359,7 @@ if ($verb === 'Identify') {
         $cursor = max(1, intval($m[1]));
     }
     $batch_size = 25;
-    $end = min(1000000, $cursor + $batch_size - 1);
+    $end = min(5000000, $cursor + $batch_size - 1);
     echo '  <request verb="' . xml_esc($verb) . '" metadataPrefix="' . xml_esc($prefix) . '">' . $base_url . '</request>' . "\n";
     echo "  <" . $verb . ">\n";
     for ($i = $cursor; $i <= $end; $i++) {
@@ -374,9 +374,9 @@ if ($verb === 'Identify') {
             echo ($prefix === 'marc21') ? render_marc21_record($b) : render_oai_dc_record($b);
         }
     }
-    if ($end < 1000000) {
+    if ($end < 5000000) {
         $next_cursor = $end + 1;
-        echo '    <resumptionToken completeListSize="1000000" cursor="' . ($cursor - 1) . '">cursor_' . $next_cursor . '</resumptionToken>' . "\n";
+        echo '    <resumptionToken completeListSize="5000000" cursor="' . ($cursor - 1) . '">cursor_' . $next_cursor . '</resumptionToken>' . "\n";
     }
     echo "  </" . $verb . ">\n";
 } else {
