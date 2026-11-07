@@ -151,7 +151,7 @@ $json_ld = [
             --card-surface: rgba(15, 23, 42, 0.75);
             --card-sub: rgba(9, 14, 28, 0.85);
             --card-border: rgba(56, 189, 248, 0.22);
-            --gold: #F59E0B;
+            --gold: #0284C7;
             --gold-glow: #FBBF24;
             --cyan: #00F0FF;
             --sapphire: #3B82F6;
@@ -175,7 +175,7 @@ $json_ld = [
         .topbar {
             background: rgba(8, 12, 24, 0.88);
             backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+            border-bottom: 2px solid rgba(2, 132, 199, 0.4);
             padding: 12px 24px;
             position: sticky;
             top: 0;
@@ -201,7 +201,7 @@ $json_ld = [
             gap: 10px;
         }
         .brand span.badge {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #0284C7, #2563EB);
             color: #060913;
             font-size: 0.75rem;
             font-weight: 900;
@@ -224,13 +224,13 @@ $json_ld = [
             gap: 6px;
         }
         .nav-btn:hover {
-            background: rgba(245, 158, 11, 0.15);
-            border-color: #F59E0B;
-            color: #FDE68A;
+            background: rgba(2, 132, 199, 0.15);
+            border-color: #0284C7;
+            color: #0284C7;
             transform: translateY(-2px);
         }
         .nav-btn.gold {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #0284C7, #2563EB);
             color: #060913;
             border: none;
             font-weight: 900;
@@ -277,7 +277,7 @@ $json_ld = [
             right: -150px;
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.12), transparent 70%);
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.12), transparent 70%);
             pointer-events: none;
         }
         @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } }
@@ -309,7 +309,7 @@ $json_ld = [
         }
         .book-cover-3d:hover {
             transform: rotateY(0deg) scale(1.03);
-            box-shadow: 0 25px 60px rgba(245, 158, 11, 0.25), -5px 15px 35px rgba(0,0,0,0.8);
+            box-shadow: 0 25px 60px rgba(2, 132, 199, 0.25), -5px 15px 35px rgba(0,0,0,0.8);
         }
         .book-spine-effect {
             position: absolute;
@@ -326,9 +326,9 @@ $json_ld = [
             right: 28px;
             width: 24px;
             height: 48px;
-            background: linear-gradient(135deg, #F59E0B, #B45309);
+            background: linear-gradient(135deg, #0284C7, #B45309);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(255,255,255,0.14);
         }
         .book-gold-seal {
             width: 110px;
@@ -344,7 +344,7 @@ $json_ld = [
             font-size: 1.25rem;
             color: #FFFFFF;
             background: radial-gradient(circle, rgba(255,255,255,0.12), transparent);
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.2);
         }
 
         /* METADATA & ACTIONS */
@@ -361,7 +361,7 @@ $json_ld = [
             align-items: center;
             gap: 6px;
         }
-        .pill.gold { background: rgba(245, 158, 11, 0.15); border-color: var(--gold); color: #FDE68A; }
+        .pill.gold { background: rgba(2, 132, 199, 0.15); border-color: var(--gold); color: #0284C7; }
         .pill.emerald { background: rgba(16, 185, 129, 0.15); border-color: var(--emerald); color: #6EE7B7; }
         .pill.cyan { background: rgba(0, 240, 255, 0.12); border-color: var(--cyan); color: #7DD3FC; }
 
@@ -408,13 +408,13 @@ $json_ld = [
             font-family: inherit;
         }
         .btn-gold-glow {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #0284C7, #2563EB);
             color: #060913;
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.4), 0 8px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.4), 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         .btn-gold-glow:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 35px rgba(245, 158, 11, 0.65), 0 12px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 35px rgba(2, 132, 199, 0.65), 0 12px 25px rgba(0, 0, 0, 0.5);
         }
         .btn-blue {
             background: linear-gradient(135deg, #2563EB, #1D4ED8);
@@ -487,14 +487,14 @@ $json_ld = [
             border: 2px solid var(--card-border);
             border-radius: 22px;
             padding: 28px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 40px rgba(255,255,255,0.14);
         }
         .section-title {
             font-size: 1.35rem;
             font-weight: 900;
             color: var(--gold);
             margin-bottom: 20px;
-            border-bottom: 2px solid rgba(245, 158, 11, 0.3);
+            border-bottom: 2px solid rgba(2, 132, 199, 0.3);
             padding-bottom: 10px;
             display: flex;
             align-items: center;
@@ -540,9 +540,9 @@ $json_ld = [
         }
         .sibling-card:hover {
             border-color: var(--gold);
-            color: #FDE68A;
+            color: #0284C7;
             transform: translateY(-2px);
-            background: rgba(245, 158, 11, 0.08);
+            background: rgba(2, 132, 199, 0.08);
         }
 
         /* FLOATING ADJUDICATOR BAR */
@@ -571,7 +571,48 @@ $json_ld = [
             flex-wrap: wrap;
             gap: 10px;
         }
-    </style>
+    
+        body {
+            background: linear-gradient(135deg, #F0F5FF 0%, #F8FAFC 50%, #ECFDF5 100%) !important;
+            color: #0F172A !important;
+        }
+        .topbar {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 55%, #0F766E 100%) !important;
+            border-bottom: 3px solid #38BDF8 !important;
+        }
+        .badge {
+            background: #FFFFFF !important;
+            color: #1E3A8A !important;
+        }
+        .nav-links a {
+            background: rgba(255,255,255,0.18) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255,255,255,0.35) !important;
+        }
+        .hero-card, .section-box {
+            background: #FFFFFF !important;
+            border: 1.5px solid #DBEAFE !important;
+            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.07) !important;
+            color: #0F172A !important;
+        }
+        .book-title { color: #1E3A8A !important; }
+        .book-subtitle { color: #334155 !important; }
+        .section-title { color: #1E3A8A !important; border-bottom-color: #DBEAFE !important; }
+        .meta-box, .chapter-item, .related-card {
+            background: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+            color: #0F172A !important;
+        }
+        .meta-val { color: #0F172A !important; }
+        .meta-val.gold { color: #0284C7 !important; }
+        .meta-val.green { color: #059669 !important; }
+        .spec-table th { background: #EFF6FF !important; color: #1E3A8A !important; width: 32%; }
+        .spec-table td { color: #1E293B !important; }
+        .spec-table th, .spec-table td { border-bottom-color: #E2E8F0 !important; }
+        .btn-gold { background: linear-gradient(135deg, #2563EB, #1D4ED8) !important; color: #FFFFFF !important; }
+        .btn-outline { background: #F8FAFC !important; color: #1E3A8A !important; border: 1.5px solid #93C5FD !important; }
+
+</style>
 </head>
 <body>
 
@@ -598,7 +639,7 @@ $json_ld = [
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>">🏛️ موسوعة المليار صفحة الرئيسية</a> &raquo;
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>&sector=<?php echo $b['sector_id']; ?>"><?php echo htmlspecialchars($b['sector_ar']); ?> (<?php echo htmlspecialchars($b['sector_en']); ?>)</a> &raquo;
         <a href="/?lang=<?php echo urlencode($b['lang_code']); ?>&discipline=<?php echo $b['discipline_id']; ?>"><?php echo htmlspecialchars($b['domain_ar']); ?></a> &raquo;
-        <span style="color:#FDE68A;">مجلد رقم #<?php echo number_format($b['global_id']); ?> (ISBN: <?php echo $b['isbn13']; ?>)</span>
+        <span style="color:#0284C7;">مجلد رقم #<?php echo number_format($b['global_id']); ?> (ISBN: <?php echo $b['isbn13']; ?>)</span>
     </nav>
 
     <section class="hero-grid">
@@ -625,7 +666,7 @@ $json_ld = [
                     <div style="color:<?php echo $pal['pri']; ?>;font-weight:900;font-size:0.85rem;">🌍 <?php echo htmlspecialchars($b['lang_name'] . " (" . $b['lang_en_name'] . ")"); ?></div>
                 </div>
 
-                <div style="font-size:0.78rem;color:#FDE68A;font-weight:800;padding-top:8px;">
+                <div style="font-size:0.78rem;color:#0284C7;font-weight:800;padding-top:8px;">
                     ✍️ <?php echo htmlspecialchars($b['author']); ?><br>
                     <span style="color:#94A3B8;font-family:monospace;font-size:0.76rem;">ISBN: <?php echo $b['isbn13']; ?></span>
                 </div>
@@ -668,35 +709,35 @@ $json_ld = [
 
             
             <!-- GUINNESS & GOOGLE ADJUDICATOR QUICK JUMP BAR -->
-            <div style="margin:20px 0;padding:16px;background:rgba(15,23,42,0.75);border:1.5px dashed rgba(245,158,11,0.5);border-radius:16px;">
+            <div style="margin:20px 0;padding:16px;background:rgba(15,23,42,0.75);border:1.5px dashed rgba(2,132,199,0.5);border-radius:16px;">
                 <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-                    <div style="font-size:0.88rem;font-weight:900;color:#F59E0B;display:flex;align-items:center;gap:6px;">
+                    <div style="font-size:0.88rem;font-weight:900;color:#0284C7;display:flex;align-items:center;gap:6px;">
                         <span>⚖️</span>
                         <span>قفزات التحكيم السريع لمحكّمي موسوعة جينيس وخبراء Google العالمية (Adjudicator Quick Jump):</span>
                     </div>
-                    <span style="font-size:0.75rem;padding:3px 10px;border-radius:6px;background:rgba(245,158,11,0.18);border:1px solid #F59E0B;color:#FDE68A;font-weight:800;">
+                    <span style="font-size:0.75rem;padding:3px 10px;border-radius:6px;background:rgba(2,132,199,0.18);border:1px solid #0284C7;color:#0284C7;font-weight:800;">
                         ISO 2859-1 Certified Sampling
                     </span>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                    <a href="/book/<?php echo rand(1, 5000000); ?>" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;">🎲 عينة عشوائية من 5M كتاب</a>
-                    <a href="/book/1" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🥇 #1 المجلد الأول</a>
-                    <a href="/book/1000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==1000000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎯 #1,000,000 المجلد المليوني</a>
-                    <a href="/book/2500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==2500000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">⚡ #2,500,000 منتصف المليار صفحة</a>
-                    <a href="/book/4500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==4500000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">💎 #4,500,000 نهاية التجاري</a>
-                    <a href="/book/4500001" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==4500001)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">🎁 #4,500,001 بداية الوقف المجاني (100M صفحة)</a>
-                    <a href="/book/5000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(245,158,11,0.18);border:1.5px solid #F59E0B;color:#FCD34D;<?php echo ($b['global_id']==5000000)?'background:#F59E0B!important;color:#000!important;font-weight:900;':''; ?>">👑 #5,000,000 المجلد الختامي للمليار صفحة</a>
+                    <a href="/book/<?php echo rand(1, 5000000); ?>" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;">🎲 عينة عشوائية من 5M كتاب</a>
+                    <a href="/book/1" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==1)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">🥇 #1 المجلد الأول</a>
+                    <a href="/book/1000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==1000000)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">🎯 #1,000,000 المجلد المليوني</a>
+                    <a href="/book/2500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==2500000)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">⚡ #2,500,000 منتصف المليار صفحة</a>
+                    <a href="/book/4500000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==4500000)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">💎 #4,500,000 نهاية التجاري</a>
+                    <a href="/book/4500001" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==4500001)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">🎁 #4,500,001 بداية الوقف المجاني (100M صفحة)</a>
+                    <a href="/book/5000000" class="btn-action" style="padding:8px 16px;border-radius:999px;font-size:0.84rem;background:rgba(2,132,199,0.18);border:1.5px solid #0284C7;color:#1E3A8A;<?php echo ($b['global_id']==5000000)?'background:#0284C7!important;color:#000!important;font-weight:900;':''; ?>">👑 #5,000,000 المجلد الختامي للمليار صفحة</a>
                 </div>
             </div>
 
             <!-- COMPREHENSIVE SPECIFICATIONS TABLE -->
             
             <!-- SCANNABLE EAN-13 BARCODE CARD -->
-            <div style="margin:20px 0;background:rgba(15,23,42,0.85);border:1.5px solid #F59E0B;border-radius:16px;padding:16px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,0.5);">
-                <div style="font-size:0.86rem;font-weight:900;color:#F59E0B;margin-bottom:8px;">
+            <div style="margin:20px 0;background:rgba(15,23,42,0.85);border:1.5px solid #0284C7;border-radius:16px;padding:16px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,0.5);">
+                <div style="font-size:0.86rem;font-weight:900;color:#0284C7;margin-bottom:8px;">
                     📷 باركود دولي مقروء رقمياً بالهاتف وأجهزة التحكيم (GS1 / EAN-13 Scannable Barcode)
                 </div>
-                <div style="display:inline-block;background:#fff;padding:8px 14px;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,0.4);">
+                <div style="display:inline-block;background:#fff;padding:8px 14px;border-radius:10px;box-shadow:0 4px 15px rgba(255,255,255,0.14);">
                     <?php echo render_ean13_svg($b['isbn13'], 260, 85); ?>
                 </div>
                 <div style="font-size:0.75rem;color:#94A3B8;margin-top:8px;">
@@ -714,7 +755,7 @@ $json_ld = [
                 </tr>
                 <tr>
                     <th>الرقم الدولي المعياري (ISBN-13 / EAN)</th>
-                    <td style="font-family:monospace;font-size:1.05rem;color:#FDE68A;">
+                    <td style="font-family:monospace;font-size:1.05rem;color:#0284C7;">
                         <?php echo $b['isbn13']; ?>
                         <span class="copy-pill" onclick="navigator.clipboard.writeText('<?php echo $b['isbn13']; ?>');alert('تم نسخ رقم ISBN-13!');">📋 نسخ</span>
                     </td>
@@ -722,7 +763,7 @@ $json_ld = [
                 <tr>
                     <th>المعرف الرقمي للأبحاث (DOI)</th>
                     <td style="font-family:monospace;">
-                        <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:700;">doi:<?php echo $b['doi']; ?></a> <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="margin-right:10px;padding:3px 8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);border-radius:6px;font-size:0.8rem;color:var(--cyan);text-decoration:none;font-weight:600;">🔗 بوابة التحقق السيادية (Sovereign Resolver)</a> <a href="/audit/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:6px;font-size:0.8rem;color:#34D399;text-decoration:none;font-weight:700;">🔐 مختبر التدقيق التشفيري</a> <a href="/cite/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);border-radius:6px;font-size:0.8rem;color:#FBBF24;text-decoration:none;font-weight:700;">🎓 BibTeX / RIS / MARC21</a>
+                        <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="color:var(--cyan);text-decoration:none;font-weight:700;">doi:<?php echo $b['doi']; ?></a> <a href="/doi/<?php echo $b['doi']; ?>" target="_blank" style="margin-right:10px;padding:3px 8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.35);border-radius:6px;font-size:0.8rem;color:var(--cyan);text-decoration:none;font-weight:600;">🔗 بوابة التحقق السيادية (Sovereign Resolver)</a> <a href="/audit/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:6px;font-size:0.8rem;color:#34D399;text-decoration:none;font-weight:700;">🔐 مختبر التدقيق التشفيري</a> <a href="/cite/<?php echo $b['global_id']; ?>" target="_blank" style="margin-right:6px;padding:3px 8px;background:rgba(2,132,199,0.15);border:1px solid rgba(2,132,199,0.4);border-radius:6px;font-size:0.8rem;color:#FBBF24;text-decoration:none;font-weight:700;">🎓 BibTeX / RIS / MARC21</a>
                     </td>
                 </tr>
                 <tr>
@@ -736,7 +777,7 @@ $json_ld = [
                 <tr>
                     <th>التسعير الرسمي بـ 4 عملات دولية</th>
                     <td>
-                        <span style="color:#F59E0B;font-weight:900;">$<?php echo $b['price_usd']; ?> USD</span> |
+                        <span style="color:#0284C7;font-weight:900;">$<?php echo $b['price_usd']; ?> USD</span> |
                         <span><?php echo $egp_price; ?> EGP</span> |
                         <span><?php echo $sar_price; ?> SAR</span> |
                         <span>€<?php echo $eur_price; ?> EUR</span>
@@ -768,7 +809,7 @@ $json_ld = [
             <?php foreach ($chapters as $c): ?>
             <div class="ch-card">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <span style="background:rgba(245, 158, 11, 0.15);color:#FDE68A;border:1px solid #F59E0B;padding:2px 8px;border-radius:6px;font-weight:900;font-size:0.8rem;">
+                    <span style="background:rgba(2, 132, 199, 0.15);color:#0284C7;border:1px solid #0284C7;padding:2px 8px;border-radius:6px;font-weight:900;font-size:0.8rem;">
                         الفصل <?php echo $c['ch']; ?> (Chapter <?php echo $c['ch']; ?>)
                     </span>
                     <span style="color:var(--cyan);font-family:monospace;font-size:0.82rem;font-weight:800;">
@@ -808,7 +849,7 @@ $json_ld = [
 <div class="floating-bar">
     <div class="floating-inner">
         <div style="display:flex;align-items:center;gap:12px;">
-            <span style="font-weight:900;color:#FDE68A;font-size:0.95rem;">
+            <span style="font-weight:900;color:#0284C7;font-size:0.95rem;">
                 مجلد #<?php echo number_format($b['global_id']); ?> / 5,000,000 (مليار صفحة)
             </span>
             <span style="color:var(--text-sub);font-size:0.85rem;display:none;md:inline;">

@@ -89,23 +89,18 @@ for ($k = 0; $k < 24; $k++) {
 function render_luxury_cover_svg_php($gid, $sec_id, $acc, $pri) {
     $rot = ($gid * 17 + $sec_id * 23) % 360;
     $id_pad = sprintf("#%07d", $gid);
-    return '<svg viewBox="0 0 140 140" width="96" height="96" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.75));">'
-        . '<defs><radialGradient id="rg' . $gid . '" cx="50%" cy="50%" r="50%">'
-        . '<stop offset="0%" stop-color="' . $acc . '" stop-opacity="0.45"/>'
-        . '<stop offset="70%" stop-color="' . $pri . '" stop-opacity="0.18"/>'
-        . '<stop offset="100%" stop-color="#000000" stop-opacity="0"/>'
-        . '</radialGradient></defs>'
-        . '<circle cx="70" cy="70" r="64" fill="url(#rg' . $gid . ')" stroke="' . $acc . '" stroke-width="1.5" stroke-dasharray="4 2"/>'
-        . '<circle cx="70" cy="70" r="54" fill="none" stroke="#FDE68A" stroke-width="1" stroke-opacity="0.6"/>'
+    return '<svg viewBox="0 0 140 140" width="92" height="92" style="filter:drop-shadow(0 6px 14px rgba(15,23,42,0.35));">'
+        . '<circle cx="70" cy="70" r="62" fill="rgba(255,255,255,0.12)" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="4 3"/>'
+        . '<circle cx="70" cy="70" r="52" fill="none" stroke="' . $acc . '" stroke-width="1.5"/>'
         . '<g transform="rotate(' . $rot . ' 70 70)">'
-        . '<rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="' . $acc . '" stroke-width="1.4" stroke-opacity="0.8"/>'
-        . '<rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.8" transform="rotate(45 70 70)"/>'
-        . '<ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="' . $pri . '" stroke-width="1" stroke-opacity="0.65" transform="rotate(30 70 70)"/>'
-        . '<ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="' . $pri . '" stroke-width="1" stroke-opacity="0.65" transform="rotate(120 70 70)"/>'
+        . '<rect x="33" y="33" width="74" height="74" rx="8" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-opacity="0.85"/>'
+        . '<rect x="33" y="33" width="74" height="74" rx="8" fill="none" stroke="' . $acc . '" stroke-width="1.4" transform="rotate(45 70 70)"/>'
+        . '<ellipse cx="70" cy="70" rx="46" ry="18" fill="none" stroke="#E0F2FE" stroke-width="1.1" stroke-opacity="0.75" transform="rotate(30 70 70)"/>'
+        . '<ellipse cx="70" cy="70" rx="46" ry="18" fill="none" stroke="#E0F2FE" stroke-width="1.1" stroke-opacity="0.75" transform="rotate(120 70 70)"/>'
         . '</g>'
-        . '<circle cx="70" cy="70" r="26" fill="#050814" stroke="#F59E0B" stroke-width="2"/>'
-        . '<text x="70" y="66" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-weight="900" font-family="Cinzel,serif">VOL. S' . sprintf("%02d", $sec_id) . '</text>'
-        . '<text x="70" y="79" text-anchor="middle" fill="#FFFFFF" font-size="8.5" font-weight="900" font-family="monospace">' . $id_pad . '</text>'
+        . '<circle cx="70" cy="70" r="26" fill="#FFFFFF" stroke="' . $pri . '" stroke-width="2.5"/>'
+        . '<text x="70" y="66" text-anchor="middle" fill="' . $pri . '" font-size="8.5" font-weight="900" font-family="Inter,sans-serif">SEC-' . sprintf("%02d", $sec_id) . '</text>'
+        . '<text x="70" y="79" text-anchor="middle" fill="#0F172A" font-size="8.2" font-weight="900" font-family="monospace">' . $id_pad . '</text>'
         . '</svg>';
 }
 
@@ -452,15 +447,15 @@ $json_ld = [
             --text-secondary: #CBD5E1;
             --text-muted: #94A3B8;
             --accent-blue: #38BDF8;
-            --accent-royal: #FDE68A;
+            --accent-royal: #0284C7;
             --accent-sky: #38BDF8;
-            --accent-gold: #F59E0B;
-            --accent-gold-light: rgba(245, 158, 11, 0.18);
+            --accent-gold: #0284C7;
+            --accent-gold-light: rgba(2, 132, 199, 0.18);
             --accent-green: #10B981;
-            --border-color: rgba(212, 175, 55, 0.28);
-            --border-strong: #F59E0B;
+            --border-color: rgba(37, 99, 235, 0.28);
+            --border-strong: #0284C7;
             --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.75);
-            --shadow-hover: 0 22px 55px rgba(245, 158, 11, 0.28);
+            --shadow-hover: 0 22px 55px rgba(2, 132, 199, 0.28);
             --input-bg: #050814;
         }
 
@@ -492,19 +487,19 @@ $json_ld = [
 
             --accent-sky: #38BDF8;
 
-            --accent-gold: #F59E0B;
+            --accent-gold: #0284C7;
 
-            --accent-gold-light: rgba(245, 158, 11, 0.15);
+            --accent-gold-light: rgba(2, 132, 199, 0.15);
 
             --accent-green: #22C55E;
 
             --border-color: rgba(56, 189, 248, 0.22);
 
-            --border-strong: #F59E0B;
+            --border-strong: #0284C7;
 
             --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.65);
 
-            --shadow-hover: 0 22px 55px rgba(245, 158, 11, 0.22);
+            --shadow-hover: 0 22px 55px rgba(2, 132, 199, 0.22);
 
             --input-bg: #020617;
 
@@ -554,7 +549,7 @@ $json_ld = [
 
             backdrop-filter: blur(16px);
 
-            border-bottom: 3px solid #F59E0B;
+            border-bottom: 3px solid #0284C7;
 
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
 
@@ -600,7 +595,7 @@ $json_ld = [
 
             border-radius: 12px;
 
-            background: linear-gradient(135deg, #F59E0B, #B45309);
+            background: linear-gradient(135deg, #0284C7, #B45309);
 
             display: flex;
 
@@ -610,9 +605,9 @@ $json_ld = [
 
             font-size: 1.4rem;
 
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
 
-            border: 2px solid #FDE68A;
+            border: 2px solid #0284C7;
 
         }
 
@@ -688,9 +683,9 @@ $json_ld = [
 
         }
 
-        .top-btn:hover { background: #F59E0B; color: #040711; border-color: #FDE68A; }
+        .top-btn:hover { background: #0284C7; color: #040711; border-color: #0284C7; }
 
-        .top-btn-gold { background: linear-gradient(135deg, #F59E0B, #D97706); color: #040711; border-color: #FDE68A; }
+        .top-btn-gold { background: linear-gradient(135deg, #0284C7, #2563EB); color: #040711; border-color: #0284C7; }
 
 
 
@@ -716,7 +711,7 @@ $json_ld = [
 
             overflow: hidden;
 
-            border: 2px solid rgba(245, 158, 11, 0.65);
+            border: 2px solid rgba(2, 132, 199, 0.65);
 
             box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
 
@@ -762,7 +757,7 @@ $json_ld = [
 
             border: 1px solid rgba(253, 230, 138, 0.5);
 
-            color: #FDE68A;
+            color: #0284C7;
 
             padding: 6px 14px;
 
@@ -848,11 +843,11 @@ $json_ld = [
 
         .btn-hero-gold {
 
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #0284C7, #2563EB);
 
             color: #040711;
 
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.35);
 
         }
 
@@ -899,13 +894,13 @@ $json_ld = [
             transform: translateY(-3px) scale(1.02);
         }
         .btn-action-gold {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+            background: linear-gradient(135deg, #0284C7 0%, #2563EB 100%) !important;
             color: #070B16 !important;
-            border-color: #FDE68A !important;
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+            border-color: #0284C7 !important;
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
         }
         .btn-action-gold:hover {
-            box-shadow: 0 0 35px rgba(245, 158, 11, 0.85), 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+            box-shadow: 0 0 35px rgba(2, 132, 199, 0.85), 0 12px 30px rgba(0, 0, 0, 0.5) !important;
         }
         .btn-action-blue {
             background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
@@ -976,7 +971,7 @@ $json_ld = [
 
         }
 
-        .kpi-card:hover { transform: translateY(-3px); border-color: #FDE68A; }
+        .kpi-card:hover { transform: translateY(-3px); border-color: #0284C7; }
 
         .kpi-num {
 
@@ -984,7 +979,7 @@ $json_ld = [
 
             font-weight: 900;
 
-            color: #FDE68A;
+            color: #0284C7;
 
             font-family: 'Inter', monospace;
 
@@ -1230,11 +1225,11 @@ $json_ld = [
 
         @keyframes pulseGlowGold {
 
-            0% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3), -12px 18px 45px rgba(0,0,0,0.7); }
+            0% { box-shadow: 0 0 25px rgba(2, 132, 199, 0.3), -12px 18px 45px rgba(0,0,0,0.7); }
 
-            50% { box-shadow: 0 0 45px rgba(245, 158, 11, 0.55), -16px 24px 55px rgba(0,0,0,0.85); }
+            50% { box-shadow: 0 0 45px rgba(2, 132, 199, 0.55), -16px 24px 55px rgba(0,0,0,0.85); }
 
-            100% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.3), -12px 18px 45px rgba(0,0,0,0.7); }
+            100% { box-shadow: 0 0 25px rgba(2, 132, 199, 0.3), -12px 18px 45px rgba(0,0,0,0.7); }
 
         }
 
@@ -1274,7 +1269,7 @@ $json_ld = [
 
             position: relative;
 
-            border: 3px solid #F59E0B;
+            border: 3px solid #0284C7;
 
             display: flex;
 
@@ -1290,7 +1285,7 @@ $json_ld = [
 
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 
-            box-shadow: -8px 0 0 #050811, -10px 0 0 #D4AF37, 6px 6px 0 #F8FAFC, 8px 8px 0 #CBD5E1, 10px 10px 0 #94A3B8, 12px 12px 0 #D4AF37, -18px 25px 50px rgba(0, 0, 0, 0.85), inset 6px 0 18px rgba(255, 215, 0, 0.22);
+            box-shadow: -8px 0 0 #050811, -10px 0 0 #0284C7, 6px 6px 0 #F8FAFC, 8px 8px 0 #CBD5E1, 10px 10px 0 #94A3B8, 12px 12px 0 #0284C7, -18px 25px 50px rgba(0, 0, 0, 0.85), inset 6px 0 18px rgba(255, 215, 0, 0.22);
 
         }
 
@@ -1300,7 +1295,7 @@ $json_ld = [
 
             transform: rotateY(0deg) scale(1.03);
 
-            box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), -5px 15px 35px rgba(0,0,0,0.9);
+            box-shadow: 0 0 40px rgba(2, 132, 199, 0.6), -5px 15px 35px rgba(0,0,0,0.9);
 
         }
 
@@ -1334,20 +1329,20 @@ $json_ld = [
 
             height: 44px;
 
-            background: linear-gradient(135deg, #F59E0B, #B45309);
+            background: linear-gradient(135deg, #0284C7, #B45309);
 
             clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(255,255,255,0.14);
 
         }
 
         
         .adj-pill.active {
-            background: linear-gradient(135deg, #F59E0B, #D97706) !important;
+            background: linear-gradient(135deg, #0284C7, #2563EB) !important;
             color: #030712 !important;
             font-weight: 900 !important;
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.9), 0 4px 15px rgba(0,0,0,0.5) !important;
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.9), 0 4px 15px rgba(0,0,0,0.5) !important;
             border-color: #FFF !important;
             transform: translateY(-2px);
         }
@@ -1360,7 +1355,7 @@ $json_ld = [
             padding: 12px;
             border-radius: 16px;
             background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed rgba(245, 158, 11, 0.35);
+            border: 1px dashed rgba(2, 132, 199, 0.35);
         }
         .adj-pill {
             padding: 8px 16px;
@@ -1378,27 +1373,27 @@ $json_ld = [
         }
         /* IMPERIAL DARK THEME (HIGH VISIBILITY & CONTRAST) */
         [data-theme="imperial-dark"] .adj-pill {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(180, 83, 9, 0.3));
-            border: 1.5px solid #F59E0B;
-            color: #FCD34D !important;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.2), rgba(180, 83, 9, 0.3));
+            border: 1.5px solid #0284C7;
+            color: #1E3A8A !important;
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
         [data-theme="imperial-dark"] .adj-pill:hover {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #0284C7, #2563EB);
             color: #030712 !important;
             font-weight: 900;
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 8px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 0 25px rgba(2, 132, 199, 0.8), 0 8px 20px rgba(0,0,0,0.6);
         }
         /* ROYAL LIGHT THEME (SUPER SHARP DARK AMBER ON CREAM) */
         [data-theme="unused-light"] .adj-pill {
-            background: #FEF3C7;
-            border: 1.5px solid #D97706;
+            background: #EFF6FF;
+            border: 1.5px solid #2563EB;
             color: #78350F !important;
             box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
         }
         [data-theme="unused-light"] .adj-pill:hover {
-            background: #D97706;
+            background: #2563EB;
             color: #FFFFFF !important;
             font-weight: 900;
             transform: translateY(-3px) scale(1.02);
@@ -1519,7 +1514,7 @@ $json_ld = [
 
             position: relative;
 
-            border-bottom: 3px solid #F59E0B;
+            border-bottom: 3px solid #0284C7;
 
             min-height: 165px;
 
@@ -1607,7 +1602,7 @@ $json_ld = [
 
         .btn-card-primary { background: var(--accent-blue); color: #FFFFFF; }
 
-        .btn-card-gold { background: linear-gradient(135deg, #F59E0B, #D97706); color: #040711; }
+        .btn-card-gold { background: linear-gradient(135deg, #0284C7, #2563EB); color: #040711; }
 
 
 
@@ -1695,7 +1690,7 @@ $json_ld = [
 
             margin-top: 50px;
 
-            border-top: 4px solid #F59E0B;
+            border-top: 4px solid #0284C7;
 
         }
 
@@ -1713,7 +1708,7 @@ $json_ld = [
 
         }
 
-        .footer-title { color: #FDE68A; font-weight: 900; font-size: 1.08rem; margin-bottom: 12px; }
+        .footer-title { color: #0284C7; font-weight: 900; font-size: 1.08rem; margin-bottom: 12px; }
 
         .footer-links a {
 
@@ -1737,8 +1732,8 @@ $json_ld = [
            Eng. Mahmoud Bek ElNemer · Guinness World Record 1M Encyclopedia
            ========================================================================== */
         @keyframes goldGlowPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 10px 40px rgba(0,0,0,0.8); }
-            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.65), 0 15px 50px rgba(0,0,0,0.9); }
+            0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.35), 0 10px 40px rgba(0,0,0,0.8); }
+            50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.65), 0 15px 50px rgba(0,0,0,0.9); }
         }
         @keyframes crestFloat {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -1746,17 +1741,17 @@ $json_ld = [
         }
 
         .gold-gradient-text {
-            background: linear-gradient(135deg, #FFFDF0 0%, #FDE68A 35%, #D4AF37 70%, #996515 100%);
+            background: linear-gradient(135deg, #FFFDF0 0%, #0284C7 35%, #0284C7 70%, #996515 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-family: 'Cinzel', 'Tajawal', serif;
         }
 
         .hero-banner {
-            background: radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.18) 0%, transparent 70%),
+            background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 70%),
                         radial-gradient(ellipse at 15% 50%, rgba(37, 99, 235, 0.14) 0%, transparent 60%),
                         linear-gradient(145deg, #0c101c 0%, #07090f 50%, #030408 100%) !important;
-            border: 2px solid rgba(212, 175, 55, 0.45) !important;
+            border: 2px solid rgba(37, 99, 235, 0.45) !important;
             border-radius: 28px !important;
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
             padding: 45px 35px !important;
@@ -1769,7 +1764,7 @@ $json_ld = [
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #F59E0B, #FFF, #F59E0B, transparent);
+            background: linear-gradient(90deg, transparent, #0284C7, #FFF, #0284C7, transparent);
         }
 
         .author-vip-card {
@@ -1777,7 +1772,7 @@ $json_ld = [
             align-items: center;
             gap: 16px;
             background: rgba(15, 22, 38, 0.92);
-            border: 1.5px solid rgba(212, 175, 55, 0.5);
+            border: 1.5px solid rgba(37, 99, 235, 0.5);
             border-radius: 999px;
             padding: 10px 26px;
             margin: 18px 0 25px 0;
@@ -1799,7 +1794,7 @@ $json_ld = [
 
         .author-vip-sub {
             font-size: 0.84rem;
-            color: #FDE68A;
+            color: #0284C7;
             font-weight: 700;
         }
 
@@ -1812,7 +1807,7 @@ $json_ld = [
 
         .stat-bento-card {
             background: rgba(14, 20, 34, 0.85);
-            border: 1px solid rgba(212, 175, 55, 0.28);
+            border: 1px solid rgba(37, 99, 235, 0.28);
             border-radius: 20px;
             padding: 22px 20px;
             text-align: center;
@@ -1824,8 +1819,8 @@ $json_ld = [
 
         .stat-bento-card:hover {
             transform: translateY(-5px);
-            border-color: #D4AF37;
-            box-shadow: 0 18px 45px rgba(212, 175, 55, 0.25);
+            border-color: #0284C7;
+            box-shadow: 0 18px 45px rgba(37, 99, 235, 0.25);
         }
 
         .stat-bento-num {
@@ -1834,7 +1829,7 @@ $json_ld = [
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 6px;
-            background: linear-gradient(135deg, #FFF9E6 0%, #F5D77F 50%, #D4AF37 100%);
+            background: linear-gradient(135deg, #FFF9E6 0%, #F5D77F 50%, #0284C7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -1853,7 +1848,7 @@ $json_ld = [
 
         .section-card {
             background: rgba(13, 18, 30, 0.85) !important;
-            border: 1px solid rgba(212, 175, 55, 0.25) !important;
+            border: 1px solid rgba(37, 99, 235, 0.25) !important;
             border-radius: 24px !important;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6) !important;
             backdrop-filter: blur(14px) !important;
@@ -1861,14 +1856,14 @@ $json_ld = [
 
         .topbar {
             background: rgba(7, 9, 15, 0.94) !important;
-            border-bottom: 2px solid #D4AF37 !important;
+            border-bottom: 2px solid #0284C7 !important;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7) !important;
             backdrop-filter: blur(20px) !important;
         }
 
         .adj-pill {
             background: rgba(18, 26, 44, 0.8) !important;
-            border: 1px solid rgba(212, 175, 55, 0.35) !important;
+            border: 1px solid rgba(37, 99, 235, 0.35) !important;
             color: #F8FAFC !important;
             font-weight: 700 !important;
             padding: 8px 18px !important;
@@ -1877,19 +1872,19 @@ $json_ld = [
         }
 
         .adj-pill:hover, .adj-pill.active {
-            background: linear-gradient(135deg, #D4AF37, #AA771C) !important;
+            background: linear-gradient(135deg, #0284C7, #AA771C) !important;
             color: #000000 !important;
             font-weight: 900 !important;
-            border-color: #FFD700 !important;
+            border-color: #38BDF8 !important;
             transform: translateY(-2px) scale(1.03) !important;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45) !important;
         }
 
 
         /* 3D ROYAL ENCYCLOPEDIA HARDCOVER MOCKUP IN SHOWCASE GRID */
         .showcase-card {
             background: linear-gradient(160deg, rgba(15, 23, 42, 0.96) 0%, rgba(7, 10, 20, 0.98) 100%) !important;
-            border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+            border: 1.5px solid rgba(37, 99, 235, 0.35) !important;
             border-radius: 20px !important;
             padding: 18px !important;
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
@@ -1902,8 +1897,8 @@ $json_ld = [
         }
         .showcase-card:hover {
             transform: translateY(-8px) !important;
-            border-color: #FFD700 !important;
-            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.28), 0 10px 30px rgba(0,0,0,0.9) !important;
+            border-color: #38BDF8 !important;
+            box-shadow: 0 25px 60px rgba(37, 99, 235, 0.28), 0 10px 30px rgba(0,0,0,0.9) !important;
         }
         .royal-3d-book-wrap {
             perspective: 1000px;
@@ -1921,14 +1916,14 @@ $json_ld = [
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            border: 2px solid #D4AF37;
+            border: 2px solid #0284C7;
             box-shadow:
                 -8px 0 0 #050811,
-                -10px 0 0 #D4AF37,
+                -10px 0 0 #0284C7,
                 6px 6px 0 #E2E8F0,
                 7px 7px 0 #CBD5E1,
                 8px 8px 0 #94A3B8,
-                10px 10px 0 #D4AF37,
+                10px 10px 0 #0284C7,
                 16px 22px 38px rgba(0, 0, 0, 0.85),
                 inset 0 0 25px rgba(0, 0, 0, 0.65);
             transform: rotateY(-8deg) rotateX(2deg);
@@ -1945,7 +1940,7 @@ $json_ld = [
             bottom: 0;
             left: 0;
             width: 14px;
-            background: linear-gradient(90deg, rgba(255,215,0,0.35) 0%, rgba(0,0,0,0.75) 50%, rgba(212,175,55,0.45) 100%);
+            background: linear-gradient(90deg, rgba(255,215,0,0.35) 0%, rgba(0,0,0,0.75) 50%, rgba(37,99,235,0.45) 100%);
             border-right: 1.5px solid rgba(253, 230, 138, 0.6);
             border-radius: 4px 0 0 4px;
         }
@@ -1971,8 +1966,200 @@ $json_ld = [
             background: rgba(2, 6, 23, 0.65);
             padding: 8px 10px;
             border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.2);
             margin-bottom: 12px !important;
+        }
+
+
+        /* ==========================================================================
+           MASTER SAPPHIRE, EMERALD & PLATINUM PEARL DESIGN (ZERO BLACK & ZERO YELLOW)
+           ========================================================================== */
+        :root, [data-theme="imperial-dark"], [data-theme="royal-light"] {
+            --bg-main: #F4F7FB !important;
+            --bg-grad: linear-gradient(135deg, #F0F5FF 0%, #F8FAFC 50%, #ECFDF5 100%) !important;
+            --card-bg: #FFFFFF !important;
+            --card-bg-alt: #F8FAFC !important;
+            --topbar-bg: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 55%, #0F766E 100%) !important;
+            --hero-bg: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #0D9488 100%) !important;
+            --text-primary: #0F172A !important;
+            --text-secondary: #334155 !important;
+            --text-muted: #64748B !important;
+            --accent-blue: #2563EB !important;
+            --accent-royal: #1E3A8A !important;
+            --accent-sky: #0284C7 !important;
+            --accent-gold: #0284C7 !important;
+            --accent-gold-light: #E0F2FE !important;
+            --accent-green: #059669 !important;
+            --border-color: #CBD5E1 !important;
+            --border-strong: #3B82F6 !important;
+            --shadow-soft: 0 12px 32px rgba(15, 23, 42, 0.06) !important;
+            --shadow-hover: 0 20px 45px rgba(37, 99, 235, 0.16) !important;
+            --input-bg: #FFFFFF !important;
+        }
+        body {
+            background: var(--bg-grad) !important;
+            color: #0F172A !important;
+        }
+        .topbar {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 55%, #0F766E 100%) !important;
+            border-bottom: 3px solid #38BDF8 !important;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.22) !important;
+            position: relative !important;
+        }
+        .brand-crest {
+            background: linear-gradient(135deg, #0284C7, #0D9488) !important;
+            border: 2px solid #E0F2FE !important;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35) !important;
+        }
+        .top-btn, .top-btn-gold {
+            background: rgba(255, 255, 255, 0.18) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        }
+        .top-btn:hover, .top-btn-gold:hover {
+            background: #FFFFFF !important;
+            color: #1E3A8A !important;
+            border-color: #FFFFFF !important;
+        }
+        .hero-banner {
+            background: radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.28) 0%, transparent 55%),
+                        radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.25) 0%, transparent 55%),
+                        linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 48%, #0F766E 100%) !important;
+            border: 2px solid #93C5FD !important;
+            border-radius: 28px !important;
+            box-shadow: 0 22px 55px rgba(30, 58, 138, 0.25) !important;
+            padding: 40px 32px !important;
+            margin-top: 10px !important;
+        }
+        .hero-banner::before {
+            background: linear-gradient(90deg, transparent, #38BDF8, #FFFFFF, #34D399, transparent) !important;
+        }
+        .hero-pill {
+            background: rgba(255, 255, 255, 0.16) !important;
+            border: 1px solid rgba(255, 255, 255, 0.45) !important;
+            color: #FFFFFF !important;
+        }
+        .gold-gradient-text, .hero-title {
+            background: none !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            color: #FFFFFF !important;
+            text-shadow: 0 4px 18px rgba(15, 23, 42, 0.28) !important;
+        }
+        .author-vip-card {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2) !important;
+        }
+        .author-vip-sub {
+            color: #E0F2FE !important;
+        }
+        .stat-bento-card {
+            background: rgba(255, 255, 255, 0.14) !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15) !important;
+        }
+        .stat-bento-card:hover {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border-color: #FFFFFF !important;
+            transform: translateY(-5px) !important;
+        }
+        .stat-bento-num {
+            background: none !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            color: #FFFFFF !important;
+        }
+        .stat-bento-label {
+            color: #E0F2FE !important;
+        }
+        .stat-bento-desc {
+            color: #CBD5E1 !important;
+        }
+        .btn-hero-gold {
+            background: #FFFFFF !important;
+            color: #1E3A8A !important;
+            border: 2px solid #FFFFFF !important;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2) !important;
+        }
+        .section-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid #DBEAFE !important;
+            border-radius: 24px !important;
+            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06) !important;
+        }
+        .section-title {
+            color: #1E3A8A !important;
+        }
+        .adj-pill {
+            background: #EFF6FF !important;
+            border: 1.5px solid #93C5FD !important;
+            color: #1E3A8A !important;
+            font-weight: 800 !important;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08) !important;
+        }
+        .adj-pill:hover, .adj-pill.active {
+            background: linear-gradient(135deg, #2563EB, #0D9488) !important;
+            color: #FFFFFF !important;
+            border-color: #1D4ED8 !important;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.28) !important;
+        }
+        .showcase-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid #E2E8F0 !important;
+            border-radius: 20px !important;
+            padding: 18px !important;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07) !important;
+        }
+        .showcase-card:hover {
+            border-color: #3B82F6 !important;
+            box-shadow: 0 18px 42px rgba(37, 99, 235, 0.16) !important;
+        }
+        .royal-3d-book {
+            border: 2px solid rgba(255, 255, 255, 0.65) !important;
+            box-shadow:
+                -7px 0 0 #0F172A,
+                -9px 0 0 #38BDF8,
+                6px 6px 0 #F8FAFC,
+                7px 7px 0 #E2E8F0,
+                8px 8px 0 #CBD5E1,
+                10px 10px 0 #64748B,
+                14px 18px 30px rgba(15, 23, 42, 0.25) !important;
+        }
+        .royal-3d-book::before {
+            background: linear-gradient(90deg, rgba(255,255,255,0.35) 0%, rgba(15,23,42,0.45) 50%, rgba(255,255,255,0.25) 100%) !important;
+            border-right: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+        }
+        .royal-3d-book::after {
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        }
+        .showcase-title {
+            color: #0F172A !important;
+            font-size: 1.02rem !important;
+            font-weight: 900 !important;
+        }
+        .showcase-meta {
+            color: #475569 !important;
+            background: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+        }
+        .btn-card-primary {
+            background: linear-gradient(135deg, #2563EB, #1D4ED8) !important;
+            color: #FFFFFF !important;
+        }
+        .btn-card-emerald, .btn-card-gold {
+            background: linear-gradient(135deg, #059669, #0D9488) !important;
+            color: #FFFFFF !important;
+        }
+        .book-3d-cover {
+            border: 2px solid rgba(255, 255, 255, 0.75) !important;
+            box-shadow: -8px 0 0 #1E293B, -10px 0 0 #38BDF8, 6px 6px 0 #F8FAFC, 8px 8px 0 #E2E8F0, 10px 10px 0 #CBD5E1, 12px 12px 0 #64748B, -15px 22px 45px rgba(15, 23, 42, 0.3) !important;
+            animation: floatBook 6s ease-in-out infinite !important;
+        }
+        .royal-footer {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%) !important;
+            border-top: 4px solid #38BDF8 !important;
+        }
+        .footer-title {
+            color: #38BDF8 !important;
         }
 
 </style>
@@ -2027,11 +2214,11 @@ $json_ld = [
 
             <button class="top-btn top-btn-gold" onclick="togglePortalTheme()" id="themeToggleBtn">
 
-                🎨 الثيم الملكي (أبيض وأزرق / ذهبي داكن)
+                💎 التصميم الياقوتي والزمردي الأكاديمي
 
             </button>
 
-            <a class="top-btn top-btn-gold" href="/guinness" style="background: linear-gradient(135deg, #d4af37, #aa771c); color: #000; font-weight: 800; border: 1px solid #ffd700;">⚖️ بوابة تحكيم جينيس</a>
+            <a class="top-btn top-btn-gold" href="/guinness" style="background: linear-gradient(135deg, #059669, #0D9488); color: #FFF; font-weight: 800; border: 1px solid #6EE7B7;">⚖️ بوابة تحكيم جينيس</a>
             <a class="top-btn" href="/guinness_dossier.pdf" target="_blank">📥 ملف التحكيم (PDF)</a>
             <a class="top-btn" href="#adjudicator-console">🔬 منصة التحكيم ISO</a>
 
@@ -2085,9 +2272,9 @@ $json_ld = [
 
         <!-- 6 IMPERIAL BENTO METRIC PILLARS — THE 1-BILLION-PAGE SOVEREIGN MONUMENT -->
         <div class="hero-stats-bento" style="grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));">
-            <div class="stat-bento-card" style="border:2px solid #F59E0B;box-shadow:0 0 35px rgba(245,158,11,0.28);">
+            <div class="stat-bento-card" style="border:2px solid #FFFFFF;box-shadow:0 10px 30px rgba(255,255,255,0.22);">
                 <div class="stat-bento-num" style="font-size:2.3rem;">1,000,000,000</div>
-                <div class="stat-bento-label" style="color:#FDE68A;">مليار صفحة موسوعية نافعة</div>
+                <div class="stat-bento-label" style="color:#FFFFFF;">مليار صفحة موسوعية نافعة</div>
                 <div class="stat-bento-desc">أضخم صرح معرفي لمؤلف واحد في التاريخ</div>
             </div>
             <div class="stat-bento-card">
@@ -2118,8 +2305,8 @@ $json_ld = [
         </div>
 
         <!-- 5 HUMAN-BENEFIT COMPASS HUBS (بوصلة النفع الإنساني السريعة لـ 50 قطاعاً و 1000 تخصص) -->
-        <div style="background:rgba(9,13,26,0.92);border:1.5px solid rgba(212,175,55,0.45);border-radius:20px;padding:18px 20px;margin:18px 0 22px 0;box-shadow:0 12px 35px rgba(0,0,0,0.55);">
-            <div style="font-size:0.95rem;font-weight:900;color:#FDE68A;margin-bottom:12px;text-align:center;">
+        <div style="background:rgba(255,255,255,0.95);border:2px solid #93C5FD;border-radius:20px;padding:18px 20px;margin:18px 0 22px 0;box-shadow:0 12px 35px rgba(0,0,0,0.55);">
+            <div style="font-size:0.95rem;font-weight:900;color:#1E3A8A;margin-bottom:12px;text-align:center;">
                 🧭 بوصلة النفع الإنساني الشاملة — اختر محور حياتك أو تخصصك لاستكشاف الـ 5,000,000 كتاب (مليار صفحة):
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
@@ -2183,10 +2370,10 @@ $json_ld = [
     
     <!-- GLOBAL ENCYCLOPEDIA INSTANT SEARCH ENGINE -->
     <div class="global-search-wrapper" style="margin:25px auto 35px auto;max-width:920px;position:relative;">
-        <div style="background:rgba(18,24,38,0.92);border:2px solid #D4AF37;border-radius:18px;padding:8px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 35px rgba(0,0,0,0.6);backdrop-filter:blur(12px);">
-            <span style="font-size:1.6rem;color:#D4AF37;">🔍</span>
+        <div style="background:#FFFFFF;border:2px solid #38BDF8;border-radius:18px;padding:8px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 35px rgba(0,0,0,0.6);backdrop-filter:blur(12px);">
+            <span style="font-size:1.6rem;color:#0284C7;">🔍</span>
             <input type="text" id="globalEncyclopediaSearch" placeholder="ابحث في الـ 5,000,000 كتاب ومليار صفحة (طب أسري، تربية، عمل حر، برمجة، زراعة، أو رقم ISBN أو رقم المجلد 1 - 5000000)..." 
-                   style="flex:1;background:transparent;border:none;color:#FFF;font-size:1.05rem;font-weight:700;font-family:'Tajawal',sans-serif;outline:none;" 
+                   style="flex:1;background:transparent;border:none;color:#0F172A;font-size:1.05rem;font-weight:700;font-family:'Tajawal',sans-serif;outline:none;" 
                    oninput="onLiveEncyclopediaSearch(this.value)">
             <button class="top-btn top-btn-gold" onclick="onLiveEncyclopediaSearch(document.getElementById('globalEncyclopediaSearch').value)" style="padding:10px 24px;font-size:1rem;">بحث لحظي</button>
         </div>
@@ -2201,18 +2388,18 @@ $json_ld = [
             <button class="adj-pill" onclick="searchTopicTag('الطاقة الشمسية')">☀️ الطاقة الشمسية والزراعة الحديثة</button>
         </div>
         <!-- Live Results Dropdown Container -->
-        <div id="liveSearchResultsContainer" style="display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,13,22,0.98);border:2px solid #D4AF37;border-radius:16px;margin-top:10px;padding:16px;max-height:480px;overflow-y:auto;z-index:9999;box-shadow:0 20px 50px rgba(0,0,0,0.85);text-align:right;">
+        <div id="liveSearchResultsContainer" style="display:none;position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border:2px solid #2563EB;border-radius:16px;margin-top:10px;padding:16px;max-height:480px;overflow-y:auto;z-index:9999;box-shadow:0 20px 50px rgba(0,0,0,0.85);text-align:right;">
             <div id="liveSearchResultsContent"></div>
         </div>
     </div>
 
     <!-- GUINNESS WORLD RECORD LIVE GENERATION & NEMER SOVEREIGN EDGE INGESTION RADAR -->
-    <div style="background:linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,41,59,0.94));border:2px solid #F59E0B;border-radius:20px;padding:24px;margin-bottom:30px;box-shadow:0 12px 35px rgba(0,0,0,0.65);">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;border-bottom:1px dashed rgba(245,158,11,0.45);padding-bottom:14px;">
+    <div style="background:linear-gradient(135deg, #0F172A, #1E3A8A);border:2px solid #38BDF8;border-radius:20px;padding:24px;margin-bottom:30px;box-shadow:0 12px 35px rgba(0,0,0,0.65);">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;border-bottom:1px dashed rgba(2,132,199,0.45);padding-bottom:14px;">
             <div style="display:flex;align-items:center;gap:12px;">
                 <span style="font-size:1.6rem;">🛰️</span>
                 <div>
-                    <div style="font-size:1.1rem;font-weight:900;color:#FDE68A;">رادار المراقبة التشفيرية الحية لموسوعة جينيس العالمية (Live Ingestion & Blockchain-Grade Radar)</div>
+                    <div style="font-size:1.1rem;font-weight:900;color:#0284C7;">رادار المراقبة التشفيرية الحية لموسوعة جينيس العالمية (Live Ingestion & Blockchain-Grade Radar)</div>
                     <div style="font-size:0.82rem;color:#94A3B8;">تتبع مباشر لحالة التوليد والأرشفة السحابية لكافة المجلدات والصفحات على مدار الساعة</div>
                 </div>
             </div>
@@ -2222,19 +2409,19 @@ $json_ld = [
             </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));gap:14px;">
-            <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:14px;">
+            <div style="background:rgba(255,255,255,0.14);border:1px solid rgba(56,189,248,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">📚 إجمالي الكتب المصنفة والمفهرسة</div>
                 <div style="font-size:1.4rem;font-weight:900;color:#38BDF8;">5,000,000 <span style="font-size:0.82rem;color:#BAE6FD;">كتاب ومجلد</span></div>
             </div>
-            <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(245,158,11,0.3);border-radius:14px;padding:14px;">
+            <div style="background:rgba(255,255,255,0.14);border:1px solid rgba(2,132,199,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">📄 إجمالي الصفحات بدون تكرار</div>
-                <div style="font-size:1.4rem;font-weight:900;color:#F59E0B;">1,000,000,000 <span style="font-size:0.82rem;color:#FDE68A;">مليار صفحة</span></div>
+                <div style="font-size:1.4rem;font-weight:900;color:#0284C7;">1,000,000,000 <span style="font-size:0.82rem;color:#0284C7;">مليار صفحة</span></div>
             </div>
-            <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:14px;">
+            <div style="background:rgba(255,255,255,0.14);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">☁️ السحابة السيادية فائقة السرعة لدار النمر (Nemer Sovereign Edge)</div>
                 <div style="font-size:1.2rem;font-weight:900;color:#10B981;">متزامن كلياً <span style="font-size:0.76rem;color:#A7F3D0;">(Zero-Loss Mirror)</span></div>
             </div>
-            <div style="background:rgba(0,0,0,0.4);border:1px solid rgba(168,85,247,0.3);border-radius:14px;padding:14px;">
+            <div style="background:rgba(255,255,255,0.14);border:1px solid rgba(168,85,247,0.3);border-radius:14px;padding:14px;">
                 <div style="font-size:0.76rem;color:#94A3B8;font-weight:800;">🔐 بصمة شجرة ميركل لجينيس (Master Root)</div>
                 <div style="font-size:0.82rem;font-family:monospace;font-weight:900;color:#C084FC;word-break:break-all;">72806865ca4d56a0...</div>
             </div>
@@ -2411,42 +2598,24 @@ $json_ld = [
 
             <div class="book-3d-stage">
 
-                <div class="book-3d-cover" id="inspCoverCard" style="background:#0F172A;">
-
+                <div class="book-3d-cover" id="inspCoverCard" style="background:linear-gradient(150deg, #1E3A8A 0%, #2563EB 100%);">
                     <div class="book-spine-bar"></div>
-
-                    <div style="font-size:0.74rem;font-weight:900;color:#FDE68A;border:1px solid #F59E0B;padding:4px 8px;border-radius:6px;background:rgba(0,0,0,0.55);">
-
-                        ELNEMER 1B-PAGE ENCYCLOPEDIA • 5M BOOKS
-
+                    <div style="font-size:0.74rem;font-weight:900;color:#1E3A8A;padding:5px 10px;border-radius:8px;background:rgba(255,255,255,0.96);box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+                        🏛️ ELNEMER 1B-PAGE ENCYCLOPEDIA • 5M BOOKS
                     </div>
-
-                    <div id="inspCoverEmblem" style="width:110px;height:110px;margin:10px auto;border-radius:50%;border:3px dashed #38BDF8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.15rem;color:#FFFFFF;background:radial-gradient(circle,rgba(56,189,248,0.22),transparent);">
-
+                    <div id="inspCoverEmblem" style="width:120px;height:120px;margin:8px auto;display:flex;align-items:center;justify-content:center;">
                         #0000001
-
                     </div>
-
-                    <div style="background:rgba(2,6,23,0.88);border:2px solid #38BDF8;border-radius:10px;padding:10px;">
-
-                        <div id="inspCoverSector" style="color:#FDE68A;font-size:0.76rem;font-weight:800;margin-bottom:4px;"></div>
-
-                        <div id="inspCoverDomainEn" style="color:#FFFFFF;font-size:0.92rem;font-weight:900;line-height:1.25;margin-bottom:4px;"></div>
-
-                        <div id="inspCoverDomainAr" style="color:#CBD5E1;font-size:0.8rem;margin-bottom:4px;"></div>
-
-                        <div id="inspCoverLang" style="color:#38BDF8;font-size:0.8rem;font-weight:800;"></div>
-
+                    <div style="background:rgba(255,255,255,0.96);border-left:5px solid #0284C7;border-radius:10px;padding:12px;box-shadow:0 8px 20px rgba(0,0,0,0.18);">
+                        <div id="inspCoverSector" style="color:#0284C7;font-size:0.76rem;font-weight:900;margin-bottom:4px;"></div>
+                        <div id="inspCoverDomainAr" style="color:#0F172A;font-size:0.95rem;font-weight:900;line-height:1.3;margin-bottom:4px;"></div>
+                        <div id="inspCoverDomainEn" style="color:#475569;font-size:0.8rem;font-weight:700;margin-bottom:4px;"></div>
+                        <div id="inspCoverLang" style="color:#059669;font-size:0.8rem;font-weight:900;"></div>
                     </div>
-
-                    <div style="font-size:0.75rem;color:#FDE68A;font-weight:800;">
-
+                    <div style="font-size:0.78rem;color:#FFFFFF;font-weight:900;border-top:1px solid rgba(255,255,255,0.3);padding-top:6px;">
                         <span id="inspCoverAuthor">Eng. Mahmoud Bek ElNemer</span><br>
-
-                        <span id="inspCoverIsbn" style="color:#94A3B8;font-family:monospace;">ISBN: 9789710000012</span>
-
+                        <span id="inspCoverIsbn" style="color:#E0F2FE;font-family:monospace;">ISBN: 9789710000012</span>
                     </div>
-
                 </div>
 
             </div>
@@ -2520,7 +2689,7 @@ $json_ld = [
                         <span>⚖️</span>
                         <span>قفزات التحكيم السريع لمحكّمي موسوعة جينيس وخبراء Google العالمية (Adjudicator Quick Jump):</span>
                     </div>
-                    <span style="font-size:0.75rem;padding:3px 10px;border-radius:6px;background:rgba(245,158,11,0.18);border:1px solid #F59E0B;color:#FDE68A;font-weight:800;">
+                    <span style="font-size:0.75rem;padding:3px 10px;border-radius:6px;background:rgba(2,132,199,0.18);border:1px solid #0284C7;color:#0284C7;font-weight:800;">
                         ISO 2859-1 Certified Sampling
                     </span>
                 </div>
@@ -2618,47 +2787,47 @@ $json_ld = [
 
             <article class="showcase-card">
                 <div class="royal-3d-book-wrap">
-                    <div class="royal-3d-book" style="background:radial-gradient(circle at 50% 35%, <?php echo $p['pri']; ?>33 0%, <?php echo $p['bg']; ?> 65%, #030611 100%);border-color:<?php echo $p['acc']; ?>;">
-                        <!-- Top Gold Ribbon -->
-                        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#FDE68A;background:rgba(0,0,0,0.65);border:1px solid rgba(253,230,138,0.45);padding:3px 8px;border-radius:6px;z-index:2;">
-                            <span>👑 ELNEMER 1B ENCYCLOPEDIA</span>
-                            <span style="color:<?php echo $p['acc']; ?>;">🌍 <?php echo htmlspecialchars($b['lang_code']); ?></span>
+                    <div class="royal-3d-book" style="background:linear-gradient(155deg, <?php echo $p['bg']; ?> 0%, <?php echo $p['pri']; ?> 100%);">
+                        <!-- Top Publisher Band (White & Sapphire like Oxford/Springer Monographs) -->
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#0F172A;background:rgba(255,255,255,0.95);padding:4px 9px;border-radius:6px;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+                            <span style="color:<?php echo $p['bg']; ?>;">🏛️ NEMER 1B ENCYCLOPEDIA</span>
+                            <span style="background:<?php echo $p['pri']; ?>;color:#FFFFFF;padding:1px 6px;border-radius:4px;">🌍 <?php echo htmlspecialchars(strtoupper($b['lang_code'])); ?></span>
                         </div>
-                        <!-- Center Sacred Geometry & Scientific Medallion -->
+                        <!-- Center Scientific Vector Medallion -->
                         <div style="margin:6px auto;z-index:2;">
                             <?php echo render_luxury_cover_svg_php($b['global_id'], $b['sector_id'], $p['acc'], $p['pri']); ?>
                         </div>
-                        <!-- Royal Title Cartouche on Cover -->
-                        <div style="background:rgba(3,7,18,0.9);border:1.5px solid <?php echo $p['acc']; ?>;border-radius:8px;padding:7px 8px;z-index:2;">
-                            <div style="font-size:0.68rem;color:#FDE68A;font-weight:800;margin-bottom:2px;"><?php echo htmlspecialchars($b['sector_ar']); ?></div>
-                            <div style="font-size:0.8rem;font-weight:900;color:#FFFFFF;line-height:1.25;margin-bottom:2px;"><?php echo htmlspecialchars($b['domain_ar']); ?></div>
-                            <div style="font-size:0.68rem;color:#93C5FD;font-weight:700;line-height:1.2;"><?php echo htmlspecialchars($b['domain_en']); ?></div>
+                        <!-- Crisp White Academic Title Plate on Cover -->
+                        <div style="background:rgba(255,255,255,0.96);border-left:4px solid <?php echo $p['acc']; ?>;border-radius:8px;padding:8px 10px;z-index:2;text-align:right;box-shadow:0 6px 16px rgba(0,0,0,0.18);">
+                            <div style="font-size:0.66rem;color:<?php echo $p['pri']; ?>;font-weight:900;margin-bottom:2px;"><?php echo htmlspecialchars($b['sector_ar']); ?></div>
+                            <div style="font-size:0.8rem;font-weight:900;color:#0F172A;line-height:1.25;margin-bottom:2px;"><?php echo htmlspecialchars($b['domain_ar']); ?></div>
+                            <div style="font-size:0.66rem;color:#475569;font-weight:700;line-height:1.2;"><?php echo htmlspecialchars($b['domain_en']); ?></div>
                         </div>
-                        <!-- Bottom Author & ISBN Gold Foil Footer -->
-                        <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(253,230,138,0.3);padding-top:4px;">
-                            <div style="font-size:0.7rem;font-weight:900;color:#FDE68A;"><?php echo htmlspecialchars($b['author']); ?></div>
-                            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#CBD5E1;font-family:monospace;margin-top:2px;">
+                        <!-- Bottom Author & ISBN Footer on Cover -->
+                        <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(255,255,255,0.3);padding-top:4px;color:#FFFFFF;">
+                            <div style="font-size:0.7rem;font-weight:900;color:#FFFFFF;"><?php echo htmlspecialchars($b['author']); ?></div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#E0F2FE;font-family:monospace;margin-top:2px;">
                                 <span>ISBN: <?php echo $b['isbn13']; ?></span>
-                                <span style="color:#34D399;font-weight:900;"><?php echo $b['is_paid'] ? ('$' . $b['price_usd']) : 'FREE $0.00'; ?></span>
+                                <span style="background:rgba(255,255,255,0.22);color:#FFFFFF;padding:0 5px;border-radius:4px;font-weight:900;"><?php echo $b['is_paid'] ? ('$' . $b['price_usd']) : 'FREE $0.00'; ?></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="showcase-body">
                     <div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-                            <span style="background:rgba(245,158,11,0.18);color:#FDE68A;border:1px solid #F59E0B;padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:900;">مجلد #<?php echo number_format($b['global_id']); ?> / 5,000,000</span>
-                            <span style="background:rgba(56,189,248,0.15);color:#38BDF8;border:1px solid rgba(56,189,248,0.35);padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:800;"><?php echo htmlspecialchars($b['lang_name']); ?></span>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                            <span style="background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;padding:3px 9px;border-radius:6px;font-size:0.74rem;font-weight:900;">📘 مجلد #<?php echo number_format($b['global_id']); ?> / 5,000,000</span>
+                            <span style="background:#ECFDF5;color:#047857;border:1px solid #A7F3D0;padding:3px 9px;border-radius:6px;font-size:0.74rem;font-weight:800;">🌍 <?php echo htmlspecialchars($b['lang_name']); ?></span>
                         </div>
                         <h3 class="showcase-title"><?php echo htmlspecialchars($b['title']); ?></h3>
                         <div class="showcase-meta">
-                            🏛️ القطاع #<?php echo $b['sector_id']; ?> • التخصص #<?php echo $b['discipline_id']; ?> (<?php echo $b['bisac']; ?>)<br>
-                            📄 200 صفحة موسوعية • 🔗 <code><?php echo $b['doi']; ?></code>
+                            🏛️ القطاع #<?php echo $b['sector_id']; ?> • التخصص #<?php echo $b['discipline_id']; ?> (<code><?php echo $b['bisac']; ?></code>)<br>
+                            📄 200 صفحة محكّمة • 🔗 <code><?php echo $b['doi']; ?></code>
                         </div>
                     </div>
                     <div class="showcase-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                         <a href="/book/<?php echo $b['global_id']; ?>" class="btn-card btn-card-primary" style="text-align:center;">📖 بوابة الكتاب</a>
-                        <a href="/pdf/<?php echo $b['global_id']; ?>/<?php echo $b['isbn13']; ?>_ElNemer_Vol_<?php echo sprintf('%07d', $b['global_id']); ?>_200Pages.pdf" class="btn-card btn-card-gold" style="text-align:center;" download>📥 PDF (200 ص)</a>
+                        <a href="/pdf/<?php echo $b['global_id']; ?>/<?php echo $b['isbn13']; ?>_ElNemer_Vol_<?php echo sprintf('%07d', $b['global_id']); ?>_200Pages.pdf" class="btn-card btn-card-emerald" style="text-align:center;" download>📥 تحميل PDF (200 ص)</a>
                     </div>
                 </div>
             </article>
@@ -2788,7 +2957,7 @@ $json_ld = [
 
             <a href="mailto:info@elnemer-ai.com">📧 البريد الرسمي: info@elnemer-ai.com</a>
 
-            <span style="display:block;font-size:0.8rem;color:#FDE68A;margin-top:8px;">
+            <span style="display:block;font-size:0.8rem;color:#0284C7;margin-top:8px;">
 
                 Google Play Partner Official Partner 
 
@@ -3023,7 +3192,7 @@ function inspectBookById(gid) {
 
     const card = document.getElementById('inspCoverCard');
 
-    card.style.background = `linear-gradient(145deg, ${b.pal.bg}, #090d1a)`;
+    card.style.background = `linear-gradient(150deg, ${b.pal.bg} 0%, ${b.pal.pri} 100%)`;
 
     card.style.borderColor = b.pal.acc;
 
@@ -3053,7 +3222,7 @@ function inspectBookById(gid) {
 
         <span class="lang-code-badge" style="background:#0284C7;padding:4px 10px;font-size:0.8rem;">🌍 ${b.lang.name} (${b.lang.en_name}) [${b.lang.code}]</span>
 
-        <span class="lang-code-badge" style="background:${b.is_paid ? '#D97706' : '#15803D'};padding:4px 10px;font-size:0.8rem;">
+        <span class="lang-code-badge" style="background:${b.is_paid ? '#2563EB' : '#15803D'};padding:4px 10px;font-size:0.8rem;">
 
             ${b.is_paid ? `💎 Commercial Edition: $${b.price_usd} USD` : '🎁 Free Open-Access ($0.00)'}
 
@@ -3161,27 +3330,22 @@ function loadNextShowcasePage() {
 
 
 
-function generateLuxuryCoverSvgJS(gid, secId, acc, pri, sz = 96) {
+function generateLuxuryCoverSvgJS(gid, secId, acc, pri, sz = 92) {
     const rot = (gid * 17 + secId * 23) % 360;
     const idPad = '#' + String(gid).padStart(7, '0');
-    const secPad = 'VOL. S' + String(secId).padStart(2, '0');
-    return `<svg viewBox="0 0 140 140" width="${sz}" height="${sz}" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.75));">
-        <defs><radialGradient id="rgjs${gid}" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="${acc}" stop-opacity="0.45"/>
-            <stop offset="70%" stop-color="${pri}" stop-opacity="0.18"/>
-            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-        </radialGradient></defs>
-        <circle cx="70" cy="70" r="64" fill="url(#rgjs${gid})" stroke="${acc}" stroke-width="1.5" stroke-dasharray="4 2"/>
-        <circle cx="70" cy="70" r="54" fill="none" stroke="#FDE68A" stroke-width="1" stroke-opacity="0.6"/>
+    const secPad = 'SEC-' + String(secId).padStart(2, '0');
+    return `<svg viewBox="0 0 140 140" width="${sz}" height="${sz}" style="filter:drop-shadow(0 6px 14px rgba(15,23,42,0.35));">
+        <circle cx="70" cy="70" r="62" fill="rgba(255,255,255,0.12)" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="70" cy="70" r="52" fill="none" stroke="${acc}" stroke-width="1.5"/>
         <g transform="rotate(${rot} 70 70)">
-            <rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="${acc}" stroke-width="1.4" stroke-opacity="0.8"/>
-            <rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.8" transform="rotate(45 70 70)"/>
-            <ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="${pri}" stroke-width="1" stroke-opacity="0.65" transform="rotate(30 70 70)"/>
-            <ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="${pri}" stroke-width="1" stroke-opacity="0.65" transform="rotate(120 70 70)"/>
+            <rect x="33" y="33" width="74" height="74" rx="8" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-opacity="0.85"/>
+            <rect x="33" y="33" width="74" height="74" rx="8" fill="none" stroke="${acc}" stroke-width="1.4" transform="rotate(45 70 70)"/>
+            <ellipse cx="70" cy="70" rx="46" ry="18" fill="none" stroke="#E0F2FE" stroke-width="1.1" stroke-opacity="0.75" transform="rotate(30 70 70)"/>
+            <ellipse cx="70" cy="70" rx="46" ry="18" fill="none" stroke="#E0F2FE" stroke-width="1.1" stroke-opacity="0.75" transform="rotate(120 70 70)"/>
         </g>
-        <circle cx="70" cy="70" r="26" fill="#050814" stroke="#F59E0B" stroke-width="2"/>
-        <text x="70" y="66" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-weight="900" font-family="Cinzel,serif">${secPad}</text>
-        <text x="70" y="79" text-anchor="middle" fill="#FFFFFF" font-size="8.5" font-weight="900" font-family="monospace">${idPad}</text>
+        <circle cx="70" cy="70" r="26" fill="#FFFFFF" stroke="${pri}" stroke-width="2.5"/>
+        <text x="70" y="66" text-anchor="middle" fill="${pri}" font-size="8.5" font-weight="900" font-family="Inter,sans-serif">${secPad}</text>
+        <text x="70" y="79" text-anchor="middle" fill="#0F172A" font-size="8.2" font-weight="900" font-family="monospace">${idPad}</text>
     </svg>`;
 }
 
@@ -3189,43 +3353,43 @@ function renderBookCardHTML(b) {
     return `
     <article class="showcase-card">
         <div class="royal-3d-book-wrap">
-            <div class="royal-3d-book" style="background:radial-gradient(circle at 50% 35%, ${b.pal.pri}33 0%, ${b.pal.bg} 65%, #030611 100%);border-color:${b.pal.acc};">
-                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#FDE68A;background:rgba(0,0,0,0.65);border:1px solid rgba(253,230,138,0.45);padding:3px 8px;border-radius:6px;z-index:2;">
-                    <span>👑 ELNEMER 1B ENCYCLOPEDIA</span>
-                    <span style="color:${b.pal.acc};">🌍 ${b.lang.code}</span>
+            <div class="royal-3d-book" style="background:linear-gradient(155deg, ${b.pal.bg} 0%, ${b.pal.pri} 100%);">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#0F172A;background:rgba(255,255,255,0.95);padding:4px 9px;border-radius:6px;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+                    <span style="color:${b.pal.bg};">🏛️ NEMER 1B ENCYCLOPEDIA</span>
+                    <span style="background:${b.pal.pri};color:#FFFFFF;padding:1px 6px;border-radius:4px;">🌍 ${b.lang.code.toUpperCase()}</span>
                 </div>
                 <div style="margin:6px auto;z-index:2;">
-                    ${generateLuxuryCoverSvgJS(b.global_id, b.disc.sector_id, b.pal.acc, b.pal.pri, 96)}
+                    ${generateLuxuryCoverSvgJS(b.global_id, b.disc.sector_id, b.pal.acc, b.pal.pri, 92)}
                 </div>
-                <div style="background:rgba(3,7,18,0.9);border:1.5px solid ${b.pal.acc};border-radius:8px;padding:7px 8px;z-index:2;">
-                    <div style="font-size:0.68rem;color:#FDE68A;font-weight:800;margin-bottom:2px;">${b.disc.sector_ar}</div>
-                    <div style="font-size:0.8rem;font-weight:900;color:#FFFFFF;line-height:1.25;margin-bottom:2px;">${b.disc.domain_ar}</div>
-                    <div style="font-size:0.68rem;color:#93C5FD;font-weight:700;line-height:1.2;">${b.disc.domain_en}</div>
+                <div style="background:rgba(255,255,255,0.96);border-left:4px solid ${b.pal.acc};border-radius:8px;padding:8px 10px;z-index:2;text-align:right;box-shadow:0 6px 16px rgba(0,0,0,0.18);">
+                    <div style="font-size:0.66rem;color:${b.pal.pri};font-weight:900;margin-bottom:2px;">${b.disc.sector_ar}</div>
+                    <div style="font-size:0.8rem;font-weight:900;color:#0F172A;line-height:1.25;margin-bottom:2px;">${b.disc.domain_ar}</div>
+                    <div style="font-size:0.66rem;color:#475569;font-weight:700;line-height:1.2;">${b.disc.domain_en}</div>
                 </div>
-                <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(253,230,138,0.3);padding-top:4px;">
-                    <div style="font-size:0.7rem;font-weight:900;color:#FDE68A;">${b.lang.author}</div>
-                    <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#CBD5E1;font-family:monospace;margin-top:2px;">
+                <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(255,255,255,0.3);padding-top:4px;color:#FFFFFF;">
+                    <div style="font-size:0.7rem;font-weight:900;color:#FFFFFF;">${b.lang.author}</div>
+                    <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#E0F2FE;font-family:monospace;margin-top:2px;">
                         <span>ISBN: ${b.isbn13}</span>
-                        <span style="color:#34D399;font-weight:900;">${b.is_paid ? ('$' + b.price_usd) : 'FREE $0.00'}</span>
+                        <span style="background:rgba(255,255,255,0.22);color:#FFFFFF;padding:0 5px;border-radius:4px;font-weight:900;">${b.is_paid ? ('$' + b.price_usd) : 'FREE $0.00'}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="showcase-body">
             <div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-                    <span style="background:rgba(245,158,11,0.18);color:#FDE68A;border:1px solid #F59E0B;padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:900;">مجلد #${b.global_id.toLocaleString()} / 5,000,000</span>
-                    <span style="background:rgba(56,189,248,0.15);color:#38BDF8;border:1px solid rgba(56,189,248,0.35);padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:800;">${b.lang.name}</span>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                    <span style="background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;padding:3px 9px;border-radius:6px;font-size:0.74rem;font-weight:900;">📘 مجلد #${b.global_id.toLocaleString()} / 5,000,000</span>
+                    <span style="background:#ECFDF5;color:#047857;border:1px solid #A7F3D0;padding:3px 9px;border-radius:6px;font-size:0.74rem;font-weight:800;">🌍 ${b.lang.name}</span>
                 </div>
                 <h3 class="showcase-title">${b.title}</h3>
                 <div class="showcase-meta">
-                    🏛️ القطاع #${b.disc.sector_id} • التخصص #${b.disc.discipline_id} (${b.disc.bisac})<br>
-                    📄 200 صفحة موسوعية • 🔗 <code>${b.doi}</code>
+                    🏛️ القطاع #${b.disc.sector_id} • التخصص #${b.disc.discipline_id} (<code>${b.disc.bisac}</code>)<br>
+                    📄 200 صفحة محكّمة • 🔗 <code>${b.doi}</code>
                 </div>
             </div>
             <div class="showcase-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                 <a href="/book/${b.global_id}" class="btn-card btn-card-primary" style="text-align:center;">📖 بوابة الكتاب</a>
-                <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" class="btn-card btn-card-gold" style="text-align:center;" download>📥 PDF (200 ص)</a>
+                <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" class="btn-card btn-card-emerald" style="text-align:center;" download>📥 تحميل PDF (200 ص)</a>
             </div>
         </div>
     </article>`;
@@ -3330,7 +3494,7 @@ function downloadInspectedBookPDF() {
 function updateThemeToggleBtnText(theme) {
     const btn = document.getElementById('themeToggleBtn');
     if (btn) {
-        btn.innerHTML = (theme === 'imperial-dark') ? '☀️ الوضع الملكي النهاري' : '🌙 الوضع الإمبراطوري الفاخر (جينيس)';
+        btn.innerHTML = (theme === 'imperial-dark') ? '💎 التصميم الياقوتي والزمردي الأكاديمي' : '💎 التصميم الياقوتي والزمردي الأكاديمي';
     }
 }
 
@@ -3407,9 +3571,9 @@ function onLiveEncyclopediaSearch(rawQuery) {
         }
     }
     content.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;border-bottom:1px solid rgba(212,175,55,0.3);padding-bottom:8px;">
-            <span style="color:#FDE68A;font-weight:900;font-size:0.92rem;">🔍 نتائج البحث الفوري في موسوعة المليار صفحة (${results.length} نتيجة مطابقة):</span>
-            <button onclick="document.getElementById('liveSearchResultsContainer').style.display='none'" style="background:transparent;border:1px solid #F59E0B;color:#FDE68A;border-radius:8px;padding:2px 10px;cursor:pointer;font-weight:800;">إغلاق ✕</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;border-bottom:1px solid rgba(37,99,235,0.3);padding-bottom:8px;">
+            <span style="color:#0284C7;font-weight:900;font-size:0.92rem;">🔍 نتائج البحث الفوري في موسوعة المليار صفحة (${results.length} نتيجة مطابقة):</span>
+            <button onclick="document.getElementById('liveSearchResultsContainer').style.display='none'" style="background:transparent;border:1px solid #0284C7;color:#0284C7;border-radius:8px;padding:2px 10px;cursor:pointer;font-weight:800;">إغلاق ✕</button>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;">
             ${results.map(b => `
@@ -3422,7 +3586,7 @@ function onLiveEncyclopediaSearch(rawQuery) {
                     <div style="font-size:0.76rem;color:#CBD5E1;margin-bottom:8px;">${b.disc.sector_ar} • ISBN: ${b.isbn13}</div>
                     <div style="display:flex;gap:6px;">
                         <a href="/book/${b.global_id}" style="flex:1;text-align:center;background:#2563EB;color:#FFF;text-decoration:none;padding:5px 8px;border-radius:8px;font-size:0.78rem;font-weight:800;">📖 صفحة المجلد</a>
-                        <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" style="flex:1;text-align:center;background:#F59E0B;color:#000;text-decoration:none;padding:5px 8px;border-radius:8px;font-size:0.78rem;font-weight:900;" download>📥 PDF (200p)</a>
+                        <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" style="flex:1;text-align:center;background:#0284C7;color:#000;text-decoration:none;padding:5px 8px;border-radius:8px;font-size:0.78rem;font-weight:900;" download>📥 PDF (200p)</a>
                     </div>
                 </div>
             `).join('')}

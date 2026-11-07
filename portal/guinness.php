@@ -40,13 +40,13 @@ $active_meta = get_1m_book_metadata($inspect_id);
     :root {
       --bg-primary: #0a0c10;
       --bg-card: rgba(18, 22, 32, 0.85);
-      --border-gold: rgba(212, 175, 55, 0.4);
+      --border-gold: rgba(37, 99, 235, 0.4);
       --border-subtle: rgba(255, 255, 255, 0.08);
       --text-gold: #f5d77f;
       --text-bright: #ffffff;
       --text-muted: #94a3b8;
       --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-      --gold-btn: linear-gradient(135deg, #d4af37, #aa771c);
+      --gold-btn: linear-gradient(135deg, #0284C7, #aa771c);
       --blue-btn: linear-gradient(135deg, #2563eb, #1d4ed8);
       --green-btn: linear-gradient(135deg, #059669, #047857);
     }
@@ -59,7 +59,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
       min-height: 100vh;
       line-height: 1.6;
       background-image: 
-        radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
         radial-gradient(ellipse at 10% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
         radial-gradient(ellipse at 90% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
     }
@@ -123,9 +123,9 @@ $active_meta = get_1m_book_metadata($inspect_id);
     .nav-btn-gold {
       background: var(--gold-btn);
       color: #000;
-      border: 1px solid #ffd700;
+      border: 1px solid #38BDF8;
     }
-    .nav-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+    .nav-btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); }
     
     .nav-btn-outline {
       background: rgba(255, 255, 255, 0.05);
@@ -144,7 +144,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
       text-align: center;
       margin-bottom: 50px;
       padding: 40px 20px;
-      background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
       border-radius: 24px;
       border: 1px solid var(--border-gold);
       position: relative;
@@ -154,7 +154,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(37, 99, 235, 0.15);
       border: 1px solid var(--border-gold);
       padding: 6px 20px;
       border-radius: 50px;
@@ -245,7 +245,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     /* Section Headers */
     .sec-head {
       margin-bottom: 30px;
-      border-right: 4px solid #d4af37;
+      border-right: 4px solid #0284C7;
       padding-right: 16px;
     }
     .sec-head h2 {
@@ -286,7 +286,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     
     .crit-badge {
       display: inline-block;
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(37, 99, 235, 0.15);
       color: var(--text-gold);
       padding: 4px 12px;
       border-radius: 6px;
@@ -338,7 +338,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     }
     .quick-jump-form input:focus {
       outline: none;
-      border-color: #d4af37;
+      border-color: #0284C7;
     }
     
     .meta-table {
@@ -605,7 +605,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
           </tr>
           <tr>
             <th>جذر شجرة ميركل العام (Merkle Root)</th>
-            <td><code style="color:#f59e0b;">72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9</code></td>
+            <td><code style="color:#0284C7;">72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9</code></td>
           </tr>
         </tbody>
       </table>
