@@ -64,6 +64,7 @@ RewriteRule ^pdf/([0-9]+)(/.*)?$ stream_pdf.php?id=$1 [L,QSA]
 RewriteRule ^sitemap_index\.xml$ sitemap.php [L,QSA]
 RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
 RewriteRule ^sitemaps/sitemap_languages_78\.xml$ sitemap.php?type=langs [L,QSA]
+RewriteRule ^sitemaps/sitemap_books_([0-9]+)_p([0-9]+)\.xml$ sitemap.php?shard=$1&page=$2 [L,QSA]
 RewriteRule ^sitemaps/sitemap_books_([0-9]+)\.xml$ sitemap.php?shard=$1 [L,QSA]
 
 # Clean 78-Language Portal Routes: /lang/ar, /lang/en, /lang/zh-CN, etc.

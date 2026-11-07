@@ -11,24 +11,16 @@ Allow: /
 User-agent: bingbot
 Allow: /
 
-User-agent: msnbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
 User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
 Allow: /
 
 User-agent: YandexBot
 Allow: /
 
-# Sitemaps (1,000,000 Volumes & 78 Languages)
+# Official Sitemaps (5,000,000 Volumes • 1,000,000,000 Pages • 78 Languages • 1,000 Disciplines)
 Sitemap: https://million.elnemer-ai.com/sitemap_index.xml
 Sitemap: https://million.elnemer-ai.com/sitemap.xml
+Sitemap: https://million.elnemer-ai.com/sitemaps/sitemap_languages_78.xml
 
-# IndexNow Key for Bing & Microsoft Copilot & Yandex Instant Indexing
+# IndexNow Key for Instant Indexing (Bing / Yandex / Naver)
 # Key: 72806865ca4d56a0b03ad7e925ba6e7c

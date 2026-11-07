@@ -313,21 +313,26 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
     </div>
 
     <div class="card">
-      <h2>3️⃣ السجل الكامل لشظايا الفهرس المليوني المعتمدة (20 Official XML Sitemap Shards × 50,000 Books = 1,000,000 Volumes)</h2>
+      <h2>3️⃣ السجل الكامل لشظايا الفهرس العالمي المعتمدة (100 Official XML Sitemap Shards × 50,000 Books = 5,000,000 Volumes / 1 Billion Pages)</h2>
       <p style="color:#334155;">
-        جميع روابط المليون مجلد مفهرسة ومقسمة هندسياً إلى 20 ملف XML Sitemap قياسي (كل ملف يضم 50,000 مجلد بالضبط) مسجلة في Google Search Console وBing Webmaster Tools:
+        جميع روابط الـ 5,000,000 مجلد (1,000,000,000 صفحة) مفهرسة ومقسمة هندسياً إلى 100 شظية رئيسية (1,000 ملف XML Sitemap قياسي بواقع 5,000 كتاب في كل ملف فرعي لسرعة أرشفة فائقة في Google Search Console وBing Webmaster Tools):
       </p>
+      <div style="margin:12px 0;display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="/sitemap_index.xml" target="_blank" class="pill pill-gold">🗺️ الفهرس الرئيسي للخرائط (/sitemap_index.xml)</a>
+        <a href="/sitemaps/sitemap_languages_78.xml" target="_blank" class="pill">🌍 خريطة الـ 78 لغة والـ 1,000 تخصص (/sitemaps/sitemap_languages_78.xml)</a>
+      </div>
       <div class="shard-grid">
-        <?php for ($sh = 1; $sh <= 20; $sh++):
+        <?php for ($sh = 1; $sh <= 100; $sh++):
           $start_v = (($sh - 1) * 50000) + 1;
           $end_v = $sh * 50000;
+          $sh_pad = sprintf("%02d", $sh);
         ?>
         <div class="shard-box">
           <div>
-            <div style="font-weight:900;color:#1E3A8A;font-size:0.92rem;">Shard #<?php echo sprintf("%02d", $sh); ?> (50,000 Books)</div>
+            <div style="font-weight:900;color:#1E3A8A;font-size:0.92rem;">Shard #<?php echo $sh_pad; ?> (50,000 Books)</div>
             <div class="mono" style="color:#334155;font-size:0.76rem;">Vol. <?php echo number_format($start_v); ?> – <?php echo number_format($end_v); ?></div>
           </div>
-          <a href="/sitemaps/sitemap_books_<?php echo $sh; ?>.xml" target="_blank" class="pill">🔗 XML</a>
+          <a href="/sitemaps/sitemap_books_<?php echo $sh_pad; ?>_p1.xml" target="_blank" class="pill">🔗 XML</a>
         </div>
         <?php endfor; ?>
       </div>

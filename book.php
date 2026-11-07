@@ -245,6 +245,20 @@ $json_ld = [
     <meta property="og:title" content="<?php echo htmlspecialchars($b['title']); ?>">
     <meta property="og:description" content="<?php echo htmlspecialchars($details['summary_ar']); ?>">
     <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url); ?>">
+    <!-- Google Scholar / Highwire Press & Dublin Core Academic Indexing Meta Tags -->
+    <meta name="citation_title" content="<?php echo htmlspecialchars($b['title']); ?>">
+    <meta name="citation_author" content="ElNemer, Mahmoud Bek">
+    <meta name="citation_author" content="<?php echo htmlspecialchars($b['author']); ?>">
+    <meta name="citation_publication_date" content="2026/11/01">
+    <meta name="citation_isbn" content="<?php echo htmlspecialchars($b['isbn13']); ?>">
+    <meta name="citation_doi" content="<?php echo htmlspecialchars($b['doi']); ?>">
+    <meta name="citation_language" content="<?php echo htmlspecialchars($b['lang_code']); ?>">
+    <meta name="citation_publisher" content="Nemer Academic Publishing House &amp; Nemer Digital Solutions">
+    <meta name="citation_pdf_url" content="<?php echo htmlspecialchars($pdf_stream_url); ?>">
+    <meta name="citation_fulltext_html_url" content="<?php echo htmlspecialchars($native_reader_url); ?>">
+    <meta name="DC.title" content="<?php echo htmlspecialchars($b['title']); ?>">
+    <meta name="DC.creator" content="Eng. Mahmoud Bek ElNemer">
+    <meta name="DC.identifier" content="ISBN:<?php echo htmlspecialchars($b['isbn13']); ?>">
 
     <script type="application/ld+json"><?php echo json_encode($json_ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?></script>
 
@@ -286,7 +300,7 @@ $json_ld = [
             box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
         }
         @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
-        .book-stage-3d { display: flex; justify-content: center; align-items: flex-start; padding-top: 8px; }
+        .book-stage-3d { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 8px; }
         .book-cover-3d {
             width: 100%; max-width: 300px;
             min-height: 465px;
@@ -428,6 +442,12 @@ $json_ld = [
                     ✍️ <?php echo htmlspecialchars($is_rtl_book ? ('تأليف: ' . $b['author']) : ('By: ' . $b['author'])); ?><br>
                     <span style="color:#E0F2FE;font-family:monospace;font-size:0.74rem;"><?php echo htmlspecialchars($b['work_code']); ?> • <?php echo $b['isbn13']; ?></span>
                 </div>
+            </div>
+            <!-- SCANNABLE GS1 / EAN-13 VECTOR BARCODE CARD UNDER COVER -->
+            <div style="margin-top:14px;background:linear-gradient(135deg,#FFFFFF,#F0F9FF);border:1.5px solid #93C5FD;border-radius:16px;padding:12px 14px;text-align:center;width:100%;max-width:300px;box-shadow:0 8px 20px rgba(30,58,138,0.06);">
+                <div style="font-size:0.76rem;font-weight:900;color:#1E3A8A;margin-bottom:6px;">📷 باركود قياسي قابل للمسح الضوئي (GS1 / EAN-13)</div>
+                <?php echo render_ean13_svg($b['isbn13'], 230, 88); ?>
+                <div style="font-size:0.72rem;color:#047857;font-weight:800;margin-top:6px;">✔ محقق بمعادلة Modulo-10 (95 وحدة ضوئية)</div>
             </div>
         </div>
 
@@ -701,9 +721,15 @@ $json_ld = [
                 </td>
             </tr>
             <tr>
-                <th>الرقم المعياري للفهرسة (EAN-13 / ISBN-13 Format)</th>
+                <th>الرقم المعياري للفهرسة والباركود البصري<br><span style="font-size:0.78rem;color:#0284C7;">(GS1 EAN-13 / ISBN-13 Vector Barcode)</span></th>
                 <td>
-                    <code style="font-size:0.95rem;color:#0F172A;"><?php echo $b['isbn13']; ?></code>
+                    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px;">
+                        <?php echo render_ean13_svg($b['isbn13'], 220, 84); ?>
+                        <div>
+                            <code style="font-size:1rem;color:#1E3A8A;font-weight:900;"><?php echo $b['isbn13']; ?></code>
+                            <div style="font-size:0.8rem;color:#047857;font-weight:800;margin-top:4px;">✔ باركود فيكتور أصلي خالٍ من الفجوات الضوئية (Crisp-Edge Merged Vector)</div>
+                        </div>
+                    </div>
                     <div style="font-size:0.8rem;color:#475569;font-weight:600;margin-top:4px;">
                         توضيح النطاق: الرقم يحقق معادلة الفحص الرياضية القياسية (GS1 Modulo-10 Check Digit)، ويُستخدم كمعرّف فهرسة رقمي داخلي في مستودع دار النمر (Internal Digital Catalog ID)؛ ويخضع تخصيص أرقام ISBN التجارية المطبوعة لنطاقات الوكالة الدولية عند النشر الورقي المستقل.
                     </div>

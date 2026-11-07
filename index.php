@@ -150,6 +150,43 @@ $vol1 = get_1m_book_metadata(1);
     <meta property="og:title" content="موسوعة النمر للمعرفة التطبيقية — مكتبة الأدلة العملية المفتوحة">
     <meta property="og:description" content="مكتبة رقمية مفتوحة تقدم أدلة تطبيقية مبسطة وممنهجة في الصحة، الأسرة، المهارات المهنية، التكنولوجيا، والعلوم.">
     <meta property="og:image" content="<?php echo $base_url; ?>/og_banner.php">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="alternate" type="application/xml" title="Sitemap" href="<?php echo $base_url; ?>/sitemap_index.xml">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://million.elnemer-ai.com/#website",
+          "url": "https://million.elnemer-ai.com/",
+          "name": "موسوعة النمر للمعرفة التطبيقية | ElNemer Encyclopedia of Applied Knowledge",
+          "description": "مكتبة رقمية مفتوحة تقدم 5,000,000 إصدار رقمي (1,000,000,000 صفحة) وأدلة تطبيقية مبسطة وممنهجة في 1,000 تخصص عبر 78 لغة.",
+          "inLanguage": "<?php echo htmlspecialchars($cur_lang); ?>",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://million.elnemer-ai.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "BookSeries",
+          "@id": "https://million.elnemer-ai.com/#series",
+          "name": "موسوعة النمر للمعرفة التطبيقية (5,000,000 مجلد • 1 مليار صفحة)",
+          "author": {
+            "@type": "Person",
+            "name": "المهندس محمود بك النمر (Eng. Mahmoud Bek ElNemer)",
+            "url": "https://elnemer-ai.com"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "دار النمر للنشر الأكاديمي والحلول الرقمية (Nemer Academic Publishing House)",
+            "url": "https://elnemer-ai.com"
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
