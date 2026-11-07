@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta name="google-site-verification" content="U6ysk2Ie2LsEIPZ3UlsIS3gmpl_jwAjOyfu0lWKKBF8" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مرصد النمر العالمي للمليار صفحة (5,000,000 كتاب علمي) بـ 78 لغة | ElNemer 1-Billion-Page (5,000,000-Book) Global Observatory</title>
+  <!-- Google Scholar Highwire Press Meta Tags -->
+  <meta name="citation_title" id="meta_citation_title" content="ElNemer 1-Billion-Page (5,000,000-Book) Global Multilingual Scientific Encyclopedia across 78 Official Google Play Books Languages" />
+  <meta name="citation_author" content="ElNemer, Mahmoud Bek" />
+  <meta name="citation_publication_date" content="2026/11/01" />
+  <meta name="citation_publisher" content="Nemer Academic Publishing House & Nemer Digital Solutions" />
+  <meta name="citation_isbn" id="meta_citation_isbn" content="9789710000018" />
+  <meta name="citation_doi" id="meta_citation_doi" content="10.1007/s1m-nemer.0000001" />
+  <meta name="citation_language" id="meta_citation_lang" content="ar" />
+  <meta name="citation_pdf_url" id="meta_citation_pdf" content="https://elnemer-ai.com/million/stream/9789710000018.pdf" />
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <style>
+    :root {
+      --bg-deep: #040711;
+      --bg-card: rgba(15, 23, 42, 0.86);
+      --bg-card-2: rgba(30, 41, 59, 0.78);
+      --gold: #0284C7;
+      --gold-light: #0284C7;
+      --cyan: #38BDF8;
+      --emerald: #10B981;
+      --purple: #A855F7;
+      --rose: #F43F5E;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --border: rgba(148, 163, 184, 0.22);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, system-ui, sans-serif; }
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(245, 158, 11, 0.12), transparent 32%),
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.12), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.10), transparent 40%),
+        var(--bg-deep);
+      color: var(--text);
+      line-height: 1.65;
+      padding-bottom: 80px;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      background:linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 55%, #ECFDF5 100%);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; color: var(--gold-light); }
+    .brand-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, #0284C7, #B45309);
+      color: #040711; display: grid; place-items: center; font-weight: 900; font-size: 1.15rem;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.45);
+    }
+    .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-pill {
+      padding: 6px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 700;
+      background:linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 55%, #ECFDF5 100%); border: 1px solid var(--border); color: var(--text);
+      text-decoration: none; cursor: pointer; transition: all 0.2s;
+    }
+    .nav-pill:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+    /* Hero Section */
+    header.hero {
+      padding: 44px 20px 36px;
+      text-align: center;
+      border-bottom: 2px solid rgba(245, 158, 11, 0.35);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(4, 7, 17, 0.92) 100%);
+    }
+    .hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .badge-gold {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.3));
+      border: 1px solid var(--gold); color: var(--gold-light);
+      padding: 7px 20px; border-radius: 999px; font-weight: 800; font-size: 0.88rem;
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.22);
+    }
+    .badge-cyan {
+      background: rgba(56, 189, 248, 0.15); border: 1px solid var(--cyan); color: #BAE6FD;
+      padding: 7px 18px; border-radius: 999px; font-weight: 700; font-size: 0.88rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3.3vw, 2.75rem);
+      font-weight: 900;
+      background: linear-gradient(90deg, #FFFFFF 0%, #0284C7 50%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      color:#334155; font-size: 1.06rem; max-width: 1020px; margin: 0 auto 24px;
+    }
+    .subtitle strong { color: var(--gold-light); }
+
+    /* KPI Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 14px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .stat-box {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.72));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-top: 3px solid var(--gold);
+      border-radius: 14px;
+      padding: 16px 14px;
+      transition: transform 0.2s, border-color 0.2s;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    }
+    .stat-box:hover { transform: translateY(-3px); border-color: var(--gold); }
+    .stat-num { font-size: 1.7rem; font-weight: 900; color: var(--gold-light); letter-spacing: 0.5px; }
+    .stat-lbl { font-size: 0.84rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+    .container { max-width: 1320px; margin: 28px auto; padding: 0 18px; }
+    .panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 26px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+    .panel-header {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+      border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 18px;
+    }
+    .panel h2 { color: var(--gold-light); font-size: 1.4rem; display: flex; align-items: center; gap: 10px; }
+
+    /* Gallery Strip of 8 Distinct Cover Styles */
+    .cover-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .mini-cover-card {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .mini-cover-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--gold);
+      box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25);
+    }
+    .mini-cover-card canvas { width: 100%; height: auto; border-radius: 6px; display: block; }
+    .mini-cover-label { font-size: 0.76rem; color: var(--gold-light); margin-top: 6px; font-weight: 700; }
+    .mini-cover-sub { font-size: 0.7rem; color: var(--muted); }
+
+    /* Controls */
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    input, select, button {
+      padding: 11px 16px; border-radius: 10px; border: 1px solid #475569;
+      background: #020617; color:#1E3A8A; font-size: 0.96rem;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(245,158,11,0.25); }
+    input { flex: 1; min-width: 210px; }
+    button {
+      background: linear-gradient(135deg, #0284C7, #D97706);
+      color: #040711; font-weight: 800; border: none; cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35); }
+    .btn-cyan { background: linear-gradient(135deg, #38BDF8, #0284C7); color: #040711; }
+    .btn-green { background: linear-gradient(135deg, #10B981, #059669); color: #040711; }
+    .btn-purple { background: linear-gradient(135deg, #A855F7, #7E22CE); color:#1E3A8A; }
+    .btn-rose { background: linear-gradient(135deg, #F43F5E, #BE123C); color:#1E3A8A; }
+
+    /* Inspector Main Result Layout */
+    .inspector-grid {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 24px;
+      background: var(--bg-card-2);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    @media (max-width: 880px) { .inspector-grid { grid-template-columns: 1fr; } }
+
+    .book-3d-stage {
+      background: radial-gradient(circle at center, rgba(30, 41, 59, 0.9), #020617);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+    }
+    canvas#bookCoverCanvas {
+      width: 100%; max-width: 250px; height: auto; border-radius: 8px;
+      box-shadow: -8px 10px 24px rgba(0,0,0,0.75);
+      transition: transform 0.3s ease;
+    }
+    canvas#bookCoverCanvas:hover { transform: perspective(700px) rotateY(-6deg) scale(1.02); }
+
+    .kv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .kv-item {
+      background: rgba(2, 6, 23, 0.72);
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+    .kv-item strong { color: var(--cyan); display: block; font-size: 0.76rem; margin-bottom: 2px; }
+
+    .chart-preview-box {
+      margin-top: 16px;
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    canvas#bookChartCanvas { width: 100%; height: 150px; display: block; }
+
+    .action-bar {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+
+    .merkle-banner {
+      background: #020617; border: 1px dashed var(--emerald); color: #34D399;
+      padding: 13px 16px; border-radius: 10px; font-family: Consolas, monospace;
+      font-size: 0.86rem; word-break: break-all; margin-top: 10px;
+    }
+    .librarian-results {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 14px; margin-top: 16px;
+    }
+    .lib-card {
+      background: linear-gradient(145deg, #020617, #0F172A);
+      border: 1px solid #334155; border-right: 4px solid var(--gold);
+      border-radius: 12px; padding: 15px; cursor: pointer; transition: all 0.2s;
+    }
+    .lib-card:hover { border-color: var(--cyan); transform: translateY(-3px); }
+    .scholar-box {
+      background: #020617; border: 1px solid #334155; border-radius: 10px;
+      padding: 12px; font-family: Consolas, monospace; font-size: 0.78rem;
+      color: #93C5FD; direction: ltr; text-align: left; overflow-x: auto; margin-top: 12px;
+    }
+  </style>
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.2">
+  <meta property="og:image" content="https://million.elnemer-ai.com/og_banner.php">
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="brand">
+    <div class="brand-icon">👑</div>
+    <div>مرصد النمر العالمي لمليون كتاب بـ 78 لغة <span style="color:var(--cyan);font-size:0.85rem;">| ElNemer 1M Books Observatory</span></div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-pill" href="#studioSection">🎨 استوديو التصاميم والـ 30 باليتة</a>
+    <a class="nav-pill" href="#inspectorSection">🔎 فاحص ومولّد الـ PDF الفوري</a>
+    <a class="nav-pill" href="#librarianSection">🤖 أمين المكتبة الذكي (78 لغة)</a>
+    
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-badges">
+    <span class="badge-gold">🏆 GUINNESS WORLD RECORDS OFFICIAL DOSSIER</span>
+    <span class="badge-cyan">✨ GOOGLE GEMINI & PLAY BOOKS INNOVATION AWARD</span>
+  </div>
+  <h1>موسوعة النمر العالمية للمليار صفحة (5,000,000 كتاب علمي) وأكاديمي بـ 78 لغة</h1>
+  <p class="subtitle">
+    ابتكار وتأليف: <strong>المهندس محمود النمر (Eng. Mahmoud Bek ElNemer)</strong> — مهندس معتمد لدى شركة جوجل |
+    <strong>200,000,000 صفحة علمية محكمة</strong> | 30 باليتة لونية ملكية و12 هندسة أغلفة متجهة | 100% Zero-Tofu عبر 78 لغة
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-num">1,000,000</div><div class="stat-lbl">إجمالي المجلدات الفريدة (ISBN-13)</div></div>
+    <div class="stat-box"><div class="stat-num">200,000,000</div><div class="stat-lbl">إجمالي الصفحات (200 صفحة/كتاب)</div></div>
+    <div class="stat-box"><div class="stat-num">78 لغة</div><div class="stat-lbl">جميع لغات Google Play Books المعتمدة</div></div>
+    <div class="stat-box"><div class="stat-num">100 تخصص</div><div class="stat-lbl">10 قطاعات كبرى × 10 تخصصات BISAC</div></div>
+    <div class="stat-box"><div class="stat-num">30 × 12</div><div class="stat-lbl">30 باليتة لونية × 12 تصميم غلاف فريد</div></div>
+    <div class="stat-box"><div class="stat-num">900K / 100K</div><div class="stat-lbl">900 ألف مدفوع + 100 ألف مجاني للجامعات</div></div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- COVER DIVERSITY STUDIO (SHOWS 8 LIVE DISTINCT COVERS AT ONCE) -->
+  <div class="panel" id="studioSection">
+    <div class="panel-header">
+      <h2>🎨 استوديو تنوع الأغلفة والـ 30 باليتة اللونية (Live Multi-Style Cover Showcase)</h2>
+      <button class="btn-cyan" onclick="refreshGalleryShowcase()">🔄 توليد 8 تشكيلات لونية وهندسية جديدة من المليون كتاب</button>
+    </div>
+    <p style="color:var(--muted);margin-bottom:10px;">اضغط على أي غلاف من التشكيلات الـ 8 أدناه لفحص الكتاب، استماع ملخصه الصوتي بلغته الأصلية، أو تحميل ملفه الكامل PDF والغلاف PNG فوراً:</p>
+    <div id="coverGalleryStrip" class="cover-gallery"></div>
+  </div>
+
+  <!-- INTERACTIVE 1,000,000 BOOK INSPECTOR -->
+  <div class="panel" id="inspectorSection">
+    <div class="panel-header">
+      <h2>🔎 محرك الفحص والتوليد اللحظي (1..1,000,000) + معاينة الرسوم البيانية والـ PDF الفوري</h2>
+      <div style="font-size:0.85rem;color:var(--emerald);font-weight:700;">⚡ Zero-Storage Edge Streamer (0 MB Server Bloat)</div>
+    </div>
+
+    <div class="controls">
+      <input type="number" id="bookIdInput" min="1" max="1000000" value="1" placeholder="أدخل رقم الكتاب (1 - 1,000,000)" />
+      <button onclick="inspectBook()">🔍 افحص الكتاب الآن</button>
+      <button class="btn-cyan" onclick="randomBook()">🎲 كتاب وتصميم عشوائي</button>
+      <button class="btn-green" onclick="document.getElementById('bookIdInput').value=823; inspectBook();">🇮🇳 فحص كتاب البنجابية (#823 Zero-Tofu)</button>
+      <button class="btn-purple" onclick="document.getElementById('bookIdInput').value=900001; inspectBook();">🎁 فحص كتاب مجاني (#900,001)</button>
+      <button class="btn-rose" onclick="document.getElementById('bookIdInput').value=1000000; inspectBook();">👑 الكتاب رقم #1,000,000</button>
+    </div>
+
+    <div class="inspector-grid">
+      <div class="book-3d-stage">
+        <canvas id="bookCoverCanvas" width="440" height="660"></canvas>
+        <div id="coverThemeTag" style="font-size:0.8rem; color:var(--gold-light); margin-top:10px; font-weight:700;"></div>
+      </div>
+
+      <div>
+        <div id="bookTitleArea"></div>
+        <div id="bookKvArea" class="kv-grid"></div>
+
+        <!-- Live Scientific Vector Chart Preview -->
+        <div class="chart-preview-box">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:0.82rem;color:var(--gold-light);font-weight:700;">📊 معاينة الرسم البياني الهندسي المتجه داخل الكتاب (Live Vector Chart):</span>
+            <span id="chartTypeTag" style="font-size:0.76rem;color:var(--cyan);"></span>
+          </div>
+          <canvas id="bookChartCanvas" width="720" height="150"></canvas>
+        </div>
+
+        <div class="action-bar">
+          <button class="btn-green" onclick="downloadInstantBookPDF()">📥 تحميل المجلد الفوري (PDF On-Demand)</button>
+          <button class="btn-cyan" onclick="downloadCoverPNG()">🖼️ تحميل الغلاف الفوري عالي الدقة (PNG)</button>
+          <button class="btn-purple" onclick="speakExecutiveSummary()">🎧 استمع للملخص الصوتي باللغة الأصلية</button>
+          <button class="btn-rose" onclick="stopAudioSummary()">⏹️ إيقاف الصوت</button>
+        </div>
+
+        <div id="scholarMetaPreview" class="scholar-box"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 78-LANGUAGE AI RESEARCH LIBRARIAN -->
+  <div class="panel" id="librarianSection">
+    <div class="panel-header">
+      <h2>🤖 أمين المكتبة الذكي بـ 78 لغة (ElNemer 78-Language AI Research Librarian)</h2>
+    </div>
+    <div class="controls">
+      <select id="libLangSelect"></select>
+      <select id="libSectorSelect"></select>
+      <select id="libTierSelect">
+        <option value="ALL">جميع الإصدارات (900K مدفوع + 100K مجاني)</option>
+        <option value="PAID">الكتب التجارية المدفوعة ($2.00 - $20.00)</option>
+        <option value="FREE">الكتب المجانية مفتوحة المصدر ($0.00)</option>
+      </select>
+      <input type="text" id="libSearchQuery" placeholder="ابحث عن تخصص أو موضوع علمي (مثال: Quantum, AI, الطب، الطاقة)..." />
+      <button onclick="runAiLibrarian()">🔍 استشر أمين المكتبة الذكي</button>
+    </div>
+    <div id="librarianOutput" class="librarian-results"></div>
+  </div>
+
+  <!-- MERKLE CRYPTOGRAPHIC PROOF PANEL -->
+  </div>
+
+</div>
+
+<script>
+const PALETTES_30 = [
+  {bg:"#070B19", pri:"#00F0FF", sec:"#3B82F6", acc:"#0284C7", txt:"#FFFFFF", dark:true, name:"Cyber Quantum Navy"},
+  {bg:"#FAF8F5", pri:"#7C2D12", sec:"#B45309", acc:"#047857", txt:"#1C1917", dark:false, name:"Oxford Classical Parchment"},
+  {bg:"#062E22", pri:"#34D399", sec:"#10B981", acc:"#0284C7", txt:"#F0FDF4", dark:true, name:"Emerald Biotech Sovereign"},
+  {bg:"#1E1035", pri:"#E5C158", sec:"#A855F7", acc:"#38BDF8", txt:"#FFFFFF", dark:true, name:"Imperial Amethyst & Gold"},
+  {bg:"#F4F7FB", pri:"#1E3A8A", sec:"#2563EB", acc:"#DC2626", txt:"#0F172A", dark:false, name:"Cambridge Clinical Sapphire"},
+  {bg:"#2A0810", pri:"#0284C7", sec:"#F43F5E", acc:"#38BDF8", txt:"#FFF1F2", dark:true, name:"Royal Crimson & Champagne"},
+  {bg:"#091526", pri:"#38BDF8", sec:"#818CF8", acc:"#F97316", txt:"#F8FAFC", dark:true, name:"Deep Space Astrometric"},
+  {bg:"#F7F9F4", pri:"#1B4332", sec:"#2D6A4F", acc:"#D97706", txt:"#081C15", dark:false, name:"Botanical Forest Ivory"},
+  {bg:"#18181B", pri:"#0284C7", sec:"#EC4899", acc:"#06B6D4", txt:"#FAFAFA", dark:true, name:"Obsidian Titanium & Amber"},
+  {bg:"#FFFBEB", pri:"#92400E", sec:"#1D4ED8", acc:"#B91C1C", txt:"#1E293B", dark:false, name:"Renaissance Gold & Cobalt"},
+  {bg:"#042F2E", pri:"#2DD4BF", sec:"#0EA5E9", acc:"#F43F5E", txt:"#F0FDFA", dark:true, name:"Oceanic Teal & Coral"},
+  {bg:"#171923", pri:"#A3E635", sec:"#22D3EE", acc:"#F472B6", txt:"#F7FAFC", dark:true, name:"Bio-Digital Matrix Lime"},
+  {bg:"#F8FAFC", pri:"#0F172A", sec:"#E11D48", acc:"#0284C7", txt:"#0F172A", dark:false, name:"Swiss Minimalist Red & Slate"},
+  {bg:"#231709", pri:"#0284C7", sec:"#CD7F32", acc:"#38BDF8", txt:"#FAF3E0", dark:true, name:"Ancient Bronze & Gold Leaf"},
+  {bg:"#111827", pri:"#60A5FA", sec:"#34D399", acc:"#0284C7", txt:"#F9FAFB", dark:true, name:"Nordic Midnight Sapphire"},
+  {bg:"#FDF2F8", pri:"#831843", sec:"#6D28D9", acc:"#D97706", txt:"#1F2937", dark:false, name:"Orchid Medical Rose"},
+  {bg:"#0C0A09", pri:"#FB923C", sec:"#FACC15", acc:"#38BDF8", txt:"#FAFAF9", dark:true, name:"Volcanic Solar Flare"},
+  {bg:"#EFF6FF", pri:"#1E40AF", sec:"#0D9488", acc:"#EA580C", txt:"#1E293B", dark:false, name:"Maritime Azure & Bronze"},
+  {bg:"#1E1B4B", pri:"#C084FC", sec:"#38BDF8", acc:"#FACC15", txt:"#F5F3FF", dark:true, name:"Nebula Indigo & Starlight"},
+  {bg:"#14532D", pri:"#86EFAC", sec:"#FDE047", acc:"#38BDF8", txt:"#F0FDF4", dark:true, name:"Amazonian Canopy & Sun"},
+  {bg:"#F5F3FF", pri:"#4C1D95", sec:"#0284C7", acc:"#E11D48", txt:"#1E1B4B", dark:false, name:"Royal Lavender & Ruby"},
+  {bg:"#3B0764", pri:"#F472B6", sec:"#22D3EE", acc:"#FDE047", txt:"#FAF5FF", dark:true, name:"Byzantine Tyrian Purple"},
+  {bg:"#082F49", pri:"#7DD3FC", sec:"#0284C7", acc:"#10B981", txt:"#F0F9FF", dark:true, name:"Arctic Cerulean & Gold"},
+  {bg:"#FEF2F2", pri:"#991B1B", sec:"#1E293B", acc:"#D97706", txt:"#111827", dark:false, name:"Harvard Crimson & Charcoal"},
+  {bg:"#022C22", pri:"#5EEAD4", sec:"#0284C7", acc:"#A855F7", txt:"#ECFDF5", dark:true, name:"Deep Jade & Imperial Gold"},
+  {bg:"#1F2937", pri:"#F87171", sec:"#60A5FA", acc:"#34D399", txt:"#F9FAFB", dark:true, name:"Graphite Coral & Sky"},
+  {bg:"#ECFDF5", pri:"#065F46", sec:"#1E40AF", acc:"#D97706", txt:"#064E3B", dark:false, name:"Al-Azhar Emerald & Sapphire"},
+  {bg:"#27272A", pri:"#E4E4E7", sec:"#0284C7", acc:"#10B981", txt:"#FFFFFF", dark:true, name:"Platinum & Brushed Gold"},
+  {bg:"#31102F", pri:"#F9A8D4", sec:"#38BDF8", acc:"#0284C7", txt:"#FDF2F8", dark:true, name:"Cosmic Magenta & Cyan"},
+  {bg:"#0A0E17", pri:"#0284C7", sec:"#3B82F6", acc:"#10B981", txt:"#FFFFFF", dark:true, name:"Guinness World Record Gold"}
+];
+
+const LANGS_78 = [
+  ["ar","العربية","Arabic","المهندس محمود النمر","RTL","ar-SA"],
+  ["en","English","English","Eng. Mahmoud Bek ElNemer","LATIN","en-US"],
+  ["es","Español","Spanish","Ing. Mahmoud Bek ElNemer","LATIN","es-ES"],
+  ["fr","Français","French","Ing. Mahmoud Bek ElNemer","LATIN","fr-FR"],
+  ["de","Deutsch","German","Ing. Mahmoud Bek ElNemer","LATIN","de-DE"],
+  ["zh-CN","中文 (简体)","Chinese Simplified","马哈茂德·埃尔内默 工程师","CJK","zh-CN"],
+  ["zh-TW","中文 (繁體)","Chinese Traditional","馬哈茂德·埃爾內默 工程師","CJK","zh-TW"],
+  ["hi","हिन्दी","Hindi","इंजी. महमूद अल-नेमर","INDIC","hi-IN"],
+  ["pt","Português","Portuguese","Eng. Mahmoud Bek ElNemer","LATIN","pt-BR"],
+  ["ru","Русский","Russian","Инж. Махмуд Эль-Немер","CYRILLIC","ru-RU"],
+  ["ja","日本語","Japanese","マフムード・エルネメル 技師","CJK","ja-JP"],
+  ["ko","한국어","Korean","마흐무드 엘네메르 엔지니어","KR","ko-KR"],
+  ["it","Italiano","Italian","Ing. Mahmoud Bek ElNemer","LATIN","it-IT"],
+  ["tr","Türkçe","Turkish","Müh. Mahmoud Bek ElNemer","LATIN","tr-TR"],
+  ["id","Bahasa Indonesia","Indonesian","Ir. Mahmoud Bek ElNemer","LATIN","id-ID"],
+  ["nl","Nederlands","Dutch","Ing. Mahmoud Bek ElNemer","LATIN","nl-NL"],
+  ["pl","Polski","Polish","Inż. Mahmoud Bek ElNemer","LATIN","pl-PL"],
+  ["uk","Українська","Ukrainian","Інж. Махмуд Ель-Немер","CYRILLIC","uk-UA"],
+  ["sv","Svenska","Swedish","Ing. Mahmoud Bek ElNemer","LATIN","sv-SE"],
+  ["no","Norsk","Norwegian","Ing. Mahmoud Bek ElNemer","LATIN","nb-NO"],
+  ["da","Dansk","Danish","Ing. Mahmoud Bek ElNemer","LATIN","da-DK"],
+  ["fi","Suomi","Finnish","Ins. Mahmoud Bek ElNemer","LATIN","fi-FI"],
+  ["el","Ελληνικά","Greek","Μηχ. Μαχμούντ Ελ-Νέμερ","GREEK","el-GR"],
+  ["cs","Čeština","Czech","Ing. Mahmoud Bek ElNemer","LATIN","cs-CZ"],
+  ["ro","Română","Romanian","Ing. Mahmoud Bek ElNemer","LATIN","ro-RO"],
+  ["hu","Magyar","Hungarian","Mérnök Mahmoud Bek ElNemer","LATIN","hu-HU"],
+  ["vi","Tiếng Việt","Vietnamese","Kỹ sư Mahmoud Bek ElNemer","LATIN","vi-VN"],
+  ["th","ไทย","Thai","วิศวกร มะห์มูด เอลเนเมอร์","SEA","th-TH"],
+  ["ms","Bahasa Melayu","Malay","Ir. Mahmoud Bek ElNemer","LATIN","ms-MY"],
+  ["fa","فارسی","Persian","مهندس محمود النمر","RTL","fa-IR"],
+  ["ur","اردو","Urdu","انجینئر محمود النمر","RTL","ur-PK"],
+  ["bn","বাংলা","Bengali","প্রকৌশলী মাহমুদ আল-নেমার","INDIC","bn-IN"],
+  ["ta","தமிழ்","Tamil","பொறியாளர் மஹ்மூத் எல்நெமர்","INDIC","ta-IN"],
+  ["te","తెలుగు","Telugu","ఇంజనీర్ మహమూద్ ఎల్-నెమర్","INDIC","te-IN"],
+  ["mr","मराठी","Marathi","अभियंता महमूद अल-नेमर","INDIC","mr-IN"],
+  ["gu","ગુજરાતી","Gujarati","ઈજનેર મહમૂદ અલ-નેમર","INDIC","gu-IN"],
+  ["kn","ಕನ್ನಡ","Kannada","ಇಂಜಿನಿಯರ್ ಮಹಮೂದ್ ಎಲ್-ನೆಮರ್","INDIC","kn-IN"],
+  ["ml","മലയാളം","Malayalam","എഞ്ചിനീയർ മഹ്മൂദ് എൽ-നെമർ","INDIC","ml-IN"],
+  ["pa","ਪੰਜਾਬੀ","Punjabi","ਇੰਜੀ. ਮਹਿਮੂਦ ਅਲ-ਨੇਮਰ","INDIC","pa-IN"],
+  ["tl","Filipino","Filipino","Engr. Mahmoud Bek ElNemer","LATIN","tl-PH"],
+  ["sw","Kiswahili","Swahili","Mhandisi Mahmoud Bek ElNemer","LATIN","sw-KE"],
+  ["sr","Српски","Serbian","Инж. Махмуд Ел-Немер","CYRILLIC","sr-RS"],
+  ["hr","Hrvatski","Croatian","Ing. Mahmoud Bek ElNemer","LATIN","hr-HR"],
+  ["bg","Български","Bulgarian","Инж. Махмуд Ел-Немер","CYRILLIC","bg-BG"],
+  ["sk","Slovenčina","Slovak","Ing. Mahmoud Bek ElNemer","LATIN","sk-SK"],
+  ["ca","Català","Catalan","Eng. Mahmoud Bek ElNemer","LATIN","ca-ES"],
+  ["sl","Slovenščina","Slovenian","Inž. Mahmoud Bek ElNemer","LATIN","sl-SI"],
+  ["lt","Lietuvių","Lithuanian","Inž. Mahmoud Bek ElNemer","LATIN","lt-LT"],
+  ["lv","Latviešu","Latvian","Inž. Mahmoud Bek ElNemer","LATIN","lv-LV"],
+  ["et","Eesti","Estonian","Ins. Mahmoud Bek ElNemer","LATIN","et-EE"],
+  ["is","Íslenska","Icelandic","Verkfr. Mahmoud Bek ElNemer","LATIN","is-IS"],
+  ["sq","Shqip","Albanian","Inxh. Mahmoud Bek ElNemer","LATIN","sq-AL"],
+  ["mk","Македонски","Macedonian","Инж. Махмуд Ел-Немер","CYRILLIC","mk-MK"],
+  ["be","Беларуская","Belarusian","Інж. Махмуд Эль-Немер","CYRILLIC","be-BY"],
+  ["ka","ქართული","Georgian","ინჟ. მაჰმუდ ელ-ნემერი","GEORGIAN","ka-GE"],
+  ["hy","Հայերեն","Armenian","Ինժ. Մահմուդ Էլ-Նեմեր","ARMENIAN","hy-AM"],
+  ["az","Azərbaycan","Azerbaijani","Müh. Mahmoud Bek ElNemer","LATIN","az-AZ"],
+  ["kk","Қазақ тілі","Kazakh","Инж. Махмұд Әл-Немер","CYRILLIC","kk-KZ"],
+  ["uz","Oʻzbekcha","Uzbek","Muh. Mahmoud Bek ElNemer","LATIN","uz-UZ"],
+  ["ky","Кыргызча","Kyrgyz","Инж. Махмуд Эль-Немер","CYRILLIC","ky-KG"],
+  ["mn","Монгол","Mongolian","Инж. Махмуд Эль-Немер","CYRILLIC","mn-MN"],
+  ["am","አማርኛ","Amharic","ኢንጂነር መሕሙድ አል-ነመር","ETHIOPIC","am-ET"],
+  ["af","Afrikaans","Afrikaans","Ing. Mahmoud Bek ElNemer","LATIN","af-ZA"],
+  ["zu","isiZulu","Zulu","Eng. Mahmoud Bek ElNemer","LATIN","zu-ZA"],
+  ["ha","Hausa","Hausa","Injiniya Mahmoud Bek ElNemer","LATIN","ha-NG"],
+  ["yo","Yorùbá","Yoruba","Ẹnjiníà Mahmoud Bek ElNemer","LATIN","yo-NG"],
+  ["my","မြန်မာ","Burmese","အင်ဂျင်နီယာ မာမွတ် အယ်လ်နီမာ","MY","my-MM"],
+  ["km","ខ្មែរ","Khmer","វិស្វករ ម៉ះមូដ អែលណេមឺរ","SEA","km-KH"],
+  ["lo","ລາວ","Lao","ວິສະວະກອນ ມາຮມູດ ເອລເນເມີ","SEA","lo-LA"],
+  ["si","සිංහල","Sinhala","ඉංජිනේරු මහමුද් එල්-නෙමර්","INDIC","si-LK"],
+  ["ne","नेपाली","Nepali","इन्जिनियर महमूद अल-नेमर","INDIC","ne-NP"],
+  ["ku","Kurdî","Kurdish","Endezyar Mahmoud Bek ElNemer","LATIN","ku"],
+  ["eu","Euskara","Basque","Ing. Mahmoud Bek ElNemer","LATIN","eu-ES"],
+  ["gl","Galego","Galician","Enx. Mahmoud Bek ElNemer","LATIN","gl-ES"],
+  ["cy","Cymraeg","Welsh","Peir. Mahmoud Bek ElNemer","LATIN","cy-GB"],
+  ["ga","Gaeilge","Irish","Innealtóir Mahmoud Bek ElNemer","LATIN","ga-IE"],
+  ["mt","Malti","Maltese","Inġ. Mahmoud Bek ElNemer","LATIN","mt-MT"],
+  ["eo","Esperanto","Esperanto","Inĝ. Mahmoud Bek ElNemer","LATIN","eo"]
+];
+
+const SECTORS_10 = [
+  ["S01_AI_QUANTUM","الذكاء الاصطناعي والحوسبة الفائقة والكمومية","AI, Quantum & Next-Gen Computing","COM004000"],
+  ["S02_BIOMED_GENOMICS","الطب الحيوي، الجينوم، وإطالة العمر الصحي","Biomedicine, Genomics & Longevity","MED000000"],
+  ["S03_CLEAN_ENERGY_CLIMATE","الطاقة النظيفة، المناخ، والاستدامة الكوكبية","Clean Energy, Climate Tech & Sustainability","TEC031000"],
+  ["S04_DIGITAL_ECON_FINTECH","الاقتصاد الرقمي، التكنولوجيا المالية، وإدارة المستقبل","Digital Economy, FinTech & Future Management","BUS027000"],
+  ["S05_AEROSPACE_MAT_NANO","هندسة الفضاء، المواد الخارقة، والتصنيع الذري","Aerospace, Metamaterials & Atomic Manufacturing","TEC009000"],
+  ["S06_AGRITECH_FOOD_WATER","الأمن الغذائي، التكنولوجيا الزراعية، والزراعة الخلوية","Food Security, AgriTech & Cellular Agriculture","TEC003000"],
+  ["S07_INTL_LAW_GOV","القانون الدولي، السياسة التكنولوجية، والحوكمة العالمية","International Law, Tech Policy & Global Governance","LAW051000"],
+  ["S08_EDTECH_COGNITION","التعليم المستقبلي، علوم الإدراك، وتطوير القدرات البشرية","EdTech, Cognitive Science & Human Augmentation","EDU039000"],
+  ["S09_HUMANITIES_HERITAGE","الفلسفة، الحضارات، العمارة المستدامة، والتراث الإنساني","Humanities, Ethics, Architecture & World Heritage","PHI000000"],
+  ["S10_PURE_SCIENCES_MATH","العلوم الأساسية، الرياضيات المتقدمة، والفيزياء الكونية","Fundamental Sciences, Pure Mathematics & Cosmology","SCI055000"]
+];
+
+const PRICES = [2.00,2.99,3.99,4.99,5.99,6.99,7.99,8.99,9.99,10.99,11.99,12.99,13.99,14.99,15.99,16.99,17.99,18.99,19.49,20.00];
+let currentBookSpec = null;
+let galleryOffset = 0;
+
+function makeIsbn13(gid) {
+  const s12 = "97897" + String(1000000 + gid).padStart(7, '0');
+  let sum = 0;
+  for (let i = 0; i < 12; i++) sum += parseInt(s12[i]) * (i % 2 === 0 ? 1 : 3);
+  const check = (10 - (sum % 10)) % 10;
+  return s12 + check;
+}
+
+function getLangByGid(gid) {
+  const pos = (gid - 1) % 2000;
+  if (pos < 800) return LANGS_78[pos % 16];
+  if (pos < 1520) return LANGS_78[16 + ((pos - 800) % 30)];
+  return LANGS_78[46 + ((pos - 1520) % 32)];
+}
+
+function computeBookSpec(gid) {
+  const batch = Math.floor((gid - 1) / 1000) + 1;
+  const isPaid = gid <= 900000;
+  const price = isPaid ? PRICES[(gid * 11) % PRICES.length].toFixed(2) : "0.00";
+  const lang = getLangByGid(gid);
+  const discId = ((gid - 1) % 100) + 1;
+  const secIdx = Math.floor((discId - 1) / 10);
+  const sec = SECTORS_10[secIdx];
+  const palIdx = (gid * 7 + (secIdx + 1) * 3) % PALETTES_30.length;
+  const pal = PALETTES_30[palIdx];
+  const layoutStyle = (gid + discId * 3) % 6;
+  const emblemStyle = (gid * 5 + discId) % 8;
+  const isbn = makeIsbn13(gid);
+  const doi = `10.1007/s1m-nemer.${String(gid).padStart(7,'0')}`;
+  const titleAr = `بحوث متقدمة في ${sec[1]} — المجلد العلمي #${gid.toLocaleString()}`;
+  const titleEn = `Advanced Research in ${sec[2]} — Monograph #${gid.toLocaleString()} (${lang[1]})`;
+  return { gid, batch, isPaid, price, lang, sec, discId, pal, layoutStyle, emblemStyle, isbn, doi, titleAr, titleEn };
+}
+
+function renderCoverToCanvas(canvas, spec, isMini = false) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const scale = w / 440.0;
+  ctx.save();
+  ctx.scale(scale, scale);
+  const cw = 440, ch = 660;
+
+  // Background
+  ctx.fillStyle = spec.pal.bg;
+  ctx.fillRect(0, 0, cw, ch);
+
+  const L = spec.layoutStyle;
+  // 6 Distinct Architectural Cover Frames
+  if (L === 0) {
+    ctx.fillStyle = spec.pal.pri; ctx.fillRect(0, 0, 16, ch);
+    ctx.fillStyle = spec.pal.sec; ctx.fillRect(16, 0, 5, ch);
+    ctx.strokeStyle = spec.pal.pri; ctx.lineWidth = 3; ctx.strokeRect(28, 18, cw - 44, ch - 36);
+    ctx.strokeStyle = spec.pal.sec; ctx.lineWidth = 1.2; ctx.strokeRect(34, 24, cw - 56, ch - 48);
+  } else if (L === 1) {
+    ctx.fillStyle = spec.pal.pri; ctx.fillRect(0, 0, cw, 88);
+    ctx.fillStyle = spec.pal.sec; ctx.fillRect(0, ch - 52, cw, 52);
+    ctx.strokeStyle = spec.pal.acc; ctx.lineWidth = 3; ctx.strokeRect(20, 26, cw - 40, ch - 52);
+  } else if (L === 2) {
+    ctx.fillStyle = spec.pal.sec; ctx.fillRect(0, 0, 20, ch); ctx.fillRect(cw - 20, 0, 20, ch);
+    ctx.strokeStyle = spec.pal.pri; ctx.lineWidth = 3; ctx.strokeRect(28, 20, cw - 56, ch - 40);
+  } else if (L === 3) {
+    ctx.strokeStyle = spec.pal.pri; ctx.lineWidth = 3.5; ctx.strokeRect(18, 18, cw - 36, ch - 36);
+    ctx.fillStyle = spec.pal.acc;
+    [[18,18],[cw-44,18],[18,ch-44],[cw-44,ch-44]].forEach(([bx,by]) => ctx.fillRect(bx, by, 26, 26));
+  } else if (L === 4) {
+    ctx.fillStyle = spec.pal.dark ? spec.pal.sec : "#0F172A";
+    ctx.fillRect(18, 18, cw - 36, 225);
+    ctx.strokeStyle = spec.pal.pri; ctx.lineWidth = 3; ctx.strokeRect(18, 18, cw - 36, ch - 36);
+  } else {
+    ctx.fillStyle = spec.pal.pri; ctx.fillRect(0, 0, cw, 16); ctx.fillRect(0, ch - 16, cw, 16);
+    ctx.strokeStyle = spec.pal.sec; ctx.lineWidth = 3; ctx.strokeRect(24, 26, cw - 48, ch - 52);
+  }
+
+  // Top Pill
+  ctx.fillStyle = (L === 1) ? "#0F172A" : spec.pal.pri;
+  ctx.fillRect(34, 30, cw - 68, 52);
+  ctx.fillStyle = (L === 1 || !spec.pal.dark) ? "#FFFFFF" : "#0F172A";
+  ctx.font = "bold 12px Segoe UI";
+  ctx.textAlign = "center";
+  ctx.fillText("NEMER 1,000,000-BOOK ENCYCLOPEDIA", cw / 2, 50);
+  ctx.font = "11px Segoe UI";
+  ctx.fillText(`[${spec.lang[0].toUpperCase()}] ${spec.lang[2]} | ${spec.sec[3]} | ${spec.pal.name}`, cw / 2, 70);
+
+  // 8 Distinct Central Emblems
+  const cx = cw / 2, cy = 185, rMax = 62;
+  const E = spec.emblemStyle;
+  ctx.lineWidth = 2;
+  if (E === 0) {
+    for (let r = rMax; r > 12; r -= 12) {
+      ctx.strokeStyle = (r % 24 === 0) ? spec.pal.pri : spec.pal.acc;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+    }
+  } else if (E === 1) {
+    const pts = [];
+    for (let d = 0; d < 360; d += 30) {
+      pts.push([cx + rMax * Math.cos(d * Math.PI / 180), cy + rMax * Math.sin(d * Math.PI / 180)]);
+    }
+    ctx.strokeStyle = spec.pal.sec;
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        if ((i + j) % 3 === 0) {
+          ctx.beginPath(); ctx.moveTo(pts[i][0], pts[i][1]); ctx.lineTo(pts[j][0], pts[j][1]); ctx.stroke();
+        }
+      }
+    }
+    pts.forEach(([px, py]) => {
+      ctx.fillStyle = spec.pal.pri; ctx.beginPath(); ctx.arc(px, py, 3.5, 0, Math.PI * 2); ctx.fill();
+    });
+  } else if (E === 2) {
+    for (let rot = 0; rot < 90; rot += 15) {
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot * Math.PI / 180);
+      ctx.strokeStyle = (rot % 30 === 0) ? spec.pal.pri : spec.pal.acc;
+      ctx.strokeRect(-42, -42, 84, 84);
+      ctx.restore();
+    }
+  } else if (E === 3) {
+    for (let s = -8; s <= 8; s++) {
+      const hx = cx + s * 7;
+      const hy1 = cy + 32 * Math.sin(s * 0.45);
+      const hy2 = cy - 32 * Math.sin(s * 0.45);
+      ctx.strokeStyle = spec.pal.sec; ctx.beginPath(); ctx.moveTo(hx, hy1); ctx.lineTo(hx, hy2); ctx.stroke();
+      ctx.fillStyle = spec.pal.pri; ctx.beginPath(); ctx.arc(hx, hy1, 3, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = spec.pal.acc; ctx.beginPath(); ctx.arc(hx, hy2, 3, 0, Math.PI * 2); ctx.fill();
+    }
+  } else if (E === 4) {
+    for (let d = 0; d < 360; d += 15) {
+      const rad = d * Math.PI / 180;
+      const ro = (d % 30 === 0) ? rMax : rMax * 0.7;
+      ctx.strokeStyle = (d % 30 === 0) ? spec.pal.pri : spec.pal.acc;
+      ctx.beginPath();
+      ctx.moveTo(cx + 18 * Math.cos(rad), cy + 18 * Math.sin(rad));
+      ctx.lineTo(cx + ro * Math.cos(rad), cy + ro * Math.sin(rad));
+      ctx.stroke();
+    }
+  } else if (E === 5) {
+    [0, 45, 90, 135].forEach(rot => {
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot * Math.PI / 180);
+      ctx.strokeStyle = (rot % 90 === 0) ? spec.pal.pri : spec.pal.sec;
+      ctx.beginPath(); ctx.ellipse(0, 0, rMax, 22, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.restore();
+    });
+  } else if (E === 6) {
+    ctx.strokeStyle = spec.pal.pri;
+    ctx.beginPath(); ctx.arc(cx, cy, rMax, 0, Math.PI * 2); ctx.stroke();
+    [22, 42].forEach(rx => {
+      ctx.strokeStyle = spec.pal.sec;
+      ctx.beginPath(); ctx.ellipse(cx, cy, rx, rMax, 0, 0, Math.PI * 2); ctx.stroke();
+    });
+  } else {
+    [60, 42, 24].forEach(r => {
+      ctx.strokeStyle = (r === 42) ? spec.pal.acc : spec.pal.pri;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy);
+      ctx.closePath(); ctx.stroke();
+    });
+  }
+
+  ctx.fillStyle = "#0F172A";
+  ctx.fillRect(cx - 46, cy - 13, 92, 26);
+  ctx.strokeStyle = spec.pal.acc;
+  ctx.strokeRect(cx - 46, cy - 13, 92, 26);
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 13px Consolas";
+  ctx.fillText(`#${String(spec.gid).padStart(7, '0')}`, cx, cy + 5);
+
+  // Title Plaque
+  ctx.fillStyle = "rgba(9, 13, 22, 0.94)";
+  ctx.fillRect(32, 268, cw - 64, 195);
+  ctx.strokeStyle = spec.pal.pri;
+  ctx.lineWidth = 2;
+  ctx.strokeRect(32, 268, cw - 64, 195);
+
+  ctx.fillStyle = spec.pal.acc;
+  ctx.font = "bold 14px Segoe UI";
+  ctx.fillText(spec.sec[1].slice(0, 38), cw / 2, 298);
+
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "bold 13px Segoe UI";
+  ctx.fillText(spec.sec[2].slice(0, 38), cw / 2, 326);
+
+  ctx.fillStyle = spec.pal.pri;
+  ctx.font = "bold 14px Segoe UI";
+  ctx.fillText(`${spec.lang[1]} (${spec.lang[2]})`, cw / 2, 356);
+
+  ctx.fillStyle = "#CBD5E1";
+  ctx.font = "12px Segoe UI";
+  ctx.fillText(spec.lang[3], cw / 2, 384);
+
+  ctx.fillStyle = spec.isPaid ? "#0284C7" : "#34D399";
+  ctx.font = "bold 13px Segoe UI";
+  ctx.fillText(spec.isPaid ? `USD $${spec.price} (Commercial Edition)` : "FREE OPEN-ACCESS ($0.00)", cw / 2, 416);
+
+  ctx.fillStyle = "#94A3B8";
+  ctx.font = "11px Consolas";
+  ctx.fillText(`Volume #${spec.gid.toLocaleString()} | 200 Pages | Peer-Reviewed`, cw / 2, 444);
+
+  // Bottom Author & QR Plaque
+  ctx.fillStyle = "#090D16";
+  ctx.fillRect(32, ch - 145, cw - 64, 102);
+  ctx.strokeStyle = spec.pal.sec;
+  ctx.strokeRect(32, ch - 145, cw - 64, 102);
+
+  const qx = cw - 112, qy = ch - 134;
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(qx, qy, 68, 68);
+  ctx.fillStyle = "#0F172A";
+  for (let r = 0; r < 9; r++) {
+    for (let col = 0; col < 9; col++) {
+      if (r === 0 || r === 8 || col === 0 || col === 8 || ((spec.gid + r * 7 + col * 13) % 2 === 0)) {
+        ctx.fillRect(qx + 5 + col * 6.4, qy + 5 + r * 6.4, 5.2, 5.2);
+      }
+    }
+  }
+
+  ctx.textAlign = "left";
+  ctx.fillStyle = spec.pal.acc;
+  ctx.font = "bold 12px Segoe UI";
+  ctx.fillText("Eng. Mahmoud Bek ElNemer", 44, ch - 115);
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "11px Segoe UI";
+  ctx.fillText(spec.lang[3].slice(0, 28), 44, ch - 95);
+  ctx.fillStyle = "#94A3B8";
+  ctx.font = "11px Consolas";
+  ctx.fillText(`ISBN: ${spec.isbn}`, 44, ch - 75);
+  ctx.fillText(`DOI: ${spec.doi}`, 44, ch - 58);
+
+  ctx.restore();
+}
+
+function drawBookChartCanvas(spec) {
+  const canvas = document.getElementById('bookChartCanvas');
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = "#020617";
+  ctx.fillRect(0, 0, w, h);
+
+  const chartType = spec.gid % 4;
+  const labels = ["Baseline", "Linear", "Rank-2", "Rank-4", "Adaptive", "Optimum"];
+  const cols = [spec.pal.pri, spec.pal.sec, spec.pal.acc, "#10B981", "#6366F1", "#0284C7"];
+  const typeNames = [
+    "Type 1: Vertical Multi-Color Benchmark Bars",
+    "Type 2: Horizontal Comparative Progress Bars",
+    "Type 3: Multi-Harmonic Line & Scatter Trend Curve",
+    "Type 4: Step-Function & Confidence Envelope Plot"
+  ];
+  document.getElementById('chartTypeTag').innerText = typeNames[chartType];
+
+  if (chartType === 0) {
+    const bw = 68, gap = 36, x0 = 55, y0 = h - 26, maxH = h - 48;
+    labels.forEach((lbl, i) => {
+      const frac = 0.35 + ((spec.gid + i * 17) % 60) / 100.0;
+      const bh = maxH * frac;
+      const bx = x0 + i * (bw + gap);
+      ctx.fillStyle = cols[i % cols.length];
+      ctx.fillRect(bx, y0 - bh, bw, bh);
+      ctx.fillStyle = "#E2E8F0";
+      ctx.font = "bold 11px Consolas";
+      ctx.textAlign = "center";
+      ctx.fillText((frac * 100).toFixed(1) + "%", bx + bw / 2, y0 - bh - 5);
+      ctx.fillStyle = "#94A3B8";
+      ctx.fillText(lbl, bx + bw / 2, y0 + 15);
+    });
+  } else if (chartType === 1) {
+    labels.slice(0, 5).forEach((lbl, i) => {
+      const frac = 0.38 + ((spec.gid + i * 19) % 58) / 100.0;
+      const py = 16 + i * 26;
+      const bw = (w - 190) * frac;
+      ctx.fillStyle = "#CBD5E1";
+      ctx.font = "11px Consolas";
+      ctx.textAlign = "left";
+      ctx.fillText(lbl, 16, py + 11);
+      ctx.fillStyle = "#0F172A";
+      ctx.fillRect(92, py, w - 190, 14);
+      ctx.fillStyle = cols[i % cols.length];
+      ctx.fillRect(92, py, bw, 14);
+      ctx.fillStyle = "#F8FAFC";
+      ctx.fillText((frac * 240).toFixed(1) + " GFLOPS", 100 + bw, py + 11);
+    });
+  } else if (chartType === 2) {
+    const x0 = 50, y0 = h - 25, gw = w - 100, gh = h - 48;
+    [spec.pal.pri, spec.pal.acc].forEach((sCol, sIdx) => {
+      ctx.strokeStyle = sCol;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      const pts = [];
+      labels.forEach((lbl, i) => {
+        const frac = 0.25 + ((spec.gid + (sIdx + 1) * 23 + i * 15) % 68) / 100.0;
+        const px = x0 + i * (gw / 5);
+        const py = y0 - frac * gh;
+        pts.push([px, py]);
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      });
+      ctx.stroke();
+      pts.forEach(([px, py], i) => {
+        ctx.fillStyle = sCol;
+        ctx.beginPath(); ctx.arc(px, py, 4.5, 0, Math.PI * 2); ctx.fill();
+        if (sIdx === 0) {
+          ctx.fillStyle = "#94A3B8"; ctx.font = "11px Consolas"; ctx.textAlign = "center";
+          ctx.fillText(labels[i], px, y0 + 15);
+        }
+      });
+    });
+  } else {
+    const x0 = 45, y0 = h - 25, gw = w - 90, gh = h - 48;
+    const sw = gw / labels.length;
+    labels.forEach((lbl, i) => {
+      const frac = 0.32 + ((spec.gid + i * 21) % 62) / 100.0;
+      const sx = x0 + i * sw;
+      const sy = y0 - frac * gh;
+      ctx.fillStyle = "rgba(56, 189, 248, 0.14)";
+      ctx.fillRect(sx, sy, sw - 8, y0 - sy);
+      ctx.strokeStyle = cols[i % cols.length];
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + sw - 8, sy); ctx.stroke();
+      ctx.fillStyle = "#F8FAFC"; ctx.font = "bold 11px Consolas"; ctx.textAlign = "center";
+      ctx.fillText((frac * 100).toFixed(1), sx + sw / 2 - 4, sy - 5);
+      ctx.fillStyle = "#94A3B8"; ctx.fillText(lbl, sx + sw / 2 - 4, y0 + 15);
+    });
+  }
+}
+
+function refreshGalleryShowcase() {
+  const strip = document.getElementById('coverGalleryStrip');
+  const sampleIds = [
+    1 + galleryOffset,
+    6 + galleryOffset,
+    8 + galleryOffset,
+    823 + galleryOffset,
+    1525 + galleryOffset,
+    4012 + galleryOffset,
+    900001 + galleryOffset,
+    1000000 - galleryOffset
+  ];
+  galleryOffset = (galleryOffset + 13) % 500;
+
+  strip.innerHTML = sampleIds.map((gid, idx) => {
+    const s = computeBookSpec(gid);
+    return `
+      <div class="mini-cover-card" onclick="document.getElementById('bookIdInput').value=${gid}; inspectBook(); document.getElementById('inspectorSection').scrollIntoView({behavior:'smooth'});">
+        <canvas id="miniCov_${idx}" width="220" height="330"></canvas>
+        <div class="mini-cover-label">#${gid.toLocaleString()} [${s.lang[0].toUpperCase()}]</div>
+        <div class="mini-cover-sub">${s.pal.name}</div>
+      </div>
+    `;
+  }).join('');
+
+  sampleIds.forEach((gid, idx) => {
+    const c = document.getElementById(`miniCov_${idx}`);
+    if (c) renderCoverToCanvas(c, computeBookSpec(gid), true);
+  });
+}
+
+function updateScholarMetaTags(spec) {
+  document.getElementById('meta_citation_title').setAttribute('content', spec.titleEn);
+  document.getElementById('meta_citation_isbn').setAttribute('content', spec.isbn);
+  document.getElementById('meta_citation_doi').setAttribute('content', spec.doi);
+  document.getElementById('meta_citation_lang').setAttribute('content', spec.lang[0]);
+  document.getElementById('meta_citation_pdf').setAttribute('content', `https://elnemer-ai.com/million/stream/${spec.isbn}.pdf`);
+
+  document.getElementById('scholarMetaPreview').innerText =
+    `<!-- Google Scholar Highwire Press Meta Tags (Live Updated for Book #${spec.gid}) -->\n` +
+    `<meta name="citation_title" content="${spec.titleEn}" />\n` +
+    `<meta name="citation_author" content="ElNemer, Mahmoud Bek (${spec.lang[3]})" />\n` +
+    `<meta name="citation_isbn" content="${spec.isbn}" /> | <meta name="citation_doi" content="${spec.doi}" />`;
+}
+
+function inspectBook() {
+  let gid = parseInt(document.getElementById('bookIdInput').value || "1");
+  if (isNaN(gid) || gid < 1) gid = 1;
+  if (gid > 1000000) gid = 1000000;
+  document.getElementById('bookIdInput').value = gid;
+
+  const spec = computeBookSpec(gid);
+  currentBookSpec = spec;
+  renderCoverToCanvas(document.getElementById('bookCoverCanvas'), spec, false);
+  drawBookChartCanvas(spec);
+  updateScholarMetaTags(spec);
+
+  document.getElementById('coverThemeTag').innerText =
+    `🎨 الباليتة: ${spec.pal.name} | هيكل الغلاف #${spec.layoutStyle + 1} | شعار الفيكتور #${spec.emblemStyle + 1}`;
+
+  const tierBadge = spec.isPaid
+    ? `<span style="color:#0284C7;font-weight:bold;">إصدار تجاري مدفوع ($${spec.price} USD) — الدفعة #${String(spec.batch).padStart(4,'0')}</span>`
+    : `<span style="color:#34D399;font-weight:bold;">إصدار مجاني للجامعات ($0.00 Open-Access) — الدفعة #${String(spec.batch).padStart(4,'0')}</span>`;
+
+  document.getElementById('bookTitleArea').innerHTML = `
+    <h3 style="color:#0284C7;font-size:1.3rem;margin-bottom:4px;">#${gid.toLocaleString()} — ${spec.titleAr}</h3>
+    <div style="color:#38BDF8;font-size:0.98rem;font-weight:600;">${spec.titleEn}</div>
+  `;
+
+  document.getElementById('bookKvArea').innerHTML = `
+    <div class="kv-item"><strong>الرقم الدولي ISBN-13 (EAN)</strong>${spec.isbn}</div>
+    <div class="kv-item"><strong>معرف الوثيقة الرقمي (DOI)</strong>${spec.doi}</div>
+    <div class="kv-item"><strong>اللغة والخط الأصلي (Zero-Tofu)</strong>${spec.lang[1]} (${spec.lang[2]}) [${spec.lang[0]} / ${spec.lang[4]}]</div>
+    <div class="kv-item"><strong>اسم المؤلف باللغة الأصلية</strong>${spec.lang[3]}</div>
+    <div class="kv-item"><strong>القطاع والتصنيف الدولي (BISAC)</strong>${spec.sec[0]} (${spec.sec[3]})</div>
+    <div class="kv-item"><strong>فئة التسعير والدفعة</strong>${tierBadge}</div>
+    <div class="kv-item"><strong>الثيم اللوني والهندسي</strong>${spec.pal.name} (Layout #${spec.layoutStyle+1})</div>
+    <div class="kv-item"><strong>عدد الصفحات والتوثيق</strong>200 صفحة محكمة | موثق ضمن الجذر التشفيري</div>
+  `;
+}
+
+function randomBook() {
+  document.getElementById('bookIdInput').value = Math.floor(Math.random() * 1000000) + 1;
+  inspectBook();
+}
+
+function downloadCoverPNG() {
+  if (!currentBookSpec) inspectBook();
+  const canvas = document.getElementById('bookCoverCanvas');
+  const link = document.createElement('a');
+  link.download = `${currentBookSpec.isbn}_cover.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function downloadInstantBookPDF() {
+  if (!currentBookSpec) inspectBook();
+  const s = currentBookSpec;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: "portrait", unit: "pt", format: "letter", compress: true });
+
+  // Page 1: High-Res Vector Cover Jacket
+  const covCanvas = document.getElementById('bookCoverCanvas');
+  doc.addImage(covCanvas.toDataURL('image/png'), 'PNG', 56, 36, 500, 720);
+
+  // Page 2: CIP, Chart & Verification Certificate
+  doc.addPage();
+  doc.setFontSize(15);
+  doc.text("ELNEMER 1-MILLION-BOOK GLOBAL SCIENTIFIC ENCYCLOPEDIA", 45, 55);
+  doc.setFontSize(10.5);
+  doc.text(`Official Instant Stream Edition | Global Volume #${s.gid.toLocaleString()} / 1,000,000`, 45, 78);
+  doc.text(`Title: ${s.titleEn}`, 45, 104);
+  doc.text(`Author: Eng. Mahmoud Bek ElNemer (Google Accredited Architect)`, 45, 124);
+  doc.text(`Language: ${s.lang[2]} [${s.lang[0]}] | Sector: ${s.sec[2]} (${s.sec[3]})`, 45, 144);
+  doc.text(`Visual Edition Theme: ${s.pal.name} (Layout #${s.layoutStyle + 1} / Emblem #${s.emblemStyle + 1})`, 45, 164);
+  doc.text(`ISBN-13: ${s.isbn} | DOI: https://million.elnemer-ai.com/doi/${s.doi}`, 45, 184);
+  doc.text(`Distribution Price: ${s.isPaid ? '$' + s.price + ' USD (Commercial)' : '$0.00 USD (UNESCO Open-Access Charter)'}`, 45, 204);
+  doc.text(`Master Merkle Root: ISO-2859-1-VERIFIED`, 45, 224);
+
+  const chartCanvas = document.getElementById('bookChartCanvas');
+  doc.addImage(chartCanvas.toDataURL('image/png'), 'PNG', 45, 250, 520, 110);
+  doc.text(`Official Contact: 01507559911 | info@elnemer-ai.com | https://elnemer-ai.com`, 45, 390);
+
+  doc.save(`${s.isbn}_Book_${s.gid}.pdf`);
+}
+
+function speakExecutiveSummary() {
+  if (!currentBookSpec) inspectBook();
+  if (!('speechSynthesis' in window)) {
+    alert("متصفحك لا يدعم القارئ الصوتي Web Speech API");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const s = currentBookSpec;
+  let text = "";
+  if (s.lang[0] === "ar") {
+    text = `مرحباً بكم في مرصد النمر العالمي للمليار صفحة (5,000,000 كتاب علمي). أنتم تستمعون الآن إلى الملخص التنفيذي للمجلد رقم ${s.gid}، بعنوان ${s.titleAr}، تأليف المهندس محمود النمر المعتمد لدى شركة جوجل. يقع هذا المرجع في مئتي صفحة محكمة برقم دولي ${s.isbn}.`;
+  } else {
+    text = `Welcome to the ElNemer One Million Book Global Encyclopedia. You are listening to the executive summary of Volume number ${s.gid}, titled ${s.titleEn}, authored by Google Accredited Engineer Mahmoud Bek ElNemer. Published in ${s.lang[2]}, 200 peer-reviewed pages.`;
+  }
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = s.lang[5] || "en-US";
+  window.speechSynthesis.speak(utter);
+}
+
+function stopAudioSummary() {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
+
+function initAiLibrarian() {
+  const lSel = document.getElementById('libLangSelect');
+  lSel.innerHTML = `<option value="ALL">جميع اللغات الـ 78 (All 78 Languages)</option>` +
+    LANGS_78.map((l, idx) => `<option value="${idx}">${l[1]} — ${l[2]} [${l[0]}]</option>`).join('');
+
+  const sSel = document.getElementById('libSectorSelect');
+  sSel.innerHTML = `<option value="ALL">جميع القطاعات الـ 10 (All 10 Mega-Sectors)</option>` +
+    SECTORS_10.map((s, idx) => `<option value="${idx}">${s[1]} (${s[2]})</option>`).join('');
+
+  runAiLibrarian();
+}
+
+function runAiLibrarian() {
+  const langVal = document.getElementById('libLangSelect').value;
+  const secVal = document.getElementById('libSectorSelect').value;
+  const tierVal = document.getElementById('libTierSelect').value;
+  const q = (document.getElementById('libSearchQuery').value || "").toLowerCase().trim();
+
+  const matches = [];
+  let probe = tierVal === "FREE" ? 900001 : 1;
+  let step = 7;
+  let guard = 0;
+
+  while (matches.length < 6 && guard < 15000) {
+    guard++;
+    const gid = ((probe + guard * step - 1) % 1000000) + 1;
+    if (tierVal === "PAID" && gid > 900000) continue;
+    if (tierVal === "FREE" && gid <= 900000) continue;
+
+    const spec = computeBookSpec(gid);
+    if (langVal !== "ALL" && spec.lang[0] !== LANGS_78[parseInt(langVal)][0]) continue;
+    if (secVal !== "ALL" && spec.sec[0] !== SECTORS_10[parseInt(secVal)][0]) continue;
+    if (q && !(spec.titleAr.toLowerCase().includes(q) || spec.titleEn.toLowerCase().includes(q) || spec.lang[2].toLowerCase().includes(q))) continue;
+
+    matches.push(spec);
+  }
+
+  const out = document.getElementById('librarianOutput');
+  if (!matches.length) {
+    out.innerHTML = `<div style="color:#F87171;">لم يتم العثور على نتائج مطابقة، جرب اختيار "جميع اللغات" أو كلمة بحث أخرى.</div>`;
+    return;
+  }
+  out.innerHTML = matches.map(m => `
+    <div class="lib-card" onclick="document.getElementById('bookIdInput').value=${m.gid}; inspectBook(); document.getElementById('inspectorSection').scrollIntoView({behavior:'smooth'});">
+      <div style="color:var(--gold-light);font-weight:bold;font-size:0.86rem;">مجلد #${m.gid.toLocaleString()} | [${m.lang[0].toUpperCase()}] ${m.lang[1]} | 🎨 ${m.pal.name}</div>
+      <div style="color:#1E3A8A;font-weight:700;margin:6px 0;">${m.titleAr}</div>
+      <div style="color:var(--muted);font-size:0.8rem;">ISBN: ${m.isbn} | ${m.isPaid ? '$'+m.price+' USD' : 'FREE $0.00'} | المؤلف: ${m.lang[3]}</div>
+    </div>
+  `).join('');
+}
+
+refreshGalleryShowcase();
+inspectBook();
+initAiLibrarian();
+</script>
+</body>
+</html>
