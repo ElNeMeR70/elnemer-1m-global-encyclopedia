@@ -1,0 +1,247 @@
+/* ==============================================================================
+   NEMER SOVEREIGN UNIFIED GRADIENT DESIGN SYSTEM (v5.0)
+   Royal Sapphire (#1E3A8A -> #2563EB) • Ocean Cyan (#0284C7) • Emerald (#0D9488 -> #059669)
+   Platinum Pearl Surfaces (#F0F7FF -> #FFFFFF -> #ECFDF5)
+   ZERO BLACK (#000000) • ZERO YELLOW/GOLD (#F59E0B / #D4AF37)
+   ============================================================================== */
+:root, html, body, html[data-theme="imperial-dark"], html[data-theme="royal-light"], html[data-theme="royal-dark"] {
+    --bg-primary: #F0F7FF !important;
+    --bg-secondary: #ECFDF5 !important;
+    --bg-page: #F0F7FF !important;
+    --bg-deep: #F0F7FF !important;
+    --bg: #F0F7FF !important;
+    --card-bg: #FFFFFF !important;
+    --card-bg-alt: #F4F9FF !important;
+    --card-surface: #FFFFFF !important;
+    --card-sub: #F4F9FF !important;
+    --card: #FFFFFF !important;
+    --text-primary: #0F172A !important;
+    --text-secondary: #1E3A8A !important;
+    --text-muted: #475569 !important;
+    --text-main: #0F172A !important;
+    --text-sub: #334155 !important;
+    --text-bright: #0F172A !important;
+    --text: #0F172A !important;
+    --accent-royal: #1E3A8A !important;
+    --accent-gold: #0284C7 !important;
+    --accent-gold-light: rgba(2, 132, 199, 0.14) !important;
+    --accent-blue: #2563EB !important;
+    --accent-green: #059669 !important;
+    --gold: #0284C7 !important;
+    --gold-light: #0369A1 !important;
+    --gold-glow: #38BDF8 !important;
+    --text-gold: #0284C7 !important;
+    --cyan: #0284C7 !important;
+    --sapphire: #2563EB !important;
+    --emerald: #059669 !important;
+    --border-color: #BFDBFE !important;
+    --border-strong: #38BDF8 !important;
+    --card-border: #BFDBFE !important;
+    --border-gold: #93C5FD !important;
+    --border: #BFDBFE !important;
+}
+
+body {
+    background: linear-gradient(155deg, #DBEAFE 0%, #EFF6FF 28%, #F8FAFC 54%, #ECFDF5 80%, #D1FAE5 100%) !important;
+    background-attachment: fixed !important;
+    color: #0F172A !important;
+}
+
+/* Unified Top Navigation Bar */
+.top-ribbon, .topbar, .nav, .top-nav {
+    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 38%, #0284C7 72%, #0D9488 100%) !important;
+    border-bottom: 3px solid #7DD3FC !important;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.24) !important;
+    color: #FFFFFF !important;
+}
+
+.top-ribbon *, .topbar *, .nav *, .top-nav * {
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.brand-crest, .brand-icon, .brand span.badge {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E0F2FE 100%) !important;
+    color: #1E3A8A !important;
+    -webkit-text-fill-color: #1E3A8A !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
+}
+
+.nav-btn, .nav-pill, .top-btn {
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(8px) !important;
+    font-weight: 800 !important;
+    transition: all 0.22s ease !important;
+}
+
+.nav-btn:hover, .nav-pill:hover, .top-btn:hover {
+    background: #FFFFFF !important;
+    color: #1E3A8A !important;
+    border-color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.28) !important;
+}
+
+.nav-btn.gold, .top-btn-gold {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E0F2FE 100%) !important;
+    color: #1E3A8A !important;
+    border: 1.5px solid #BAE6FD !important;
+    font-weight: 900 !important;
+    box-shadow: 0 6px 18px rgba(14, 165, 233, 0.32) !important;
+}
+
+/* Unified Section Cards, Hero Grid, Bento Cards */
+.section-card, .hero-grid, .section-box, .card, .doi-card {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.99) 0%, rgba(240, 249, 255, 0.97) 58%, rgba(236, 253, 245, 0.96) 100%) !important;
+    border: 2px solid #93C5FD !important;
+    border-radius: 24px !important;
+    box-shadow: 0 18px 45px rgba(30, 58, 138, 0.08), 0 4px 14px rgba(13, 148, 136, 0.06) !important;
+    color: #0F172A !important;
+}
+
+/* Unified Inner Cards, Chapters, Siblings, Tables */
+.ch-card, .sibling-card, .stat-box, .meta-grid, .en-block, .cite-box, .code-block, .actions-box, .breadcrumbs {
+    background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 52%, #ECFDF5 100%) !important;
+    border: 1.5px solid #BFDBFE !important;
+    color: #0F172A !important;
+    box-shadow: 0 6px 18px rgba(30, 58, 138, 0.05) !important;
+}
+
+.ch-card:hover, .sibling-card:hover, .stat-box:hover {
+    border-color: #0284C7 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 28px rgba(2, 132, 199, 0.15) !important;
+}
+
+h1, h2, h3, .book-title, .section-title, .doi-title {
+    color: #1E3A8A !important;
+    background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #0D9488 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.hero-banner h1.hero-title, .top-ribbon h1, .topbar h1 {
+    background: none !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+
+/* Tables across all pages */
+table, .meta-table {
+    background: #FFFFFF !important;
+    border: 1.5px solid #BFDBFE !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+}
+th, .meta-table th {
+    background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%) !important;
+    color: #1E3A8A !important;
+    border-bottom: 1.5px solid #BFDBFE !important;
+    font-weight: 900 !important;
+}
+td, .meta-table td {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+}
+tr:hover td {
+    background: #F0F9FF !important;
+}
+
+/* Pills & Badges */
+.pill, .status-badge {
+    background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%) !important;
+    border: 1.5px solid #7DD3FC !important;
+    color: #1E3A8A !important;
+    font-weight: 800 !important;
+}
+.pill.emerald, .status-badge {
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%) !important;
+    border-color: #34D399 !important;
+    color: #065F46 !important;
+}
+
+/* Action Buttons Unified Gradient */
+.btn-gold-glow, .btn-gold, .btn-audit, .btn-action-gold {
+    background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 50%, #0284C7 100%) !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid #7DD3FC !important;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.28) !important;
+}
+.btn-gold-glow:hover, .btn-gold:hover, .btn-audit:hover, .btn-action-gold:hover {
+    background: linear-gradient(135deg, #1D4ED8 0%, #0284C7 50%, #0D9488 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Floating Bottom Bar */
+.floating-bar {
+    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 45%, #0D9488 100%) !important;
+    border-top: 3px solid #7DD3FC !important;
+    box-shadow: 0 -10px 30px rgba(30, 58, 138, 0.22) !important;
+    color: #FFFFFF !important;
+}
+.floating-bar span { color: #FFFFFF !important; }
+
+/* Modals (Press Kit & Academic Citation) */
+.nemer-modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.nemer-modal-card {
+    background: linear-gradient(165deg, #FFFFFF 0%, #F0F9FF 60%, #ECFDF5 100%);
+    border: 2.5px solid #38BDF8;
+    border-radius: 24px;
+    max-width: 880px;
+    width: 100%;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 28px;
+    box-shadow: 0 25px 70px rgba(30, 58, 138, 0.35);
+    color: #0F172A;
+}
+
+/* Live Global Indexing Ticker */
+.global-live-ticker {
+    background: linear-gradient(90deg, #EFF6FF 0%, #E0F2FE 50%, #ECFDF5 100%);
+    border-bottom: 1.5px solid #BAE6FD;
+    padding: 8px 20px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #1E3A8A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.ticker-items-wrap {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.ticker-book-pill {
+    background: #FFFFFF;
+    border: 1px solid #93C5FD;
+    color: #1E3A8A;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 800;
+    transition: all 0.2s ease;
+}
+.ticker-book-pill:hover {
+    background: linear-gradient(135deg, #2563EB, #0D9488);
+    color: #FFFFFF;
+    border-color: #1D4ED8;
+}

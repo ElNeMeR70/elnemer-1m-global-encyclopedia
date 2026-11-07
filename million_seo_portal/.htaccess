@@ -1,0 +1,87 @@
+# ==============================================================================
+# NEMER SOVEREIGN TRADE-SECRET & ARCHITECTURE CLOAKING SHIELD
+# ==============================================================================
+ServerSignature Off
+<IfModule mod_headers.c>
+    Header unset X-Powered-By
+    Header unset Server
+    Header set X-Nemer-Sovereign-Vault "Encrypted-Core-v5.0-SHA256"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Block direct HTTP access to internal data & helper engines (PHP include still works!)
+<FilesMatch "^(taxonomy_data\.php|barcode_helper\.php|indexnow_engine\.php|merkle_root_1m_guinness\.json|\.env|.*\.sqlite)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+RewriteEngine On
+RewriteBase /
+
+# 1. If an actual file exists, serve it directly without rewriting
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Nemer Sovereign Edge Cache & CORS Headers for Static, Sitemap & PDF Streams
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/(pdf|stream_pdf\.php|book/|sitemaps/)#"
+    Header set CDN-Cache-Control "public, max-age=31536000, immutable"
+    Header set X-Nemer-Edge-Cache "SOVEREIGN-1B-PAGES-IMMUTABLE"
+</IfModule>
+
+# Sovereign DOI & Handle Resolver Gateway: /doi/10.1007/s1b-nemer.0000004 or /doi/12345
+RewriteRule ^doi/(.*)$ doi.php?doi=$1 [L,QSA]
+RewriteRule ^doi/?$ doi.php [L,QSA]
+
+# OAI-PMH 2.0 Global Library Harvesting Repository: /oai
+RewriteRule ^oai/?$ oai.php [L,QSA]
+
+# Academic Citation & Library of Congress MARC21 Export: /cite/12345
+RewriteRule ^cite/([0-9]+)(/.*)?$ cite.php?id=$1 [L,QSA]
+RewriteRule ^cite/?$ cite.php [L,QSA]
+
+# Live Cryptographic Merkle Proof & Forensic Audit Lab: /audit/12345 or /api/verify/12345
+RewriteRule ^audit/([0-9]+)(/.*)?$ audit.php?id=$1 [L,QSA]
+RewriteRule ^audit/?$ audit.php [L,QSA]
+RewriteRule ^api/verify/([0-9]+)(/.*)?$ audit.php?id=$1&format=json [L,QSA]
+RewriteRule ^api/verify/?$ audit.php?format=json [L,QSA]
+
+# Certificate of Authenticity Generator Route: /certificate/12345
+RewriteRule ^certificate/([0-9]+)(/.*)?$ certificate.php?id=$1 [L,QSA]
+
+# Instant 200-Page PDF Streamer Routes: /pdf/12345 or /pdf/12345/filename.pdf
+RewriteRule ^pdf/([0-9]+)(/.*)?$ stream_pdf.php?id=$1 [L,QSA]
+
+# Sitemap Index, 78-Language Sitemap & 100 Book Shards (5,000,000 Books)
+RewriteRule ^sitemap_index\.xml$ sitemap.php [L,QSA]
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]
+RewriteRule ^sitemaps/sitemap_languages_78\.xml$ sitemap.php?type=langs [L,QSA]
+RewriteRule ^sitemaps/sitemap_books_([0-9]+)\.xml$ sitemap.php?shard=$1 [L,QSA]
+
+# Clean 78-Language Portal Routes: /lang/ar, /lang/en, /lang/zh-CN, etc.
+RewriteRule ^lang/([a-zA-Z\-]+)/?$ index.php?lang=$1 [L,QSA]
+
+# Clean SEO Book Landing Pages: /book/12345 or /book/12345/any-slug (1 to 5,000,000)
+RewriteRule ^book/([0-9]+)(/.*)?$ book.php?id=$1 [L,QSA]
+RewriteRule ^verify$ book.php [L,QSA]
+
+# Official Guinness & Global Adjudication Portal
+RewriteRule ^guinness/?$ guinness.php [L,QSA]
+RewriteRule ^adjudication/?$ guinness.php [L,QSA]
+RewriteRule ^witness/?$ witness.php [L,QSA]
+RewriteRule ^proofs/?$ witness.php [L,QSA]
+
+# Clean Dossier PDF Routes
+RewriteRule ^guinness-dossier\.pdf$ guinness_dossier.pdf [L]
+RewriteRule ^institutions-dossier\.pdf$ institutions_dossier.pdf [L]
+
+# Default DirectoryIndex
+DirectoryIndex index.php index.html
