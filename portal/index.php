@@ -2162,6 +2162,189 @@ $json_ld = [
             color: #38BDF8 !important;
         }
 
+
+        /* ==========================================================================
+           ULTRA-CLEAN 50 MEGA-SECTORS & 1,000 DISCIPLINES BENTO ARCHITECTURE
+           ========================================================================== */
+        .tax-hub-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0 18px 0;
+        }
+        .tax-hub-btn {
+            background: #EFF6FF;
+            color: #1E3A8A;
+            border: 1.5px solid #BFDBFE;
+            padding: 9px 16px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tax-hub-btn:hover, .tax-hub-btn.active {
+            background: linear-gradient(135deg, #2563EB, #0D9488);
+            color: #FFFFFF;
+            border-color: #1D4ED8;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+            transform: translateY(-2px);
+        }
+        .sectors-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)) !important;
+            gap: 20px !important;
+        }
+        .sector-box {
+            background: #FFFFFF !important;
+            border: 1.5px solid #DBEAFE !important;
+            border-radius: 20px !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05) !important;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        .sector-box:hover {
+            transform: translateY(-4px) !important;
+            border-color: #3B82F6 !important;
+            box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12) !important;
+        }
+        .sector-card-head {
+            background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+            border-bottom: 1.5px solid #DBEAFE;
+            padding: 16px 18px;
+        }
+        .sector-top-badges {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .sector-id-pill {
+            background: linear-gradient(135deg, #1E3A8A, #2563EB);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 8px;
+            letter-spacing: 0.3px;
+        }
+        .sector-vol-pill {
+            background: #ECFDF5;
+            color: #047857;
+            border: 1px solid #A7F3D0;
+            font-size: 0.73rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 8px;
+        }
+        .sector-ar-name {
+            display: block;
+            font-size: 1.04rem;
+            font-weight: 900;
+            color: #0F172A;
+            line-height: 1.4;
+            text-decoration: none;
+            margin-bottom: 4px;
+        }
+        .sector-ar-name:hover {
+            color: #2563EB;
+        }
+        .sector-en-name {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #475569;
+            line-height: 1.35;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+        }
+        .sector-discs-body {
+            padding: 12px 14px 14px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .disc-clean-card {
+            display: block;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 9px 12px;
+            text-decoration: none;
+            transition: all 0.18s ease;
+        }
+        .disc-clean-card:hover {
+            background: #EFF6FF;
+            border-color: #60A5FA;
+            transform: translateX(-3px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+        }
+        .disc-row-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .disc-num-badge {
+            background: #DBEAFE;
+            color: #1E40AF;
+            font-family: monospace;
+            font-size: 0.73rem;
+            font-weight: 900;
+            padding: 2px 7px;
+            border-radius: 6px;
+        }
+        .disc-track-badge {
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #E0F2FE;
+            color: #0369A1;
+        }
+        .disc-ar-main {
+            font-size: 0.86rem;
+            font-weight: 800;
+            color: #0F172A;
+            line-height: 1.38;
+            margin-bottom: 2px;
+        }
+        .disc-en-main {
+            font-size: 0.73rem;
+            font-weight: 600;
+            color: #64748B;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.3;
+        }
+        .sector-toggle-btn {
+            width: 100%;
+            margin-top: 4px;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1.5px dashed #93C5FD;
+            background: #F0F7FF;
+            color: #1D4ED8;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .sector-toggle-btn:hover {
+            background: #DBEAFE;
+            border-style: solid;
+        }
+
 </style>
 
 </head>
@@ -2840,71 +3023,93 @@ $json_ld = [
 
 
 
-    <!-- 10 MEGA-SECTORS & 100 BISAC SUB-DISCIPLINES ARCHITECTURE -->
-
+    <!-- 50 MEGA-SECTORS & 1,000 HUMAN-BENEFIT SUB-DISCIPLINES BENTO ARCHITECTURE -->
     <section class="section-card" id="taxonomy-section">
-
-        <div class="section-header">
-
-            <h2 class="section-title"><?php echo htmlspecialchars($i18n['sectors_title']); ?></h2>
-
-            <span style="font-size:0.88rem;font-weight:800;color:var(--accent-gold);">50 قطاعاً × 20 تخصصاً نافعاً للإنسان × 5,000 كتاب = 5,000,000 مجلد (مليار صفحة)</span>
-
-        </div>
-
-
-
-        <div class="sectors-grid">
-
-            <?php foreach ($sectors as $s): ?>
-
-            <div class="sector-box">
-
-                <div class="sector-box-title">
-
-                    <a href="/?lang=<?php echo urlencode($cur_lang); ?>&sector=<?php echo $s['sector_id']; ?>" style="color:inherit;text-decoration:none;">
-
-                        🏛️ <?php echo htmlspecialchars($s['name_ar']); ?><br>
-
-                        <span style="font-size:0.82rem;color:var(--text-muted);"><?php echo htmlspecialchars($s['name_en']); ?></span>
-
-                    </a>
-
-                    <span class="lang-code-badge"><?php echo $s['bisac']; ?></span>
-
+        <div class="section-header" style="flex-wrap:wrap;gap:12px;">
+            <div>
+                <h2 class="section-title" style="margin-bottom:4px;">🧭 <?php echo htmlspecialchars($i18n['sectors_title']); ?></h2>
+                <div style="font-size:0.86rem;font-weight:800;color:#0284C7;">
+                    50 قطاعاً موسوعياً × 20 تخصصاً نافعاً للإنسان × 5,000 كتاب = 5,000,000 مجلد (1,000,000,000 — مليار صفحة)
                 </div>
-
-                <div>
-
-                    <?php
-
-                    foreach ($discs as $d) {
-
-                        if (intval($d['sector_id']) === intval($s['sector_id'])) {
-
-                            echo '<a class="disc-link" href="/?lang=' . urlencode($cur_lang) . '&discipline=' . $d['discipline_id'] . '">';
-
-                            echo '📘 #' . sprintf("%03d", $d['discipline_id']) . ': ' . htmlspecialchars($d['domain_ar']) . ' (' . htmlspecialchars($d['domain_en']) . ')';
-
-                            echo '</a>';
-
-                        }
-
-                    }
-
-                    ?>
-
-                </div>
-
             </div>
-
-            <?php endforeach; ?>
-
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                <input type="text" id="taxQuickFilterInput" class="filter-input" placeholder="🔍 ابحث في الـ 50 قطاعاً والـ 1,000 تخصص..." style="width:270px;padding:8px 14px;" oninput="filterTaxonomyCards()">
+                <button type="button" class="tax-hub-btn" onclick="toggleAllSectorDrawers()" id="toggleAllSectorsBtn">📂 فتح كل الـ 1,000 تخصص</button>
+            </div>
         </div>
 
+        <!-- 6 Interactive Hub Filter Tabs -->
+        <div class="tax-hub-tabs">
+            <button type="button" class="tax-hub-btn active" onclick="selectTaxHub(0, 50, this)">🌐 كل القطاعات (50 قطاعاً • 1,000 تخصص)</button>
+            <button type="button" class="tax-hub-btn" onclick="selectTaxHub(1, 10, this)">🏥 الصحة والطب الأسري والتغذية (S01–S10)</button>
+            <button type="button" class="tax-hub-btn" onclick="selectTaxHub(11, 20, this)">👨‍👩‍👧‍👦 الأسرة والتربية والتعليم (S11–S20)</button>
+            <button type="button" class="tax-hub-btn" onclick="selectTaxHub(21, 30, this)">💼 المهن والحرف والعمل الحر (S21–S30)</button>
+            <button type="button" class="tax-hub-btn" onclick="selectTaxHub(31, 40, this)">💻 البرمجة والذكاء الاصطناعي (S31–S40)</button>
+            <button type="button" class="tax-hub-btn" onclick="selectTaxHub(41, 50, this)">🌱 الزراعة والطاقة والعمارة والعلوم (S41–S50)</button>
+        </div>
+
+        <div class="sectors-grid" id="sectorsBentoGrid">
+            <?php
+            $track_labels_ar = [
+                0 => "📘 مسار الأسس والتطبيق اليومي",
+                1 => "⚡ مسار المهارات المتقدمة والمعايير",
+                2 => "🔬 مسار الفحص وحل المشكلات",
+                3 => "🚀 مسار الأدوات الحديثة والابتكار"
+            ];
+            foreach ($sectors as $s):
+                $sid = intval($s['sector_id']);
+                $sec_discs = [];
+                foreach ($discs as $d) {
+                    if (intval($d['sector_id']) === $sid) {
+                        $sec_discs[] = $d;
+                    }
+                }
+            ?>
+            <div class="sector-box" data-sector-id="<?php echo $sid; ?>">
+                <div class="sector-card-head">
+                    <div class="sector-top-badges">
+                        <span class="sector-id-pill">🏛️ قطاع S<?php echo sprintf("%02d", $sid); ?> • <?php echo htmlspecialchars($s['bisac']); ?></span>
+                        <span class="sector-vol-pill">📚 100,000 كتاب • 20M صفحة</span>
+                    </div>
+                    <a class="sector-ar-name" href="/?lang=<?php echo urlencode($cur_lang); ?>&sector=<?php echo $sid; ?>">
+                        <?php echo htmlspecialchars($s['name_ar']); ?>
+                    </a>
+                    <span class="sector-en-name" dir="ltr"><?php echo htmlspecialchars($s['name_en']); ?></span>
+                </div>
+
+                <div class="sector-discs-body">
+                    <?php
+                    foreach ($sec_discs as $idx_d => $d):
+                        $did = intval($d['discipline_id']);
+                        // Split long suffix at ' — ' so the core topic title is crystal clear!
+                        $ar_parts = explode(' — ', $d['domain_ar'], 2);
+                        $en_parts = explode(' — ', $d['domain_en'], 2);
+                        $core_ar = $ar_parts[0];
+                        $core_en = $en_parts[0];
+                        $track_badge = $track_labels_ar[$idx_d % 4];
+                        // Show the 5 distinct core topics (indices 0, 4, 8, 12, 16) by default, and put the remaining 15 tracks in the expandable drawer!
+                        $is_primary_five = ($idx_d % 4 === 0);
+                        $extra_class = $is_primary_five ? 'disc-primary' : 'disc-extra sector-extra-' . $sid;
+                        $extra_style = $is_primary_five ? '' : 'display:none;';
+                    ?>
+                    <a class="disc-clean-card <?php echo $extra_class; ?>" style="<?php echo $extra_style; ?>" href="/?lang=<?php echo urlencode($cur_lang); ?>&discipline=<?php echo $did; ?>">
+                        <div class="disc-row-top">
+                            <span class="disc-num-badge">#<?php echo sprintf("%04d", $did); ?></span>
+                            <span class="disc-track-badge"><?php echo $track_badge; ?> • 5,000 كتاب</span>
+                        </div>
+                        <div class="disc-ar-main"><?php echo htmlspecialchars($core_ar); ?></div>
+                        <div class="disc-en-main" dir="ltr"><?php echo htmlspecialchars($core_en); ?></div>
+                    </a>
+                    <?php endforeach; ?>
+
+                    <button type="button" class="sector-toggle-btn" onclick="toggleSectorExtra(<?php echo $sid; ?>, this)">
+                        ➕ عرض جميع الـ 20 تخصصاً ومساراً في القطاع S<?php echo sprintf("%02d", $sid); ?> (100,000 كتاب)
+                    </button>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
     </section>
-
-
 
 </main>
 
@@ -3592,6 +3797,61 @@ function onLiveEncyclopediaSearch(rawQuery) {
             `).join('')}
         </div>
     `;
+}
+
+
+let allSectorsExpanded = false;
+function toggleSectorExtra(sid, btnEl) {
+    const items = document.querySelectorAll('.sector-extra-' + sid);
+    let isHidden = true;
+    items.forEach(el => {
+        if (el.style.display === 'none' || !el.style.display) {
+            el.style.display = 'block';
+            isHidden = false;
+        } else {
+            el.style.display = 'none';
+            isHidden = true;
+        }
+    });
+    const padSid = String(sid).padStart(2, '0');
+    if (btnEl) {
+        btnEl.innerHTML = isHidden
+            ? `➕ عرض جميع الـ 20 تخصصاً ومساراً في القطاع S${padSid} (100,000 كتاب)`
+            : `🔼 طي المسارات الفرعية في القطاع S${padSid} (إبقاء الـ 5 الأساسية)`;
+    }
+}
+
+function toggleAllSectorDrawers() {
+    allSectorsExpanded = !allSectorsExpanded;
+    document.querySelectorAll('.disc-extra').forEach(el => {
+        el.style.display = allSectorsExpanded ? 'block' : 'none';
+    });
+    const btn = document.getElementById('toggleAllSectorsBtn');
+    if (btn) {
+        btn.innerHTML = allSectorsExpanded ? '📁 طي التخصصات الفرعية' : '📂 فتح كل الـ 1,000 تخصص';
+    }
+}
+
+let activeHubMin = 0, activeHubMax = 50;
+function selectTaxHub(minS, maxS, btnEl) {
+    activeHubMin = minS;
+    activeHubMax = maxS;
+    document.querySelectorAll('.tax-hub-tabs .tax-hub-btn').forEach(b => b.classList.remove('active'));
+    if (btnEl) btnEl.classList.add('active');
+    filterTaxonomyCards();
+}
+
+function filterTaxonomyCards() {
+    const q = (document.getElementById('taxQuickFilterInput')?.value || '').trim().toLowerCase();
+    document.querySelectorAll('#sectorsBentoGrid .sector-box').forEach(box => {
+        const sid = parseInt(box.getAttribute('data-sector-id'), 10) || 0;
+        const inHub = (activeHubMin === 0) || (sid >= activeHubMin && sid <= activeHubMax);
+        const textMatch = !q || box.textContent.toLowerCase().includes(q);
+        box.style.display = (inHub && textMatch) ? 'flex' : 'none';
+        if (q && inHub && textMatch) {
+            box.querySelectorAll('.disc-extra').forEach(el => { el.style.display = 'block'; });
+        }
+    });
 }
 
 (function initPortal() {
