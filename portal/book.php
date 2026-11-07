@@ -5,9 +5,9 @@ if (isset($_GET['download']) && $_GET['download'] === 'pdf') {
 }
 require_once __DIR__ . '/taxonomy_data.php';
 require_once __DIR__ . '/barcode_helper.php';
-header('Cache-Control: public, max-age=31536000, s-maxage=31536000, immutable');
-header('CDN-Cache-Control: public, max-age=31536000, immutable');
-header('X-Nemer-Edge-Cache: public, max-age=31536000, immutable');
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 $gid = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['book']) ? intval($_GET['book']) : 1);
 $gid = max(1, min(5000000, $gid));

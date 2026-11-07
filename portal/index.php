@@ -11,11 +11,11 @@ if (isset($_GET['book']) || isset($_GET['id'])) {
 require_once __DIR__ . '/taxonomy_data.php';
 require_once __DIR__ . '/barcode_helper.php';
 
-header('Cache-Control: public, max-age=31536000, s-maxage=31536000');
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 
-header('CDN-Cache-Control: public, max-age=31536000');
+header('Pragma: no-cache');
 
-header('X-Nemer-Edge-Cache: public, max-age=31536000');
+header('Expires: 0');
 
 
 
@@ -72,34 +72,42 @@ $ssr_books = [];
 $base_gid = get_first_book_id_for_lang($cur_lang);
 
 for ($k = 0; $k < 24; $k++) {
-
     if ($filter_disc > 0) {
-
-        $gid = (($filter_disc - 1) + ($k * 1000)) % 5000000 + 1;
-
+        $gid = (($filter_disc - 1) + ($k * 2000)) % 5000000 + 1;
     } elseif ($filter_sector > 0) {
-
-        $gid = ((($filter_sector - 1) * 20) + ($k * 1000)) % 5000000 + 1;
-
+        $gid = ((($filter_sector - 1) * 20) + ($k * 2000)) % 5000000 + 1;
     } else {
-
-        // Jump by 2000 so every single book is in the selected language ($cur_lang) across diverse disciplines!
-
-        $gid = (($base_gid - 1) + ($k * 2000) + ($k * 7)) % 5000000 + 1;
-
-        if ($k < 12) {
-
-            $gid = (($base_gid - 1) + ($k * 2000)) % 5000000 + 1;
-
-        }
-
+        // Every book stays in $cur_lang (step 2000) while our coprime taxonomy engine maps each $k to a unique Sector, Discipline & Angle!
+        $gid = (($base_gid - 1) + ($k * 2000)) % 5000000 + 1;
     }
-
     $ssr_books[] = get_1m_book_metadata($gid);
-
 }
 
 
+
+
+function render_luxury_cover_svg_php($gid, $sec_id, $acc, $pri) {
+    $rot = ($gid * 17 + $sec_id * 23) % 360;
+    $id_pad = sprintf("#%07d", $gid);
+    return '<svg viewBox="0 0 140 140" width="96" height="96" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.75));">'
+        . '<defs><radialGradient id="rg' . $gid . '" cx="50%" cy="50%" r="50%">'
+        . '<stop offset="0%" stop-color="' . $acc . '" stop-opacity="0.45"/>'
+        . '<stop offset="70%" stop-color="' . $pri . '" stop-opacity="0.18"/>'
+        . '<stop offset="100%" stop-color="#000000" stop-opacity="0"/>'
+        . '</radialGradient></defs>'
+        . '<circle cx="70" cy="70" r="64" fill="url(#rg' . $gid . ')" stroke="' . $acc . '" stroke-width="1.5" stroke-dasharray="4 2"/>'
+        . '<circle cx="70" cy="70" r="54" fill="none" stroke="#FDE68A" stroke-width="1" stroke-opacity="0.6"/>'
+        . '<g transform="rotate(' . $rot . ' 70 70)">'
+        . '<rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="' . $acc . '" stroke-width="1.4" stroke-opacity="0.8"/>'
+        . '<rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.8" transform="rotate(45 70 70)"/>'
+        . '<ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="' . $pri . '" stroke-width="1" stroke-opacity="0.65" transform="rotate(30 70 70)"/>'
+        . '<ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="' . $pri . '" stroke-width="1" stroke-opacity="0.65" transform="rotate(120 70 70)"/>'
+        . '</g>'
+        . '<circle cx="70" cy="70" r="26" fill="#050814" stroke="#F59E0B" stroke-width="2"/>'
+        . '<text x="70" y="66" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-weight="900" font-family="Cinzel,serif">VOL. S' . sprintf("%02d", $sec_id) . '</text>'
+        . '<text x="70" y="79" text-anchor="middle" fill="#FFFFFF" font-size="8.5" font-weight="900" font-family="monospace">' . $id_pad . '</text>'
+        . '</svg>';
+}
 
 $page_title = $i18n['site_title'];
 
@@ -433,48 +441,27 @@ $json_ld = [
 
            ========================================================================== */
 
-        :root, [data-theme="imperial-dark"] {
-
-            --bg-main: #F0F6FF;
-
-            --bg-grad: linear-gradient(135deg, #F0F6FF 0%, #E0ECFF 50%, #F8FAFC 100%);
-
-            --card-bg: #FFFFFF;
-
-            --card-bg-alt: #F8FBFF;
-
-            --topbar-bg: rgba(30, 64, 175, 0.96);
-
-            --hero-bg: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 55%, #0F172A 100%);
-
-            --text-primary: #0F172A;
-
-            --text-secondary: #334155;
-
-            --text-muted: #64748B;
-
-            --accent-blue: #2563EB;
-
-            --accent-royal: #1E40AF;
-
-            --accent-sky: #0284C7;
-
-            --accent-gold: #D97706;
-
-            --accent-gold-light: #FEF3C7;
-
-            --accent-green: #15803D;
-
-            --border-color: #BFDBFE;
-
-            --border-strong: #3B82F6;
-
-            --shadow-soft: 0 12px 32px rgba(30, 64, 175, 0.08);
-
-            --shadow-hover: 0 20px 45px rgba(37, 99, 235, 0.18);
-
-            --input-bg: #FFFFFF;
-
+        :root, [data-theme="imperial-dark"], [data-theme="royal-light"] {
+            --bg-main: #030712;
+            --bg-grad: radial-gradient(circle at top right, #0F172A 0%, #030712 65%, #000000 100%);
+            --card-bg: #0B1120;
+            --card-bg-alt: #070B16;
+            --topbar-bg: rgba(5, 8, 18, 0.96);
+            --hero-bg: linear-gradient(135deg, #090D1A 0%, #1E293B 55%, #020617 100%);
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --accent-blue: #38BDF8;
+            --accent-royal: #FDE68A;
+            --accent-sky: #38BDF8;
+            --accent-gold: #F59E0B;
+            --accent-gold-light: rgba(245, 158, 11, 0.18);
+            --accent-green: #10B981;
+            --border-color: rgba(212, 175, 55, 0.28);
+            --border-strong: #F59E0B;
+            --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.75);
+            --shadow-hover: 0 22px 55px rgba(245, 158, 11, 0.28);
+            --input-bg: #050814;
         }
 
 
@@ -1303,7 +1290,7 @@ $json_ld = [
 
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 
-            box-shadow: -15px 22px 50px rgba(0, 0, 0, 0.7), inset 6px 0 14px rgba(255, 255, 255, 0.18);
+            box-shadow: -8px 0 0 #050811, -10px 0 0 #D4AF37, 6px 6px 0 #F8FAFC, 8px 8px 0 #CBD5E1, 10px 10px 0 #94A3B8, 12px 12px 0 #D4AF37, -18px 25px 50px rgba(0, 0, 0, 0.85), inset 6px 0 18px rgba(255, 215, 0, 0.22);
 
         }
 
@@ -1404,13 +1391,13 @@ $json_ld = [
             box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 8px 20px rgba(0,0,0,0.6);
         }
         /* ROYAL LIGHT THEME (SUPER SHARP DARK AMBER ON CREAM) */
-        [data-theme="royal-light"] .adj-pill {
+        [data-theme="unused-light"] .adj-pill {
             background: #FEF3C7;
             border: 1.5px solid #D97706;
             color: #78350F !important;
             box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
         }
-        [data-theme="royal-light"] .adj-pill:hover {
+        [data-theme="unused-light"] .adj-pill:hover {
             background: #D97706;
             color: #FFFFFF !important;
             font-weight: 900;
@@ -1898,6 +1885,96 @@ $json_ld = [
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45) !important;
         }
 
+
+        /* 3D ROYAL ENCYCLOPEDIA HARDCOVER MOCKUP IN SHOWCASE GRID */
+        .showcase-card {
+            background: linear-gradient(160deg, rgba(15, 23, 42, 0.96) 0%, rgba(7, 10, 20, 0.98) 100%) !important;
+            border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+            border-radius: 20px !important;
+            padding: 18px !important;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .showcase-card:hover {
+            transform: translateY(-8px) !important;
+            border-color: #FFD700 !important;
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.28), 0 10px 30px rgba(0,0,0,0.9) !important;
+        }
+        .royal-3d-book-wrap {
+            perspective: 1000px;
+            margin: 6px auto 16px auto;
+            width: 100%;
+            max-width: 245px;
+        }
+        .royal-3d-book {
+            position: relative;
+            width: 100%;
+            min-height: 310px;
+            border-radius: 6px 14px 14px 6px;
+            padding: 14px 14px 12px 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            border: 2px solid #D4AF37;
+            box-shadow:
+                -8px 0 0 #050811,
+                -10px 0 0 #D4AF37,
+                6px 6px 0 #E2E8F0,
+                7px 7px 0 #CBD5E1,
+                8px 8px 0 #94A3B8,
+                10px 10px 0 #D4AF37,
+                16px 22px 38px rgba(0, 0, 0, 0.85),
+                inset 0 0 25px rgba(0, 0, 0, 0.65);
+            transform: rotateY(-8deg) rotateX(2deg);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .showcase-card:hover .royal-3d-book {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.03);
+        }
+        /* Leather Spine & Gold Raised Bands */
+        .royal-3d-book::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 14px;
+            background: linear-gradient(90deg, rgba(255,215,0,0.35) 0%, rgba(0,0,0,0.75) 50%, rgba(212,175,55,0.45) 100%);
+            border-right: 1.5px solid rgba(253, 230, 138, 0.6);
+            border-radius: 4px 0 0 4px;
+        }
+        .royal-3d-book::after {
+            content: '';
+            position: absolute;
+            top: 6px; bottom: 6px; left: 18px; right: 6px;
+            border: 1px solid rgba(253, 230, 138, 0.32);
+            border-radius: 4px 10px 10px 4px;
+            pointer-events: none;
+        }
+        .showcase-title {
+            color: #FFFBEB !important;
+            font-size: 1.02rem !important;
+            font-weight: 900 !important;
+            line-height: 1.45 !important;
+            margin-bottom: 8px !important;
+        }
+        .showcase-meta {
+            color: #94A3B8 !important;
+            font-size: 0.78rem !important;
+            line-height: 1.55 !important;
+            background: rgba(2, 6, 23, 0.65);
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 12px !important;
+        }
+
 </style>
 
 </head>
@@ -2164,34 +2241,7 @@ $json_ld = [
         </div>
     </div>
 
-    <div class="kpi-grid">
 
-            <div class="kpi-card">
-                <div class="kpi-num">5,000,000</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_books']); ?></div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-num">1,000,000,000</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_pages']); ?></div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-num">78</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_langs']); ?></div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-num">1,000</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_discs']); ?></div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-num">4,500,000</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_paid']); ?></div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-num">500,000</div>
-                <div class="kpi-label"><?php echo htmlspecialchars($i18n['kpi_free']); ?></div>
-            </div>
-
-        </div>
 
     </section>
 
@@ -2567,71 +2617,50 @@ $json_ld = [
             ?>
 
             <article class="showcase-card">
-
-                <div class="showcase-cover-top" style="background:linear-gradient(135deg, <?php echo $p['bg']; ?>, #0f172a);border-bottom-color:<?php echo $p['acc']; ?>;">
-
-                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;font-weight:800;">
-
-                        <span style="background:rgba(0,0,0,0.6);color:<?php echo $p['acc']; ?>;padding:3px 8px;border-radius:6px;border:1px solid <?php echo $p['acc']; ?>;">
-
-                            #<?php echo number_format($b['global_id']); ?>
-
-                        </span>
-
-                        <span style="background:rgba(255,255,255,0.15);color:#fff;padding:3px 8px;border-radius:6px;">
-
-                            🌍 <?php echo htmlspecialchars($b['lang_name']); ?> [<?php echo htmlspecialchars($b['lang_code']); ?>]
-
-                        </span>
-
-                    </div>
-
-                    <div style="margin:10px 0;">
-
-                        <div style="font-size:0.75rem;color:<?php echo $p['acc']; ?>;font-weight:800;"><?php echo htmlspecialchars($b['sector_ar']); ?></div>
-
-                        <div style="font-size:0.95rem;font-weight:900;color:#fff;line-height:1.3;"><?php echo htmlspecialchars($b['domain_en']); ?></div>
-
-                        <div style="font-size:0.82rem;color:#cbd5e1;"><?php echo htmlspecialchars($b['domain_ar']); ?></div>
-
-                    </div>
-
-                    <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.74rem;color:#fde68a;font-family:monospace;">
-
-                        <span>ISBN: <?php echo $b['isbn13']; ?></span>
-
-                        <span><?php echo $b['is_paid'] ? ('$' . $b['price_usd']) : 'FREE $0.00'; ?></span>
-
-                    </div>
-
-                </div>
-
-                <div class="showcase-body">
-
-                    <div>
-
-                        <h3 class="showcase-title"><?php echo htmlspecialchars($b['title']); ?></h3>
-
-                        <div class="showcase-meta">
-
-                            ✍️ <?php echo htmlspecialchars($b['author']); ?> • 📄 200 Pages • BISAC: <?php echo $b['bisac']; ?><br>
-
-                            🔗 DOI: <code><?php echo $b['doi']; ?></code>
-
+                <div class="royal-3d-book-wrap">
+                    <div class="royal-3d-book" style="background:radial-gradient(circle at 50% 35%, <?php echo $p['pri']; ?>33 0%, <?php echo $p['bg']; ?> 65%, #030611 100%);border-color:<?php echo $p['acc']; ?>;">
+                        <!-- Top Gold Ribbon -->
+                        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#FDE68A;background:rgba(0,0,0,0.65);border:1px solid rgba(253,230,138,0.45);padding:3px 8px;border-radius:6px;z-index:2;">
+                            <span>👑 ELNEMER 1B ENCYCLOPEDIA</span>
+                            <span style="color:<?php echo $p['acc']; ?>;">🌍 <?php echo htmlspecialchars($b['lang_code']); ?></span>
                         </div>
-
+                        <!-- Center Sacred Geometry & Scientific Medallion -->
+                        <div style="margin:6px auto;z-index:2;">
+                            <?php echo render_luxury_cover_svg_php($b['global_id'], $b['sector_id'], $p['acc'], $p['pri']); ?>
+                        </div>
+                        <!-- Royal Title Cartouche on Cover -->
+                        <div style="background:rgba(3,7,18,0.9);border:1.5px solid <?php echo $p['acc']; ?>;border-radius:8px;padding:7px 8px;z-index:2;">
+                            <div style="font-size:0.68rem;color:#FDE68A;font-weight:800;margin-bottom:2px;"><?php echo htmlspecialchars($b['sector_ar']); ?></div>
+                            <div style="font-size:0.8rem;font-weight:900;color:#FFFFFF;line-height:1.25;margin-bottom:2px;"><?php echo htmlspecialchars($b['domain_ar']); ?></div>
+                            <div style="font-size:0.68rem;color:#93C5FD;font-weight:700;line-height:1.2;"><?php echo htmlspecialchars($b['domain_en']); ?></div>
+                        </div>
+                        <!-- Bottom Author & ISBN Gold Foil Footer -->
+                        <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(253,230,138,0.3);padding-top:4px;">
+                            <div style="font-size:0.7rem;font-weight:900;color:#FDE68A;"><?php echo htmlspecialchars($b['author']); ?></div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#CBD5E1;font-family:monospace;margin-top:2px;">
+                                <span>ISBN: <?php echo $b['isbn13']; ?></span>
+                                <span style="color:#34D399;font-weight:900;"><?php echo $b['is_paid'] ? ('$' . $b['price_usd']) : 'FREE $0.00'; ?></span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="showcase-actions">
-
-                        <a href="/book/<?php echo $b['global_id']; ?>/<?php echo $b['slug']; ?>" class="btn-card btn-card-primary">📖 قراءة وفحص المجلد</a>
-
-                        <button class="btn-card btn-card-gold" onclick="inspectBookById(<?php echo $b['global_id']; ?>); document.getElementById('adjudicator-console').scrollIntoView({behavior:'smooth'});">🔬 تدقيق فوري</button>
-
-                    </div>
-
                 </div>
-
+                <div class="showcase-body">
+                    <div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                            <span style="background:rgba(245,158,11,0.18);color:#FDE68A;border:1px solid #F59E0B;padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:900;">مجلد #<?php echo number_format($b['global_id']); ?> / 5,000,000</span>
+                            <span style="background:rgba(56,189,248,0.15);color:#38BDF8;border:1px solid rgba(56,189,248,0.35);padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:800;"><?php echo htmlspecialchars($b['lang_name']); ?></span>
+                        </div>
+                        <h3 class="showcase-title"><?php echo htmlspecialchars($b['title']); ?></h3>
+                        <div class="showcase-meta">
+                            🏛️ القطاع #<?php echo $b['sector_id']; ?> • التخصص #<?php echo $b['discipline_id']; ?> (<?php echo $b['bisac']; ?>)<br>
+                            📄 200 صفحة موسوعية • 🔗 <code><?php echo $b['doi']; ?></code>
+                        </div>
+                    </div>
+                    <div class="showcase-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                        <a href="/book/<?php echo $b['global_id']; ?>" class="btn-card btn-card-primary" style="text-align:center;">📖 بوابة الكتاب</a>
+                        <a href="/pdf/<?php echo $b['global_id']; ?>/<?php echo $b['isbn13']; ?>_ElNemer_Vol_<?php echo sprintf('%07d', $b['global_id']); ?>_200Pages.pdf" class="btn-card btn-card-gold" style="text-align:center;" download>📥 PDF (200 ص)</a>
+                    </div>
+                </div>
             </article>
 
             <?php endforeach; ?>
@@ -2874,13 +2903,15 @@ function getBookMetaJS(gid) {
     const batchNum = Math.floor((gid - 1) / 1000) + 1;
     const lang = mapGlobalIdToLang(gid);
     const discCount = ALL_100_DISCS.length;
-    const disc = ALL_100_DISCS[(gid - 1) % discCount];
-    const pal = PALETTES_30[((gid * 7) + disc.sector_id * 3) % PALETTES_30.length];
-    const priceUsd = isPaid ? PAID_PRICES[(gid * 11) % PAID_PRICES.length].toFixed(2) : "0.00";
+    const z = gid - 1;
+    const discIdx = ((z * 397) + (Math.floor(z / 16) * 173) + (Math.floor(z / 2000) * 29)) % discCount;
+    const disc = ALL_100_DISCS[discIdx];
+    const pal = PALETTES_30[((gid * 7) + disc.sector_id * 3 + Math.floor(z / 2000) * 5) % PALETTES_30.length];
+    const priceUsd = isPaid ? PAID_PRICES[((gid * 11) + Math.floor(z / 2000) * 3) % PAID_PRICES.length].toFixed(2) : "0.00";
     const isbn13 = makeIsbn13(gid);
     const doi = `10.1007/s1b-nemer.${String(gid).padStart(7, '0')}`;
-    const angleIdx = Math.floor((gid - 1) / discCount) % ANGLES_EN.length;
-    const volSeries = Math.floor((gid - 1) / (discCount * ANGLES_EN.length)) + 1;
+    const angleIdx = ((z * 13) + (Math.floor(z / 16) * 7) + (Math.floor(z / 2000) * 19)) % ANGLES_EN.length;
+    const volSeries = Math.floor(z / 50000) + 1;
     const isRtlLang = ['ar', 'fa', 'ur', 'ps'].includes(lang.code);
     const title = isRtlLang
         ? `${disc.domain_ar} — ${ANGLES_AR[angleIdx]} (المجلد التطبيقي #${volSeries})`
@@ -2998,9 +3029,9 @@ function inspectBookById(gid) {
 
 
 
-    document.getElementById('inspCoverEmblem').textContent = `#${String(b.global_id).padStart(7, '0')}`;
-
-    document.getElementById('inspCoverEmblem').style.borderColor = b.pal.pri;
+    document.getElementById('inspCoverEmblem').innerHTML = generateLuxuryCoverSvgJS(b.global_id, b.disc.sector_id, b.pal.acc, b.pal.pri, 118);
+    document.getElementById('inspCoverEmblem').style.border = 'none';
+    document.getElementById('inspCoverEmblem').style.background = 'transparent';
 
     document.getElementById('inspCoverSector').textContent = b.disc.sector_ar;
 
@@ -3130,78 +3161,74 @@ function loadNextShowcasePage() {
 
 
 
+function generateLuxuryCoverSvgJS(gid, secId, acc, pri, sz = 96) {
+    const rot = (gid * 17 + secId * 23) % 360;
+    const idPad = '#' + String(gid).padStart(7, '0');
+    const secPad = 'VOL. S' + String(secId).padStart(2, '0');
+    return `<svg viewBox="0 0 140 140" width="${sz}" height="${sz}" style="filter:drop-shadow(0 4px 12px rgba(0,0,0,0.75));">
+        <defs><radialGradient id="rgjs${gid}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="${acc}" stop-opacity="0.45"/>
+            <stop offset="70%" stop-color="${pri}" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient></defs>
+        <circle cx="70" cy="70" r="64" fill="url(#rgjs${gid})" stroke="${acc}" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <circle cx="70" cy="70" r="54" fill="none" stroke="#FDE68A" stroke-width="1" stroke-opacity="0.6"/>
+        <g transform="rotate(${rot} 70 70)">
+            <rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="${acc}" stroke-width="1.4" stroke-opacity="0.8"/>
+            <rect x="32" y="32" width="76" height="76" rx="6" fill="none" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.8" transform="rotate(45 70 70)"/>
+            <ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="${pri}" stroke-width="1" stroke-opacity="0.65" transform="rotate(30 70 70)"/>
+            <ellipse cx="70" cy="70" rx="48" ry="18" fill="none" stroke="${pri}" stroke-width="1" stroke-opacity="0.65" transform="rotate(120 70 70)"/>
+        </g>
+        <circle cx="70" cy="70" r="26" fill="#050814" stroke="#F59E0B" stroke-width="2"/>
+        <text x="70" y="66" text-anchor="middle" fill="#FDE68A" font-size="8.5" font-weight="900" font-family="Cinzel,serif">${secPad}</text>
+        <text x="70" y="79" text-anchor="middle" fill="#FFFFFF" font-size="8.5" font-weight="900" font-family="monospace">${idPad}</text>
+    </svg>`;
+}
+
 function renderBookCardHTML(b) {
-
     return `
-
     <article class="showcase-card">
-
-        <div class="showcase-cover-top" style="background:linear-gradient(135deg, ${b.pal.bg}, #0f172a);border-bottom-color:${b.pal.acc};">
-
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;font-weight:800;">
-
-                <span style="background:rgba(0,0,0,0.6);color:${b.pal.acc};padding:3px 8px;border-radius:6px;border:1px solid ${b.pal.acc};">
-
-                    #${b.global_id.toLocaleString()}
-
-                </span>
-
-                <span style="background:rgba(255,255,255,0.15);color:#fff;padding:3px 8px;border-radius:6px;">
-
-                    🌍 ${b.lang.name} [${b.lang.code}]
-
-                </span>
-
-            </div>
-
-            <div style="margin:10px 0;">
-
-                <div style="font-size:0.75rem;color:${b.pal.acc};font-weight:800;">${b.disc.sector_ar}</div>
-
-                <div style="font-size:0.95rem;font-weight:900;color:#fff;line-height:1.3;">${b.disc.domain_en}</div>
-
-                <div style="font-size:0.82rem;color:#cbd5e1;">${b.disc.domain_ar}</div>
-
-            </div>
-
-            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.74rem;color:#fde68a;font-family:monospace;">
-
-                <span>ISBN: ${b.isbn13}</span>
-
-                <span>${b.is_paid ? ('$' + b.price_usd) : 'FREE $0.00'}</span>
-
-            </div>
-
-        </div>
-
-        <div class="showcase-body">
-
-            <div>
-
-                <h3 class="showcase-title">${b.title}</h3>
-
-                <div class="showcase-meta">
-
-                    ✍️ ${b.lang.author} • 📄 200 Pages • BISAC: ${b.disc.bisac}<br>
-
-                    🔗 DOI: <code>${b.doi}</code>
-
+        <div class="royal-3d-book-wrap">
+            <div class="royal-3d-book" style="background:radial-gradient(circle at 50% 35%, ${b.pal.pri}33 0%, ${b.pal.bg} 65%, #030611 100%);border-color:${b.pal.acc};">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.66rem;font-weight:900;color:#FDE68A;background:rgba(0,0,0,0.65);border:1px solid rgba(253,230,138,0.45);padding:3px 8px;border-radius:6px;z-index:2;">
+                    <span>👑 ELNEMER 1B ENCYCLOPEDIA</span>
+                    <span style="color:${b.pal.acc};">🌍 ${b.lang.code}</span>
                 </div>
-
+                <div style="margin:6px auto;z-index:2;">
+                    ${generateLuxuryCoverSvgJS(b.global_id, b.disc.sector_id, b.pal.acc, b.pal.pri, 96)}
+                </div>
+                <div style="background:rgba(3,7,18,0.9);border:1.5px solid ${b.pal.acc};border-radius:8px;padding:7px 8px;z-index:2;">
+                    <div style="font-size:0.68rem;color:#FDE68A;font-weight:800;margin-bottom:2px;">${b.disc.sector_ar}</div>
+                    <div style="font-size:0.8rem;font-weight:900;color:#FFFFFF;line-height:1.25;margin-bottom:2px;">${b.disc.domain_ar}</div>
+                    <div style="font-size:0.68rem;color:#93C5FD;font-weight:700;line-height:1.2;">${b.disc.domain_en}</div>
+                </div>
+                <div style="z-index:2;margin-top:6px;border-top:1px solid rgba(253,230,138,0.3);padding-top:4px;">
+                    <div style="font-size:0.7rem;font-weight:900;color:#FDE68A;">${b.lang.author}</div>
+                    <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:#CBD5E1;font-family:monospace;margin-top:2px;">
+                        <span>ISBN: ${b.isbn13}</span>
+                        <span style="color:#34D399;font-weight:900;">${b.is_paid ? ('$' + b.price_usd) : 'FREE $0.00'}</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="showcase-actions">
-
-                <a href="/book/${b.global_id}" class="btn-card btn-card-primary">📖 فحص المجلد</a>
-
-                <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" class="btn-card btn-card-gold" download>📥 تحميل PDF (200 صفحة)</a>
-
-            </div>
-
         </div>
-
+        <div class="showcase-body">
+            <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                    <span style="background:rgba(245,158,11,0.18);color:#FDE68A;border:1px solid #F59E0B;padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:900;">مجلد #${b.global_id.toLocaleString()} / 5,000,000</span>
+                    <span style="background:rgba(56,189,248,0.15);color:#38BDF8;border:1px solid rgba(56,189,248,0.35);padding:2px 8px;border-radius:6px;font-size:0.74rem;font-weight:800;">${b.lang.name}</span>
+                </div>
+                <h3 class="showcase-title">${b.title}</h3>
+                <div class="showcase-meta">
+                    🏛️ القطاع #${b.disc.sector_id} • التخصص #${b.disc.discipline_id} (${b.disc.bisac})<br>
+                    📄 200 صفحة موسوعية • 🔗 <code>${b.doi}</code>
+                </div>
+            </div>
+            <div class="showcase-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <a href="/book/${b.global_id}" class="btn-card btn-card-primary" style="text-align:center;">📖 بوابة الكتاب</a>
+                <a href="/pdf/${b.global_id}/${b.isbn13}_ElNemer_Vol_${String(b.global_id).padStart(7, '0')}_200Pages.pdf" class="btn-card btn-card-gold" style="text-align:center;" download>📥 PDF (200 ص)</a>
+            </div>
+        </div>
     </article>`;
-
 }
 
 
@@ -3404,9 +3431,9 @@ function onLiveEncyclopediaSearch(rawQuery) {
 }
 
 (function initPortal() {
-    const savedTheme = localStorage.getItem('elnemer_portal_theme') || 'imperial-dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeToggleBtnText(savedTheme);
+    localStorage.setItem('elnemer_portal_theme', 'imperial-dark');
+    document.documentElement.setAttribute('data-theme', 'imperial-dark');
+    updateThemeToggleBtnText('imperial-dark');
     inspectBookById(<?php echo $ssr_books[0]['global_id']; ?>);
 })();
 
