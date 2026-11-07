@@ -169,7 +169,9 @@ function get_1m_book_metadata($gid) {
 
     $lang = map_global_id_to_language($gid);
     $discs = get_all_100_disciplines();
-    $disc = $discs[($gid - 1) % 1000];
+    $z = $gid - 1;
+    $disc_idx = (($z * 397) + (intdiv($z, 16) * 173) + (intdiv($z, 2000) * 29)) % count($discs);
+    $disc = $discs[$disc_idx];
     $pals = get_palettes_30();
     $pal = $pals[(($gid * 7) + $disc['sector_id'] * 3) % count($pals)];
 
@@ -189,7 +191,7 @@ function get_1m_book_metadata($gid) {
     $ANGLES_EN = ["Complete Step-by-Step Practical Guide for Beginners & Professionals", "The Illustrated Actionable Encyclopedia: 200 Pages of Ready Blueprints", "Certified Master Reference for Practical Mastery & Optimal Results", "Proven Daily Protocols, Checklists & Actionable Worksheets", "Comprehensive Zero-to-Mastery Handbook in Clear Accessible Language", "Global Best Practices & Golden Rules for Sustainable Excellence", "The Smart Family & Practitioner Guide: Verified Protocols & Audits", "Integrated Training Curriculum: Core Principles & Real-World Case Studies", "Practical Mastery Secrets & How to Avoid Common Pitfalls", "Complete 90-Day Action Program for Measurable Life & Work Results", "Encyclopedia of Applied Q&A, Troubleshooting & Rapid Solutions", "Simplified Engineering & Knowledge Manual for Home and Workplace", "The Complete Roadmap: Ready Action Plans & Empirical Benchmarks", "Golden Accredited Reference for Students, Families & Professionals", "High-Efficiency Protocols: Saving Time, Effort & Operational Costs", "Applied Visual Atlas with Multi-Dimensional Diagrams & Charts", "Precision Diagnostic Checklists & Early Preventive Care Guide", "Future-Ready Practical Skills: Applying Modern Science Every Day", "Complete Workshop Toolkit: Hands-On Exercises & Self-Assessment", "Verified Empirical & Practical Compendium for Human Advancement"];
     $ANGLES_AR = ["الدليل التطبيقي الشامل خطوة بخطوة للمبتدئين والمحترفين", "الموسوعة العملية المصورة: 200 صفحة من الحلول والنماذج الجاهزة", "المرجع المعتمد لإتقان المهارات العملية وتحقيق أفضل النتائج", "خطوات مجربة وجداول تطبيقية يومية لتحسين جودة الحياة والعمل", "الكتاب الشامل من الصفر حتى الاحتراف بأسلوب مبسط وواضح", "أفضل الممارسات العالمية والقواعد الذهبية للنجاح المستدام", "دليل الأسرة والممارس الذكي: إرشادات موثقة وقوائم فحص عملية", "المنهج التدريبي المتكامل: شرح نظري وتطبيقات ميدانية واقعية", "أسرار الإتقان العملي وتجنب الأخطاء الشائعة بأسلوب علمي", "البرنامج العملي المتكامل لمدة 90 يوماً لتحقيق نتائج ملموسة", "موسوعة الأسئلة والأجوبة التطبيقية والحلول السريعة الفعالة", "الدليل الهندسي والمعرفي المبسط للتطبيق الفوري في البيت والعمل", "خريطة الطريق الكاملة: خطط عمل جاهزة ودراسات حالة واقعية", "المرجع الذهبي المعتمد للطلاب والمهنيين والباحثين عن التميز", "قواعد الكفاءة والجودة العالية: توفير الوقت والجهد والتكاليف", "الأطلس التطبيقي والرسوم البيانية التوضيحية للشرح الوافي", "دليل الفحص والتشخيص الدقيق والوقاية المبكرة خطوة بخطوة", "مهارات المستقبل التطبيقية: كيف تطبق العلم الحديث في يومك", "الحقيبة التدريبية الشاملة: تمارين عملية واختبارات تقييم ذاتي", "الخلاصة العلمية والتجريبية الموثقة لخدمة الإنسان والمجتمع"];
 
-    $angle_idx = intval(floor(($gid - 1) / 1000)) % count($ANGLES_AR);
+    $angle_idx = (($z * 13) + (intdiv($z, 16) * 7) + (intdiv($z, 2000) * 19)) % count($ANGLES_AR);
     $vol_series = intval(floor(($gid - 1) / 20000)) + 1;
 
     if (in_array($lang['code'], ['ar', 'fa', 'ur'])) {
