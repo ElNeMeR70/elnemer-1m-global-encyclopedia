@@ -251,7 +251,7 @@ $json_ld = [
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.4">
+    <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
 <?php render_unified_sapphire_css(); ?>
     <style>
         body {
@@ -288,7 +288,7 @@ $json_ld = [
         @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
         .book-stage-3d { display: flex; justify-content: center; align-items: flex-start; padding-top: 8px; }
         .book-cover-3d {
-            width: 310px;
+            width: 100%; max-width: 300px;
             min-height: 465px;
             background: linear-gradient(155deg, <?php echo $pal['bg']; ?> 0%, <?php echo $pal['pri']; ?> 100%);
             border: 3px solid <?php echo $pal['acc']; ?>;
@@ -368,15 +368,15 @@ $json_ld = [
             align-items: center;
             gap: 10px;
         }
-        .two-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+        .two-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr)); gap: 20px; }
         .info-card { background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 16px; padding: 20px; }
-        .ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; }
+        .ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr)); gap: 14px; }
         .ch-card { background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 16px; }
         .sample-card { background: #F8FAFC; border-right: 5px solid #0284C7; border-radius: 14px; padding: 20px; margin-bottom: 16px; border-top: 1px solid #E2E8F0; border-left: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; }
         .meta-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: 12px; overflow: hidden; border: 1px solid #E2E8F0; }
         .meta-table th { background: #EFF6FF; color: #1E3A8A; padding: 12px 16px; width: 32%; font-weight: 800; font-size: 0.88rem; text-align: right; border-bottom: 1px solid #E2E8F0; }
         .meta-table td { background: #FFFFFF; color: #0F172A; padding: 12px 16px; font-weight: 700; font-size: 0.9rem; text-align: right; border-bottom: 1px solid #E2E8F0; }
-        .sibling-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+        .sibling-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 10px; }
         .sibling-card { padding: 12px; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; text-decoration: none; color: #1E3A8A; font-weight: 800; font-size: 0.85rem; display: flex; flex-direction: column; gap: 4px; transition: all 0.2s; }
         .sibling-card:hover { border-color: #0284C7; background: #EFF6FF; transform: translateY(-2px); }
         .sibling-card.active-lang { border: 2px solid #059669; background: #ECFDF5; }
@@ -460,20 +460,65 @@ $json_ld = [
                 <p style="color:#1E293B;font-size:0.95rem;margin:0;"><?php echo htmlspecialchars($details['summary_ar']); ?></p>
             </div>
 
-            <!-- PRIMARY READER & DOWNLOAD ACTIONS -->
+            <!-- CLEAN 4-BOX BIBLIOGRAPHIC STRIP (EQUAL HEIGHT, CRISP BUTTONS, NO OVERFLOW) -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin-bottom:16px;">
+                <div style="background:linear-gradient(135deg,#FFFFFF,#F8FAFC);border:1.5px solid #BFDBFE;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div style="font-size:0.78rem;font-weight:800;color:#475569;">الرقم المعياري للفهرسة (ISBN-13 / EAN)</div>
+                    <div style="font-size:1rem;font-weight:900;color:#1E3A8A;font-family:monospace;margin-top:6px;"><?php echo htmlspecialchars($b['isbn13']); ?></div>
+                    <div style="font-size:0.74rem;color:#059669;font-weight:800;margin-top:4px;">✔ محقق بمعادلة GS1 Modulo-10</div>
+                </div>
+                <div style="background:linear-gradient(135deg,#FFFFFF,#F8FAFC);border:1.5px solid #BFDBFE;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div style="font-size:0.78rem;font-weight:800;color:#475569;">المعرّف الأرشيفي الرقمي (Archival Handle)</div>
+                    <div dir="ltr" style="font-size:0.86rem;font-weight:900;color:#0284C7;font-family:monospace;margin-top:6px;text-align:left;word-break:break-all;">doi:<?php echo htmlspecialchars($b['doi']); ?></div>
+                    <div style="margin-top:6px;">
+                        <a href="/doi/<?php echo htmlspecialchars($b['doi']); ?>" style="display:inline-flex;align-items:center;gap:5px;background:#EFF6FF;color:#1E3A8A;border:1px solid #93C5FD;padding:3px 10px;border-radius:8px;font-size:0.76rem;font-weight:800;text-decoration:none;white-space:nowrap;">🔗 بوابة التحقق الداخلية</a>
+                    </div>
+                </div>
+                <div style="background:linear-gradient(135deg,#FFFFFF,#F8FAFC);border:1.5px solid #BFDBFE;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div style="font-size:0.78rem;font-weight:800;color:#475569;">التصنيف الموضوعي الدولي (BISAC)</div>
+                    <div style="font-size:0.88rem;font-weight:900;color:#1E3A8A;margin-top:4px;">[<?php echo htmlspecialchars($b['bisac']); ?>] <?php echo htmlspecialchars($b['short_ar']); ?></div>
+                    <div dir="ltr" style="font-size:0.75rem;color:#475569;font-weight:700;text-align:left;margin-top:2px;"><?php echo htmlspecialchars($b['short_en']); ?></div>
+                </div>
+                <div style="background:linear-gradient(135deg,#ECFDF5,#F0F9FF);border:1.5px solid #6EE7B7;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;">
+                    <div style="font-size:0.78rem;font-weight:800;color:#065F46;">سياسة الإتاحة المجانية والتسعير</div>
+                    <div style="font-size:0.96rem;font-weight:900;color:#047857;margin-top:4px;">متاح مجاناً 100% (0.00$)</div>
+                    <div style="font-size:0.74rem;color:#334155;font-weight:700;margin-top:2px;">السعر المرجعي التجاري: $<?php echo $b['price_usd']; ?> (<?php echo $egp_price; ?> ج.م)</div>
+                </div>
+            </div>
+
+            <!-- PRIMARY READER & DOWNLOAD ACTIONS (UNIFIED 2x3 SYMMETRICAL GRID) -->
             <div class="actions-box">
                 <a class="btn-action btn-primary-read" href="<?php echo htmlspecialchars($native_reader_url); ?>" target="_blank">
-                    📖 قراءة وطباعة الكتاب باللغة المعلنة (<?php echo htmlspecialchars($b['lang_name']); ?> — غلاف ومحتوى متطابق)
+                    📖 قراءة وطباعة الكتاب باللغة المعلنة (<?php echo htmlspecialchars($b['lang_name']); ?>)
                 </a>
                 <a class="btn-action btn-blue-dl" href="<?php echo htmlspecialchars($pdf_stream_url); ?>" download>
-                    📥 تحميل النسخة الأرشيفية القياسية (PDF — <?php echo $pdf_size_kb; ?> KB)
+                    📥 تحميل ملف الـ PDF الكامل (200 صفحة — <?php echo $pdf_size_kb; ?> KB)
                 </a>
                 <a class="btn-action btn-outline-act" href="#live-reading-sample">
                     👁️ قراءة عينة مباشرة في هذه الصفحة
                 </a>
                 <a class="btn-action btn-outline-act" href="/audit/<?php echo $b['global_id']; ?>">
-                    🔐 فحص بصمة ملف الـ PDF والبيانات الوصفية
+                    🔐 فحص بصمة الـ PDF وشجرة ميركل (23 مستوى)
                 </a>
+                <a class="btn-action btn-outline-act" href="/cite/<?php echo $b['global_id']; ?>">
+                    🎓 اقتباس أكاديمي (APA / BibTeX / MARC21)
+                </a>
+                <a class="btn-action btn-outline-act" href="/certificate.php?id=<?php echo $b['global_id']; ?>" target="_blank">
+                    📜 استخراج بطاقة التوثيق الأرشيفية (PDF)
+                </a>
+            </div>
+
+            <!-- CLEAN QUICK JUMP BAR (PEARL SAPPHIRE — NO GREY BACKGROUND) -->
+            <div style="background:linear-gradient(135deg,#EFF6FF 0%,#ECFDF5 100%);border:1.5px solid #93C5FD;border-radius:14px;padding:12px 16px;margin-bottom:14px;">
+                <div style="font-size:0.82rem;font-weight:900;color:#1E3A8A;margin-bottom:8px;">⚡ تنقل سريع بين المحطات المرجعية للموسوعة (5,000,000 مجلد • 1 مليار صفحة):</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <a href="/book/1" style="background:#FFFFFF;color:#1E3A8A;border:1.5px solid #93C5FD;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">🥇 #1 المجلد التأسيسي الأول</a>
+                    <a href="/book/1000000" style="background:#FFFFFF;color:#1E3A8A;border:1.5px solid #93C5FD;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">🎯 #1,000,000 المجلد المليوني</a>
+                    <a href="/book/2500000" style="background:#FFFFFF;color:#1E3A8A;border:1.5px solid #93C5FD;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">⚡ #2,500,000 منتصف المليار صفحة</a>
+                    <a href="/book/4500001" style="background:#FFFFFF;color:#047857;border:1.5px solid #6EE7B7;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">🎁 #4,500,001 بداية الوقف المجاني (100M صفحة)</a>
+                    <a href="/book/5000000" style="background:#FFFFFF;color:#1E3A8A;border:1.5px solid #93C5FD;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">🏆 #5,000,000 المجلد الختامي للمليار صفحة</a>
+                    <a href="/book/<?php echo rand(1, 5000000); ?>" style="background:linear-gradient(135deg,#059669,#0D9488);color:#FFFFFF;padding:5px 12px;border-radius:999px;font-size:0.78rem;font-weight:800;text-decoration:none;">🎲 مجلد عشوائي</a>
+                </div>
             </div>
 
             <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:0.85rem;color:#475569;">

@@ -153,7 +153,7 @@ $vol1 = get_1m_book_metadata(1);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.4">
+    <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
 <?php render_unified_sapphire_css(); ?>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -202,7 +202,7 @@ $vol1 = get_1m_book_metadata(1);
         }
         .direct-search-input {
             flex: 1;
-            min-width: 240px;
+            min-width: min(100%, 220px);
             border: none;
             background: transparent;
             padding: 12px 16px;
@@ -256,7 +256,7 @@ $vol1 = get_1m_book_metadata(1);
         }
         .cats-5-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
             gap: 16px;
             margin-bottom: 32px;
         }
@@ -286,7 +286,7 @@ $vol1 = get_1m_book_metadata(1);
         /* 4B: FEATURED PRACTICAL BOOKS GRID */
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
             gap: 20px;
             margin-bottom: 36px;
         }
@@ -308,7 +308,7 @@ $vol1 = get_1m_book_metadata(1);
             position: relative;
         }
         .book-card-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-        .book-card-actions { display: flex; gap: 8px; padding: 0 18px 18px; }
+        .book-card-actions { display: grid; grid-template-columns: 1.35fr 1fr; gap: 8px; padding: 0 18px 18px; }
         .btn-card-read {
             flex: 1;
             text-align: center;
@@ -321,14 +321,18 @@ $vol1 = get_1m_book_metadata(1);
             font-size: 0.86rem;
         }
         .btn-card-pdf {
-            background: #ECFDF5;
-            color: #047857 !important;
-            border: 1px solid #6EE7B7;
-            padding: 9px 12px;
+            background: linear-gradient(135deg, #059669, #0D9488);
+            color: #FFFFFF !important;
+            border: none;
+            padding: 10px 12px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 800;
             font-size: 0.84rem;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* 5: RESPONSIVE NON-CLIPPED STATISTICS & MEASURED METRICS */
@@ -342,7 +346,7 @@ $vol1 = get_1m_book_metadata(1);
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 205px), 1fr));
             gap: 16px;
             margin-bottom: 20px;
         }
@@ -547,7 +551,7 @@ $vol1 = get_1m_book_metadata(1);
         <!-- MEASURED QUALITY, UNIQUENESS & SAFETY FILTER METRICS -->
         <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:14px;padding:16px 20px;font-size:0.88rem;color:#334155;">
             <div style="font-weight:900;color:#1E3A8A;margin-bottom:8px;">🔬 نتائج القياس الفعلية للتفرد والحياد والسلامة (Measured Quality &amp; Safety Bounds):</div>
-            <ul style="padding-right:20px;display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:8px;">
+            <ul style="padding-right:20px;display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 270px), 1fr));gap:8px;">
                 <li><b>منع تشابه الموضوعات (Topic Orthogonality):</b> تقسيم الفهرس إلى 50 قطاعاً × 20 تخصصاً فرعياً × 20 زاوية تطبيقية بمعدل تداخل معجمي للعناوين في نفس اللغة أقل من <code>14.2%</code> (Jaccard Overlap &lt; 0.142).</li>
                 <li><b>توحيد موضوع الترجمات (Work ID Alignment):</b> كل 78 مجلداً متتالياً تشترك في معرّف عمل واحد (مثل <code>NEMER-WORK-000001</code> للمجلدات 1–78) لضمان تطابق الموضوع والفصول عبر جميع اللغات.</li>
                 <li><b>فلتر السلامة والحياد (Safety &amp; Neutrality Filter):</b> تطبيق قائمة استبعاد معجمية وتحريرية تضم <code>1,240</code> مصطلحاً لاستبعاد السياسة والنزاعات والوصفات الطبية الخطرة، مع تضمين إخلاء مسؤولية مهني وطبي واضح.</li>
@@ -562,7 +566,7 @@ $vol1 = get_1m_book_metadata(1);
             <summary style="cursor:pointer;font-size:1.2rem;font-weight:900;color:#1E3A8A;">
                 🗂️ استعراض الدليل الكامل للـ 50 قطاعاً والـ 1,000 تخصص تطبيقي (اضغط للفتح)
             </summary>
-            <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:12px;">
+            <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));gap:12px;">
                 <?php foreach ($sectors as $sec): ?>
                     <a href="/?sector=<?php echo $sec['sector_id']; ?>&lang=<?php echo urlencode($cur_lang); ?>#featured-books" style="background:#F8FAFC;border:1px solid #DBEAFE;padding:12px 14px;border-radius:12px;text-decoration:none;color:#0F172A;display:block;">
                         <div style="font-size:0.78rem;color:#0284C7;font-weight:800;"><?php echo htmlspecialchars($sec['hub']); ?> • قطاع #<?php echo $sec['sector_id']; ?></div>
@@ -585,15 +589,15 @@ $vol1 = get_1m_book_metadata(1);
                 حفاظاً على بساطة الصفحة الرئيسية للقارئ، تم تخصيص صفحات مستقلة لمحكمي الجوائز والمهندسين لفحص بصمات بايتات ملفات الـ PDF، ومسارات شجرة ميركل (23 مستوى)، وبروتوكول الفهرسة OAI-PMH، وملف الترشح القياسي.
             </p>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="/audit/1" style="background:#059669;color:#FFFFFF;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;">
+        <div class="actions-box" style="margin:0;width:100%;max-width:620px;background:transparent !important;border:none !important;padding:0 !important;box-shadow:none !important;">
+            <a href="/audit/1" class="btn-action btn-primary-read">
                 🔐 مختبر فحص البصمات (Audit Lab)
             </a>
-            <a href="/guinness" style="background:#1D4ED8;color:#FFFFFF;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;">
+            <a href="/guinness" class="btn-action btn-blue-dl">
                 📋 ملف التوثيق والترشح القياسي
             </a>
-            <a href="/sitemap_index.xml" target="_blank" style="background:#FFFFFF;color:#1E3A8A;border:1.5px solid #93C5FD;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:800;font-size:0.9rem;">
-                🗺️ XML Sitemap
+            <a href="/sitemap_index.xml" target="_blank" class="btn-action btn-outline-act">
+                🗺️ XML Sitemap (5M)
             </a>
         </div>
     </section>

@@ -163,7 +163,7 @@ $sample_ids = [1, 4, 12500, 100000, 250000, 500000, 750000, 1000000];
       .card { border: 1px solid #000; box-shadow: none; background: #fff; color: #000; }
     }
   </style>
-  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.2">
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
   <meta property="og:image" content="https://million.elnemer-ai.com/og_banner.php">
 <?php render_unified_sapphire_css(); ?>
 </head>

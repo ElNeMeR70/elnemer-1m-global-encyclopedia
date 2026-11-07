@@ -162,7 +162,7 @@ header('Content-Type: text/html; charset=UTF-8');
     .btn-gold { background: linear-gradient(135deg, #0284C7, #996515); color: #000; }
     .btn-dark { background: rgba(255,255,255,0.08); color:#1E3A8A; border: 1px solid rgba(255,255,255,0.2); }
   </style>
-  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.2">
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
   <meta property="og:image" content="https://million.elnemer-ai.com/og_banner.php">
 <?php render_unified_sapphire_css(); ?>
 </head>

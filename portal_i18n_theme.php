@@ -371,10 +371,110 @@ function render_unified_sapphire_css() {
     color: #1E3A8A !important;
     -webkit-text-fill-color: #1E3A8A !important;
     background: none !important;
-    font-size: 2.2rem;
-    font-weight: 900;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+    display: block !important;
   }
   .stat-label { color: #475569 !important; font-weight: 800; }
+
+  /* Symmetrical Action Buttons & Responsive Mobile Layout */
+  .actions-box, .action-buttons, .btn-row {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .btn-action, .btn-act, .btn {
+    min-height: 50px !important;
+    width: 100% !important;
+    padding: 12px 18px !important;
+    border-radius: 14px !important;
+    font-weight: 800 !important;
+    font-size: 0.92rem !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+    line-height: 1.35 !important;
+    transition: all 0.2s ease !important;
+  }
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  @media (max-width: 768px) {
+    .topbar, header.nav {
+      padding: 10px 12px !important;
+      position: relative !important;
+    }
+    .topbar-inner {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 10px !important;
+    }
+    .brand-logo {
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    .topbar-controls {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 6px !important;
+      width: 100% !important;
+    }
+    .top-select {
+      grid-column: 1 / -1 !important;
+      width: 100% !important;
+      text-align: center !important;
+      min-height: 42px !important;
+    }
+    .top-btn {
+      justify-content: center !important;
+      text-align: center !important;
+      font-size: 0.78rem !important;
+      padding: 8px 8px !important;
+    }
+    .lang-quick-strip {
+      justify-content: flex-start !important;
+      overflow-x: auto !important;
+      flex-wrap: nowrap !important;
+      padding: 8px 12px !important;
+    }
+    .lang-pill-mini {
+      flex-shrink: 0 !important;
+    }
+    .hero-grid, .two-col-grid, .ch-grid, .books-grid, .cats-5-grid, .sibling-grid, .criteria-grid, .dossier-grid, .actions-box, .action-buttons, .btn-row {
+      grid-template-columns: 1fr !important;
+    }
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .book-cover-3d {
+      width: 100% !important;
+      max-width: 280px !important;
+      margin: 0 auto !important;
+    }
+    .meta-table, .meta-table tbody, .meta-table tr, .meta-table th, .meta-table td {
+      display: block !important;
+      width: 100% !important;
+    }
+    .meta-table th {
+      border-bottom: none !important;
+      padding: 10px 14px 4px !important;
+    }
+    .meta-table td {
+      padding: 6px 14px 12px !important;
+      word-break: break-word !important;
+    }
+  }
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
 
   table, .meta-table, .spec-table {
     background: #FFFFFF !important;

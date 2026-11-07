@@ -127,7 +127,7 @@ header('Content-Type: text/html; charset=UTF-8');
   <title>مختبر الفحص التشفيري (بصمة ملف الـ PDF + بصمة البيانات الوصفية + شجرة ميركل 23 مستوى) — مجلد #<?php echo number_format($book_id); ?></title>
   <meta name="description" content="مختبر التدقيق التشفيري لموسوعة النمر للمعرفة التطبيقية: فحص مستقل لبصمة بايتات ملف الـ PDF النهائي وبصمة البيانات الوصفية عبر 23 مستوى في شجرة ميركل.">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.4">
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
 <?php render_unified_sapphire_css(); ?>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,7 +150,7 @@ header('Content-Type: text/html; charset=UTF-8');
     .search-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
     .search-input {
       flex: 1;
-      min-width: 260px;
+      min-width: min(100%, 220px);
       background: #F8FAFC;
       border: 1.5px solid #93C5FD;
       color: #0F172A;

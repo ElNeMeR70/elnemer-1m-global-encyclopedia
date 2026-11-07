@@ -207,7 +207,7 @@ if (isset($_GET['redirect']) && $_GET['redirect'] == '1') {
       background:linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 55%, #ECFDF5 100%);
     }
   </style>
-  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.2">
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
   <meta property="og:image" content="https://million.elnemer-ai.com/og_banner.php">
 <?php render_unified_sapphire_css(); ?>
 </head>

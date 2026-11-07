@@ -262,7 +262,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     /* Criteria Cards */
     .criteria-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
       gap: 24px;
       margin-bottom: 60px;
     }
@@ -328,7 +328,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     
     .quick-jump-form input {
       flex: 1;
-      min-width: 250px;
+      min-width: min(100%, 220px);
       background:linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 55%, #ECFDF5 100%);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
@@ -394,7 +394,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     /* Dossier Downloads */
     .dossier-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px), 1fr));
       gap: 24px;
       margin-bottom: 60px;
     }
@@ -441,7 +441,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     
     footer a { color: var(--text-gold); text-decoration: none; }
   </style>
-  <link rel="stylesheet" href="/nemer_unified_theme.css?v=5.2">
+  <link rel="stylesheet" href="/nemer_unified_theme.css?v=6.0">
   <meta property="og:image" content="https://million.elnemer-ai.com/og_banner.php">
 <?php render_unified_sapphire_css(); ?>
 </head>
@@ -472,7 +472,7 @@ $active_meta = get_1m_book_metadata($inspect_id);
     </section>
 
     <!-- Official London GWR Adjudication Command Strip -->
-    <section style="background:linear-gradient(135deg,#1E3A8A 0%,#1D4ED8 55%,#0F766E 100%);border:2px solid #38BDF8;border-radius:22px;padding:28px 32px;margin-bottom:45px;box-shadow:0 15px 50px rgba(0,0,0,0.75);direction:ltr;text-align:left;">
+    <section style="background:linear-gradient(135deg,#FFFFFF 0%,#EFF6FF 55%,#ECFDF5 100%);border:2px solid #93C5FD;border-radius:22px;padding:28px 24px;margin-bottom:36px;box-shadow:0 12px 32px rgba(30,58,138,0.08);direction:ltr;text-align:left;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
         <span style="background:rgba(16,185,129,0.2);border:1px solid #10b981;color:#047857;font-weight:800;padding:5px 14px;border-radius:999px;font-weight:800;font-size:0.82rem;font-family:'Fira Code',monospace;">
           ● DIRECT PROTOCOL ACCESS FOR GUINNESS WORLD RECORDS™ ADJUDICATORS (LONDON / GLOBAL RMT)
@@ -487,8 +487,8 @@ $active_meta = get_1m_book_metadata($inspect_id);
         <a href="/witness" class="btn-act btn-act-gold" style="font-size:14px;padding:11px 18px;">📜 Open Official Evidence &amp; Sitemap Ledger (/witness)</a>
         <a href="/audit/<?php echo $active_meta['global_id']; ?>" class="btn-act btn-act-green" style="font-size:14px;padding:11px 18px;">🔐 Live WebCrypto SHA-256 &amp; Merkle Lab (/audit)</a>
         <a href="/oai" class="btn-act btn-act-blue" style="font-size:14px;padding:11px 18px;">🏛️ Library of Congress OAI-PMH 2.0 (/oai)</a>
-        <a href="/doi/<?php echo $active_meta['doi']; ?>" class="btn-act" style="background:rgba(255,255,255,0.1);color:#1E3A8A;border:1px solid rgba(255,255,255,0.25);font-size:14px;padding:11px 18px;">🔗 Sovereign DOI Gateway (/doi)</a>
-        <a href="/.well-known/did.json" target="_blank" class="btn-act" style="background:rgba(212,175,55,0.15);color:#0284C7;border:1px solid rgba(212,175,55,0.4);font-size:14px;padding:11px 18px;">🌐 W3C DID Identity</a>
+        <a href="/doi/<?php echo $active_meta['doi']; ?>" class="btn-act" class="btn-act btn-outline-act">🔗 Sovereign DOI Gateway (/doi)</a>
+        <a href="/.well-known/did.json" target="_blank" class="btn-act" class="btn-act btn-outline-act">🌐 W3C DID Identity</a>
       </div>
     </section>
 
