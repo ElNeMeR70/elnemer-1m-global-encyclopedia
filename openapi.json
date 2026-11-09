@@ -1,0 +1,116 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ElNemer Global Encyclopedia & Sovereign Cloud Collections Verification API",
+    "version": "7.2.0",
+    "description": "Official OpenAPI 3.1 specification for independent cryptographic, bibliographic, and statistical verification of the ElNemer Global Encyclopedia (5,000,000 Core Applied Volumes + 1,000,000 AI Cloud Volumes + 1,000,000 Ancient Egypt & Pharaohs Cloud Volumes = 7,000,000 Volumes / 1.4 Billion Pages across 78 Languages).",
+    "contact": {
+      "name": "ElNemer Encyclopedia Publishing House — Eng. Mahmoud Bek ElNemer",
+      "url": "https://million.elnemer-ai.com/evidence-index",
+      "email": "info@elnemer-ai.com"
+    },
+    "license": {
+      "name": "CC BY-NC-ND 4.0 International / Open Verification Protocol",
+      "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://million.elnemer-ai.com",
+      "description": "Primary Sovereign Production Observatory & Verification Gateway"
+    }
+  ],
+  "paths": {
+    "/api/verify/{volume_id}": {
+      "get": {
+        "summary": "Verify a single volume's Content SHA-256, Record SHA-256, PDF Binary SHA-256, 23-Level Merkle Path, and GS1 Checksum",
+        "parameters": [
+          {
+            "name": "volume_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 7000000
+            },
+            "description": "Global Volume ID (1..5,000,000 Core; 5,000,001..6,000,000 AI Cloud; 6,000,001..7,000,000 Pharaohs Cloud)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cryptographic verification payload with separated content_sha256, record_sha256, and pdf_bytes_sha256"
+          }
+        }
+      }
+    },
+    "/api/manifest": {
+      "get": {
+        "summary": "Retrieve the Master Versioned Snapshot Manifest & Merkle Roots for all 3 Cloud Collections (7M Volumes)",
+        "responses": {
+          "200": {
+            "description": "JSON manifest detailing v1.0, v7.0 (5M), and v7.2 (+1M AI + 1M Pharaohs) snapshots and Merkle roots"
+          }
+        }
+      }
+    },
+    "/api/cloud-collections": {
+      "get": {
+        "summary": "Query or export JSONL shards from the 5M General, 1M AI, or 1M Pharaohs Cloud Databases",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["manifest", "sample", "export_jsonl"]
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["general", "ai", "pharaohs", "all"]
+            }
+          },
+          {
+            "name": "seed",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20261109
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cloud collection records or downloadable JSONL shard"
+          }
+        }
+      }
+    },
+    "/pdf/{volume_id}": {
+      "get": {
+        "summary": "Download deterministic 200-page PDF binary stream whose sha256sum matches pdf_bytes_sha256 100%",
+        "parameters": [
+          {
+            "name": "volume_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 7000000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Raw application/pdf binary stream (200 pages)"
+          }
+        }
+      }
+    }
+  }
+}
