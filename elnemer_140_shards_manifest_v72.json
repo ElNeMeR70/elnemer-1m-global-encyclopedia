@@ -1,0 +1,1728 @@
+{
+  "schema_version": "7.2.0-SOVEREIGN-AUDIT-READY",
+  "snapshot_date_utc": "2026-11-09T00:00:00Z",
+  "publisher": "ElNemer Encyclopedia Publishing House (دار النمر للنشر والمعرفة التطبيقية)",
+  "chief_architect": "Eng. Mahmoud Bek ElNemer",
+  "official_dois": {
+    "harvard_dataverse": "doi:10.7910/DVN/TTKZSO",
+    "harvard_dataverse_2": "doi:10.7910/DVN/FZISTQ",
+    "harvard_dataverse_3": "doi:10.7910/DVN/UFYQDK",
+    "cern_zenodo": "10.5281/zenodo.24051667",
+    "datacite_hf_1": "10.57967/hf/11509",
+    "datacite_hf_2": "10.57967/hf/11513"
+  },
+  "collections": {
+    "general_5m": {
+      "volumes": 5000000,
+      "pages": 1000000000,
+      "gid_range": [
+        1,
+        5000000
+      ],
+      "merkle_levels": 23,
+      "merkle_root": "72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9"
+    },
+    "ai_1m_cloud": {
+      "volumes": 1000000,
+      "pages": 200000000,
+      "gid_range": [
+        5000001,
+        6000000
+      ],
+      "merkle_levels": 20,
+      "merkle_root": "a19f4e82c7d031b5e64a928f1c3b7d5e8042f9a1c6b3d8e5f7012a4c9e6b8d31"
+    },
+    "pharaohs_1m_cloud": {
+      "volumes": 1000000,
+      "pages": 200000000,
+      "gid_range": [
+        6000001,
+        7000000
+      ],
+      "merkle_levels": 20,
+      "merkle_root": "f47c9b20e5d183a6c940e2f7b1d8a3c5e904f2b7d1c6a8e3f5092b4d7c1e8a64"
+    }
+  },
+  "shards_140": [
+    {
+      "shard_id": 1,
+      "collection": "general",
+      "gid_range": [
+        1,
+        50000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "c797f60830b7ad401687509ac749f03dd089c7e3b301ad837436fe322852c410",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1&limit=5000"
+    },
+    {
+      "shard_id": 2,
+      "collection": "general",
+      "gid_range": [
+        50001,
+        100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "73108615d246b1ef38278bedb2d1a79ee7fa8b30d82255407ebf61cbdf3dd99a",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=50001&limit=5000"
+    },
+    {
+      "shard_id": 3,
+      "collection": "general",
+      "gid_range": [
+        100001,
+        150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "795b8cd6517bf84eb7ace11dc4027954b4a674b22a5934af830bcde5d202abb5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=100001&limit=5000"
+    },
+    {
+      "shard_id": 4,
+      "collection": "general",
+      "gid_range": [
+        150001,
+        200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "162717c5372324b78817d3708a5b6ffe1f9e539553bc533a6b78d341bf3a25fa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=150001&limit=5000"
+    },
+    {
+      "shard_id": 5,
+      "collection": "general",
+      "gid_range": [
+        200001,
+        250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "c734a0f489e316250758406b40263633bef877b2b0ab8786e88f2c783549f065",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=200001&limit=5000"
+    },
+    {
+      "shard_id": 6,
+      "collection": "general",
+      "gid_range": [
+        250001,
+        300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "d52309120428268779ff2221a786404dc0ef443bc4ae82216283178cc270a9aa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=250001&limit=5000"
+    },
+    {
+      "shard_id": 7,
+      "collection": "general",
+      "gid_range": [
+        300001,
+        350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4987f80879a2547af4d7e41a48d48fb6d5b79f7f4057a5e906c697ba9c9270a5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=300001&limit=5000"
+    },
+    {
+      "shard_id": 8,
+      "collection": "general",
+      "gid_range": [
+        350001,
+        400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "cc47fc951edd6ec3ca2ded14a24670006475c5c4dc60a55e80fffae6152f0baa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=350001&limit=5000"
+    },
+    {
+      "shard_id": 9,
+      "collection": "general",
+      "gid_range": [
+        400001,
+        450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1a2561c20e9911f718d6871f7345363f63de0aaabed50797fbab86fce7cb6fd6",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=400001&limit=5000"
+    },
+    {
+      "shard_id": 10,
+      "collection": "general",
+      "gid_range": [
+        450001,
+        500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5e69334e860ae8bec2ad90a270beabcb62a3df5d7e3bf9855c09cfb3d92759e5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=450001&limit=5000"
+    },
+    {
+      "shard_id": 11,
+      "collection": "general",
+      "gid_range": [
+        500001,
+        550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "12f2580d8d7327028b85db1dfdc9e24cb6e87bc0e2f1a862055545a3ed80d091",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=500001&limit=5000"
+    },
+    {
+      "shard_id": 12,
+      "collection": "general",
+      "gid_range": [
+        550001,
+        600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "20793d9b72e284adf4c2a7ece8fcd423deefef314d562278ffa98a7e661afaf7",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=550001&limit=5000"
+    },
+    {
+      "shard_id": 13,
+      "collection": "general",
+      "gid_range": [
+        600001,
+        650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "fff78dbd8583cf49a6d6f7b177de313b1baca07bc85934170400c375ad341128",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=600001&limit=5000"
+    },
+    {
+      "shard_id": 14,
+      "collection": "general",
+      "gid_range": [
+        650001,
+        700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "d850f81a4a229d1d8020f362a76795fc96c9278442492e55ff16f3511cbb3c21",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=650001&limit=5000"
+    },
+    {
+      "shard_id": 15,
+      "collection": "general",
+      "gid_range": [
+        700001,
+        750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1790c7b1485061bab4cdb68d5a5fbc0454fc6a10c965a18df9b2b16efeaedbaf",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=700001&limit=5000"
+    },
+    {
+      "shard_id": 16,
+      "collection": "general",
+      "gid_range": [
+        750001,
+        800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "ee8f9d59b2fc08338cbfe26aa9cdb49f4622637a763fc1e67b9ea5fbc984773d",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=750001&limit=5000"
+    },
+    {
+      "shard_id": 17,
+      "collection": "general",
+      "gid_range": [
+        800001,
+        850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "955d74af211db4fda3083c7cbe4d42a64eeed9353fbabba588a4153e5301e628",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=800001&limit=5000"
+    },
+    {
+      "shard_id": 18,
+      "collection": "general",
+      "gid_range": [
+        850001,
+        900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "eec063a632ad0ebbdf17bc1c5cd97b76df4dd125701c95a2aabac406bbcea670",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=850001&limit=5000"
+    },
+    {
+      "shard_id": 19,
+      "collection": "general",
+      "gid_range": [
+        900001,
+        950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "67154b3978d6bf715d522023248e07896137845e7ed679d29113ae0e68134835",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=900001&limit=5000"
+    },
+    {
+      "shard_id": 20,
+      "collection": "general",
+      "gid_range": [
+        950001,
+        1000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4a07b4b5371edd40cce0a72f749edf1dbcfdaaa8b7a98ac7feb4ca498e0983b0",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=950001&limit=5000"
+    },
+    {
+      "shard_id": 21,
+      "collection": "general",
+      "gid_range": [
+        1000001,
+        1050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "f9c8384469711d9e36e6afc93c70569010116a0bd471fe6b60b5c6223c4c342e",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1000001&limit=5000"
+    },
+    {
+      "shard_id": 22,
+      "collection": "general",
+      "gid_range": [
+        1050001,
+        1100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5930bc03c948cb1151c4529ead09560b87a19c82bfc5fa0f0f9a9d2e64865f72",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1050001&limit=5000"
+    },
+    {
+      "shard_id": 23,
+      "collection": "general",
+      "gid_range": [
+        1100001,
+        1150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "f4a3663dcd67b6e1844230454ee364518f6b8a8e41fbe454472f8cb19333f242",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1100001&limit=5000"
+    },
+    {
+      "shard_id": 24,
+      "collection": "general",
+      "gid_range": [
+        1150001,
+        1200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0b47ce827b4a3102c3007893e3d9d5b2f0ea903614320e00f1fb4974506bf24b",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1150001&limit=5000"
+    },
+    {
+      "shard_id": 25,
+      "collection": "general",
+      "gid_range": [
+        1200001,
+        1250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "fbd04698706400bab7918181b1bccbf7d0fcf29a4e937013bc0b137c131b0588",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1200001&limit=5000"
+    },
+    {
+      "shard_id": 26,
+      "collection": "general",
+      "gid_range": [
+        1250001,
+        1300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "3e7503ac5b4ba618c0b4ba0b00ce4e41aa8a436d35e44ed0b059a481eb511aaa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1250001&limit=5000"
+    },
+    {
+      "shard_id": 27,
+      "collection": "general",
+      "gid_range": [
+        1300001,
+        1350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0ab9820e6e7b6671d7988ec55088238765d0524474e15c02a141fc686f28a16f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1300001&limit=5000"
+    },
+    {
+      "shard_id": 28,
+      "collection": "general",
+      "gid_range": [
+        1350001,
+        1400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "dc8577c4e85e54a3c3cec9c532f81b18d76986f89289a7f578c1b37e5f256538",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1350001&limit=5000"
+    },
+    {
+      "shard_id": 29,
+      "collection": "general",
+      "gid_range": [
+        1400001,
+        1450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "9f0a9284fe3d2270f3dd16835d26070cadd2dd7393afd96f68dfd7c7883e79bc",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1400001&limit=5000"
+    },
+    {
+      "shard_id": 30,
+      "collection": "general",
+      "gid_range": [
+        1450001,
+        1500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a61855f7ba8c4f3966a1a18ed94015aa6ee4063bf8518abc6a6bbf2d7dfcd6f7",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1450001&limit=5000"
+    },
+    {
+      "shard_id": 31,
+      "collection": "general",
+      "gid_range": [
+        1500001,
+        1550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4ae04bfe3ddbd2fa4b846f9228c894b63144fcad97958a0a803486661bd5fe55",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1500001&limit=5000"
+    },
+    {
+      "shard_id": 32,
+      "collection": "general",
+      "gid_range": [
+        1550001,
+        1600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "c4b46873fc8ccb9c5b8c8a02f7dacc858649447b42a4ac1e0bca6831d4c4d9ce",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1550001&limit=5000"
+    },
+    {
+      "shard_id": 33,
+      "collection": "general",
+      "gid_range": [
+        1600001,
+        1650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4a9f62c0e19886718973266a5017af3267d8df291c3edaefb6738ab6e3cdd44b",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1600001&limit=5000"
+    },
+    {
+      "shard_id": 34,
+      "collection": "general",
+      "gid_range": [
+        1650001,
+        1700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "967a864e25593e919fdda8e09689272caabedb37c62715858b1a4dd1f7947d40",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1650001&limit=5000"
+    },
+    {
+      "shard_id": 35,
+      "collection": "general",
+      "gid_range": [
+        1700001,
+        1750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "95463506e24f4f940ad1b009fe983a17cc6dfcb0cc94ba34136a0cd7556f1c8d",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1700001&limit=5000"
+    },
+    {
+      "shard_id": 36,
+      "collection": "general",
+      "gid_range": [
+        1750001,
+        1800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "519eca7dc7b21087e04260f4aa73ef2d1894abb59cd9cbb72c91eec513fc3272",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1750001&limit=5000"
+    },
+    {
+      "shard_id": 37,
+      "collection": "general",
+      "gid_range": [
+        1800001,
+        1850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0b4c145424c63f0c730a945cb756bb3626dbe10a7999b0411cac917308130afc",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1800001&limit=5000"
+    },
+    {
+      "shard_id": 38,
+      "collection": "general",
+      "gid_range": [
+        1850001,
+        1900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "338a7d2f2953dac97fffba0633b9a03e83abd717976e88f4f76ba625bcf65049",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1850001&limit=5000"
+    },
+    {
+      "shard_id": 39,
+      "collection": "general",
+      "gid_range": [
+        1900001,
+        1950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "25b7caa3b3389c14de03747480c79d0c0365695ee9fab3320bd25430970a9f75",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1900001&limit=5000"
+    },
+    {
+      "shard_id": 40,
+      "collection": "general",
+      "gid_range": [
+        1950001,
+        2000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "23fcbfc8db811fd32730f5cbe32da9d4387139ec7b1607a84c5d1c657c6932ac",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=1950001&limit=5000"
+    },
+    {
+      "shard_id": 41,
+      "collection": "general",
+      "gid_range": [
+        2000001,
+        2050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "e7b2a9abff4e60cfef58b69a1c7360d8546509804886a490f9794b7803dd848f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2000001&limit=5000"
+    },
+    {
+      "shard_id": 42,
+      "collection": "general",
+      "gid_range": [
+        2050001,
+        2100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1674492db162cab61935db220a3be66dab6876fe1892a367868a3b229198024f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2050001&limit=5000"
+    },
+    {
+      "shard_id": 43,
+      "collection": "general",
+      "gid_range": [
+        2100001,
+        2150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "e534343f7ba8da873532361781f6ac3c8671601d390f69b9540912ec8fea9066",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2100001&limit=5000"
+    },
+    {
+      "shard_id": 44,
+      "collection": "general",
+      "gid_range": [
+        2150001,
+        2200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "ae16493eb434c9debc57a7ada76df310c2e8b050d983a739ebf09adb2fe00199",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2150001&limit=5000"
+    },
+    {
+      "shard_id": 45,
+      "collection": "general",
+      "gid_range": [
+        2200001,
+        2250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "7c0467141d14df6b9e02c66d091f55bfebbee652a6b9bd0abca0b34cdc45a936",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2200001&limit=5000"
+    },
+    {
+      "shard_id": 46,
+      "collection": "general",
+      "gid_range": [
+        2250001,
+        2300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4d2f73c14d5d879ace9d23715da3b43ddd2baad0acf1c1887cdbdad10212d4de",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2250001&limit=5000"
+    },
+    {
+      "shard_id": 47,
+      "collection": "general",
+      "gid_range": [
+        2300001,
+        2350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "66cada25e0b4adcc6043c7324e37ae50698194bf9d547a8e93408e5f99422294",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2300001&limit=5000"
+    },
+    {
+      "shard_id": 48,
+      "collection": "general",
+      "gid_range": [
+        2350001,
+        2400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "b0df733212b42918af0aa8d19052e61e49f9880895f39efa13afbfc0533163d4",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2350001&limit=5000"
+    },
+    {
+      "shard_id": 49,
+      "collection": "general",
+      "gid_range": [
+        2400001,
+        2450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "996a2af93f19e625da7d05526bc9f5508a8d397a3f657a62d81cd4643d9689a5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2400001&limit=5000"
+    },
+    {
+      "shard_id": 50,
+      "collection": "general",
+      "gid_range": [
+        2450001,
+        2500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "34f5f50211fb8b1245060502a351ad248744d740d724291b3b9c323447f15d77",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2450001&limit=5000"
+    },
+    {
+      "shard_id": 51,
+      "collection": "general",
+      "gid_range": [
+        2500001,
+        2550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0f95a98ef62f546c54a9a3892ce703b89735c091d8c866a3da9f5d2d9dbe030a",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2500001&limit=5000"
+    },
+    {
+      "shard_id": 52,
+      "collection": "general",
+      "gid_range": [
+        2550001,
+        2600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "8887f9f5b4d21c813acd3b5a5b9014eac4eb323d1061c06dab9493c466d7477e",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2550001&limit=5000"
+    },
+    {
+      "shard_id": 53,
+      "collection": "general",
+      "gid_range": [
+        2600001,
+        2650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "62518260d7b50d03bea33371013a2634423e96c810dede4894c49aa8a95cfc85",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2600001&limit=5000"
+    },
+    {
+      "shard_id": 54,
+      "collection": "general",
+      "gid_range": [
+        2650001,
+        2700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "78a34fc05d523254b15a02448cc2910703c4af77bcac7766bfa78b2955dec2f6",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2650001&limit=5000"
+    },
+    {
+      "shard_id": 55,
+      "collection": "general",
+      "gid_range": [
+        2700001,
+        2750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "d322e47321643087f24081c2a763030b027d055e4501b2278712ee5a476e98bd",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2700001&limit=5000"
+    },
+    {
+      "shard_id": 56,
+      "collection": "general",
+      "gid_range": [
+        2750001,
+        2800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "4319652efe2c9fcfb0d51dec586b0ff021e407b2642e80aa42c794f947fe9e9b",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2750001&limit=5000"
+    },
+    {
+      "shard_id": 57,
+      "collection": "general",
+      "gid_range": [
+        2800001,
+        2850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "d54140390cd65e538e803a053bd29c583bdfb518e4f8733a6d7f3a836b38711d",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2800001&limit=5000"
+    },
+    {
+      "shard_id": 58,
+      "collection": "general",
+      "gid_range": [
+        2850001,
+        2900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "31b90e48cfd1544153a9d8d700fee25bc576ba3dba481f1a77c67a91657e6fc4",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2850001&limit=5000"
+    },
+    {
+      "shard_id": 59,
+      "collection": "general",
+      "gid_range": [
+        2900001,
+        2950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "77d9e3ed9010ed4cb2d756313f62ec8820d4a2960265a451aa25a4e69bd28ffb",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2900001&limit=5000"
+    },
+    {
+      "shard_id": 60,
+      "collection": "general",
+      "gid_range": [
+        2950001,
+        3000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5a5986944c009d721f1bc2dff5e474b208e7d8d93fbf437f513cdd82187540c8",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=2950001&limit=5000"
+    },
+    {
+      "shard_id": 61,
+      "collection": "general",
+      "gid_range": [
+        3000001,
+        3050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "6223b7dbb501aa4eefc00740aed45b252c9242039b676abe55aa84b4a7c55755",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3000001&limit=5000"
+    },
+    {
+      "shard_id": 62,
+      "collection": "general",
+      "gid_range": [
+        3050001,
+        3100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "9038f28c7faa04882c43b935527db613d5b292230a4f6919a4532ae19c5c04f5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3050001&limit=5000"
+    },
+    {
+      "shard_id": 63,
+      "collection": "general",
+      "gid_range": [
+        3100001,
+        3150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a5d80e5ce2c4f246226a23709f2e4e4944bf17bbfbaebb5a3b6c8304dc4bedcf",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3100001&limit=5000"
+    },
+    {
+      "shard_id": 64,
+      "collection": "general",
+      "gid_range": [
+        3150001,
+        3200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0d3df5a4618b700c429ac7d76e5f89f7f7f88b48867a8abd3a613d7e486d8bd7",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3150001&limit=5000"
+    },
+    {
+      "shard_id": 65,
+      "collection": "general",
+      "gid_range": [
+        3200001,
+        3250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "cc23ae4141f6a958104447543331cbcd4449a164520786c599735fabbd20e399",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3200001&limit=5000"
+    },
+    {
+      "shard_id": 66,
+      "collection": "general",
+      "gid_range": [
+        3250001,
+        3300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "afe13b32bfc5aac7f027c24a63a7b87d212d5a00bb54e8750f7cd308e7b49d92",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3250001&limit=5000"
+    },
+    {
+      "shard_id": 67,
+      "collection": "general",
+      "gid_range": [
+        3300001,
+        3350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "70ed568756687f5fec2fe817d058ca750498feef1a07777bf5bfde035dba2ccc",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3300001&limit=5000"
+    },
+    {
+      "shard_id": 68,
+      "collection": "general",
+      "gid_range": [
+        3350001,
+        3400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "3db0efe1d7de7c5227b4e810dd168e26765cc9274e92c43010309d9816ba94bf",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3350001&limit=5000"
+    },
+    {
+      "shard_id": 69,
+      "collection": "general",
+      "gid_range": [
+        3400001,
+        3450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1f2efd33fa37d0aca425df681f3a085da82549d8ac5fdf95ed3f9f90b6c12bd8",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3400001&limit=5000"
+    },
+    {
+      "shard_id": 70,
+      "collection": "general",
+      "gid_range": [
+        3450001,
+        3500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "03aa75f55aef79728a791ad8e3dea98e77236ff4f4e44079062aa37c937fc933",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3450001&limit=5000"
+    },
+    {
+      "shard_id": 71,
+      "collection": "general",
+      "gid_range": [
+        3500001,
+        3550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "e5c8f6206cae0a37d5270a64e30289899c0221c23c75b5bc296097c17e0c2e6f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3500001&limit=5000"
+    },
+    {
+      "shard_id": 72,
+      "collection": "general",
+      "gid_range": [
+        3550001,
+        3600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "d1ca0e2c367cdce9907e9ede5a646e87f46726b13f173ca4a2f6057a9c8bd12c",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3550001&limit=5000"
+    },
+    {
+      "shard_id": 73,
+      "collection": "general",
+      "gid_range": [
+        3600001,
+        3650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "fd6f215ff6712d891c0a93482e58d7e7653648537e539fabc73e7291dbd3f175",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3600001&limit=5000"
+    },
+    {
+      "shard_id": 74,
+      "collection": "general",
+      "gid_range": [
+        3650001,
+        3700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "cbb03e04918ef6c9c04aeb0f4318d967b4597011bed8aa67dfb5aba3dbc9a4ea",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3650001&limit=5000"
+    },
+    {
+      "shard_id": 75,
+      "collection": "general",
+      "gid_range": [
+        3700001,
+        3750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "3935f5a6a3dc689898b4dc14079aa73cf7acb95bef0fe2881c88480d97f51ba7",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3700001&limit=5000"
+    },
+    {
+      "shard_id": 76,
+      "collection": "general",
+      "gid_range": [
+        3750001,
+        3800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "12afd6725263d3e00e1aeffd28ee99644d491aedee7e2e6e14832f6d2bb2cf62",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3750001&limit=5000"
+    },
+    {
+      "shard_id": 77,
+      "collection": "general",
+      "gid_range": [
+        3800001,
+        3850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "eacc41741bf5272965697c1205cc01154f071651b5b80d3af8b55ecb1b995454",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3800001&limit=5000"
+    },
+    {
+      "shard_id": 78,
+      "collection": "general",
+      "gid_range": [
+        3850001,
+        3900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "758e658c657883fb6bf8129833e8dbdfe4ae4801a57065b05ae52b48b483dfa4",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3850001&limit=5000"
+    },
+    {
+      "shard_id": 79,
+      "collection": "general",
+      "gid_range": [
+        3900001,
+        3950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "db854e60131039ad27bdc9a88855f1a2e98d927ee2ae38393455afe875a11f4a",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3900001&limit=5000"
+    },
+    {
+      "shard_id": 80,
+      "collection": "general",
+      "gid_range": [
+        3950001,
+        4000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "99bd3e2f65abc52ff9653fb0f7573a2387d078d2c1406620453bf6f7f5e678c0",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=3950001&limit=5000"
+    },
+    {
+      "shard_id": 81,
+      "collection": "general",
+      "gid_range": [
+        4000001,
+        4050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5accee09c2224b92c3ef8db69aee823840b24ef3dba56b45954f5fe9315ab908",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4000001&limit=5000"
+    },
+    {
+      "shard_id": 82,
+      "collection": "general",
+      "gid_range": [
+        4050001,
+        4100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "b81a12e9af9d5aca78c8162c293572f15e325d28bdc24cbbe08537164237da6c",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4050001&limit=5000"
+    },
+    {
+      "shard_id": 83,
+      "collection": "general",
+      "gid_range": [
+        4100001,
+        4150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "de9bd8088be7235abc07ce9cbc8bf9f0e1c7bf0c1d2e5ac2a6d20b54b9357f18",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4100001&limit=5000"
+    },
+    {
+      "shard_id": 84,
+      "collection": "general",
+      "gid_range": [
+        4150001,
+        4200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "80064326859c55c0b7c936ac16883c6147226bfdef9e859fe7c7074986d49baa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4150001&limit=5000"
+    },
+    {
+      "shard_id": 85,
+      "collection": "general",
+      "gid_range": [
+        4200001,
+        4250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "f5bbeaf8ecb59ba8fe489cec2432003a1e97a6f5fa11a0dcdf28604cab344e73",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4200001&limit=5000"
+    },
+    {
+      "shard_id": 86,
+      "collection": "general",
+      "gid_range": [
+        4250001,
+        4300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "c131ea1f30cdb74d6cb74cd1d5e23de2083b5a5a805698b0844a053728631d26",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4250001&limit=5000"
+    },
+    {
+      "shard_id": 87,
+      "collection": "general",
+      "gid_range": [
+        4300001,
+        4350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "89fbb12454d1634332d965cfc6a5c8bba9ef7311480f34c58c5d32d8a6f84bfb",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4300001&limit=5000"
+    },
+    {
+      "shard_id": 88,
+      "collection": "general",
+      "gid_range": [
+        4350001,
+        4400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "02c73d20682a624407c0cd3ab5099d16228cd06008f3b8277df8903523026a98",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4350001&limit=5000"
+    },
+    {
+      "shard_id": 89,
+      "collection": "general",
+      "gid_range": [
+        4400001,
+        4450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "6f67abf600a5dd5d6648259e951854e61429de6d5b6b18e611d2640ee3db08fb",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4400001&limit=5000"
+    },
+    {
+      "shard_id": 90,
+      "collection": "general",
+      "gid_range": [
+        4450001,
+        4500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "133afa5e498a2b221f89a4f03291ae4b2d3288181141a02f541afc06658b4f7a",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4450001&limit=5000"
+    },
+    {
+      "shard_id": 91,
+      "collection": "general",
+      "gid_range": [
+        4500001,
+        4550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "59ca075c354a1f01391e0c33d433bda1a06a7d1fdf2abd91f9f5c5bcdc7c04dd",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4500001&limit=5000"
+    },
+    {
+      "shard_id": 92,
+      "collection": "general",
+      "gid_range": [
+        4550001,
+        4600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "71629755fdcb029ac67d766276a865bbb3a59af1551851907ca6525272f42996",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4550001&limit=5000"
+    },
+    {
+      "shard_id": 93,
+      "collection": "general",
+      "gid_range": [
+        4600001,
+        4650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "3edac6a25807ad79a2848dca67b5ae2c927467a012a636fc286f2f50aa6ce4aa",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4600001&limit=5000"
+    },
+    {
+      "shard_id": 94,
+      "collection": "general",
+      "gid_range": [
+        4650001,
+        4700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "ff4303f495178faa0280dfcadc0ec5131833a4b33e669f693ad45cd1e0547553",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4650001&limit=5000"
+    },
+    {
+      "shard_id": 95,
+      "collection": "general",
+      "gid_range": [
+        4700001,
+        4750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "808ba4f229a29364fe7550975a5817c1b0c370614ea3aa695379afcedff60445",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4700001&limit=5000"
+    },
+    {
+      "shard_id": 96,
+      "collection": "general",
+      "gid_range": [
+        4750001,
+        4800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "644ba868e09d503825df135c71caa5f527579e50247a05b04229ca72398b80b1",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4750001&limit=5000"
+    },
+    {
+      "shard_id": 97,
+      "collection": "general",
+      "gid_range": [
+        4800001,
+        4850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "87efd0b7904e3b109f9859b88b8dfa1dc435212c900ab08409a60ab38ea02c27",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4800001&limit=5000"
+    },
+    {
+      "shard_id": 98,
+      "collection": "general",
+      "gid_range": [
+        4850001,
+        4900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "febb10e7187ec0b16dd7b7b36e5c6e1844f6981101bb62111e90f1890b0db822",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4850001&limit=5000"
+    },
+    {
+      "shard_id": 99,
+      "collection": "general",
+      "gid_range": [
+        4900001,
+        4950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1f64c09a3e7845022670c6dcd2230c8c042f72f7a7814600aef863e3f43f4108",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4900001&limit=5000"
+    },
+    {
+      "shard_id": 100,
+      "collection": "general",
+      "gid_range": [
+        4950001,
+        5000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a4e8b3a8bf6f64eafa5e80d36349acb848172215d4518abea50d38adaf9abbf7",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=general&start_gid=4950001&limit=5000"
+    },
+    {
+      "shard_id": 101,
+      "collection": "ai",
+      "gid_range": [
+        5000001,
+        5050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "f01ad22dff84e34f5940c0a61ca176c8acf793e23d01438b8db94daa6034477c",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5000001&limit=5000"
+    },
+    {
+      "shard_id": 102,
+      "collection": "ai",
+      "gid_range": [
+        5050001,
+        5100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "8ae4ba020accea22790980dc001ac4208766437457983421c564fec7521e0886",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5050001&limit=5000"
+    },
+    {
+      "shard_id": 103,
+      "collection": "ai",
+      "gid_range": [
+        5100001,
+        5150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "67d7d176c742f354e8a89f0db2315c00a26725cccb7bc76238b6b0e9be9a692f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5100001&limit=5000"
+    },
+    {
+      "shard_id": 104,
+      "collection": "ai",
+      "gid_range": [
+        5150001,
+        5200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "f7ed4eaa740111747d5d1b6fe18ccb8053ab9b952369cc93a61bbf5061417ec5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5150001&limit=5000"
+    },
+    {
+      "shard_id": 105,
+      "collection": "ai",
+      "gid_range": [
+        5200001,
+        5250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "28f57ca07979b9cc1fa2f7d5462738a2eaf296309990d2dc2ceb2997f40645b5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5200001&limit=5000"
+    },
+    {
+      "shard_id": 106,
+      "collection": "ai",
+      "gid_range": [
+        5250001,
+        5300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "210c77bf5dc5bc5eabb36736d15280ba9d3e91e80942dc970cf559fc62e944a6",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5250001&limit=5000"
+    },
+    {
+      "shard_id": 107,
+      "collection": "ai",
+      "gid_range": [
+        5300001,
+        5350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "7745432a3701daf513c0e649ba17743e21cc5366bf7661f401f238c8a2f34d01",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5300001&limit=5000"
+    },
+    {
+      "shard_id": 108,
+      "collection": "ai",
+      "gid_range": [
+        5350001,
+        5400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a04bfa9981f3034976fca4ce024202e3113cd80e137f405bc941a3a95b2eb494",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5350001&limit=5000"
+    },
+    {
+      "shard_id": 109,
+      "collection": "ai",
+      "gid_range": [
+        5400001,
+        5450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "7ff4735a9494c5463aff83ca6fe28f81fc2510dfd8158a48802b823a0a8ebb83",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5400001&limit=5000"
+    },
+    {
+      "shard_id": 110,
+      "collection": "ai",
+      "gid_range": [
+        5450001,
+        5500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "3d67f49fb14f7ac9e3c9ea548be12d7b8012b0207fad960ab93a388a50644288",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5450001&limit=5000"
+    },
+    {
+      "shard_id": 111,
+      "collection": "ai",
+      "gid_range": [
+        5500001,
+        5550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5a65eb61bd4c0f3d6d6be350b53299019231718ec4673519061e32f65417d3e2",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5500001&limit=5000"
+    },
+    {
+      "shard_id": 112,
+      "collection": "ai",
+      "gid_range": [
+        5550001,
+        5600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "69c9a418d0c11d6a4051b3b83f8e051d0222fabed22a2eb29a4e94eebc4a3852",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5550001&limit=5000"
+    },
+    {
+      "shard_id": 113,
+      "collection": "ai",
+      "gid_range": [
+        5600001,
+        5650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "b56a27f12120cf6af22d01b7ce25cafeae1edbc2714a6e87d546eabf9e802290",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5600001&limit=5000"
+    },
+    {
+      "shard_id": 114,
+      "collection": "ai",
+      "gid_range": [
+        5650001,
+        5700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "ca4517565452ed03fcabf47a427919f6826169dd5bc2399b13e650807d14a817",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5650001&limit=5000"
+    },
+    {
+      "shard_id": 115,
+      "collection": "ai",
+      "gid_range": [
+        5700001,
+        5750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "9a68603a99e8e96ceb6811d772e4fc192b4b6518e5efa058926f3b3f4b197af3",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5700001&limit=5000"
+    },
+    {
+      "shard_id": 116,
+      "collection": "ai",
+      "gid_range": [
+        5750001,
+        5800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "bb75a6032102dbedfbdf2547b992192b4bfb2aa9f8063e764ae7d1b983f4902d",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5750001&limit=5000"
+    },
+    {
+      "shard_id": 117,
+      "collection": "ai",
+      "gid_range": [
+        5800001,
+        5850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "e8e49ba04a8f358e4dfcba30bd7e7ff7d05acebec5fd1a7f29801a350dbc11d1",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5800001&limit=5000"
+    },
+    {
+      "shard_id": 118,
+      "collection": "ai",
+      "gid_range": [
+        5850001,
+        5900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "adfb2b328a77cb870e950563f3b30ece29bff65aaacb307b47355c355d053660",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5850001&limit=5000"
+    },
+    {
+      "shard_id": 119,
+      "collection": "ai",
+      "gid_range": [
+        5900001,
+        5950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "96f51ae047093953a159c46a871458e7aa6a154588af46eb512d642cbdace936",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5900001&limit=5000"
+    },
+    {
+      "shard_id": 120,
+      "collection": "ai",
+      "gid_range": [
+        5950001,
+        6000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "7077f2ae3e225d4ffcf1a1fccb76c2f80e0ac46b0c12f401acd19e754dd9c753",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=ai&start_gid=5950001&limit=5000"
+    },
+    {
+      "shard_id": 121,
+      "collection": "pharaohs",
+      "gid_range": [
+        6000001,
+        6050000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "462a7f7cab7290eb0421fc1596642cbfeb8c14f1a4c987fa4546f286192c7b37",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6000001&limit=5000"
+    },
+    {
+      "shard_id": 122,
+      "collection": "pharaohs",
+      "gid_range": [
+        6050001,
+        6100000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "337c7896d6e4f90aae2e20bcfe2c228ff5ff12c2dc18d52b0bec490b732a09c1",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6050001&limit=5000"
+    },
+    {
+      "shard_id": 123,
+      "collection": "pharaohs",
+      "gid_range": [
+        6100001,
+        6150000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "699c7100a0e60d6531210e09c8747d365fea3d5cab75b6704cd8dcb507eca7cc",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6100001&limit=5000"
+    },
+    {
+      "shard_id": 124,
+      "collection": "pharaohs",
+      "gid_range": [
+        6150001,
+        6200000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "0fe4b1cda31afadbbac54649752b9fb26709f800abe19a036001c39b4b7b000c",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6150001&limit=5000"
+    },
+    {
+      "shard_id": 125,
+      "collection": "pharaohs",
+      "gid_range": [
+        6200001,
+        6250000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "760f938a0aa639cc47c431a2a42512d88e3b0eb30af078ba392b15095152d04f",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6200001&limit=5000"
+    },
+    {
+      "shard_id": 126,
+      "collection": "pharaohs",
+      "gid_range": [
+        6250001,
+        6300000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "05fff407dc7050c2c93d138d9bc0389825defd435a5be54a7e5c0b2e3c626137",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6250001&limit=5000"
+    },
+    {
+      "shard_id": 127,
+      "collection": "pharaohs",
+      "gid_range": [
+        6300001,
+        6350000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "bf0d906fbc7cbff2b160e57eb3116d8a68271cb2c9fe4d1fb5492a64d8f92302",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6300001&limit=5000"
+    },
+    {
+      "shard_id": 128,
+      "collection": "pharaohs",
+      "gid_range": [
+        6350001,
+        6400000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "45d97c196f4972ef5ca7c3d864f94c3a45213b5978add23d2bd50bad2c2044ab",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6350001&limit=5000"
+    },
+    {
+      "shard_id": 129,
+      "collection": "pharaohs",
+      "gid_range": [
+        6400001,
+        6450000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "e46a51eba450fd0398cce6047c34c78a8647e6cf991362f596e868f6e6fc5847",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6400001&limit=5000"
+    },
+    {
+      "shard_id": 130,
+      "collection": "pharaohs",
+      "gid_range": [
+        6450001,
+        6500000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "de5f8d7aad8c9c8f4ea566caeef1820de6712dcd6ce7f8da2e6c3ad2a7277ee5",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6450001&limit=5000"
+    },
+    {
+      "shard_id": 131,
+      "collection": "pharaohs",
+      "gid_range": [
+        6500001,
+        6550000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a1d914ddf5b511f01086ecac65c2f123b0b41d19de9096ef6747f5c32e671d84",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6500001&limit=5000"
+    },
+    {
+      "shard_id": 132,
+      "collection": "pharaohs",
+      "gid_range": [
+        6550001,
+        6600000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "edd62928ac3ac2ea7ab0d0e6bd4c986d502fb0b65de2fd2c33b8d7d5655124db",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6550001&limit=5000"
+    },
+    {
+      "shard_id": 133,
+      "collection": "pharaohs",
+      "gid_range": [
+        6600001,
+        6650000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "8ab2b86e54b5174cb60a4263a930cfba996e0ced64d95978c08deff376472348",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6600001&limit=5000"
+    },
+    {
+      "shard_id": 134,
+      "collection": "pharaohs",
+      "gid_range": [
+        6650001,
+        6700000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "5305def012e5d6657e0ca9e6bb10ee13cd1108cd644811b95a1f12bad398eb47",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6650001&limit=5000"
+    },
+    {
+      "shard_id": 135,
+      "collection": "pharaohs",
+      "gid_range": [
+        6700001,
+        6750000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "c176156cb1f47edd487b5ffa2450ba0a4dc91eb9a6fb69b817ee6f61e81eac66",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6700001&limit=5000"
+    },
+    {
+      "shard_id": 136,
+      "collection": "pharaohs",
+      "gid_range": [
+        6750001,
+        6800000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "87960e3c46e6b142b1f540f59b8888df28365928da6daf17815a7326a3d3e228",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6750001&limit=5000"
+    },
+    {
+      "shard_id": 137,
+      "collection": "pharaohs",
+      "gid_range": [
+        6800001,
+        6850000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "1a983376593983c8d48d38cfd976c3209fe61fdd3cf8cd1f9115c060ec6fe259",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6800001&limit=5000"
+    },
+    {
+      "shard_id": 138,
+      "collection": "pharaohs",
+      "gid_range": [
+        6850001,
+        6900000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "a898431deebe578c2b3a4347f6ee6262032a003da85523d970c48c07ba792397",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6850001&limit=5000"
+    },
+    {
+      "shard_id": 139,
+      "collection": "pharaohs",
+      "gid_range": [
+        6900001,
+        6950000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "51cdd06b1a1ac5282778e0215e14c00a607a05c24aea456e920b94cfc952f7ee",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6900001&limit=5000"
+    },
+    {
+      "shard_id": 140,
+      "collection": "pharaohs",
+      "gid_range": [
+        6950001,
+        7000000
+      ],
+      "volumes_count": 50000,
+      "pages_count": 10000000,
+      "shard_merkle_root_sha256": "bc6f3dcae3a078b6e1a6f17090fe53944596758d4519d4ba95fc1a6c4778b97a",
+      "jsonl_export_endpoint": "https://million.elnemer-ai.com/api/cloud-collections?action=export_jsonl&collection=pharaohs&start_gid=6950001&limit=5000"
+    }
+  ]
+}
