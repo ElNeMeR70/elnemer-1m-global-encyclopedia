@@ -1,218 +1,62 @@
-# 🏛️ موسوعة النمر العالمية للمعرفة التطبيقية (المليار صفحة • 5,000,000 مجلد • 78 لغة)
-# 👑 ElNemer Global Encyclopedia of Applied Knowledge (1,000,000,000 Pages • 5,000,000 Volumes • 78 Languages)
+---
+license: other
+task_categories:
+- tabular-classification
+- text-retrieval
+language:
+- ar
+- en
+- fr
+- de
+- es
+- zh
+- ru
+- hi
+- ja
+- pt
+pretty_name: ElNemer Global Encyclopedia & Cloud Collections (7,000,000 Volumes • 5M Applied + 1M AI + 1M Ancient Egypt/Pharaohs • 78 Languages)
+size_categories:
+- 1M<n<10M
+---
 
-<div align="center">
+# 🏛️ ElNemer Global Encyclopedia & Sovereign Cloud Collections (`v7.2` — 7,000,000 Volumes • 1.4 Billion Pages • 78 Languages)
 
-![Volumes](https://img.shields.io/badge/Total_Volumes-5,000,000_Books-1E3A8A?style=for-the-badge)
-![Pages](https://img.shields.io/badge/Total_Extent-1,000,000,000_(1_Billion)_Pages-059669?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Global_Languages-78_Official_Languages-0284C7?style=for-the-badge)
-![Taxonomy](https://img.shields.io/badge/Taxonomy-50_Sectors_%C3%97_1,000_Disciplines-7C3AED?style=for-the-badge)
-![Security](https://img.shields.io/badge/Sovereign_Vault-23--Level_SHA--256_Merkle_Encrypted-D97706?style=for-the-badge)
-![Google Play](https://img.shields.io/badge/Google_Play_Books-Official_Partner_(40,000%2B_Live)-16A34A?style=for-the-badge)
-[![CERN Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24051667.svg)](https://doi.org/10.5281/zenodo.24051667)
-[![CERN Zenodo Portal](https://img.shields.io/badge/CERN_Zenodo_Record-10.5281%2Fzenodo.24051667-1E40AF?style=for-the-badge)](https://zenodo.org/records/24051667)
-[![DataCite DOI 2](https://img.shields.io/badge/English_Adjudication_DOI-10.57967%2Fhf%2F11513-0D9488?style=for-the-badge)](https://doi.org/10.57967/hf/11513)
-[![DataCite DOI](https://img.shields.io/badge/Official_DataCite_DOI-10.57967%2Fhf%2F11509-D97706?style=for-the-badge)](https://doi.org/10.57967/hf/11509)
-[![Whitepaper PDF](https://img.shields.io/badge/Technical_Whitepaper-PDF_(2026)-B91C1C?style=for-the-badge)](https://million.elnemer-ai.com/whitepaper_doi_2026.pdf)
-[![HF Observatory](https://img.shields.io/badge/HF_Observatory_Space-Live_Portal-2563EB?style=for-the-badge)](https://huggingface.co/spaces/elnemer7/ElNemer-Global-Encyclopedia-Observatory)
+[![Harvard Dataverse DOI](https://img.shields.io/badge/Harvard_University_Dataverse-doi%3A10.7910%2FDVN%2FTTKZSO-991B1B?style=for-the-badge)](https://dataverse.harvard.edu/dataverse/elnemer-encyclopedia)
+[![CERN Zenodo DOI](https://img.shields.io/badge/CERN_Zenodo_DOI-10.5281%2Fzenodo.24051667-1E40AF?style=for-the-badge)](https://zenodo.org/records/24051667)
+[![DataCite DOI #1](https://img.shields.io/badge/DataCite_DOI-10.57967%2Fhf%2F11509-D97706?style=for-the-badge)](https://doi.org/10.57967/hf/11509)
+[![DataCite DOI #2](https://img.shields.io/badge/UNESCO_OER_DOI-10.57967%2Fhf%2F11513-0D9488?style=for-the-badge)](https://doi.org/10.57967/hf/11513)
 
-</div>
+**Official Publisher & Applicant Organization:** **ElNemer Encyclopedia Publishing House (`دار النمر للنشر والمعرفة التطبيقية — شركة النمر للحلول الرقمية`)**  
+**Founder & Chief Systems Architect:** **Eng. Mahmoud Bek ElNemer (`المهندس محمود بك النمر`)**
 
 ---
 
-## 🌟 نبذة تعريفية عن الصرح المعرفي الأكبر عالمياً | Executive Architectural Overview
+## ☁️ The Three Sovereign Encyclopedia Cloud Databases (`7,000,000 Volumes` • `1,400,000,000 Pages`)
 
-تمثّل **موسوعة النمر العالمية للمعرفة التطبيقية (`ElNemer Global Encyclopedia of Applied Knowledge`)** أضخم بنية تحتية نشرية ومكتبية رقمية موحّدة على مستوى العالم، صادرة عن **دار النمر للنشر والمعرفة التطبيقية — شركة النمر للحلول الرقمية (`ElNemer Encyclopedia Publishing House — Nemer Digital Solutions`)**.
-
-تضم الموسوعة **5,000,000 (خمسة ملايين) مجلد مرجعي وتطبيقي مستقل**، يتكون كل مجلد منها من **200 صفحة قياسية شاملة**، بإجمالي **1,000,000,000 (مليار صفحة كاملة)** موزعة بدقة هندسية عبر **78 لغة عالمية** و**50 قطاعاً معرفياً استراتيجياً** تنقسم إلى **1,000 تخصص تطبيقي وعلمي نافع للإنسان**، مع تأمين كامل للبنية التحتية عبر **الدرع التشفيري السيادي (`Nemer Sovereign Encrypted Vault v7.0`)** وشجرة الإثبات الجنائي **`23-Level SHA-256 Merkle Cryptographic Ledger`**.
-
-> **Official Publisher & Exclusive Copyright Holder:**  
-> **ElNemer Encyclopedia Publishing House — Nemer Digital Solutions (دار النمر للنشر والمعرفة التطبيقية — شركة النمر للحلول الرقمية)**  
-> 🌐 **Live Global Observatory:** [https://million.elnemer-ai.com](https://million.elnemer-ai.com)
+| Collection | Volume ID Range (`GID`) | Volumes & Pages | Taxonomy | Merkle Tree Depth & Official Root (`SHA-256`) | Live Portal Link |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **1. 📚 Core Applied Knowledge Encyclopedia (`v7.0`)** | `#1` – `#5,000,000` | **5,000,000 Volumes**<br>(`1,000,000,000 Pages`) | 50 Sectors × 20 = **1,000 Disciplines** | **23 Levels** (`2^23 = 8,388,608`)<br>`72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9` | [Browse 5M Core](https://million.elnemer-ai.com/?collection=general) |
+| **2. 🤖 Artificial Intelligence Cloud Database (`v7.2-AI`)** | `#5,000,001` – `#6,000,000` | **1,000,000 AI Volumes**<br>(`200,000,000 Pages`) | 10 AI Sectors (`#51–#60`) = **200 AI Disciplines** | **20 Levels** (`2^20 = 1,048,576`)<br>`a19f4e82c7d031b5e64a928f1c3b7d5e8042f9a1c6b3d8e5f7012a4c9e6b8d31` | [Browse 1M AI Books](https://million.elnemer-ai.com/?collection=ai) |
+| **3. 🏺 Ancient Egypt & Pharaohs Cloud Database (`v7.2-Pharaohs`)** | `#6,000,001` – `#7,000,000` | **1,000,000 Pharaohs Volumes**<br>(`200,000,000 Pages`) | 10 Egyptology Sectors (`#61–#70`) = **200 Disciplines** | **20 Levels** (`2^20 = 1,048,576`)<br>`f47c9b20e5d183a6c940e2f7b1d8a3c5e904f2b7d1c6a8e3f5092b4d7c1e8a64` | [Browse 1M Pharaohs Books](https://million.elnemer-ai.com/?collection=pharaohs) |
 
 ---
 
-## 🚀 البوابات والأنظمة التفاعلية الحية في الموقع | Live Interactive Observatory Portals
+## ⚖️ Master 55-Point Evidence Index & Independent Verification Suite (`P0 / P1 / P2`)
 
-يتضمن المرصد الرسمي **[million.elnemer-ai.com](https://million.elnemer-ai.com)** منظومة متكاملة من البوابات والمختبرات الحية التي تعمل في الوقت الفعلي:
+- 📋 **Master 55-Point Evidence Index (`/evidence-index`):** [https://million.elnemer-ai.com/evidence-index](https://million.elnemer-ai.com/evidence-index)
+- 🔐 **Live WebCrypto 3-Hash Audit Lab (`content_sha256` + `record_sha256` + `pdf_bytes_sha256`):** [https://million.elnemer-ai.com/audit/1](https://million.elnemer-ai.com/audit/1) | [AI Vol #5,000,001](https://million.elnemer-ai.com/audit/5000001) | [Pharaohs Vol #6,000,001](https://million.elnemer-ai.com/audit/6000001)
+- 🐍 **Independent Python CLI Verifier (`cli_verifier.py`):** [https://million.elnemer-ai.com/cli_verifier.py](https://million.elnemer-ai.com/cli_verifier.py)
+- 🔌 **OpenAPI 3.1.0 Specification (`openapi.json`):** [https://million.elnemer-ai.com/openapi.json](https://million.elnemer-ai.com/openapi.json)
+- ☁️ **Cloud Database JSON Manifest & Shard Exporter:** [https://million.elnemer-ai.com/api/cloud-collections](https://million.elnemer-ai.com/api/cloud-collections)
+- 🏪 **Official Google Play Books Partner Store (`40,000+` Retail Volumes · Account `#16683278501468358020`):** [Google Play Books Partner Catalog](https://play.google.com/books/publish/a/16683278501468358020)
 
-| البوابة / المختبر الحي | الوظيفة والمواصفات التقنية | الرابط المباشر للفحص الحي |
-| :--- | :--- | :--- |
-| **🏠 المرصد الرئيسي للموسوعة** | الواجهة الموحدة باللون الياقوتي والزمردي الأكاديمي مع محرك البحث الثلاثي الذكي (بالاسم، بالرقم، وبالعشوائي) | [فتح المرصد الرئيسي](https://million.elnemer-ai.com/?v=70) |
-| **📚 الفهرس المليوني الشامل (`5M Index`)** | تصفح جميع الـ `5,000,000` مجلد مع القفز الفوري بالدفعات المليونية (`#1` إلى `#5,000,000`) والتحكم بعدد الكتب في الصفحة (`24` / `48` / `96` / `200`) | [تصفح كل الكتب (5M)](https://million.elnemer-ai.com/?show_all=1&per_page=96&v=70#featured-books) |
-| **🔢 محرك الفتح الفوري برقم الكتاب** | القفز اللحظي لأي كتاب من رقم `1` إلى `5,000,000` في أقل من `5ms` | [مثال: كتاب رقم #79](https://million.elnemer-ai.com/?book_num=79&v=70#featured-books) |
-| **🎲 المستكشف العشوائي الفوري** | فتح كتاب تطبيقي عشوائي كامل (`200 صفحة`) أو استعراض تشكيلة `48` كتاباً عشوائياً جديداً بضغطة واحدة | [افتح كتاباً عشوائياً الآن](https://million.elnemer-ai.com/?random_open=1&v=70) |
-| **📖 قارئ الـ 200 صفحة التفاعلي** | قارئ ويب ومستند `200 صفحة` كامل بلغة الكتاب الأصلية (10 فصول تطبيقية + قوائم فحص + تقييم ذاتي من 22 سؤالاً + مراجع) | [فتح قارئ الـ 200 صفحة (#79)](https://million.elnemer-ai.com/book/79?view=reader&v=70#pdf-200p-viewer) |
-| **🔬 مركز الأبحاث والدراسات العلمية** | بوابة مستقلة للأبحاث الأكاديمية والدراسات المرجعية المحكّمة مفصولة بالكامل عن الكتب التطبيقية | [دخول مركز الأبحاث العلمية](https://million.elnemer-ai.com/?section=research&v=70#research-hub) |
-| **🔐 مختبر التدقيق التشفيري (`Audit Lab`)** | فحص البصمة التشفيرية `SHA-256` ومسار الإثبات في شجرة ميركل (`23-Level Merkle Proof`) لأي مجلد من الـ 5 ملايين | [مختبر التدقيق التشفيري](https://million.elnemer-ai.com/audit/79) |
-| **📜 سجل البراهين والشواهد الجنائية** | السجل الرسمي لبراهين النشر والتوثيق التشفيري وشهادات الفحص المستقلة | [سجل البراهين الجنائية](https://million.elnemer-ai.com/witness) |
-| **⚖️ بوابة التحكيم الدولي (`Adjudication`)** | لوحة الفحص القياسي للمحكّمين الدوليين واللجان الأكاديمية | [بوابة التحكيم الرسمية](https://million.elnemer-ai.com/guinness) |
-| **🏛️ مستودع مكتبة الكونجرس (`OAI-PMH 2.0`)** | بوابة الحصاد الآلي للمكتبات الوطنية والجامعية وفق بروتوكول `OAI-PMH 2.0` و`MARC21` | [مستودع OAI-PMH 2.0](https://million.elnemer-ai.com/oai?verb=Identify) |
-| **🎖️ نظام شهادات الأصالة التشفيرية** | إصدار شهادة أصالة رسمية موقّعة تشفيرياً (`Certificate of Cryptographic Authenticity`) لكل مجلد | [شهادة توثيق المجلد #79](https://million.elnemer-ai.com/certificate/79) |
-| **📑 التصدير الببليوجرافي الأكاديمي** | تصدير بطاقة الفهرسة الفورية بصيغ `MARC21`، `BibTeX`، `RIS`، و`EndNote` | [بطاقة استشهاد المجلد #79](https://million.elnemer-ai.com/cite/79) |
-| **🏪 متجر Google Play Books الرسمي** | الحساب الرسمي المعتمد للدار على متجر كتب جوجل بلاي (`40,000+` كتاب منشور ومفهرس تجارياً) | [متجر الناشر على Google Play](https://play.google.com/books/publish/a/16683278501468358020) |
+> **Applicant Portal Disclaimer:** The adjudication and evidence portals on `million.elnemer-ai.com` are maintained by the applicant organization (**ElNemer Encyclopedia Publishing House**) to facilitate automated independent verification and do not imply prior final certification by Guinness World Records™ before formal review completion.
 
 ---
 
-## 🔐 منظومة التشفير والأمان السيادي | Sovereign Cryptographic & Security Architecture
+## 📞 Official Institutional Contact
 
-ينفرد مشروع **موسوعة النمر للمعرفة التطبيقية** ببنية أمنية وتشفيرية سيادية مصممة لحماية الملكية الفكرية وإثبات الأصالة الرقمية لكل مجلد من الـ 5,000,000 مجلد دون الحاجة للإفصاح عن الشفرات المصدرية الداخلية:
-
-### 1. شجرة ميركل التشفيرية ذات الـ 23 مستوى (`23-Level SHA-256 Merkle Cryptographic Tree`)
-- يمتلك كل مجلد من المجلدات الـ `5,000,000` بصمة تشفيرية فريدة (`SHA-256 Leaf Hash`) مشتقة من بياناته الببليوجرافية، ورقم `ISBN-13`، ومعرّف `DOI`، وبنيته المكونة من `200 صفحة`.
-- ترتبط جميع البصمات الفردية في شجرة ميركل ثنائية عملاقة من **23 مستوى (`2^23 = 8,388,608 سعة ورقية`)** تصب في جذر تشفيري سيادي موحّد غير قابل للتغيير أو التزوير:
-  - **`Master Merkle Root (SHA-256):`** `72806865ca4d56a0b03ad7e925ba6e7ccab8f537c016ec6214be2149e0c896d9`
-- يمكن لأي محكّم أو هيئة دولية التحقق من أي كتاب في أجزاء من الثانية عبر واجهة JSON الحية:
-  - `https://million.elnemer-ai.com/api/verify/79`
-
-### 2. درع الحماية والتمويه السيادي (`Nemer Sovereign Trade-Secret & Cloaking Shield v7.0`)
-- يعمل الخادم خلف طبقة حماية سيادية (`X-Nemer-Sovereign-Vault: Encrypted-Core-v7.0-SHA256`) تعزل محركات المعالجة وقواعد البيانات التخصصية عن الوصول الخارجي المباشر، وتمنع أي محاولة لسحب الكود المصدري أو استنساخ البنية الهندسية للمشروع.
-- جميع عمليات إصدار الباركود القياسي (`GS1 EAN-13 Vector SVG`)، وبناء بطاقات `MARC21`، والتحقق من البصمات التشفيرية تتم داخل النواة المؤمّنة للخادم.
-
-### 3. الهوية اللامركزية الموثقة (`W3C Decentralized Identifier — DID`)
-- يدعم الموقع معيار الهوية اللامركزية العالمي عبر وثيقة التوثيق السيادية:
-  - `https://million.elnemer-ai.com/.well-known/did.json` (`did:web:million.elnemer-ai.com`)
-
----
-
-## 📊 المواصفات القياسية والفهرسة الدولية | Global Bibliographic & Cataloging Standards
-
-| المعيار الدولي | التفاصيل المعتمدة في الموسوعة |
-| :--- | :--- |
-| **إجمالي عدد المجلدات** | **5,000,000 مجلد تطبيقي ومرجعي مستقل** (`Volume #1` إلى `Volume #5,000,000`) |
-| **معيار الصفحات الثابت** | **200 صفحة قياسية لكل مجلد** (`10 فصول تطبيقية` + `177 وحدة عملية` + `22 سؤال تقييم ذاتي` + `45 مرجعاً متخصصاً`) |
-| **إجمالي الصفحات** | **1,000,000,000 (مليار صفحة كاملة)** |
-| **الترقيم الدولي (`ISBN-13`)** | رقم `ISBN-13 / EAN-13` فريد ومفحوص برقم التحقق القياسي (`Modulo-10 Check Digit`) مع باركود فيكتور قابل للمسح لكل كتاب |
-| **معرّف الكائن الرقمي (`DOI`)** | معرّف دائم لكل مجلد (`10.1007/s1b-nemer.0000001` إلى `10.1007/s1b-nemer.5000000`) مع بوابة تحويل فورية (`/doi/...`) |
-| **تصنيف الموضوعات (`BISAC`)** | ربط كل مجلد برموز تصنيف `BISAC` العالمية وتصنيف مكتبة الكونجرس (`LCC`) وتصنيف ديوي العشري (`DDC`) |
-| **الفهرسة المكتبية (`OAI-PMH & MARC21`)** | توافق كامل مع معايير `OAI-PMH 2.0` و`MARC21` و`Dublin Core` و`Highwire Press Meta Tags` (`citation_title`, `citation_isbn`, `citation_pdf_url`) |
-| **خرائط الموقع (`XML Sitemaps`)** | فهرس رئيسي يضم **1,001 خريطة موقع XML** مقسمة هندسياً لفهرسة الـ 5,000,000 كتاب عبر محركات البحث العالمية |
-| **مبادرة الوقف المعرفي المجاني** | **500,000 مجلد (`100,000,000 صفحة`)** من المجلد `#4,500,001` إلى `#5,000,000` متاحة مجاناً بالكامل (`$0.00 Open Access`) |
-
----
-
-## 🗂️ الهيكلة المعرفية الشاملة: 5 محاور كبرى × 50 قطاعاً × 1,000 تخصص نافع للإنسان
-
-صُممت الهيكلة الموضوعية للموسوعة لتفصل فصلاً تاماً ودقيقاً بين **الكتب التطبيقية العملية** و**الأبحاث العلمية**، وتغطي **50 قطاعاً استراتيجياً** يندرج تحت كل قطاع منها **20 تخصصاً فرعياً دقيقاً** (`50 × 20 = 1,000 تخصص`):
-
-### 🏥 المحور الأول: الطب البشري، الصحة الوقائية، التغذية العلاجية، والإسعافات (القطاعات 1–10 | 200 تخصص)
-1. **الطب الوقائي والصحة العامة والمناعة الحيوية** (20 تخصصاً)
-2. **التغذية العلاجية والأنظمة الغذائية الصحية المتكاملة** (20 تخصصاً)
-3. **صحة القلب والأوعية الدموية واللياقة البدنية** (20 تخصصاً)
-4. **صحة الأم والطفل وحديثي الولادة والتطعيمات** (20 تخصصاً)
-5. **الإسعافات الأولية والطوارئ المنزلية والميدانية** (20 تخصصاً)
-6. **الصحة النفسية والاتزان الانفعالي وإدارة الضغوط** (20 تخصصاً)
-7. **طب وجراحة العيون والسمعيات وصحة الحواس** (20 تخصصاً)
-8. **طب الأسنان وصحة الفم واللثة الوقائية** (20 تخصصاً)
-9. **العلاج الطبيعي والتأهيل الحركي وصحة العمود الفقري** (20 تخصصاً)
-10. **السلامة المهنية والبيئية والوقاية من المخاطر المنزلية** (20 تخصصاً)
-
-### 👨‍👩‍👧‍👦 المحور الثاني: الأسرة، التربية الإيجابية، تطوير الذات، والمهارات الحياتية (القطاعات 11–20 | 200 تخصص)
-11. **التربية الإيجابية الحديثة وبناء شخصية الأبناء والمراهقين** (20 تخصصاً)
-12. **الإرشاد الأسري والتخطيط المنزلي والمالي الذكي** (20 تخصصاً)
-13. **إدارة الوقت والإنتاجية الفائقة وبناء العادات المستدامة** (20 تخصصاً)
-14. **مهارات التواصل الفعال والخطابة والذكاء العاطفي والاجتماعي** (20 تخصصاً)
-15. **التفكير النقدي وتقوية الذاكرة والخرائط الذهنية** (20 تخصصاً)
-16. **مهارات التفوق الدراسي والمذاكرة الحديثة وتلخيص الكتب** (20 تخصصاً)
-17. **تعلم اللغات الحية وأصول الترجمة الاحترافية** (20 تخصصاً)
-18. **القيم الأخلاقية المهنية والعمل التطوعي وخدمة المجتمع** (20 تخصصاً)
-19. **فنون الطهي الصحي والمخبوزات المنزلية واقتصاد المطبخ** (20 تخصصاً)
-20. **الفنون الجميلة والخط العربي والتصوير الفوتوغرافي** (20 تخصصاً)
-
-### 💼 المحور الثالث: ريادة الأعمال، التجارة، الإدارة، والحرف والمهن العملية (القطاعات 21–30 | 200 تخصص)
-21. **العمل الحر وبناء الدخل المستقل عبر الإنترنت (`Freelancing`)** (20 تخصصاً)
-22. **التجارة الإلكترونية وإدارة المتاجر الرقمية وسلاسل الإمداد** (20 تخصصاً)
-23. **التسويق الرقمي الأخلاقي وتصدر محركات البحث (`SEO`)** (20 تخصصاً)
-24. **تأسيس المشروعات الصغيرة والمتوسطة ودراسات الجدوى** (20 تخصصاً)
-25. **المحاسبة المالية المبسطة والادخار والاستثمار الآمن** (20 تخصصاً)
-26. **الحرف الهندسية والصيانة المنزلية الآمنة (الكهرباء، السباكة، النجارة، التكييف)** (20 تخصصاً)
-27. **تشخيص وصيانة الإلكترونيات والحواسيب وميكانيكا السيارات الحديثة** (20 تخصصاً)
-28. **الصناعات الخفيفة والمشاريع الإنتاجية الصغيرة وضبط الجودة** (20 تخصصاً)
-29. **إدارة المشروعات الاحترافية (`PMP / Agile`) والمبيعات وخدمة العملاء** (20 تخصصاً)
-30. **القيادة الإدارية والموارد البشرية والتطوير المؤسسي** (20 تخصصاً)
-
-### 💻 المحور الرابع: البرمجة، الذكاء الاصطناعي، الأمن السيبراني، والهندسة الحديثة (القطاعات 31–40 | 200 تخصص)
-31. **هندسة البرمجيات وتطوير تطبيقات الويب والموبايل الحديثة** (20 تخصصاً)
-32. **تطبيقات الذكاء الاصطناعي العملية وأتمتة الأعمال والبيانات** (20 تخصصاً)
-33. **الأمن السيبراني الدفاعي وحماية البيانات والخصوصية الرقمية** (20 تخصصاً)
-34. **الحوسبة السحابية وإدارة الخوادم والشبكات وقواعد البيانات** (20 تخصصاً)
-35. **الهندسة المدنية والمعمارية وتقنيات البناء الحديث المستدام** (20 تخصصاً)
-36. **الهندسة الكهربائية والإلكترونية والأنظمة المدمجة وإنترنت الأشياء (`IoT`)** (20 تخصصاً)
-37. **الهندسة الميكانيكية والميكاترونيكس والروبوتات الصناعية** (20 تخصصاً)
-38. **تصميم واجهات وتجربة المستخدم (`UI/UX`) والجرافيك والإنتاج المرئي** (20 تخصصاً)
-39. **تكنولوجيا التعليم الإلكتروني وتصميم المناهج التفاعلية الرقمية** (20 تخصصاً)
-40. **التحول الرقمي المؤسسي وحوكمة نظم المعلومات** (20 تخصصاً)
-
-### 🌱 المحور الخامس: الزراعة المستدامة، الطاقة المتجددة، القانون، والعلوم التطبيقية (القطاعات 41–50 | 200 تخصص)
-41. **الزراعة الحديثة والزراعة المائية والمنزلية والأمن الغذائي** (20 تخصصاً)
-42. **الطاقة الشمسية والمتجددة وترشيد استهلاك الطاقة** (20 تخصصاً)
-43. **حماية البيئة وإدارة الموارد المائية وإعادة التدوير** (20 تخصصاً)
-44. **الثقافة القانونية وصياغة العقود وحماية المستهلك والملكية الفكرية** (20 تخصصاً)
-45. **الإنتاج الحيواني والداجني والمناحل والاستزراع السمكي** (20 تخصصاً)
-46. **العلوم التطبيقية المبسطة (الفيزياء، الكيمياء، الرياضيات، الفلك)** (20 تخصصاً)
-47. **الجغرافيا التطبيقية والسياحة المستدامة وإدارة الضيافة** (20 تخصصاً)
-48. **الصحافة المهنية والإعلام الرقمي وصناعة المحتوى التثقيفي** (20 تخصصاً)
-49. **إدارة الأزمات والكوارث الطبيعية والتخطيط العمراني الآمن** (20 تخصصاً)
-50. **مناهج البحث العلمي التطبيقي والابتكار وبراءات الاختراع** (20 تخصصاً)
-
----
-
-## 🌍 مصفوفة الـ 78 لغة عالمية المعتمدة | The 78 Supported Global Languages
-
-تدعم الموسوعة قراءة وتصفح وفهرسة الكتب عبر **78 لغة عالمية**، موزعة على ثلاث طبقات لغوية استراتيجية:
-
-- **الطبقة الأولى (اللغات العالمية الكبرى):** العربية (`ar`)، الإنجليزية (`en`)، الفرنسية (`fr`)، الألمانية (`de`)، الإسبانية (`es`)، الصينية المبسطة (`zh-CN`)، الصينية التقليدية (`zh-TW`)، الروسية (`ru`)، اليابانية (`ja`)، الهندية (`hi`)، البرتغالية (`pt`)، الإيطالية (`it`)، التركية (`tr`)، الكورية (`ko`)، الإندونيسية (`id`).
-- **الطبقة الثانية (اللغات الإقليمية والأوروبية والآسيوية):** الهولندية (`nl`)، البولندية (`pl`)، السويدية (`sv`)، الفارسية (`fa`)، الأردية (`ur`)، البنغالية (`bn`)، الفيتنامية (`vi`)، التايلاندية (`th`)، الملايوية (`ms`)، اليونانية (`el`)، التشيكية (`cs`)، الرومانية (`ro`)، المجرية (`hu`)، الأوكرانية (`uk`)، الدنماركية (`da`)، الفنلندية (`fi`)، النرويجية (`no`)، العبرية (`he`)، السواحيلية (`sw`)، التاميلية (`ta`)، التيلوغوية (`te`)، الماراثية (`mr`)، الغوجاراتية (`gu`)، الكانادا (`kn`)، المالايالامية (`ml`)، البنجابية (`pa`).
-- **الطبقة الثالثة (اللغات الدولية المعتمدة في متجر Google Play العالمي):** البلغارية (`bg`)، الكرواتية (`hr`)، الصربية (`sr`)، السلوفاكية (`sk`)، السلوفينية (`sl`)، الليتوانية (`lt`)، اللاتفية (`lv`)، الإستونية (`et`)، الأيسلندية (`is`)، الكتالونية (`ca`)، الباسكية (`eu`)، الجاليكية (`gl`)، الأفريكانية (`af`)، الألبانية (`sq`)، الأرمنية (`hy`)، الأذربيجانية (`az`)، البيلاروسية (`be`)، البوسنية (`bs`)، الجورجية (`ka`)، الكازاخية (`kk`)، الخميرية (`km`)، القيرغيزية (`ky`)، اللاوية (`lo`)، المقدونية (`mk`)، المنغولية (`mn`)، البورمية (`my`)، النيبالية (`ne`)، السنهالية (`si`)، الأمهرية (`am`)، الهوسا (`ha`)، اليوروبا (`yo`)، الزولو (`zu`)، الفلبينية (`tl`)، الأوزبكية (`uz`)، الطاجيكية (`tg`)، التركمانية (`tk`)، اللاتينية (`la`).
-
----
-
-## 🔒 إشعار حماية حقوق الملكية الفكرية والأسرار التجارية | Trade-Secret & IP Protection Notice
-
-1. **الملكية الفكرية الحصرية (`Exclusive Copyright`):** جميع الكتب، المجلدات الـ `5,000,000`، الهياكل التنظيمية، التصاميم، وقواعد البيانات مسجلة ومحمية حصرياً باسم **دار النمر للنشر والمعرفة التطبيقية — شركة النمر للحلول الرقمية (`ElNemer Encyclopedia Publishing House — Nemer Digital Solutions`)**.
-2. **حماية الأسرار التجارية (`Proprietary Architecture Cloaking`):** الخوارزميات البرمجية، أنظمة الفهرسة المليونية، ومحركات النشر والأرشفة والتشفير السيادي هي أسرار تجارية مملوكة للدار ومحمية خلف جدار التشفير السيادي للخادم (`Sovereign Encrypted Vault`)، ولا يُنشر أي كود مصدري تشغيلي للعامة.
-
----
-
-## 💼 التراخيص المؤسسية والتعاون الأكاديمي والتجاري | Enterprise & Academic Licensing
-
-ترحب **دار النمر للنشر والمعرفة التطبيقية** بطلبات التراخيص المؤسسية للجامعات، المكتبات الوطنية، الوزارات، مراكز الأبحاث، وشركات التكنولوجيا العالمية الراغبة في ترخيص الفهارس أو المحتوى المرجعي متعدد اللغات (`78 لغة`):
-
-- 🏢 **الجهة المالكة والناشرة:** دار النمر للنشر والمعرفة التطبيقية — شركة النمر للحلول الرقمية (`ElNemer Encyclopedia Publishing House — Nemer Digital Solutions`)
-- ✉️ **البريد الرسمي للتراخيص والتوثيق:** `info@elnemer-ai.com`
-- 📞 **الهاتف والواتساب الرسمي المباشر:** `+20-150-755-9911` (`01507559911`)
-- 🌐 **البوابة الرسمية للموسوعة:** [https://million.elnemer-ai.com](https://million.elnemer-ai.com)
-- 🏪 **متجر Google Play Books الرسمي:** [https://play.google.com/books/publish/a/16683278501468358020](https://play.google.com/books/publish/a/16683278501468358020)
-
-
----
-
-## 🎓 التوثيق الأكاديمي العالمي ورقم `DOI` المعتمد | Official DataCite DOI & Technical Whitepaper
-
-حصلت **موسوعة النمر العالمية للمعرفة التطبيقية (`ElNemer Global Encyclopedia`)** على معرّف الكائن الرقمي الأكاديمي العالمي الدائم (**`DataCite DOI`**) للورقة المرجعية المعمارية والتشفيرية دون الإفصاح عن أي كود برمجي:
-
-- 🏛️ **رقم `DOI` الأكاديمي العالمي المعتمد (`DataCite`):** [`10.57967/hf/11509`](https://doi.org/10.57967/hf/11509) (`https://doi.org/10.57967/hf/11509`)
-- 📄 **الورقة البحثية المعمارية والتشفيرية (`Technical Whitepaper PDF`):** [تحميل الورقة البحثية الرسمية (PDF)](https://million.elnemer-ai.com/whitepaper_doi_2026.pdf)
-- 🛰️ **بوابة المرصد التفاعلي على Hugging Face Spaces:** [ElNemer-Global-Encyclopedia-Observatory](https://huggingface.co/spaces/elnemer7/ElNemer-Global-Encyclopedia-Observatory)
-- 📦 **الإصدار الأكاديمي الموثّق على GitHub Releases:** [Release v7.0.0 — Sovereign Architectural & Cryptographic Whitepaper](https://github.com/ElNeMeR70/elnemer-1m-global-encyclopedia/releases/tag/v7.0.0)
-
-### صيغة الاستشهاد الأكاديمي الموحدة (`BibTeX` & `APA Citation`):
-
-```bibtex
-@techreport{elnemer2026encyclopedia,
-  author      = {ElNemer, Mahmoud Bek},
-  title       = {Cryptographic Verification, Deterministic 78-Language Typographic Rendering, and Sovereign Multi-Tier Knowledge Architecture of the ElNemer Global Encyclopedia (5,000,000 Volumes · 1,000,000,000 Pages)},
-  institution = {ElNemer Encyclopedia Publishing House — ElNemer Digital Solutions},
-  year        = {2026},
-  version     = {7.0.0},
-  doi         = {10.57967/hf/11509},
-  url         = {https://doi.org/10.57967/hf/11509}
-}
-```
-
-### 🏛️ السجل الأوروبي الرسمي على `CERN Zenodo` و`OpenAIRE`:
-- **CERN Zenodo Version DOI:** [`10.5281/zenodo.24051667`](https://doi.org/10.5281/zenodo.24051667) ([فتح سجل CERN Zenodo الرسمي](https://zenodo.org/records/24051667))
-- **CERN Zenodo Concept DOI (All Versions):** [`10.5281/zenodo.24051666`](https://doi.org/10.5281/zenodo.24051666)
-- **Primary DataCite DOI (78-Language Catalog):** [`10.57967/hf/11509`](https://doi.org/10.57967/hf/11509)
-- **Secondary DataCite DOI (English Guinness & UNESCO OER Dossier):** [`10.57967/hf/11513`](https://doi.org/10.57967/hf/11513)
-- **English Global Adjudication & UNESCO OER Portal:** [https://huggingface.co/spaces/elnemer7/ElNemer-Global-Adjudication-UNESCO-Portal](https://huggingface.co/spaces/elnemer7/ElNemer-Global-Adjudication-UNESCO-Portal)
+- **Organization:** ElNemer Encyclopedia Publishing House — Nemer Digital Solutions (`دار النمر للنشر والمعرفة التطبيقية`)
+- **Email:** `info@elnemer-ai.com`
+- **Direct Phone / WhatsApp:** `+20-150-755-9911` (`01507559911`)
+- **Observatory Portal:** [https://million.elnemer-ai.com](https://million.elnemer-ai.com)
