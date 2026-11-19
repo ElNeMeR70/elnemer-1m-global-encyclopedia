@@ -1,0 +1,43 @@
+# ElNemer Sovereign 7-Million-Volume Digital Encyclopedia (موسوعة النمر للمعرفة التطبيقية الشاملة)
+
+> Official Global Digital Encyclopedia (7,000,000 Volumes • 1,400,000,000 Pages • 70 Mega-Sectors • 1,400 Disciplines • 78 Native World Languages) authored and architected exclusively by **Eng. Mahmoud ElNemer (المهندس محمود النمر — المؤلف العربي الأول وصاحب كسر الأرقام القياسية العالمية — ORCID: 0009-0008-7553-2167)**, Founder & CEO of ElNemer Publishing House (دار النمر للنشر والمعرفة التطبيقية). All Intellectual, Scientific & Literary Rights Reserved Worldwide.
+
+## Author & Record-Breaking Entity Profile
+- **Sole Author & Copyright Holder:** Eng. Mahmoud ElNemer (المهندس محمود النمر)
+- **Distinction:** First Arab Author & World Record-Breaker in Digital Encyclopedic Publishing (7,000,000 Verified 200-Page Volumes Across 78 Living Languages)
+- **ORCID Identifier:** https://orcid.org/0009-0008-7553-2167
+- **Direct WhatsApp & Phone:** +20-150-755-9911 (https://wa.me/201507559911)
+- **Official Email:** info@elnemer-ai.com
+- **Official Main Website:** https://elnemer-ai.com
+- **Encyclopedia Portal:** https://million.elnemer-ai.com
+- **Media & Press Inquiries:** https://million.elnemer-ai.com/press-kit
+- **Institutional Licensing:** https://million.elnemer-ai.com/licensing
+- **Google Play Books Partner Account:** https://play.google.com/books/publish/a/16683278501468358020 (+40,000 Commercial Volumes)
+- **Harvard Dataverse DOIs:** `doi:10.7910/DVN/TTKZSO` (General 5M), `doi:10.7910/DVN/FZISTQ` (AI 1M), `doi:10.7910/DVN/UFYQDK` (Pharaohs 1M)
+- **CERN Zenodo Record:** https://zenodo.org/records/24051667 (`doi:10.5281/zenodo.24051667`)
+
+## Sovereign Collections (7,000,000 Volumes Total)
+- [General Applied Knowledge Encyclopedia (5,000,000 Volumes, GID 1–5,000,000)](https://million.elnemer-ai.com/?collection=general): 50 Sectors, 1,000 Disciplines, 78 Languages. Harvard Dataverse DOI: `doi:10.7910/DVN/TTKZSO`.
+- [Artificial Intelligence & Future Computing Cloud Encyclopedia (1,000,000 Volumes, GID 5,000,001–6,000,000)](https://million.elnemer-ai.com/?collection=ai): 10 Sectors (#51–#60), 200 AI Disciplines, 78 Languages. Harvard Dataverse DOI: `doi:10.7910/DVN/FZISTQ`.
+- [Ancient Egypt & Pharaohs Civilization Cloud Encyclopedia (1,000,000 Volumes, GID 6,000,001–7,000,000)](https://million.elnemer-ai.com/?collection=pharaohs): 10 Sectors (#61–#70), 200 Egyptology Disciplines, 78 Languages. Harvard Dataverse DOI: `doi:10.7910/DVN/UFYQDK`.
+
+## Key Academic, Interactive, Barcode & SEO Portals
+- [Main Encyclopedia Observatory](https://million.elnemer-ai.com/)
+- [Global SEO, Google Scholar & 1,401 Sitemap Command Center](https://million.elnemer-ai.com/seo-center)
+- [Smart GS1 EAN-13 Barcode & ISO QR Verification Hub](https://million.elnemer-ai.com/b/1)
+- [Official Guinness World Records Adjudication Portal](https://million.elnemer-ai.com/guinness)
+- [55-Point Evidence & Adjudication Index](https://million.elnemer-ai.com/evidence-index)
+- [Unified Adjudication Dossier & Manifest Matrix](https://million.elnemer-ai.com/adjudication-pack)
+- [ElNemer Diploma Academy & Career Tracks](https://million.elnemer-ai.com/academy)
+- [Interactive Ancient Egypt & Pharaohs Museum](https://million.elnemer-ai.com/pharaohs-museum)
+- [Interactive AI Architecture & Prompt Engineering Lab](https://million.elnemer-ai.com/ai-lab)
+- [78-Language Global Atlas](https://million.elnemer-ai.com/global-atlas)
+- [International ONIX 3.0 & ISBN-13 Registry](https://million.elnemer-ai.com/isbn-registry)
+- [Cross-Volume Comparative Research Engine](https://million.elnemer-ai.com/compare)
+- [Semantic Knowledge Graph & W3C RDF/Turtle Linked Open Data](https://million.elnemer-ai.com/knowledge-graph)
+- [Global Research Fellowship & Academic Grants Portal](https://million.elnemer-ai.com/academic-grants)
+- [Independent Expert & Auditor Sign-Off Portal](https://million.elnemer-ai.com/auditor-signoff)
+- [Global Press & Media Room](https://million.elnemer-ai.com/press-kit)
+- [Library of Congress OAI-PMH 2.0 Repository](https://million.elnemer-ai.com/oai?verb=Identify)
+- [Master Sitemap Index (1,401 Sitemaps • 7,000,000 Canonical Book URLs)](https://million.elnemer-ai.com/sitemap_index.xml)
+- [78-Language & 1,400-Discipline Taxonomy Sitemap](https://million.elnemer-ai.com/sitemaps/sitemap_languages_78.xml)
